@@ -2,7 +2,7 @@
 
 [中文版 README](README.zh-CN.md)
 
-<img src="icon1.png" alt="icon1" style="zoom:50%;" />
+<img src="icon1.png" alt="icon1" width="20%" style="aligin-text: center;"/>
 
 ## 1. What is WinRAR?
 
