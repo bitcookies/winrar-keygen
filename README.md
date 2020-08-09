@@ -2,7 +2,7 @@
 
 [中文版 README](README.zh-CN.md)
 
-<img src="icon1.png" alt="icon1" width="20%" style="aligin-text: center;"/>
+<center><img src="icon1.png" alt="icon1" width="18%"></center>
 
 ## 1. What is WinRAR?
 
@@ -19,6 +19,8 @@ This repository will tell you how WinRAR license file `"rarreg.key"` is generate
 See [here](README.HOW_DOES_IT_WORK.md).
 
 ## 3. How to build?
+
+If you don't want to compile it yourself, you can also go to the [release page](https://github.com/bitcookies/winrar-keygen/release) to get `winrar-keygen.exe`.
 
 ### 3.1 Prerequisites
 
