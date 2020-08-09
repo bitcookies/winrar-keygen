@@ -2,7 +2,7 @@
 
 [README for English](README.md)
 
-<center><img src="icon1.png" alt="icon1" width="18%"></center>
+<div style="text-align:center"><img width="100px" src="icon1.png" /></div>
 
 ## 1. WinRAR是什么？
 
@@ -20,7 +20,7 @@ WinRAR不是免费的软件。如果你想使用它，你应当向 [__RARLAB__](
 
 ## 3. 如何编译？
 
-如果你不想自己编译，也可以到 [release](https://github.com/bitcookies/winrar-keygen/release) 页面获取 `winrar-keygen.exe`。
+如果你不想自己编译，也可以到 [release](https://github.com/bitcookies/winrar-keygen/releases/) 页面获取 `winrar-keygen.exe`。
 
 ### 3.1 前提条件
 
