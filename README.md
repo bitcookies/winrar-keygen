@@ -2,7 +2,7 @@
 
 [中文版 README](README.zh-CN.md)
 
-<center><img src="icon1.png" alt="icon1" width="18%"></center>
+<div style="text-align:center"><img width="100px" src="icon1.png" /></div>
 
 ## 1. What is WinRAR?
 
@@ -20,7 +20,7 @@ See [here](README.HOW_DOES_IT_WORK.md).
 
 ## 3. How to build?
 
-If you don't want to compile it yourself, you can also go to the [release page](https://github.com/bitcookies/winrar-keygen/release) to get `winrar-keygen.exe`.
+If you don't want to compile it yourself, you can also go to the [release page](https://github.com/bitcookies/winrar-keygen/releases/) to get `winrar-keygen.exe`.
 
 ### 3.1 Prerequisites
 
