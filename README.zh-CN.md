@@ -2,7 +2,7 @@
 
 [README for English](README.md)
 
-<div style="text-align:center"><img width="100px" src="icon1.png" /></div>
+<p align='center'><img width="100px" src="icon1.png" /></p>
 
 ## 1. WinRAR是什么？
 
