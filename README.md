@@ -60,30 +60,37 @@ You will see executable files in `bin/` directory.
 
 ## 4. How to Use?
 
+Execute the following code in the terminal and configure two parameters to generate `rarreg.key`.
+
+Here is an example use `Github` and `Github.com`:
+
 ```
 Usage:
         winrar-keygen.exe <your name> <license type>
 
 Example:
 
-        winrar-keygen.exe "Rebecca Morrison" "Single PC usage license"
+        winrar-keygen.exe "Github" "Github.com"
   or:
-        winrar-keygen.exe "Rebecca Morrison" "Single PC usage license" > rarreg.key
+        winrar-keygen.exe "Github" "Github.com" > rarreg.key
 ```
 
-Now you can see the newly generated file. Save the generated information as `rarreg.key`.
+![Terminal](terminal.png)
+
+Now you can see the newly generated file. 
 
 ```console
-$ winrar-keygen.exe "DoubleLabyrinth" "Single PC usage license"
 RAR registration data
-DoubleLabyrinth
-Single PC usage license
-UID=d2fb7cb15c078a3def58
-6412212250ef58bef21cdcb49ca34b7040112cae5a512f1adad1a8
-f6d2ee8c382fe64f8e3d6035c6ab9048e2c5c62f0238f183d28519
-aa87488bf38f5b634cf28190bdf438ac593b1857cdb55a7fcb0eb0
-c3e4c2736090b3dfa45384e08e9de05c5860d3051942adf2db9d96
-e2ec37f1cfae00b3e2455093b90e4e352f016f6b9853c735d45fb4
-01f9cbb91d3f3ac5664511229f8c9b0a9e1d61a2e087b481607e91
-bfc8a83414f6807d31a5f8c587513aa54f9b1249ad804214409316
+Github
+Github.com
+UID=3a3d02329a32b63da7d8
+6412212250a7d8753c5e7037d83011171578c57042fa30c506caae
+9954e4853d415ec594e46076cc9a65338309b66c50453ba72158c0
+656de97acb2f2a48cf3b75329283544c3e1b366a5062b85d0022f6
+de3cdc56b311475b484e80b48157a0c3af60ca4f7f9c75d49bc50d
+6bad616c1c58caa922d3ed0cd19771e8191522a586544c3e1b366a
+5062b85d29db066f02e777ad78100865f2c31f2dd3a86998609b18
+5eede7ed46566b10bf033daa6384062b259194b1acbd1443042646
 ```
+
+Save the generated information as `rarreg.key`.
