@@ -1,6 +1,7 @@
 ﻿  _tmain.cpp
   正在生成代码
-  Previous IPDB not found, fall back to full compilation.
-  All 409 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  403 of 409 functions (98.5%) were compiled, the rest were copied from previous compilation.
+    9 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
   已完成代码的生成
-  winrar-keygen.vcxproj -> D:\Users\haoning\Documents\Visual Studio 2019\winrar-keygen\bin\x64-Release\winrar-keygen.exe
+  winrar-keygen.vcxproj -> D:\Users\haoning\Documents\GitHub\@bitcookies\winrar-keygen\bin\x64-Release\winrar-keygen.exe
