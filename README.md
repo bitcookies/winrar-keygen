@@ -1,8 +1,17 @@
-# WinRAR-Keygen
+<p align="center">
+ <img width="100px" src="icon.svg" align="center" alt="WinRAR Keygen" />
+ <h2 align="center">WinRAR Keygen</h2>
+ <p align="center">Principle of WinRAR key generation</p>
+</p>
 
-[中文版 README](README.zh-CN.md)
+<p align="center">
+  <img src="https://img.shields.io/github/v/release/bitcookies/winrar-keygen?label=version" />
+  <a href="https://github.com/bitcookies/winrar-keygen/issues">
+  	<img alt="Issues" src="https://img.shields.io/github/issues/bitcookies/winrar-keygen?color=F48D73" />
+  </a>
+</p>
 
-<p align='center'><img width="100px" src="icon1.png" /></p>
+<center><a href="README.zh-CN.md">简体中文</a> | <a href="README.md">English</a></center>
 
 ## 1. What is WinRAR?
 
@@ -10,7 +19,7 @@ WinRAR is a trialware file archiver utility for Windows, developed by Eugene Ros
 
 It can create and view archives in RAR or ZIP file formats and unpack numerous archive file formats. 
 
-WinRAR is not a free software. If you want to use it, you should pay to [__RARLAB__](https://rarlab.com/) and then you will get a license file named `rarreg.key`. 
+WinRAR is not a free software. If you want to use it, you should pay to [__RARLAB__](https://www.rarlab.com/) and then you will get a license file named `rarreg.key`. 
 
 This repository will tell you how WinRAR license file `"rarreg.key"` is generated. 
 
@@ -94,3 +103,21 @@ de3cdc56b311475b484e80b48157a0c3af60ca4f7f9c75d49bc50d
 ```
 
 Save the generated information as `rarreg.key`.
+
+## 5. Encounter problems?
+
+### 5.1 Feedback
+
+If you encounter some problems, you can report on the [Issues](https://github.com/bitcookies/winrar-keygen/issues) page. There will be many enthusiastic developers or Github users to help you.
+
+### 5.2 Security
+
+Some Anti-Virus Software may falsely report. If you do not trust this binary executable file, your only option is to compile the code yourself.
+
+### 5.3 Thanks
+
+Thank you very much to some enthusiastic developers for helping answer some questions in [Issues](https://github.com/bitcookies/winrar-keygen/issues).
+
+## 6. License
+
+The code is available under the [MIT license](https://github.com/bitcookies/winrar-keygen/blob/master/LICENSE)
