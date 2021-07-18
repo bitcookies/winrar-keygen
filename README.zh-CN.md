@@ -10,9 +10,9 @@
   </a>
 </p>
 
-<center>
-    <a href="README.zh-CN.md">简体中文</a> | <a href="README.md">English</a>
-</center>
+<p align="center">
+  <a href="README.zh-CN.md">简体中文</a> | <a href="README.md">English</a>
+</p>
 
 ## 1. WinRAR是什么？
 
