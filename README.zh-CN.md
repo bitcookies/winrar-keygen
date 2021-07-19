@@ -99,24 +99,44 @@ de3cdc56b311475b484e80b48157a0c3af60ca4f7f9c75d49bc50d
 
 将生成的信息以文本格式保存为 `rarreg.key ` ，拖动导入 WinRAR 即可。
 
-## 5. 遇到问题
+## 5. 无效的Key
 
-### 5.1 反馈
+为什么我生成的 `rarreg.key` 是无效的？
+
+### 5.1 包含非英文字符
+
+如果 `text1` 和 `text2` 参数包含**非英文字符**，即使 WinRAR Keygen 能够生成 `rarreg.key`，但是是无效的。
+
+```console
+winrar-keygen.exe <text1> <text2>
+```
+
+### 5.2 终端编码的问题
+
+有可能是终端编码的问题，你可以使用 `chcp` 命令暂时切换。
+
+具体可参考 Microsoft 文档：[chcp | Microsoft Docs](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/chcp)
+
+## 6. 遇到问题
+
+### 6.1 反馈
 
 如果您遇到了一些问题，可在 [Issues](https://github.com/bitcookies/winrar-keygen/issues) 页面反馈，会有很多热心的开发者及 Github 用户帮助你。
 
-### 5.2 安全
+### 6.2 安全
 
 一些杀毒软件可能会误报，如果您不信任此二进制可执行文件，您唯一的选择就是自己编译代码。
 
-### 5.3 感谢
+### 6.3 感谢
 
 非常感谢一些热心的开发者，在 [Issues](https://github.com/bitcookies/winrar-keygen/issues) 帮助解答一些问题。
 
-## 6. 关于WinRAR广告
+感谢 [@Sonic-The-Hedgehog-LNK1123](https://github.com/Sonic-The-Hedgehog-LNK1123) 和 [@nitu2003](https://github.com/nitu2003).
+
+## 7. 关于WinRAR广告
 
 在 [__RARLAB__](https://www.rarlab.com/) 下载的简体中文版 WinRAR 将会自带广告组件，即使使用了 `rarreg.key` 授权，广告组件依旧会出现。如果您介意广告，可以尝试下载其他语言版。
 
-## 7. 许可
+## 8. 许可
 
 使用 [MIT License](https://github.com/bitcookies/winrar-keygen/blob/master/LICENSE)
