@@ -106,20 +106,40 @@ de3cdc56b311475b484e80b48157a0c3af60ca4f7f9c75d49bc50d
 
 Save the generated information as `rarreg.key`.
 
-## 5. Encounter problems?
+## 5. Invalid Key
 
-### 5.1 Feedback
+Why is my `rarreg.key` invalid?
+
+### 5.1 Contains non-English characters
+
+If `text1` and `text2` contain **non-English characters**, although a key can be generated, the key is invalid.
+
+```console
+winrar-keygen.exe <text1> <text2>
+```
+
+### 5.2 Terminal Encode
+
+There may be a terminal encoding problem, you can use `chcp` to switch temporarily.
+
+You can refer to the Microsoft documentation: [chcp | Microsoft Docs](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/chcp)
+
+## 6. Encounter problems?
+
+### 6.1 Feedback
 
 If you encounter some problems, you can report on the [Issues](https://github.com/bitcookies/winrar-keygen/issues) page. There will be many enthusiastic developers or Github users to help you.
 
-### 5.2 Security
+### 6.2 Security
 
 Some Anti-Virus Software may falsely report. If you do not trust this binary executable file, your only option is to compile the code yourself.
 
-### 5.3 Thanks
+### 6.3 Thanks
 
 Thank you very much to some enthusiastic developers for helping answer some questions in [Issues](https://github.com/bitcookies/winrar-keygen/issues).
 
-## 6. License
+Thanks [@Sonic-The-Hedgehog-LNK1123](https://github.com/Sonic-The-Hedgehog-LNK1123) and [@nitu2003](https://github.com/nitu2003).
+
+## 7. License
 
 The code is available under the [MIT license](https://github.com/bitcookies/winrar-keygen/blob/master/LICENSE)
