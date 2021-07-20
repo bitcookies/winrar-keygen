@@ -27,7 +27,7 @@
 
 # How is "rarreg.key" generated?
 
-WinRAR uses an ECC-based signature algorithm to generate `rarreg.key`. The algorithm it used is a varient of Chinese SM2 digital signature algorithm. Different to many standard ECDSAs, the curve that WinRAR selected is a curve over composite field ![GF2p15p17-inlined].
+WinRAR uses an ECC-based signature algorithm to generate `rarreg.key`. The algorithm it used is a variant of Chinese SM2 digital signature algorithm. Different to many standard ECDSAs, the curve that WinRAR selected is a curve over composite field ![GF2p15p17-inlined].
 
 ## 1. Composite field ![GF2p15p17-inlined]
 
