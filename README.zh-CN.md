@@ -8,7 +8,12 @@
   <a href="https://github.com/bitcookies/winrar-keygen/issues">
   	<img alt="Issues" src="https://img.shields.io/github/issues/bitcookies/winrar-keygen?color=F48D73" />
   </a>
+  <img src="https://img.shields.io/badge/Visual%20Studio-2022-5D4298" />
+  <a href="https://github.com/bitcookies/winrar-keygen/blob/master/LICENSE">
+  	<img alt="License" src="https://img.shields.io/github/license/bitcookies/winrar-keygen.svg" />
+  </a>
 </p>
+
 
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> | <a href="README.md">English</a>
@@ -34,11 +39,12 @@ WinRAR不是免费软件。如果你想使用它，你应当向 [__RARLAB__](htt
 
 ### 3.1 前提条件
 
-1. 请确保你有 __Visual Studio 2019__ 或其更高版本。因为这是一个VS2019项目。
+1. 请确保你有 **Visual Studio 2022**，因为这是一个 VS2022 项目。如果你仍在使用 Visual Studio 2019，可以在 [vs2019](https://github.com/bitcookies/winrar-keygen/tree/vs2019) 分支中找到适合 VS2019 的项目。
 
 2. 请确保你安装了 `vcpkg` 以及下面几个库：
 
-   * `mpir:x86-windows-static`
+   - `mpir:x86-windows-static`
+
    * `mpir:x64-windows-static`
 
    你可以通过下的命令来安装：
@@ -57,10 +63,10 @@ WinRAR不是免费软件。如果你想使用它，你应当向 [__RARLAB__](htt
 ### 3.2 编译
 
 1. 在 __Visual Studio__ 中打开这个项目。
-
 2. 选择 `Release` 配置。
-
 3. 选择 __生成 > 生成解决方案__。
+
+你将在 `bin/` 目录下看到生成的文件。
 
 ## 4. 如何使用？
 
@@ -113,7 +119,7 @@ winrar-keygen.exe <text1> <text2>
 
 ### 5.2 终端编码的问题
 
-有可能是终端编码的问题，你可以使用 `chcp` 命令暂时切换。
+[Issues #5](https://github.com/bitcookies/winrar-keygen/issues/5) 有可能是终端编码的问题，你可以使用 `chcp` 命令暂时切换。
 
 具体可参考 Microsoft 文档：[chcp | Microsoft Docs](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/chcp)
 
@@ -125,9 +131,13 @@ winrar-keygen.exe <text1> <text2>
 
 ### 6.2 安全
 
-一些杀毒软件可能会误报，如果您不信任此二进制可执行文件，您唯一的选择就是自己编译代码。
+[Issues #1](https://github.com/bitcookies/winrar-keygen/issues/1) 一些杀毒软件可能会误报，如果您不信任此二进制可执行文件，您唯一的选择就是自己编译代码。
 
-### 6.3 感谢
+### 6.3 下载
+
+[Issues #4](https://github.com/bitcookies/winrar-keygen/issues/4) IDM等下载工具可能会有问题，请使用浏览器（例如 chrome、edge）下载。
+
+### 6.4 感谢
 
 非常感谢一些热心的开发者，在 [Issues](https://github.com/bitcookies/winrar-keygen/issues) 帮助解答一些问题。
 
