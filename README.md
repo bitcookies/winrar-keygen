@@ -9,6 +9,10 @@
   <a href="https://github.com/bitcookies/winrar-keygen/issues">
   	<img alt="Issues" src="https://img.shields.io/github/issues/bitcookies/winrar-keygen?color=F48D73" />
   </a>
+  <img src="https://img.shields.io/badge/Visual%20Studio-2019-blueviolet" />
+  <a href="https://github.com/bitcookies/winrar-keygen/blob/master/LICENSE">
+  	<img alt="License" src="https://img.shields.io/github/license/bitcookies/winrar-keygen.svg" />
+  </a>
 </p>
 
 <p align="center">
