@@ -3,13 +3,17 @@
  <h2 align="center">WinRAR Keygen</h2>
  <p align="center">Principle of WinRAR key generation</p>
 </p>
-
 <p align="center">
   <img src="https://img.shields.io/github/v/release/bitcookies/winrar-keygen?label=version" />
   <a href="https://github.com/bitcookies/winrar-keygen/issues">
   	<img alt="Issues" src="https://img.shields.io/github/issues/bitcookies/winrar-keygen?color=F48D73" />
   </a>
+  <img src="https://img.shields.io/badge/Visual%20Studio-2022-5D4298" />
+  <a href="https://github.com/bitcookies/winrar-keygen/blob/master/LICENSE">
+  	<img alt="License" src="https://img.shields.io/github/license/bitcookies/winrar-keygen.svg" />
+  </a>
 </p>
+
 
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> | <a href="README.md">English</a>
@@ -35,7 +39,7 @@ If you don't want to compile it yourself, you can also go to the [release page](
 
 ### 3.1 Prerequisites
 
-1. Please make sure that you have __Visual Studio 2019__ or the higher. Because this is a VS2019 project.
+1. Please make sure that you have **Visual Studio 2022**. Because this is a VS2022 project. If you are still using Visual Studio 2019, you can find projects for VS2019 in the [vs2019](https://github.com/bitcookies/winrar-keygen/tree/vs2019) branch.
 
 2. Please make sure you have installed `vcpkg` and the following libraries: 
 
@@ -132,9 +136,13 @@ If you encounter some problems, you can report on the [Issues](https://github.co
 
 ### 6.2 Security
 
-Some Anti-Virus Software may falsely report. If you do not trust this binary executable file, your only option is to compile the code yourself.
+[Issues #1](https://github.com/bitcookies/winrar-keygen/issues/1) Some Anti-Virus Software may falsely report. If you do not trust this binary executable file, your only option is to compile the code yourself.
 
-### 6.3 Thanks
+### 6.3 Download
+
+[Issues #4](https://github.com/bitcookies/winrar-keygen/issues/4) IDM and other download tools may have problems, please use a browser (e.g. chrome, edge) to download.
+
+### 6.4 Thanks
 
 Thank you very much to some enthusiastic developers for helping answer some questions in [Issues](https://github.com/bitcookies/winrar-keygen/issues).
 
