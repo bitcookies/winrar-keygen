@@ -108,9 +108,9 @@ de3cdc56b311475b484e80b48157a0c3af60ca4f7f9c75d49bc50d
 
 为什么我生成的 `rarreg.key` 是无效的？
 
-### 5.1 包含非英文字符
+### 5.1 ANSI编码
 
-如果 `text1` 和 `text2` 参数包含**非英文字符**，即使 WinRAR Keygen 能够生成 `rarreg.key`，但是是无效的。
+用户名参数以及生成的许可文本，均是 **不含空格的 ANSI 编码。**
 
 ```console
 winrar-keygen.exe <text1> <text2>
@@ -118,9 +118,11 @@ winrar-keygen.exe <text1> <text2>
 
 ### 5.2 终端编码的问题
 
-有可能是终端编码的问题，你可以使用 `chcp` 命令暂时切换。
+[Issues #5](https://github.com/bitcookies/winrar-keygen/issues/5) 请务必使用 ANSI 编码（不包含空格）：
 
-具体可参考 Microsoft 文档：[chcp | Microsoft Docs](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/chcp)
+具体可参考原理文档：[授权文件"rarreg.key"的生成](https://github.com/bitcookies/winrar-keygen/blob/master/README.HOW_DOES_IT_WORK.zh-CN.md#7-%E6%8E%88%E6%9D%83%E6%96%87%E4%BB%B6rarregkey%E7%9A%84%E7%94%9F%E6%88%90)
+
+感谢 [@Sonic-The-Hedgehog-LNK1123](https://github.com/Sonic-The-Hedgehog-LNK1123).
 
 ## 6. 遇到问题
 
