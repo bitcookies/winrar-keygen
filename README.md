@@ -114,9 +114,9 @@ Save the generated information as `rarreg.key`.
 
 Why is my `rarreg.key` invalid?
 
-### 5.1 Contains non-English characters
+### 5.1 ANSI Encoded
 
-If `text1` and `text2` contain **non-English characters**, although a key can be generated, the key is invalid.
+Username and License type are **ANSI-encoded string, without null-terminator.**
 
 ```console
 winrar-keygen.exe <text1> <text2>
@@ -124,9 +124,11 @@ winrar-keygen.exe <text1> <text2>
 
 ### 5.2 Terminal Encode
 
-There may be a terminal encoding problem, you can use `chcp` to switch temporarily.
+[Issues #5](https://github.com/bitcookies/winrar-keygen/issues/5) Be sure to use ANSI encoding, without null-terminator.
 
-You can refer to the Microsoft documentation: [chcp | Microsoft Docs](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/chcp)
+You can refer to the Microsoft documentation: [Generation of "rarreg.key"](https://github.com/bitcookies/winrar-keygen/blob/master/README.HOW_DOES_IT_WORK.md#7-generation-of-rarregkey)
+
+Thanks [@Sonic-The-Hedgehog-LNK1123](https://github.com/Sonic-The-Hedgehog-LNK1123).
 
 ## 6. Encounter problems?
 
