@@ -189,7 +189,7 @@ public:
         RegInfo.Items[0] = GeneratePublicKeySM2CompressedFormat(RegInfo.Items[3].c_str());
         RegInfo.UID = HelperStringFormat("%.16s%.4s", temp.c_str() + 48, RegInfo.Items[0].c_str());
 
-        while (true) {
+        /*while (true) {
             auto LicenseTypeSignature = Sign(RegInfo.LicenseType.c_str(), RegInfo.LicenseType.length());
             auto LicenseTypeSignatureR = LicenseTypeSignature.r.ToString(16, true);
             auto LicenseTypeSignatureS = LicenseTypeSignature.s.ToString(16, true);
@@ -197,14 +197,48 @@ public:
                 RegInfo.Items[1] = HelperStringFormat("60%060s%060s", LicenseTypeSignatureS.c_str(), LicenseTypeSignatureR.c_str());
                 break;
             }
+        }*/
+
+        // Fix InternalError: The length of register data is not correct.
+        while (true) {
+            auto LicenseTypeSignature = Sign(RegInfo.LicenseType.c_str(), RegInfo.LicenseType.length());
+            auto LicenseTypeSignatureR = LicenseTypeSignature.r.ToString(16, true);
+            auto LicenseTypeSignatureS = LicenseTypeSignature.s.ToString(16, true);
+            if (LicenseTypeSignatureR.length() < 60) {
+                LicenseTypeSignatureR.insert(LicenseTypeSignatureR.begin(), 60 - LicenseTypeSignatureR.size(), '0');
+            }
+            if (LicenseTypeSignatureS.length() < 60) {
+                LicenseTypeSignatureS.insert(LicenseTypeSignatureS.begin(), 60 - LicenseTypeSignatureS.size(), '0');
+            }
+            if (LicenseTypeSignatureR.length() == 60 && LicenseTypeSignatureS.length() == 60) {
+                RegInfo.Items[1] = HelperStringFormat("60%060s%060s", LicenseTypeSignatureS.c_str(), LicenseTypeSignatureR.c_str());
+                break;
+            }
         }
 
         temp = RegInfo.UserName + RegInfo.Items[0];
-        while (true) {
+        /*while (true) {
             auto UserNameSignature = Sign(temp.c_str(), temp.length());
             auto UserNameSignatureR = UserNameSignature.r.ToString(16, true);
             auto UserNameSignatureS = UserNameSignature.s.ToString(16, true);
             if (UserNameSignatureR.length() <= 60 || UserNameSignatureS.length() <= 60) {
+                RegInfo.Items[2] = HelperStringFormat("60%060s%060s", UserNameSignatureS.c_str(), UserNameSignatureR.c_str());
+                break;
+            }
+        }*/
+
+        // Fix InternalError: The length of register data is not correct.
+        while (true) {
+            auto UserNameSignature = Sign(temp.c_str(), temp.length());
+            auto UserNameSignatureR = UserNameSignature.r.ToString(16, true);
+            auto UserNameSignatureS = UserNameSignature.s.ToString(16, true);
+            if (UserNameSignatureR.length() < 60) {
+                UserNameSignatureR.insert(UserNameSignatureR.begin(), 60 - UserNameSignatureR.size(), '0');
+            }
+            if (UserNameSignatureS.length() < 60) {
+                UserNameSignatureS.insert(UserNameSignatureS.begin(), 60 - UserNameSignatureS.size(), '0');
+            }
+            if (UserNameSignatureR.length() == 60 || UserNameSignatureS.length() == 60) {
                 RegInfo.Items[2] = HelperStringFormat("60%060s%060s", UserNameSignatureS.c_str(), UserNameSignatureR.c_str());
                 break;
             }
@@ -224,6 +258,8 @@ public:
             RegInfo.Items[3].c_str(),
             RegInfo.Checksum
         );
+
+        // maybe have fixed
         if (RegInfo.HexData.length() % 54 != 0) {
             throw std::runtime_error("InternalError: The length of register data is not correct.");
         }
