@@ -143,12 +143,14 @@ If you encounter some problems, you can report on the [Issues](https://github.co
 
 [Issues #4](https://github.com/bitcookies/winrar-keygen/issues/4) IDM and other download tools may have problems, please use a browser (e.g. chrome, edge) to download.
 
-### 6.4 Thanks
+## 7. Contributing
+
+This project welcomes contributions and suggestions. You can make suggestions in [Issues](https://github.com/bitcookies/winrar-keygen/issues), or submit a pull request :-)
 
 Thank you very much to some enthusiastic developers for helping answer some questions in [Issues](https://github.com/bitcookies/winrar-keygen/issues).
 
-Thanks [@Sonic-The-Hedgehog-LNK1123](https://github.com/Sonic-The-Hedgehog-LNK1123) and [@nitu2003](https://github.com/nitu2003).
+Thanks [@Sonic-The-Hedgehog-LNK1123](https://github.com/Sonic-The-Hedgehog-LNK1123) and [@nitu2003](https://github.com/nitu2003)
 
-## 7. License
+## 8. License
 
 The code is available under the [MIT license](https://github.com/bitcookies/winrar-keygen/blob/master/LICENSE)

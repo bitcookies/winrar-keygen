@@ -139,15 +139,17 @@ winrar-keygen.exe <text1> <text2>
 
 [Issues #4](https://github.com/bitcookies/winrar-keygen/issues/4) IDM等下载工具可能会有问题，请使用浏览器（例如 chrome、edge）下载。
 
-### 6.4 感谢
+### 6.4 关于简体中文版
+
+在 [__RARLAB__](https://www.rarlab.com/) 下载的简体中文版 WinRAR 将会自带广告组件，即使使用了 `rarreg.key` 授权，广告组件依旧会出现。如果您介意广告，可以尝试下载其他语言版。
+
+## 7. 贡献
+
+该项目欢迎贡献和建议，您可以在 [Issues](https://github.com/bitcookies/winrar-keygen/issues) 提出建议，或者进行提交拉取请求 :-)
 
 非常感谢一些热心的开发者，在 [Issues](https://github.com/bitcookies/winrar-keygen/issues) 帮助解答一些问题。
 
-感谢 [@Sonic-The-Hedgehog-LNK1123](https://github.com/Sonic-The-Hedgehog-LNK1123) 和 [@nitu2003](https://github.com/nitu2003).
-
-## 7. 关于WinRAR广告
-
-在 [__RARLAB__](https://www.rarlab.com/) 下载的简体中文版 WinRAR 将会自带广告组件，即使使用了 `rarreg.key` 授权，广告组件依旧会出现。如果您介意广告，可以尝试下载其他语言版。
+感谢 [@Sonic-The-Hedgehog-LNK1123](https://github.com/Sonic-The-Hedgehog-LNK1123) 和 [@nitu2003](https://github.com/nitu2003)
 
 ## 8. 许可
 
