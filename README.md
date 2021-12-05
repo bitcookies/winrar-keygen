@@ -55,13 +55,12 @@ If you don't want to compile it yourself, you can also go to the [release page](
    $ vcpkg install mpir:x64-windows-static
    ```
 
-3. Your `vcpkg` has been integrated into your __Visual Studio__, which means you have run 
+3. Your `vcpkg` has been integrated into your __Visual Studio__, which means you have run successfully.
 
    ```console
    $ vcpkg integrate install
    ```
    
-   successfully.
 
 ### 3.2 Build
 
