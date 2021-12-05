@@ -238,7 +238,7 @@ public:
             if (UserNameSignatureS.length() < 60) {
                 UserNameSignatureS.insert(UserNameSignatureS.begin(), 60 - UserNameSignatureS.size(), '0');
             }
-            if (UserNameSignatureR.length() == 60 || UserNameSignatureS.length() == 60) {
+            if (UserNameSignatureR.length() == 60 && UserNameSignatureS.length() == 60) {
                 RegInfo.Items[2] = HelperStringFormat("60%060s%060s", UserNameSignatureS.c_str(), UserNameSignatureR.c_str());
                 break;
             }
