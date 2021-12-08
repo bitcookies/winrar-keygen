@@ -1,5 +1,5 @@
 <p align="center">
- <img width="100px" src="icon.svg" align="center" alt="WinRAR Keygen" />
+ <img width="100px" src="icon.png" align="center" alt="WinRAR Keygen" />
  <h2 align="center">WinRAR Keygen</h2>
  <p align="center">Principle of WinRAR key generation</p>
 </p>
@@ -9,6 +9,9 @@
   	<img alt="Issues" src="https://img.shields.io/github/issues/bitcookies/winrar-keygen?color=F48D73" />
   </a>
   <img src="https://img.shields.io/badge/Visual%20Studio-2022-5D4298" />
+  <a href="https://github.com/bitcookies/winrar-keygen/actions">
+      <img src="https://img.shields.io/badge/Github-Actions-4184F4" />
+  </a>
   <a href="https://github.com/bitcookies/winrar-keygen/blob/master/LICENSE">
   	<img alt="License" src="https://img.shields.io/github/license/bitcookies/winrar-keygen.svg" />
   </a>
@@ -33,13 +36,69 @@ WinRAR不是免费软件。如果你想使用它，你应当向 [__RARLAB__](htt
 
 见 [这里](README.HOW_DOES_IT_WORK.zh-CN.md)。
 
-## 3. 如何编译？
+## 3. 通过 Github Actions 使用
+
+Github Action 是微软收购 Github 之后推出的 CI/CD 工具，通过以下步骤即可在 GitHub Action 上运行程序：
+
+### 3.1 Fork
+
+点击该项目右上角的 **Fork** 按钮，fork 一份代码到你的 Github：
+
+![step-1](assets/actions-step-1.png)
+
+如果你之前 fork 过，然后我提交了新的代码，但是你不懂得如何合并新内容到你的仓库，那你也可以删掉当前 fork 的仓库，然后重新 fork 一次。
+
+### 3.2 修改 info.json
+
+进入 `keygen/info.json`，点击编辑按钮，对该文件进行编辑：
+
+![step-2](assets/actions-step-2.png)
+
+打开该文件，你会发现有以下内容：
+
+```json
+{
+    "text1": "Github",
+    "text2": "Github.com"
+}
+```
+
+你可以自己修改  `text1` 和 `text2` 相对应的值，例如：
+
+```json
+{
+    "text1": "yourname",
+    "text2": "yourteam"
+}
+```
+
+需要注意的是，`test1` 和 `test2 ` 参数均是**不含空格的 ANSI 编码。**
+
+修改完成之后，点击 **Commit changes** 按钮，Github Actions 会自动开始。
+
+### 3.3 下载文件
+
+进入 Actions 页面查看程序运行状况：
+
+![step-3](assets/actions-step-3.png)
+
+绿色说明运行成功，黄色说明正在运行，红色说明运行失败。运行成功之后，打开对应的任务，选择 **rarreg_file** 下载：
+
+![step-4](assets/actions-step-4.png)
+
+解压缩后会得到 `rarreg.key ` ，拖动导入 WinRAR 即可。
+
+如果你得到的是无效的 key，请检查 `test1` 和 `test2 ` 参数是否是**不含空格的 ANSI 编码。**
+
+## 4. 通过 Visual Studio 编译使用
+
+我建议通过 Github Actions 的方法来使用，但是你仍然可以自己进行编译。
 
 如果你不想自己编译，也可以到 [Release](https://github.com/bitcookies/winrar-keygen/releases/) 页面获取对应版本的 `winrar-keygen.exe`。
 
-### 3.1 前提条件
+### 4.1 前提条件
 
-1. 请确保你有 **Visual Studio 2022**，因为这是一个 VS2022 项目。如果你仍在使用 Visual Studio 2019，可以在 [vs2019](https://github.com/bitcookies/winrar-keygen/tree/vs2019) 分支中找到适合 VS2019 的项目。
+1. 请确保你有 **Visual Studio 2022**，因为这是一个 VS2022 项目。如果你仍在使用 Visual Studio 2019，可以在 [vs2019](https://github.com/bitcookies/winrar-keygen/tree/vs2019) 分支中找到适合 VS2019 的项目，但是此分支将不再维护。
 
 2. 请确保你安装了 `vcpkg` 以及下面几个库：
 
@@ -60,7 +119,7 @@ WinRAR不是免费软件。如果你想使用它，你应当向 [__RARLAB__](htt
    $ vcpkg integrate install
    ```
 
-### 3.2 编译
+### 4.2 编译
 
 1. 在 __Visual Studio__ 中打开这个项目。
 2. 选择 `Release` 配置。
@@ -68,7 +127,7 @@ WinRAR不是免费软件。如果你想使用它，你应当向 [__RARLAB__](htt
 
 你将在 `bin/` 目录下看到生成的文件。
 
-## 4. 如何使用？
+### 4.3 如何使用？
 
 直接在终端执行以下代码，配置两个参数即可生成 `rarreg.key`。
 
@@ -85,7 +144,7 @@ Example:
         winrar-keygen.exe "Github" "Github.com" > rarreg.key
 ```
 
-![Terminal](terminal.png)
+![Terminal](assets/terminal.png)
 
 现在你可以看到新生成的文件：
 
@@ -111,7 +170,7 @@ de3cdc56b311475b484e80b48157a0c3af60ca4f7f9c75d49bc50d
 
 ### 5.1 ANSI编码
 
-用户名参数以及生成的许可文本，均是 **不含空格的 ANSI 编码。**
+`test1` 以及 `test2` 生成的许可文本，均是 **不含空格的 ANSI 编码。**
 
 ```console
 winrar-keygen.exe <text1> <text2>
