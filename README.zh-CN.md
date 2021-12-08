@@ -162,7 +162,7 @@ de3cdc56b311475b484e80b48157a0c3af60ca4f7f9c75d49bc50d
 5eede7ed46566b10bf033daa6384062b259194b1acbd1443042646
 ```
 
-将生成的信息以文本格式保存为 `rarreg.key ` ，拖动导入 WinRAR 即可。
+将生成的信息以文本格式保存为 `rarreg.key `，拖动导入 WinRAR 即可。
 
 ## 5. 无效的Key
 
