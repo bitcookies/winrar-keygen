@@ -72,7 +72,7 @@ Github Action 是微软收购 Github 之后推出的 CI/CD 工具，通过以下
 }
 ```
 
-需要注意的是，`test1` 和 `test2 ` 参数均是**不含空格的 ANSI 编码。**
+需要注意的是，`test1` 和 `test2` 参数均是**不含空格的 ANSI 编码。**
 
 修改完成之后，点击 **Commit changes** 按钮，Github Actions 会自动开始。
 
@@ -88,7 +88,7 @@ Github Action 是微软收购 Github 之后推出的 CI/CD 工具，通过以下
 
 解压缩后会得到 `rarreg.key ` ，拖动导入 WinRAR 即可。
 
-如果你得到的是无效的 key，请检查 `test1` 和 `test2 ` 参数是否是**不含空格的 ANSI 编码。**
+如果你得到的是无效的 key，请检查 `test1` 和 `test2` 参数是否是**不含空格的 ANSI 编码。**
 
 ## 4. 通过 Visual Studio 编译使用
 
@@ -162,7 +162,7 @@ de3cdc56b311475b484e80b48157a0c3af60ca4f7f9c75d49bc50d
 5eede7ed46566b10bf033daa6384062b259194b1acbd1443042646
 ```
 
-将生成的信息以文本格式保存为 `rarreg.key `，拖动导入 WinRAR 即可。
+将生成的信息以文本格式保存为 `rarreg.key`，拖动导入 WinRAR 即可。
 
 ## 5. 无效的Key
 
