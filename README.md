@@ -1,5 +1,5 @@
 <p align="center">
- <img width="100px" src="icon.svg" align="center" alt="WinRAR Keygen" />
+ <img width="100px" src="icon.png" align="center" alt="WinRAR Keygen" />
  <h2 align="center">WinRAR Keygen</h2>
  <p align="center">Principle of WinRAR key generation</p>
 </p>
@@ -9,6 +9,9 @@
   	<img alt="Issues" src="https://img.shields.io/github/issues/bitcookies/winrar-keygen?color=F48D73" />
   </a>
   <img src="https://img.shields.io/badge/Visual%20Studio-2022-5D4298" />
+  <a href="https://github.com/bitcookies/winrar-keygen/actions">
+      <img src="https://img.shields.io/badge/Github-Actions-4184F4" />
+  </a>
   <a href="https://github.com/bitcookies/winrar-keygen/blob/master/LICENSE">
   	<img alt="License" src="https://img.shields.io/github/license/bitcookies/winrar-keygen.svg" />
   </a>
@@ -33,13 +36,69 @@ This repository will tell you how WinRAR license file `"rarreg.key"` is generate
 
 See [here](README.HOW_DOES_IT_WORK.md).
 
-## 3. How to build?
+## 3. Use Github Actions
 
-If you don't want to compile it yourself, you can also go to the [release page](https://github.com/bitcookies/winrar-keygen/releases/) to get `winrar-keygen.exe`.
+Github Action is a CI/CD tool introduced after Microsoft acquired Github, and you can run programs on GitHub Action by following these steps.
 
-### 3.1 Prerequisites
+### 3.1 Fork
 
-1. Please make sure that you have **Visual Studio 2022**. Because this is a VS2022 project. If you are still using Visual Studio 2019, you can find projects for VS2019 in the [vs2019](https://github.com/bitcookies/winrar-keygen/tree/vs2019) branch.
+**Fork** this repo.
+
+![step-1](assets/actions-step-1.png)
+
+If you've forked before and I've committed new code, but you don't know how to merge the new content into your repository, then you can delete the current fork and fork again.
+
+### 3.2 Modify info.json
+
+Go to `keygen/info.json` and click on the edit button to edit the file.
+
+![step-2](assets/actions-step-2.png)
+
+You can see：
+
+```json
+{
+    "text1": "Github",
+    "text2": "Github.com"
+}
+```
+
+You can modify the values corresponding to `text1` and `text2`
+
+```json
+{
+    "text1": "yourname",
+    "text2": "yourteam"
+}
+```
+
+It is important to note that `test1` and `test2` are **ANSI-encoded string, without null-terminator.**
+
+Once you have finished making changes, click the **Commit changes** button and Github Actions will start automatically.
+
+### 3.3 Download key
+
+Go to the Actions page to see the status of the program.
+
+![step-3](assets/actions-step-3.png)
+
+Green means it ran successfully, yellow means it is running, red means it failed. After running successfully, open the corresponding task and select **rarreg_file** to download.
+
+![step-4](assets/actions-step-4.png)
+
+After decompression, you will get `rarreg.key `, just drag and drop it into WinRAR.
+
+If you get an invalid key, check that the `test1` and `test2 ` parameters are **ANSI encoded without spaces.**
+
+## 4. Build in Visual Studio
+
+I recommend using the Github Actions, but you can still do your own compilation.
+
+If you don't want to compile it yourself, you can also go to the [release](https://github.com/bitcookies/winrar-keygen/releases/) page to get `winrar-keygen.exe`.
+
+### 4.1 Prerequisites
+
+1. Please make sure that you have **Visual Studio 2022**. Because this is a VS2022 project. If you are still using Visual Studio 2019, you can find projects for VS2019 in the [vs2019](https://github.com/bitcookies/winrar-keygen/tree/vs2019) branch, but this branch will no longer be maintained.
 
 2. Please make sure you have installed `vcpkg` and the following libraries: 
 
@@ -62,7 +121,7 @@ If you don't want to compile it yourself, you can also go to the [release page](
    ```
    
 
-### 3.2 Build
+### 4.2 Build
 
 1. Open this project in __Visual Studio__.
 
@@ -72,7 +131,7 @@ If you don't want to compile it yourself, you can also go to the [release page](
 
 You will see executable files in `bin/` directory. 
 
-## 4. How to Use?
+### 4.3 How to Use?
 
 Execute the following code in the terminal and configure two parameters to generate `rarreg.key`.
 
@@ -89,7 +148,7 @@ Example:
         winrar-keygen.exe "Github" "Github.com" > rarreg.key
 ```
 
-![Terminal](terminal.png)
+![Terminal](assets/terminal.png)
 
 Now you can see the newly generated file. 
 
@@ -115,7 +174,7 @@ Why is my `rarreg.key` invalid?
 
 ### 5.1 ANSI Encoded
 
-Username and License type are **ANSI-encoded string, without null-terminator.**
+`test1` and `test2` are **ANSI-encoded string, without null-terminator.**
 
 ```console
 winrar-keygen.exe <text1> <text2>

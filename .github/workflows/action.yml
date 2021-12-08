@@ -1,0 +1,40 @@
+name: WinRAR Keygen
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - 'keygen/*.json'
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Get key text1
+      id: text1
+      uses: notiz-dev/github-action-json-property@release
+      with: 
+        path: 'keygen/info.json'
+        prop_path: 'text1'
+
+    - name: Get key text2
+      id: text2
+      uses: notiz-dev/github-action-json-property@release
+      with: 
+        path: 'keygen/info.json'
+        prop_path: 'text2'
+
+    - name: Generate key 
+      shell: powershell
+      run: |
+        bin/x64-Release/winrar-keygen.exe ${{steps.text1.outputs.prop}} ${{steps.text2.outputs.prop}} > rarreg.key
+    - name: Upload key
+      uses: actions/upload-artifact@v2
+      with:
+        name: rarreg_file
+        path: rarreg.key
+        retention-days: 90
