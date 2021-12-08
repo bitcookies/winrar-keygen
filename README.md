@@ -86,7 +86,7 @@ Green means it ran successfully, yellow means it is running, red means it failed
 
 ![step-4](assets/actions-step-4.png)
 
-After decompression, you will get `rarreg.key `, just drag and drop it into WinRAR.
+After decompression, you will get `rarreg.key`, just drag and drop it into WinRAR.
 
 If you get an invalid key, check that the `test1` and `test2 ` parameters are **ANSI encoded without spaces.**
 
