@@ -30,8 +30,8 @@ jobs:
 
     - name: Generate key 
       shell: powershell
-      run: |
-        bin/x64-Release/winrar-keygen.exe ${{steps.text1.outputs.prop}} ${{steps.text2.outputs.prop}} > rarreg.key
+      run: bin/x64-Release/winrar-keygen.exe ${{steps.text1.outputs.prop}} ${{steps.text2.outputs.prop}} > rarreg.key
+      
     - name: Upload key
       uses: actions/upload-artifact@v2
       with:
