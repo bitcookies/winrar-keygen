@@ -74,7 +74,9 @@ Github Action 是微软收购 Github 之后推出的 CI/CD 工具，通过以下
 
 需要注意的是，`test1` 和 `test2` 参数均是**不含空格的 ANSI 编码。**
 
-修改完成之后，点击 **Commit changes** 按钮，Github Actions 会自动开始。
+修改完成之后，点击 **Commit changes** 按钮，Github Actions 会自动开始执行。
+
+如果 Github Actions 未自动开始，你需要先点击 Actions 页面 **允许此 workflows 运行**，然后再次修改并提交 `keygen/info.json` 。
 
 ### 3.3 下载文件
 
@@ -208,7 +210,7 @@ winrar-keygen.exe <text1> <text2>
 
 非常感谢一些热心的开发者，在 [Issues](https://github.com/bitcookies/winrar-keygen/issues) 帮助解答一些问题。
 
-感谢 [@Sonic-The-Hedgehog-LNK1123](https://github.com/Sonic-The-Hedgehog-LNK1123) 和 [@nitu2003](https://github.com/nitu2003)
+感谢 [@Sonic-The-Hedgehog-LNK1123](https://github.com/Sonic-The-Hedgehog-LNK1123)
 
 ## 8. 许可
 

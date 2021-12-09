@@ -54,7 +54,7 @@ Go to `keygen/info.json` and click on the edit button to edit the file.
 
 ![step-2](assets/actions-step-2.png)
 
-You can see：
+You can see:
 
 ```json
 {
@@ -63,7 +63,7 @@ You can see：
 }
 ```
 
-You can modify the values corresponding to `text1` and `text2`
+You can modify the values corresponding to `text1` and `text2`:
 
 ```json
 {
@@ -75,6 +75,8 @@ You can modify the values corresponding to `text1` and `text2`
 It is important to note that `test1` and `test2` are **ANSI-encoded string, without null-terminator.**
 
 Once you have finished making changes, click the **Commit changes** button and Github Actions will start automatically.
+
+If Github Actions does not start automatically, you will need to click on the Actions page to **allow this workflows to run**, then modify and commit `keygen/info.json` again.
 
 ### 3.3 Download key
 
@@ -208,7 +210,7 @@ This project welcomes contributions and suggestions. You can make suggestions in
 
 Thank you very much to some enthusiastic developers for helping answer some questions in [Issues](https://github.com/bitcookies/winrar-keygen/issues).
 
-Thanks [@Sonic-The-Hedgehog-LNK1123](https://github.com/Sonic-The-Hedgehog-LNK1123) and [@nitu2003](https://github.com/nitu2003)
+Thanks [@Sonic-The-Hedgehog-LNK1123](https://github.com/Sonic-The-Hedgehog-LNK1123)
 
 ## 8. License
 
