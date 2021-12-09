@@ -38,7 +38,7 @@ WinRAR不是免费软件。如果你想使用它，你应当向 [__RARLAB__](htt
 
 ## 3. 通过 Github Actions 使用(发现错误)
 
-2021.12.9 **发现了一个错误，导致Github Actions生成的ke也是无效的，正在排查中**
+2021.12.9 **发现了一个错误，导致Github Actions生成的key也是无效的，正在排查中**
 
 Github Action 是微软收购 Github 之后推出的 CI/CD 工具，通过以下步骤即可在 GitHub Action 上运行程序：
 
