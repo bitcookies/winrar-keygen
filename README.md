@@ -72,13 +72,13 @@ You can modify the values corresponding to `text1` and `text2`:
 }
 ```
 
-It is important to note that `test1` and `test2` are **ANSI-encoded string, without null-terminator.**
+It is important to note that `test1` and `test2` are **ANSI-encoded string, without space character.**
 
 Once you have finished making changes, click the **Commit changes** button and Github Actions will start automatically.
 
 If Github Actions does not start automatically, you will need to click on the Actions page to **allow this workflows to run**, then modify and commit `keygen/info.json` again.
 
-### 3.3 Download key
+### 3.3 Download Key
 
 Go to the Actions page to see the status of the program.
 
@@ -88,9 +88,9 @@ Green means it ran successfully, yellow means it is running, red means it failed
 
 ![step-4](assets/actions-step-4.png)
 
-After decompression, you will get `rarreg.key`, just drag and drop it into WinRAR.
+After extract `rarreg_file.zip`, you will get `rarreg.key`, just drag and drop it into WinRAR.
 
-If you get an invalid key, check that the `test1` and `test2` parameters are **ANSI encoded without spaces.**
+If you get an invalid key, please check [the specific solution](#5. Invalid Key).
 
 ## 4. Build in Visual Studio
 
@@ -102,7 +102,7 @@ If you don't want to compile it yourself, you can also go to the [release](https
 
 1. Please make sure that you have **Visual Studio 2022**. Because this is a VS2022 project. If you are still using Visual Studio 2019, you can find projects for VS2019 in the [vs2019](https://github.com/bitcookies/winrar-keygen/tree/vs2019) branch, but this branch will no longer be maintained.
 
-2. Please make sure you have installed `vcpkg` and the following libraries: 
+2. Please make sure you have installed `vcpkg` and the following libraries:
 
    * `mpir:x86-windows-static`
    * `mpir:x64-windows-static`
@@ -154,7 +154,7 @@ Example:
 
 ![Terminal](assets/terminal.png)
 
-Now you can see the newly generated file. 
+Now you can see the newly generated file:
 
 ```console
 RAR registration data
@@ -170,7 +170,7 @@ de3cdc56b311475b484e80b48157a0c3af60ca4f7f9c75d49bc50d
 5eede7ed46566b10bf033daa6384062b259194b1acbd1443042646
 ```
 
-Save the generated information as `rarreg.key`.
+Save the generated information in **ANSI encoding format** as `rarreg.key`.
 
 ## 5. Invalid Key
 
@@ -178,41 +178,53 @@ Why is my `rarreg.key` invalid?
 
 ### 5.1 ANSI Encoded
 
-`test1` and `test2` are **ANSI-encoded string, without null-terminator.**
+`test1` and `test2` are **ANSI-encoded string, without space character** [Issues #5](https://github.com/bitcookies/winrar-keygen/issues/5).
 
 ```console
 winrar-keygen.exe <text1> <text2>
 ```
 
-### 5.2 Terminal Encode
+You can refer to: [Generation of "rarreg.key"](https://github.com/bitcookies/winrar-keygen/blob/master/README.HOW_DOES_IT_WORK.md#7-generation-of-rarregkey)
 
-[Issues #5](https://github.com/bitcookies/winrar-keygen/issues/5) Be sure to use ANSI encoding, without null-terminator.
+### 5.2 TXT Encoding
 
-You can refer to the Microsoft documentation: [Generation of "rarreg.key"](https://github.com/bitcookies/winrar-keygen/blob/master/README.HOW_DOES_IT_WORK.md#7-generation-of-rarregkey)
+If you use the following command:
 
-Thanks [@Sonic-The-Hedgehog-LNK1123](https://github.com/Sonic-The-Hedgehog-LNK1123)
+```console
+winrar-keygen.exe "Github" "Github.com" > rarreg.key
+```
 
-## 6. Encounter problems?
+In the newer Windows 10, PowerShell will export in **UTF16-LE** format by default, which will cause the error.
 
-### 6.1 Feedback
+Please use the following command:
+
+```console
+winrar-keygen.exe "Github" "Github.com" > rarreg.key | out-file -encoding ascii rarreg.key
+```
+
+### 5.3 Location of Key
+
+If you are unable to drag, you can try to put the `rarreg.key` in the following directory.
+
+```console
+C:\Users\yourname\AppData\Roaming\WinRAR\rarreg.key
+```
+
+## 6. Feedback
 
 If you encounter some problems, you can report on the [Issues](https://github.com/bitcookies/winrar-keygen/issues) page. There will be many enthusiastic developers or Github users to help you.
 
-### 6.2 Security
-
-[Issues #1](https://github.com/bitcookies/winrar-keygen/issues/1) Some Anti-Virus Software may falsely report. If you do not trust this binary executable file, your only option is to compile the code yourself.
-
-### 6.3 Download
-
-[Issues #4](https://github.com/bitcookies/winrar-keygen/issues/4) IDM and other download tools may have problems, please use a browser (e.g. chrome, edge) to download.
-
 ## 7. Contributing
 
-This project welcomes contributions and suggestions. You can make suggestions in [Issues](https://github.com/bitcookies/winrar-keygen/issues), or submit a pull request :-)
+### 7.1 Suggestion
+
+This project welcomes contributions and suggestions. You can make suggestions in [Issues](https://github.com/bitcookies/winrar-keygen/issues), or submit a pull request 😄
+
+### 7.2 Thanks
 
 Thank you very much to some enthusiastic developers for helping answer some questions in [Issues](https://github.com/bitcookies/winrar-keygen/issues).
 
-Thanks [@Sonic-The-Hedgehog-LNK1123](https://github.com/Sonic-The-Hedgehog-LNK1123)
+🏆 Special Thanks [@Sonic-The-Hedgehog-LNK1123](https://github.com/Sonic-The-Hedgehog-LNK1123)
 
 ## 8. License
 
