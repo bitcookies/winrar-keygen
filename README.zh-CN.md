@@ -88,15 +88,15 @@ Github Action 是微软收购 Github 之后推出的 CI/CD 工具，通过以下
 
 ![step-4](assets/actions-step-4.png)
 
-解压缩后会得到 `rarreg.key` ，拖动导入 WinRAR 即可。
+将 `rarreg_file.zip` 解压缩后会得到 `rarreg.key`，然后拖动导入 WinRAR 即可。
 
-如果你得到的是无效的 key，请检查 `test1` 和 `test2` 参数是否是**不含空格的 ANSI 编码。**
+如果你得到的是 key 是无效的，请查看 [解决方法](#5. Invalid Key)。
 
 ## 4. 通过 Visual Studio 编译使用
 
-我建议通过 Github Actions 的方法来使用，但是你仍然可以自己进行编译。
+我建议通过 Github Actions 的方法来使用，但是你仍然可以选择自行编译。
 
-如果你不想自己编译，也可以到 [Release](https://github.com/bitcookies/winrar-keygen/releases/) 页面获取对应版本的 `winrar-keygen.exe`。
+如果你不想自行编译，也可以到 [Release](https://github.com/bitcookies/winrar-keygen/releases/) 页面获取对应版本的 `winrar-keygen.exe`。
 
 ### 4.1 前提条件
 
@@ -166,7 +166,7 @@ de3cdc56b311475b484e80b48157a0c3af60ca4f7f9c75d49bc50d
 5eede7ed46566b10bf033daa6384062b259194b1acbd1443042646
 ```
 
-将生成的信息以文本格式保存为 `rarreg.key`，拖动导入 WinRAR 即可。
+将生成的信息以 ANSI 编码的文本格式保存为 `rarreg.key`。
 
 ## 5. 无效的Key
 
@@ -174,45 +174,57 @@ de3cdc56b311475b484e80b48157a0c3af60ca4f7f9c75d49bc50d
 
 ### 5.1 ANSI编码
 
-`test1` 以及 `test2` 生成的许可文本，均是 **不含空格的 ANSI 编码。**
+`test1` 以及 `test2` 生成的许可文本，均是 **不含空格的 ANSI 编码** [Issues #5](https://github.com/bitcookies/winrar-keygen/issues/5)。
 
 ```console
 winrar-keygen.exe <text1> <text2>
 ```
 
-### 5.2 终端编码的问题
-
-[Issues #5](https://github.com/bitcookies/winrar-keygen/issues/5) 请务必使用 ANSI 编码（不包含空格）：
-
 具体可参考原理文档：[授权文件"rarreg.key"的生成](https://github.com/bitcookies/winrar-keygen/blob/master/README.HOW_DOES_IT_WORK.zh-CN.md#7-%E6%8E%88%E6%9D%83%E6%96%87%E4%BB%B6rarregkey%E7%9A%84%E7%94%9F%E6%88%90)
 
-感谢 [@Sonic-The-Hedgehog-LNK1123](https://github.com/Sonic-The-Hedgehog-LNK1123)
+### 5.2 TXT编码
 
-## 6. 遇到问题
+如果你使用了如下命令：
 
-### 6.1 反馈
+```console
+winrar-keygen.exe "Github" "Github.com" > rarreg.key
+```
+
+在较新的 Windows 10 系统中，PowerShell 将默认以 **UTF16-LE** 格式导出，这将会导致错误。
+
+请使用如下命令：
+
+```console
+winrar-keygen.exe "Github" "Github.com" > rarreg.key | out-file -encoding ascii rarreg.key
+```
+
+### 5.3 Key的位置
+
+如果你无法执行拖动操作，你可以尝试把 `rarreg.key` 放在以下目录中：
+
+```console
+C:\Users\yourname\AppData\Roaming\WinRAR\rarreg.key
+```
+
+### 5.4 关于简体中文版
+
+在 [__RARLAB__](https://www.rarlab.com/) 下载的简体中文版 WinRAR 将会自带广告组件，即使使用了 `rarreg.key` 授权，广告组件依旧会出现。如果您介意广告，可以下载其他语言版。
+
+## 6. 反馈
 
 如果您遇到了一些问题，可在 [Issues](https://github.com/bitcookies/winrar-keygen/issues) 页面反馈，会有很多热心的开发者及 Github 用户帮助你。
 
-### 6.2 安全
-
-[Issues #1](https://github.com/bitcookies/winrar-keygen/issues/1) 一些杀毒软件可能会误报，如果您不信任此二进制可执行文件，您唯一的选择就是自己编译代码。
-
-### 6.3 下载
-
-[Issues #4](https://github.com/bitcookies/winrar-keygen/issues/4) IDM等下载工具可能会有问题，请使用浏览器（例如 chrome、edge）下载。
-
-### 6.4 关于简体中文版
-
-在 [__RARLAB__](https://www.rarlab.com/) 下载的简体中文版 WinRAR 将会自带广告组件，即使使用了 `rarreg.key` 授权，广告组件依旧会出现。如果您介意广告，可以尝试下载其他语言版。
-
 ## 7. 贡献
 
-该项目欢迎贡献和建议，您可以在 [Issues](https://github.com/bitcookies/winrar-keygen/issues) 提出建议，或者进行提交拉取请求 :-)
+### 7.1 建议
+
+该项目欢迎贡献和建议，您可以在 [Issues](https://github.com/bitcookies/winrar-keygen/issues) 提出建议，或者进行提交拉取请求 😄
+
+### 7.2 感谢
 
 非常感谢一些热心的开发者，在 [Issues](https://github.com/bitcookies/winrar-keygen/issues) 帮助解答一些问题。
 
-感谢 [@Sonic-The-Hedgehog-LNK1123](https://github.com/Sonic-The-Hedgehog-LNK1123)
+🏆 特别感谢 [@Sonic-The-Hedgehog-LNK1123](https://github.com/Sonic-The-Hedgehog-LNK1123)
 
 ## 8. 许可
 
