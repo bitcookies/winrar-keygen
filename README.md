@@ -144,7 +144,7 @@ Some Anti-Virus Software may falsely report. If you do not trust this binary exe
 
 Thank you very much to some enthusiastic developers for helping answer some questions in [Issues](https://github.com/bitcookies/winrar-keygen/issues).
 
-Thanks [@Sonic-The-Hedgehog-LNK1123](https://github.com/Sonic-The-Hedgehog-LNK1123) and [@nitu2003](https://github.com/nitu2003).
+Thanks [@Sonic-The-Hedgehog-LNK1123](https://github.com/Sonic-The-Hedgehog-LNK1123)
 
 ## 7. License
 
