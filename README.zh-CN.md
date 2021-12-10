@@ -138,12 +138,12 @@ winrar-keygen.exe <text1> <text2>
 
 非常感谢一些热心的开发者，在 [Issues](https://github.com/bitcookies/winrar-keygen/issues) 帮助解答一些问题。
 
-感谢 [@Sonic-The-Hedgehog-LNK1123](https://github.com/Sonic-The-Hedgehog-LNK1123) 和 [@nitu2003](https://github.com/nitu2003).
+感谢 [@Sonic-The-Hedgehog-LNK1123](https://github.com/Sonic-The-Hedgehog-LNK1123)
 
-## 7. 关于WinRAR广告
+### 6.4 关于WinRAR广告
 
 在 [__RARLAB__](https://www.rarlab.com/) 下载的简体中文版 WinRAR 将会自带广告组件，即使使用了 `rarreg.key` 授权，广告组件依旧会出现。如果您介意广告，可以尝试下载其他语言版。
 
-## 8. 许可
+## 7. 许可
 
 使用 [MIT License](https://github.com/bitcookies/winrar-keygen/blob/master/LICENSE)
