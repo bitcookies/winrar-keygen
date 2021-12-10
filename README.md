@@ -90,7 +90,7 @@ Green means it ran successfully, yellow means it is running, red means it failed
 
 After extract `rarreg_file.zip`, you will get `rarreg.key`, just drag and drop it into WinRAR.
 
-If you get an invalid key, please check [the specific solution](#5. Invalid Key).
+If you get an invalid key, please check [the specific solution](#5-invalid-key).
 
 ## 4. Build in Visual Studio
 
