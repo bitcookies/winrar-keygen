@@ -90,7 +90,7 @@ Github Action 是微软收购 Github 之后推出的 CI/CD 工具，通过以下
 
 将 `rarreg_file.zip` 解压缩后会得到 `rarreg.key`，然后拖动导入 WinRAR 即可。
 
-如果你得到的是 key 是无效的，请查看 [解决方法](#5. Invalid Key)。
+如果你得到的是 key 是无效的，请查看 [解决方法](#5-无效的key)。
 
 ## 4. 通过 Visual Studio 编译使用
 
