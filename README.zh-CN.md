@@ -145,7 +145,7 @@ Example:
   or:
         winrar-keygen.exe "Github" "Github.com" > rarreg.key
   or:
-  		winrar-keygen.exe "Github" "Github.com" > rarreg.key | out-file -encoding ascii rarreg.key
+        winrar-keygen.exe "Github" "Github.com" > rarreg.key | out-file -encoding ascii rarreg.key
 ```
 
 ![Terminal](assets/terminal.png)
