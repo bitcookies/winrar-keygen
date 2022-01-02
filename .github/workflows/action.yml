@@ -2,7 +2,7 @@ name: WinRAR Keygen
 
 on:
   push:
-    branches: [ master ]
+    branches: [fffff3]
     paths:
       - 'keynen/*.json'
 
