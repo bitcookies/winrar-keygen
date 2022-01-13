@@ -1,7 +1,6 @@
 name: WinRAR Keygen
 
 on:
-  workflow_dispatch:
   push:
     branches: [ master ]
     paths:
@@ -13,14 +12,28 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v2.4.0
+    
+    - name: Get key text1
+      id: text1
+      uses: notiz-dev/github-action-json-property@release
+      with: 
+        path: 'keygen/info.json'
+        prop_path: 'text1'
+
+    - name: Get key text2
+      id: text2
+      uses: notiz-dev/github-action-json-property@release
+      with: 
+        path: 'keygen/info.json'
+        prop_path: 'text2'
 
     - name: Generate key 
       shell: powershell
-      run: bin/x64-Release/winrar-keygen.exe "${{secrets.TEXT1}}" "${{secrets.TEXT2}}" | out-file -encoding ascii rarreg.key
+      run: bin/x64-Release/winrar-keygen.exe "${{steps.text1.outputs.prop}}" "${{steps.text2.outputs.prop}}" | out-file -encoding ascii rarreg.key
       
     - name: Upload key
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v2.3.1
       with:
         name: rarreg_file
         path: rarreg.key
