@@ -36,6 +36,8 @@ WinRAR不是免费软件。如果你想使用它，你应当向 [__RARLAB__](htt
 
 ## 3. 使用方法
 
+有多种方法可供选择 🧐：
+
 - [通过 Push 使用 Github Actions](#4-通过-Push-使用-Github Actions)
 - [通过 Secrets 使用 Github Actions](#5-通过-Secrets-使用-Github-Actions)
 - [通过 Visual Studio 编译使用](#6-通过-Visual-Studio-编译使用)
@@ -84,7 +86,7 @@ Github Action 是微软收购 Github 之后推出的 CI/CD 工具，通过以下
 
 ### 4.3 下载文件
 
-进入 Actions 页面查看程序运行状况：
+进入 **Actions** 并选择 **WinRAR Keygen **页面查看程序运行状况：
 
 ![step-3](assets/actions-step-3.png)
 
