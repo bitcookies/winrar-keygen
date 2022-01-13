@@ -8,7 +8,7 @@
 
 void Help() {
     _putts(TEXT("Usage:"));
-    _putts(TEXT("        winrar-keygen.exe <your name> <license type>"));
+    _putts(TEXT("        winrar-keygen.exe <Your Name> <Your License>"));
     _putts(TEXT(""));
     _putts(TEXT("Example:"));
     _putts(TEXT(""));
