@@ -36,6 +36,8 @@ See [here](README.HOW_DOES_IT_WORK.md).
 
 ## 3. How to use?
 
+There are several ways to use it 🧐:
+
 - [Use Github Actions with Push](#4-Use-Github-Actions-with-Push)
 - [Use Github Actions with Secrets](#5-Use-Github-Actions-with-Secrets)
 - [Build in Visual Studio](#6-Build-in-Visual-Studio)
@@ -177,7 +179,7 @@ Here is an example use `Github` and `Github.com`:
 
 ```
 Usage:
-        winrar-keygen.exe <your name> <license type>
+        winrar-keygen.exe <Your Name> <Your License>
 
 Example:
 
