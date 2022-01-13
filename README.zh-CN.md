@@ -16,8 +16,6 @@
   	<img alt="License" src="https://img.shields.io/github/license/bitcookies/winrar-keygen.svg" />
   </a>
 </p>
-
-
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> | <a href="README.md">English</a>
 </p>
@@ -36,11 +34,17 @@ WinRAR不是免费软件。如果你想使用它，你应当向 [__RARLAB__](htt
 
 见 [这里](README.HOW_DOES_IT_WORK.zh-CN.md)。
 
-## 3. 通过 Github Actions 使用
+## 3. 使用方法
+
+- [通过 Push 使用 Github Actions](#4-通过-Push-使用-Github Actions)
+- [通过 Secrets 使用 Github Actions](#5-通过-Secrets-使用-Github-Actions)
+- [通过 Visual Studio 编译使用](#6-通过-Visual-Studio-编译使用)
+
+## 4. 通过 Push 使用 Github Actions
 
 Github Action 是微软收购 Github 之后推出的 CI/CD 工具，通过以下步骤即可在 GitHub Action 上运行程序：
 
-### 3.1 Fork
+### 4.1 Fork
 
 点击该项目右上角的 **Fork** 按钮，fork 一份代码到你的 Github：
 
@@ -48,7 +52,7 @@ Github Action 是微软收购 Github 之后推出的 CI/CD 工具，通过以下
 
 如果你之前 fork 过，然后我提交了新的代码，但是你不懂得如何合并新内容到你的仓库，那你也可以删掉当前 fork 的仓库，然后重新 fork 一次。
 
-### 3.2 修改 info.json
+### 4.2 修改 info.json
 
 进入 `keygen/info.json`，点击编辑按钮，对该文件进行编辑：
 
@@ -67,18 +71,18 @@ Github Action 是微软收购 Github 之后推出的 CI/CD 工具，通过以下
 
 ```json
 {
-    "text1": "yourname",
-    "text2": "yourteam"
+    "text1": "Your Name",
+    "text2": "Your License"
 }
 ```
 
-需要注意的是，`test1` 和 `test2` 参数均是**不含空格的 ANSI 编码。**
+`test1` 和 `test2` 参数均是 **ANSI 编码，目前已经支持空格**。
 
 修改完成之后，点击 **Commit changes** 按钮，Github Actions 会自动开始执行。
 
 如果 Github Actions 未自动开始，你需要先点击 Actions 页面 **允许此 workflows 运行**，然后再次修改并提交 `keygen/info.json` 。
 
-### 3.3 下载文件
+### 4.3 下载文件
 
 进入 Actions 页面查看程序运行状况：
 
@@ -90,15 +94,49 @@ Github Action 是微软收购 Github 之后推出的 CI/CD 工具，通过以下
 
 将 `rarreg_file.zip` 解压缩后会得到 `rarreg.key`，然后拖动导入 WinRAR 即可。
 
-如果你得到的是 key 是无效的，请查看 [解决方法](#5-无效的key)。
+如果你得到的是 key 是无效的，请查看 [解决方法](#7-无效的key)。
 
-## 4. 通过 Visual Studio 编译使用
+## 5. 通过 Secrets 使用 Github Actions
+
+为了更好的方便大家 Merge 和 Pull，现在新增了通过 [Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) 使用 Github Actions 的方法：
+
+### 5.1 Fork
+
+点击该项目右上角的 **Fork** 按钮，fork 一份代码到你的 Github：
+
+![step-1](assets/actions-step-1.png)
+
+如果你之前 fork 过，然后我提交了新的代码，但是你不懂得如何合并新内容到你的仓库，那你也可以删掉当前 fork 的仓库，然后重新 fork 一次。
+
+### 5.2 创建 Secrets
+
+进入 **Settings > Secrets > New repository secret** 来创建：
+
+![step-2](assets/actions-step-secrets-1.png)
+
+创建两个 Secrets，名称为 `text1` 和 `text2`，并填入相关值：
+
+![step-3](assets/actions-step-secrets-2.png)
+
+创建完成后，你将会看到：
+
+![step-4](assets/actions-step-secrets-3.png)
+
+### 5.3 运行 Workflow
+
+进入 **Actions** 并选择 **WinRAR Keygen Secrets** 来手动执行 Workflow：
+
+![step-5](assets/actions-step-secrets-4.png)
+
+运行成功之后，打开对应的任务，选择 **rarreg_file** 下载。
+
+## 6. 通过 Visual Studio 编译使用
 
 我建议通过 Github Actions 的方法来使用，但是你仍然可以选择自行编译。
 
 如果你不想自行编译，也可以到 [Release](https://github.com/bitcookies/winrar-keygen/releases/) 页面获取对应版本的 `winrar-keygen.exe`。
 
-### 4.1 前提条件
+### 6.1 前提条件
 
 1. 请确保你有 **Visual Studio 2022**，因为这是一个 VS2022 项目。如果你仍在使用 Visual Studio 2019，可以在 [vs2019](https://github.com/bitcookies/winrar-keygen/tree/vs2019) 分支中找到适合 VS2019 的项目，但是此分支将不再维护。
 
@@ -121,7 +159,7 @@ Github Action 是微软收购 Github 之后推出的 CI/CD 工具，通过以下
    $ vcpkg integrate install
    ```
 
-### 4.2 编译
+### 6.2 编译
 
 1. 在 __Visual Studio__ 中打开这个项目。
 2. 选择 `Release` 配置。
@@ -129,7 +167,7 @@ Github Action 是微软收购 Github 之后推出的 CI/CD 工具，通过以下
 
 你将在 `bin/` 目录下看到生成的文件。
 
-### 4.3 如何使用？
+### 6.3 如何使用？
 
 直接在终端执行以下代码，配置两个参数即可生成 `rarreg.key`。
 
@@ -137,7 +175,7 @@ Github Action 是微软收购 Github 之后推出的 CI/CD 工具，通过以下
 
 ```console
 Usage:
-        winrar-keygen.exe <your name> <license type>
+        winrar-keygen.exe <Your Name> <Your License>
 
 Example:
 
@@ -166,15 +204,15 @@ de3cdc56b311475b484e80b48157a0c3af60ca4f7f9c75d49bc50d
 5eede7ed46566b10bf033daa6384062b259194b1acbd1443042646
 ```
 
-将生成的信息以 ANSI 编码的文本格式保存为 `rarreg.key`。
+将生成的信息以 **ANSI 编码** 的文本格式保存为 `rarreg.key`。
 
-## 5. 无效的Key
+## 7. 无效的Key
 
 为什么我生成的 `rarreg.key` 是无效的？
 
-### 5.1 ANSI编码
+### 7.1 ANSI编码
 
-`test1` 以及 `test2` 生成的许可文本，均是 **不含空格的 ANSI 编码** [Issues #5](https://github.com/bitcookies/winrar-keygen/issues/5)。
+`test1` 以及 `test2` 生成的许可文本，均是 **ANSI 编码，目前已经支持空格** [Issu es #5](https://github.com/bitcookies/winrar-keygen/issues/5)。
 
 ```console
 winrar-keygen.exe <text1> <text2>
@@ -182,7 +220,7 @@ winrar-keygen.exe <text1> <text2>
 
 具体可参考原理文档：[授权文件"rarreg.key"的生成](https://github.com/bitcookies/winrar-keygen/blob/master/README.HOW_DOES_IT_WORK.zh-CN.md#7-%E6%8E%88%E6%9D%83%E6%96%87%E4%BB%B6rarregkey%E7%9A%84%E7%94%9F%E6%88%90)
 
-### 5.2 TXT编码
+### 7.2 TXT编码
 
 如果你使用了如下命令：
 
@@ -198,7 +236,7 @@ winrar-keygen.exe "Github" "Github.com" > rarreg.key
 winrar-keygen.exe "Github" "Github.com" > rarreg.key | out-file -encoding ascii rarreg.key
 ```
 
-### 5.3 Key的位置
+### 7.3 Key的位置
 
 如果你无法执行拖动操作，你可以尝试把 `rarreg.key` 放在以下目录中：
 
@@ -206,26 +244,24 @@ winrar-keygen.exe "Github" "Github.com" > rarreg.key | out-file -encoding ascii 
 C:\Users\yourname\AppData\Roaming\WinRAR\rarreg.key
 ```
 
-### 5.4 关于简体中文版
+### 7.4 关于简体中文版
 
 在 [__RARLAB__](https://www.rarlab.com/) 下载的简体中文版 WinRAR 将会自带广告组件，即使使用了 `rarreg.key` 授权，广告组件依旧会出现。如果您介意广告，可以下载其他语言版。
 
-## 6. 反馈
+## 8. 贡献
+
+### 8.1 反馈和建议
 
 如果您遇到了一些问题，可在 [Issues](https://github.com/bitcookies/winrar-keygen/issues) 页面反馈，会有很多热心的开发者及 Github 用户帮助你。
 
-## 7. 贡献
-
-### 7.1 建议
-
 该项目欢迎贡献和建议，您可以在 [Issues](https://github.com/bitcookies/winrar-keygen/issues) 提出建议，或者进行提交拉取请求 😄
 
-### 7.2 感谢
+### 8.2 感谢
 
 非常感谢一些热心的开发者，在 [Issues](https://github.com/bitcookies/winrar-keygen/issues) 帮助解答一些问题。
 
 🏆 特别感谢 [@Sonic-The-Hedgehog-LNK1123](https://github.com/Sonic-The-Hedgehog-LNK1123)
 
-## 8. 许可
+## 9. 许可
 
 使用 [MIT License](https://github.com/bitcookies/winrar-keygen/blob/master/LICENSE)
