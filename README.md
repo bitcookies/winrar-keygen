@@ -42,7 +42,7 @@ There are several ways to use it 🧐:
 - [Use Github Actions with Secrets](#5-Use-Github-Actions-with-Secrets)
 - [Build in Visual Studio](#6-Build-in-Visual-Studio)
 
-## 4 Use Github Actions with Push
+## 4. Use Github Actions with Push
 
 Github Action is a CI/CD tool introduced after Microsoft acquired Github, and you can run programs on GitHub Action by following these steps.
 
@@ -124,7 +124,7 @@ Once created, you will see:
 
 ### 5.3 Run Workflow
 
-Go to **Actions** and select **WinRAR Keygen Secrets** to execute the Workflow manually:
+Go to **Actions** and select **WinRAR Keygen Secrets** to run Workflow manually:
 
 ![step-5](assets/actions-step-secrets-4.png)
 
