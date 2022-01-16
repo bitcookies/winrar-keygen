@@ -4,7 +4,9 @@
  <p align="center">Principle of WinRAR key generation</p>
 </p>
 <p align="center">
-  <img src="https://img.shields.io/github/v/release/bitcookies/winrar-keygen?label=version" />
+  <a href="https://github.com/bitcookies/winrar-keygen/releases">
+  	<img src="https://img.shields.io/github/v/release/bitcookies/winrar-keygen?label=version" />
+  </a>
   <a href="https://github.com/bitcookies/winrar-keygen/issues">
   	<img alt="Issues" src="https://img.shields.io/github/issues/bitcookies/winrar-keygen?color=F48D73" />
   </a>
