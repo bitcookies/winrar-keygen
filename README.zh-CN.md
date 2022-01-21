@@ -41,9 +41,9 @@ WinRAR不是免费软件。如果你想使用它，你应当向 [__RARLAB__](htt
 
 有多种方法可供选择 🧐：
 
-- [通过 Push 使用 Github Actions](#4-通过-Push-使用-Github Actions)
-- [通过 Secrets 使用 Github Actions](#5-通过-Secrets-使用-Github-Actions)
-- [通过 Visual Studio 编译使用](#6-通过-Visual-Studio-编译使用)
++ [通过 Push 使用 Github Actions](#4-通过-Push-使用-Github-Actions)
++ [通过 Secrets 使用 Github Actions](#5-通过-Secrets-使用-Github-Actions)
++ [通过 Visual Studio 编译使用](#6-通过-Visual-Studio-编译使用)
 
 ## 4. 通过 Push 使用 Github Actions
 
