@@ -89,7 +89,7 @@ Github Action 是微软收购 Github 之后推出的 CI/CD 工具，通过以下
 
 ### 4.3 下载文件
 
-进入 **Actions** 并选择 **WinRAR Keygen **页面查看程序运行状况：
+进入 **Actions** 并选择 **WinRAR Keygen** 页面查看程序运行状况：
 
 ![step-3](assets/actions-step-3.png)
 
