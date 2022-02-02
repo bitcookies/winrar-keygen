@@ -46,6 +46,9 @@ There are several ways to use it 🧐:
 
 ## 4. Use Github Actions with Push
 
+<details>
+<summary>Click to expand</summary>
+
 Github Action is a CI/CD tool introduced after Microsoft acquired Github, and you can run programs on GitHub Action by following these steps.
 
 ### 4.1 Fork
@@ -100,7 +103,12 @@ After extract `rarreg_file.zip`, you will get `rarreg.key`, just drag and drop i
 
 If you get an invalid key, please check [the specific solution](#7-invalid-key).
 
+</details>
+
 ## 5. Use Github Actions with Secrets
+
+<details>
+<summary>Click to expand</summary>
 
 In order to make Merge and Pull easier for everyone, a new method for using Github Actions through [Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) has been added:
 
@@ -132,7 +140,12 @@ Go to **Actions** and select **WinRAR Keygen Secrets** to run Workflow manually:
 
 After running successfully, open the corresponding task and select **rarreg_file** to download.
 
+</details>
+
 ## 6. Build in Visual Studio
+
+<details>
+<summary>Click to expand</summary>
 
 I recommend using the Github Actions, but you can still do your own compilation.
 
@@ -211,6 +224,8 @@ de3cdc56b311475b484e80b48157a0c3af60ca4f7f9c75d49bc50d
 ```
 
 Save the generated information in **ANSI encoding format** as `rarreg.key`.
+
+</details>
 
 ## 7. Invalid Key
 
