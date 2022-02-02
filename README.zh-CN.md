@@ -21,8 +21,6 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> | <a href="README.md">English</a>
 </p>
-
-
 ## 1. WinRAR是什么？
 
 WinRAR是一款用于管理压缩包文件的共享软件。其算法由作者尤金·罗谢尔研发，享有原创专利。
@@ -46,6 +44,9 @@ WinRAR不是免费软件。如果你想使用它，你应当向 [__RARLAB__](htt
 + [通过 Visual Studio 编译使用](#6-通过-Visual-Studio-编译使用)
 
 ## 4. 通过 Push 使用 Github Actions
+
+<details>
+<summary>点击展开</summary>
 
 Github Action 是微软收购 Github 之后推出的 CI/CD 工具，通过以下步骤即可在 GitHub Action 上运行程序：
 
@@ -101,7 +102,12 @@ Github Action 是微软收购 Github 之后推出的 CI/CD 工具，通过以下
 
 如果你得到的是 key 是无效的，请查看 [解决方法](#7-无效的key)。
 
+</details>
+
 ## 5. 通过 Secrets 使用 Github Actions
+
+<details>
+<summary>点击展开</summary>
 
 为了更好的方便大家 Merge 和 Pull，现在新增了通过 [Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) 使用 Github Actions 的方法：
 
@@ -135,7 +141,12 @@ Github Action 是微软收购 Github 之后推出的 CI/CD 工具，通过以下
 
 运行成功之后，打开对应的任务，选择 **rarreg_file** 下载。
 
+</details>
+
 ## 6. 通过 Visual Studio 编译使用
+
+<details>
+<summary>点击展开</summary>
 
 我建议通过 Github Actions 的方法来使用，但是你仍然可以选择自行编译。
 
@@ -210,6 +221,8 @@ de3cdc56b311475b484e80b48157a0c3af60ca4f7f9c75d49bc50d
 ```
 
 将生成的信息以 **ANSI 编码** 的文本格式保存为 `rarreg.key`。
+
+</details>
 
 ## 7. 无效的Key
 
