@@ -17,10 +17,12 @@
   <a href="https://github.com/bitcookies/winrar-keygen/blob/master/LICENSE">
   	<img alt="License" src="https://img.shields.io/github/license/bitcookies/winrar-keygen.svg" />
   </a>
+  <img alt="Visitors" src="https://jwenjian-visitor-badge-5.glitch.me/badge?page_id=bitcookies.winrar-keygen" />
 </p>
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> | <a href="README.md">English</a>
 </p>
+
 
 ## 1. What is WinRAR?
 
@@ -55,7 +57,9 @@ Github Action is a CI/CD tool introduced after Microsoft acquired Github, and yo
 
 **Fork** this repo.
 
-![step-1](assets/actions-step-1.png)
+![Fork](assets/fork-light.png#gh-light-mode-only)
+
+![Fork](assets/fork-dark.png#gh-dark-mode-only)
 
 If you've forked before and I've committed new code, but you don't know how to merge the new content into your repository, then you can delete the current fork and fork again.
 
@@ -63,7 +67,9 @@ If you've forked before and I've committed new code, but you don't know how to m
 
 Go to `keygen/info.json` and click on the edit button to edit the file.
 
-![step-2](assets/actions-step-2.png)
+![Edit](assets/edit-json-light.png#gh-light-mode-only)
+
+![Edit](assets/edit-json-dark.png#gh-dark-mode-only)
 
 You can see:
 
@@ -93,11 +99,15 @@ If Github Actions does not start automatically, you will need to click on the Ac
 
 Go to **Actions** and select **WinRAR Keygen** to see the status of the program.
 
-![step-3](assets/actions-step-3.png)
+![Workflow](assets/push-workflows-light.png#gh-light-mode-only)
+
+![Workflow](assets/push-workflows-dark.png#gh-dark-mode-only)
 
 Green means it ran successfully, yellow means it is running, red means it failed. After running successfully, open the corresponding task and select **rarreg_file** to download.
 
-![step-4](assets/actions-step-4.png)
+![Download](assets/file-download-light.png##gh-light-mode-only)
+
+![Download](assets/file-download-dark.png#gh-dark-mode-only)
 
 After extract `rarreg_file.zip`, you will get `rarreg.key`, just drag and drop it into WinRAR.
 
@@ -116,29 +126,43 @@ In order to make Merge and Pull easier for everyone, a new method for using Gith
 
 **Fork** this repo.
 
-![step-1](assets/actions-step-1.png)
+![Fork](assets/fork-light.png#gh-light-mode-only)
+
+![Fork](assets/fork-dark.png#gh-dark-mode-only)
 
 ### 5.2 Creating Secrets
 
-Go to **Settings > Secrets > New repository secret**:
+Go to **Settings > Secrets > Actions > New repository secret**:
 
-![step-2](assets/actions-step-secrets-1.png)
+![Secrets](assets/secrets-light.png#gh-light-mode-only)
+
+![Secrets](assets/secrets-dark.png#gh-dark-mode-only)
 
 Create two Secrets named `text1` and `text2` and fill in values:
 
-![step-3](assets/actions-step-secrets-2.png)
+![Add Secrets](assets/secrets-add-light.png#gh-light-mode-only)
+
+![Add Secrets](assets/secrets-add-dark.png#gh-dark-mode-only)
 
 Once created, you will see:
 
-![step-4](assets/actions-step-secrets-3.png)
+![Secrets Repo](assets/secrets-repo-light.png#gh-light-mode-only)
+
+![Secrets Repo](assets/secrets-repo-dark.png#gh-dark-mode-only)
 
 ### 5.3 Run Workflow
 
 Go to **Actions** and select **WinRAR Keygen Secrets** to run Workflow manually:
 
-![step-5](assets/actions-step-secrets-4.png)
+![Run](assets/run-workflow-light.png#gh-light-mode-only)
+
+![Run](assets/run-workflow-dark.png#gh-dark-mode-only)
 
 After running successfully, open the corresponding task and select **rarreg_file** to download.
+
+![Download](assets/file-download-light.png##gh-light-mode-only)
+
+![Download](assets/file-download-dark.png#gh-dark-mode-only)
 
 </details>
 

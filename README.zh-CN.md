@@ -17,10 +17,12 @@
   <a href="https://github.com/bitcookies/winrar-keygen/blob/master/LICENSE">
   	<img alt="License" src="https://img.shields.io/github/license/bitcookies/winrar-keygen.svg" />
   </a>
+  <img alt="Visitors" src="https://jwenjian-visitor-badge-5.glitch.me/badge?page_id=bitcookies.winrar-keygen" />
 </p>
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> | <a href="README.md">English</a>
 </p>
+
 
 ## 1. WinRAR是什么？
 
@@ -55,7 +57,9 @@ Github Action 是微软收购 Github 之后推出的 CI/CD 工具，通过以下
 
 点击该项目右上角的 **Fork** 按钮，fork 一份代码到你的 Github：
 
-![step-1](assets/actions-step-1.png)
+![Fork](assets/fork-light.png#gh-light-mode-only)
+
+![Fork](assets/fork-dark.png#gh-dark-mode-only)
 
 如果你之前 fork 过，然后我提交了新的代码，但是你不懂得如何合并新内容到你的仓库，那你也可以删掉当前 fork 的仓库，然后重新 fork 一次。
 
@@ -63,7 +67,9 @@ Github Action 是微软收购 Github 之后推出的 CI/CD 工具，通过以下
 
 进入 `keygen/info.json`，点击编辑按钮，对该文件进行编辑：
 
-![step-2](assets/actions-step-2.png)
+![Edit](assets/edit-json-light.png#gh-light-mode-only)
+
+![Edit](assets/edit-json-dark.png#gh-dark-mode-only)
 
 打开该文件，你会发现有以下内容：
 
@@ -93,11 +99,15 @@ Github Action 是微软收购 Github 之后推出的 CI/CD 工具，通过以下
 
 进入 **Actions** 并选择 **WinRAR Keygen** 页面查看程序运行状况：
 
-![step-3](assets/actions-step-3.png)
+![Workflow](assets/push-workflows-light.png#gh-light-mode-only)
+
+![Workflow](assets/push-workflows-dark.png#gh-dark-mode-only)
 
 绿色说明运行成功，黄色说明正在运行，红色说明运行失败。运行成功之后，打开对应的任务，选择 **rarreg_file** 下载：
 
-![step-4](assets/actions-step-4.png)
+![Download](assets/file-download-light.png##gh-light-mode-only)
+
+![Download](assets/file-download-dark.png#gh-dark-mode-only)
 
 将 `rarreg_file.zip` 解压缩后会得到 `rarreg.key`，然后拖动导入 WinRAR 即可。
 
@@ -116,31 +126,45 @@ Github Action 是微软收购 Github 之后推出的 CI/CD 工具，通过以下
 
 点击该项目右上角的 **Fork** 按钮，fork 一份代码到你的 Github：
 
-![step-1](assets/actions-step-1.png)
+![Fork](assets/fork-light.png#gh-light-mode-only)
+
+![Fork](assets/fork-dark.png#gh-dark-mode-only)
 
 如果你之前 fork 过，然后我提交了新的代码，但是你不懂得如何合并新内容到你的仓库，那你也可以删掉当前 fork 的仓库，然后重新 fork 一次。
 
 ### 5.2 创建 Secrets
 
-进入 **Settings > Secrets > New repository secret** 来创建：
+进入 **Settings > Secrets > Actions > New repository secret** 来创建：
 
-![step-2](assets/actions-step-secrets-1.png)
+![Secrets](assets/secrets-light.png#gh-light-mode-only)
+
+![Secrets](assets/secrets-dark.png#gh-dark-mode-only)
 
 创建两个 Secrets，名称为 `text1` 和 `text2`，并填入相关值：
 
-![step-3](assets/actions-step-secrets-2.png)
+![Add Secrets](assets/secrets-add-light.png#gh-light-mode-only)
+
+![Add Secrets](assets/secrets-add-dark.png#gh-dark-mode-only)
 
 创建完成后，你将会看到：
 
-![step-4](assets/actions-step-secrets-3.png)
+![Secrets Repo](assets/secrets-repo-light.png#gh-light-mode-only)
+
+![Secrets Repo](assets/secrets-repo-dark.png#gh-dark-mode-only)
 
 ### 5.3 运行 Workflow
 
 进入 **Actions** 并选择 **WinRAR Keygen Secrets** 来手动执行 Workflow：
 
-![step-5](assets/actions-step-secrets-4.png)
+![Run](assets/run-workflow-light.png#gh-light-mode-only)
 
-运行成功之后，打开对应的任务，选择 **rarreg_file** 下载。
+![Run](assets/run-workflow-dark.png#gh-dark-mode-only)
+
+运行成功之后，打开对应的任务，选择 **rarreg_file** 下载：
+
+![Download](assets/file-download-light.png##gh-light-mode-only)
+
+![Download](assets/file-download-dark.png#gh-dark-mode-only)
 
 </details>
 

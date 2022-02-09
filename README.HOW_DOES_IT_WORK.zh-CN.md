@@ -27,7 +27,7 @@
 
 # "rarreg.key"是如何生成的？
 
-WinRAR使用了基于ECC的签名算法来生成 `rarreg.key` 文件，其使用的签名算法是中国SM2数字签名算法的变体。与各种标准ECDSA不同的是，WinRAR使用的椭圆曲线是一个基于复合域 ![GF2p15p17-inlined] 上的曲线。
+WinRAR 使用了基于 ECC 的签名算法来生成 `rarreg.key` 文件，其使用的签名算法是中国 SM2 数字签名算法的变体。与各种标准 ECDSA 不同的是，WinRAR 使用的椭圆曲线是一个基于复合域 ![GF2p15p17-inlined] 上的曲线。
 
 ## 1. 复合域 ![GF2p15p17-inlined]
 
