@@ -10,8 +10,6 @@ WinRAR 使用了基于 ECC 的签名算法来生成 `rarreg.key` 文件，其使
     <img src="assets/formula/1-light.svg#gh-light-mode-only">
     <img src="assets/formula/1-dark.svg#gh-dark-mode-only">
 </p>
-
-
 各项系数全部位于 ![GF2p15-inlined](assets/formula/GF2-inlined-light.svg#gh-light-mode-only)![GF2p15-inlined](assets/formula/GF2-inlined-dark.svg#gh-dark-mode-only)。设基域的标准基为：
 
 <p align="center">
