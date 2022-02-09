@@ -4,12 +4,13 @@ WinRAR 使用了基于 ECC 的签名算法来生成 `rarreg.key` 文件，其使
 
 ## 1. 复合域 ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-light.svg#gh-light-mode-only) ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-dark.svg#gh-dark-mode-only)
 
-基域 ![GF2p15-inlined](assets/formula/GF2p15-inlined-light.svg#gh-light-mode-only)![GF2p15-inlined](assets/formula/GF2p15-inlined-dark.svg#gh-dark-mode-only) 采用标准基（多项式基)来表达，采用的不可约多项式为：
+基域 ![GF2p15-inlined](assets/formula/GF2p15-inlined-light.svg#gh-light-mode-only)![GF2p15-inlined](assets/formula/GF2p15-inlined-dark.svg#gh-dark-mode-only) 采用标准基（多项式基）来表达，采用的不可约多项式为：
 
 <p align="center">
     <img src="assets/formula/1-light.svg#gh-light-mode-only">
     <img src="assets/formula/1-dark.svg#gh-dark-mode-only">
 </p>
+
 各项系数全部位于 ![GF2p15-inlined](assets/formula/GF2-inlined-light.svg#gh-light-mode-only)![GF2p15-inlined](assets/formula/GF2-inlined-dark.svg#gh-dark-mode-only)。设基域的标准基为：
 
 <p align="center">
