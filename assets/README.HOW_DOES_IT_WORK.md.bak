@@ -1,3 +1,30 @@
+[GF2-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20%5Ctextrm%7BGF%7D%282%29
+[GF2p15-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20%5Ctextrm%7BGF%7D%282%5E%7B15%7D%29
+[GF2p15p17-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20%5Ctextrm%7BGF%7D%28%282%5E%7B15%7D%29%5E%7B17%7D%29
+[A-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20A
+[B-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20B
+[D-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20D
+[G-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20G
+[M-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20M
+[P-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20P
+[h-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20h
+[k-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20k
+[l-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20l
+[n-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20n
+[r-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20r
+[s-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20s
+[T-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20T
+[UU-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20U
+[LL-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20L
+[Rnd-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20Rnd
+[Temp-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20Temp
+[UID-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20UID
+[Data-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20Data
+[Data0-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20Data%5E0
+[Data1-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20Data%5E1
+[Data2-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20Data%5E2
+[Data3-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20Data%5E3
+
 # How is "rarreg.key" generated?
 
 WinRAR uses an ECC-based signature algorithm to generate `rarreg.key`. The algorithm it used is a variant of Chinese SM2 digital signature algorithm. Different to many standard ECDSAs, the curve that WinRAR selected is a curve over composite field ![GF2p15p17-inlined].

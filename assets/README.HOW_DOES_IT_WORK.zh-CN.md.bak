@@ -1,24 +1,49 @@
+[GF2-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20%5Ctextrm%7BGF%7D%282%29
+[GF2p15-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20%5Ctextrm%7BGF%7D%282%5E%7B15%7D%29
+[GF2p15p17-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20%5Ctextrm%7BGF%7D%28%282%5E%7B15%7D%29%5E%7B17%7D%29
+[A-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20A
+[B-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20B
+[D-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20D
+[G-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20G
+[M-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20M
+[P-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20P
+[h-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20h
+[k-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20k
+[l-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20l
+[n-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20n
+[r-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20r
+[s-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20s
+[T-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20T
+[UU-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20U
+[LL-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20L
+[Rnd-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20Rnd
+[Temp-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20Temp
+[UID-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20UID
+[Data-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20Data
+[Data0-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20Data%5E0
+[Data1-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20Data%5E1
+[Data2-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20Data%5E2
+[Data3-inlined]: http://latex.codecogs.com/svg.latex?%5Cinline%20Data%5E3
+
 # "rarreg.key"是如何生成的？
 
-WinRAR 使用了基于 ECC 的签名算法来生成 `rarreg.key` 文件，其使用的签名算法是中国 SM2 数字签名算法的变体。与各种标准 ECDSA 不同的是，WinRAR 使用的椭圆曲线是一个基于复合域 ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-light.svg#gh-light-mode-only) ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-dark.svg#gh-dark-mode-only) 上的曲线。
+WinRAR 使用了基于 ECC 的签名算法来生成 `rarreg.key` 文件，其使用的签名算法是中国 SM2 数字签名算法的变体。与各种标准 ECDSA 不同的是，WinRAR 使用的椭圆曲线是一个基于复合域 ![GF2p15p17-inlined] 上的曲线。
 
-## 1. 复合域 ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-light.svg#gh-light-mode-only) ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-dark.svg#gh-dark-mode-only)
+## 1. 复合域 ![GF2p15p17-inlined]
 
-基域 ![GF2p15-inlined](assets/formula/GF2p15-inlined-light.svg#gh-light-mode-only)![GF2p15-inlined](assets/formula/GF2p15-inlined-dark.svg#gh-dark-mode-only) 采用标准基（多项式基)来表达，采用的不可约多项式为：
+基域 ![GF2p15-inlined] 采用标准基（多项式基）来表达，采用的不可约多项式为：
 
 <p align="center">
-    <img src="assets/formula/1-light.svg#gh-light-mode-only">
-    <img src="assets/formula/1-dark.svg#gh-dark-mode-only">
+    <img src="http://latex.codecogs.com/svg.latex?P%28%5Calpha%29%3D%5Calpha%5E%7B15%7D&plus;%5Calpha&plus;1">
 </p>
 
-
-各项系数全部位于 ![GF2p15-inlined](assets/formula/GF2-inlined-light.svg#gh-light-mode-only)![GF2p15-inlined](assets/formula/GF2-inlined-dark.svg#gh-dark-mode-only)。设基域的标准基为：
+各项系数全部位于 ![GF2-inlined]。设基域的标准基为：
 
 <p align="center">
     <img src="http://latex.codecogs.com/svg.latex?B_1%3D%5C%7B1%2C%5Calpha%2C%5Calpha%5E2%2C%5Cldots%2C%5Calpha%5E%7B14%7D%5C%7D")
 </p>
 
-则位于基域 ![GF2p15-inlined](assets/formula/GF2p15-inlined-light.svg#gh-light-mode-only)![GF2p15-inlined](assets/formula/GF2p15-inlined-dark.svg#gh-dark-mode-only) 上的元素 ![A-inlined] 可以用如下方式表达：
+则位于基域 ![GF2p15-inlined] 上的元素 ![A-inlined] 可以用如下方式表达：
 
 <p align="center">
     <img src="http://latex.codecogs.com/svg.latex?A%3D%5Csum_%7Bi%3D0%7D%5E%7B14%7Da_i%5Calpha%5Ei%20%5Cquad%20%5Cquad%20%5Cquad%20a_i%5Cin%5Ctextrm%7BGF%7D%282%29")
@@ -26,19 +51,19 @@ WinRAR 使用了基于 ECC 的签名算法来生成 `rarreg.key` 文件，其使
 
 ---
 
-复合域 ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-light.svg#gh-light-mode-only) ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-dark.svg#gh-dark-mode-only) 的不可约多项式为：
+复合域 ![GF2p15p17-inlined] 的不可约多项式为：
 
 <p align="center">
     <img src="http://latex.codecogs.com/svg.latex?Q%28%5Cbeta%29%3D%5Cbeta%5E%7B17%7D&plus;%5Cbeta%5E3&plus;1")
 </p>
 
-各项系数全部位于 ![GF2p15-inlined](assets/formula/GF2p15-inlined-light.svg#gh-light-mode-only)![GF2p15-inlined](assets/formula/GF2p15-inlined-dark.svg#gh-dark-mode-only)。设复合域的标准基为：
+各项系数全部位于 ![GF2p15-inlined]。设复合域的标准基为：
 
 <p align="center">
     <img src="http://latex.codecogs.com/svg.latex?B_2%3D%5C%7B1%2C%5Cbeta%2C%5Cbeta%5E2%2C%5Cldots%2C%5Cbeta%5E%7B16%7D%5C%7D")
 </p>
 
-则位于复合域 ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-light.svg#gh-light-mode-only) ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-dark.svg#gh-dark-mode-only) 上的元素 ![B-inlined] 可以用如下方式表达：
+则位于复合域 ![GF2p15p17-inlined] 上的元素 ![B-inlined] 可以用如下方式表达：
 
 <p align="center">
     <img src="http://latex.codecogs.com/svg.latex?B%3D%5Csum_%7Bj%3D0%7D%5E%7B16%7D%28%5Csum_%7Bi%3D0%7D%5E%7B14%7Da_%7Bj%2Ci%7D%5Calpha%5Ei%29%5Cbeta%5Ej%3D%5Csum_%7Bj%3D0%7D%5E%7B16%7D%5Csum_%7Bi%3D0%7D%5E%7B14%7Da_%7Bj%2Ci%7D%5Calpha%5Ei%5Cbeta%5Ej%20%5Cquad%20%5Cquad%20%5Cquad%20a_%7Bj%2Ci%7D%5Cin%5Ctextrm%7BGF%7D%282%29")
@@ -46,7 +71,7 @@ WinRAR 使用了基于 ECC 的签名算法来生成 `rarreg.key` 文件，其使
 
 ---
 
-为了方便表述我们用255比特的大数 ![D-inlined] 来表示位于复合域 ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-light.svg#gh-light-mode-only) ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-dark.svg#gh-dark-mode-only) 上的元素 ![B-inlined]。它们的对应关系为：
+为了方便表述我们用255比特的大数 ![D-inlined] 来表示位于复合域 ![GF2p15p17-inlined] 上的元素 ![B-inlined]。它们的对应关系为：
 
 <p align="center">
     <img src="http://latex.codecogs.com/svg.latex?B%3D%5Csum_%7Bj%3D0%7D%5E%7B16%7D%5Csum_%7Bi%3D0%7D%5E%7B14%7Da_%7Bj%2Ci%7D%5Calpha%5Ei%5Cbeta%5Ej%20%5Cleftrightarrow%20D%3D%5Csum_%7Bj%3D0%7D%5E%7B16%7D%5Csum_%7Bi%3D0%7D%5E%7B14%7Da_%7Bj%2Ci%7D%5Ccdot%202%5E%7B15j&plus;i%7D")
