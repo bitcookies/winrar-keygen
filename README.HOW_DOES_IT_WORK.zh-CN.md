@@ -23,6 +23,7 @@ WinRAR 使用了基于 ECC 的签名算法来生成 `rarreg.key` 文件，其使
     <img src="assets/formula/3-light.svg#gh-light-mode-only">
     <img src="assets/formula/3-dark.svg#gh-dark-mode-only">
 </p>
+
 ---
 
 复合域 ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-light.svg#gh-light-mode-only) ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-dark.svg#gh-dark-mode-only) 的不可约多项式为：
@@ -43,6 +44,7 @@ WinRAR 使用了基于 ECC 的签名算法来生成 `rarreg.key` 文件，其使
     <img src="assets/formula/6-light.svg#gh-light-mode-only">
     <img src="assets/formula/6-dark.svg#gh-dark-mode-only">
 </p>
+
 ---
 
 为了方便表述我们用255比特的大数 ![D](assets/formula/DD-inlined-light.svg#gh-light-mode-only)![D](assets/formula/DD-inlined-dark.svg#gh-dark-mode-only) 来表示位于复合域 ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-light.svg#gh-light-mode-only) ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-dark.svg#gh-dark-mode-only) 上的元素 ![B](assets/formula/BB-inlined-light.svg#gh-light-mode-only)![B](assets/formula/BB-inlined-dark.svg#gh-dark-mode-only)。它们的对应关系为：
