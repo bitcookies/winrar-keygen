@@ -264,7 +264,7 @@ WinRAR的私钥 ![k-inlined] 为：
 
 3. 使用 ![Data3-inlined] 通过算法5计算出私钥 ![kdata3](assets/formula/49-light.svg#gh-light-mode-only)![kdata3](assets/formula/49-dark.svg#gh-dark-mode-only) 以及公钥 ![pdata3](assets/formula/50-light.svg#gh-light-mode-only)![pdata3](assets/formula/50-dark.svg#gh-dark-mode-only)，并将公钥 ![pdata3](assets/formula/50-light.svg#gh-light-mode-only)![pdata3](assets/formula/50-dark.svg#gh-dark-mode-only) 按照 SM2 压缩公钥格式以 Hex 字符串（ASCII编码)的形式输出。得到的Hex字符串记为 ![Data0-inlined]。
 
-   ![Data0-inlined] 的长度应该为64；若长度不足，则在前面补字符`'0'`，直到长度为64。
+   ![Data0-inlined] 的长度应该为64；若长度不足，则在前面补字符 `'0'`，直到长度为64。
 
 4. 令字符串 ![UID-inlined]为
 
@@ -302,7 +302,7 @@ WinRAR的私钥 ![k-inlined] 为：
 
 9. 将 ![rTemp](assets/formula/60-light.svg#gh-light-mode-only)![rTemp](assets/formula/60-dark.svg#gh-dark-mode-only) 和 ![sTemp](assets/formula/61-light.svg#gh-light-mode-only)![sTemp](assets/formula/61-dark.svg#gh-dark-mode-only) 以16进制形式输出（无`"0x"`前缀），分别记为 ![SZrTemp](assets/formula/62-light.svg#gh-light-mode-only)![SZrTemp](assets/formula/62-dark.svg#gh-dark-mode-only) 和 ![SZsTemp](assets/formula/63-light.svg#gh-light-mode-only)![SZsTemp](assets/formula/63-dark.svg#gh-dark-mode-only)。
 
-   若长度不满60，则在前面补字符`'0'`，直到长度为60。
+   若长度不满60，则在前面补字符 `'0'`，直到长度为60。
 
 10. 令字符串 ![Data2-inlined]为
 
