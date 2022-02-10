@@ -11,22 +11,18 @@ WinRAR 使用了基于 ECC 的签名算法来生成 `rarreg.key` 文件，其使
     <img src="assets/formula/1-dark.svg#gh-dark-mode-only">
 </p>
 
-各项系数全部位于 ![GF2p15-inlined](assets/formula/GF2-inlined-light.svg#gh-light-mode-only)![GF2p15-inlined](assets/formula/GF2-inlined-dark.svg#gh-dark-mode-only)。设基域的标准基为：
+各项系数全部位于 ![GF2-inlined](assets/formula/GF2-inlined-light.svg#gh-light-mode-only)![GF2-inlined](assets/formula/GF2-inlined-dark.svg#gh-dark-mode-only)。设基域的标准基为：
 
 <p align="center">
     <img src="assets/formula/2-light.svg#gh-light-mode-only">
     <img src="assets/formula/2-dark.svg#gh-dark-mode-only">
 </p>
-
-
 则位于基域 ![GF2p15-inlined](assets/formula/GF2p15-inlined-light.svg#gh-light-mode-only)![GF2p15-inlined](assets/formula/GF2p15-inlined-dark.svg#gh-dark-mode-only) 上的元素 ![A](assets/formula/AA-inlined-light.svg#gh-light-mode-only)![A](assets/formula/AA-inlined-dark.svg#gh-dark-mode-only) 可以用如下方式表达：
 
 <p align="center">
     <img src="assets/formula/3-light.svg#gh-light-mode-only">
     <img src="assets/formula/3-dark.svg#gh-dark-mode-only">
 </p>
-
-
 ---
 
 复合域 ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-light.svg#gh-light-mode-only) ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-dark.svg#gh-dark-mode-only) 的不可约多项式为：
@@ -35,24 +31,18 @@ WinRAR 使用了基于 ECC 的签名算法来生成 `rarreg.key` 文件，其使
     <img src="assets/formula/4-light.svg#gh-light-mode-only">
     <img src="assets/formula/4-dark.svg#gh-dark-mode-only">
 </p>
-
-
 各项系数全部位于 ![GF2p15-inlined](assets/formula/GF2p15-inlined-light.svg#gh-light-mode-only)![GF2p15-inlined](assets/formula/GF2p15-inlined-dark.svg#gh-dark-mode-only)。设复合域的标准基为：
 
 <p align="center">
     <img src="assets/formula/5-light.svg#gh-light-mode-only">
     <img src="assets/formula/5-dark.svg#gh-dark-mode-only">
 </p>
-
-
 则位于复合域 ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-light.svg#gh-light-mode-only) ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-dark.svg#gh-dark-mode-only) 上的元素 ![B](assets/formula/BB-inlined-light.svg#gh-light-mode-only)![B](assets/formula/BB-inlined-dark.svg#gh-dark-mode-only) 可以用如下方式表达：
 
 <p align="center">
     <img src="assets/formula/6-light.svg#gh-light-mode-only">
     <img src="assets/formula/6-dark.svg#gh-dark-mode-only">
 </p>
-
-
 ---
 
 为了方便表述我们用255比特的大数 ![D](assets/formula/DD-inlined-light.svg#gh-light-mode-only)![D](assets/formula/DD-inlined-dark.svg#gh-dark-mode-only) 来表示位于复合域 ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-light.svg#gh-light-mode-only) ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-dark.svg#gh-dark-mode-only) 上的元素 ![B](assets/formula/BB-inlined-light.svg#gh-light-mode-only)![B](assets/formula/BB-inlined-dark.svg#gh-dark-mode-only)。它们的对应关系为：
@@ -61,8 +51,6 @@ WinRAR 使用了基于 ECC 的签名算法来生成 `rarreg.key` 文件，其使
     <img src="assets/formula/7-light.svg#gh-light-mode-only">
     <img src="assets/formula/7-dark.svg#gh-dark-mode-only">
 </p>
-
-
 ## 2. 复合域 ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-light.svg#gh-light-mode-only) ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-dark.svg#gh-dark-mode-only) 上的椭圆曲线
 
 曲线方程为：
@@ -71,24 +59,18 @@ WinRAR 使用了基于 ECC 的签名算法来生成 `rarreg.key` 文件，其使
     <img src="assets/formula/8-light.svg#gh-light-mode-only">
     <img src="assets/formula/8-dark.svg#gh-dark-mode-only">
 </p>
-
-
 基点 ![G](assets/formula/GG-inlined-light.svg#gh-light-mode-only)![G](assets/formula/GG-inlined-dark.svg#gh-dark-mode-only) 为：
 
 <p align="center">
     <img src="assets/formula/9-light.svg#gh-light-mode-only">
     <img src="assets/formula/9-dark.svg#gh-dark-mode-only">
 </p>
-
-
 基点 ![G](assets/formula/GG-inlined-light.svg#gh-light-mode-only)![G](assets/formula/GG-inlined-dark.svg#gh-dark-mode-only) 的阶 ![n](assets/formula/n-inlined-light.svg#gh-light-mode-only)![n](assets/formula/n-inlined-dark.svg#gh-dark-mode-only) 为：
 
 <p align="center">
     <img src="assets/formula/10-light.svg#gh-light-mode-only">
     <img src="assets/formula/10-dark.svg#gh-dark-mode-only">
 </p>
-
-
 ## 3. 消息哈希算法
 
 设长度为 ![l](assets/formula/l-inlined-light.svg#gh-light-mode-only)![l](assets/formula/l-inlined-dark.svg#gh-dark-mode-only) 的消息为：
@@ -97,16 +79,12 @@ WinRAR 使用了基于 ECC 的签名算法来生成 `rarreg.key` 文件，其使
     <img src="assets/formula/11-light.svg#gh-light-mode-only">
     <img src="assets/formula/11-dark.svg#gh-dark-mode-only">
 </p>
-
-
 则消息 ![M](assets/formula/MM-inlined-light.svg#gh-light-mode-only)![M](assets/formula/MM-inlined-dark.svg#gh-dark-mode-only) 的 SHA1 值为：
 
 <p align="center">
     <img src="assets/formula/12-light.svg#gh-light-mode-only">
     <img src="assets/formula/12-dark.svg#gh-dark-mode-only">
 </p>
-
-
 其中 ![s0,4](assets/formula/13-light.svg#gh-light-mode-only)![s0,4](assets/formula/13-dark.svg#gh-dark-mode-only) 为 SHA1 算法输出时的5个状态值；将这5个状态值按照大端字节序依次输出，即为的 SHA1 哈希值 ![SHA1M](assets/formula/14-light.svg#gh-light-mode-only)![SHA1M](assets/formula/14-dark.svg#gh-dark-mode-only)。
 
 WinRAR 在做完 SHA1 计算后，采用大数 ![h](assets/formula/h-inlined-light.svg#gh-light-mode-only)![h](assets/formula/h-inlined-dark.svg#gh-dark-mode-only) 作为 ECC 签名时消息的哈希：
@@ -124,8 +102,6 @@ WinRAR 在做完 SHA1 计算后，采用大数 ![h](assets/formula/h-inlined-lig
     <img src="assets/formula/16-light.svg#gh-light-mode-only">
     <img src="assets/formula/16-dark.svg#gh-dark-mode-only">
 </p>
-
-
 消息哈希为 ![h](assets/formula/h-inlined-light.svg#gh-light-mode-only)![h](assets/formula/h-inlined-dark.svg#gh-dark-mode-only)，则签名 ![(r,s)](assets/formula/17-light.svg#gh-light-mode-only)![(r,s)](assets/formula/17-dark.svg#gh-dark-mode-only) 为：
 
 1. 生成随机数 ![Rnd](assets/formula/Rnd-inlined-light.svg#gh-light-mode-only)![Rnd](assets/formula/Rnd-inlined-dark.svg#gh-dark-mode-only)，满足 ![RND](assets/formula/18-light.svg#gh-light-mode-only)![RND](assets/formula/18-dark.svg#gh-dark-mode-only)。
@@ -162,8 +138,6 @@ WinRAR 在做完 SHA1 计算后，采用大数 ![h](assets/formula/h-inlined-lig
     <img src="assets/formula/26-light.svg#gh-light-mode-only">
     <img src="assets/formula/26-dark.svg#gh-dark-mode-only">
 </p>
-
-
 来生成私钥 ![k](assets/formula/k-inlined-light.svg#gh-light-mode-only)![k](assets/formula/k-inlined-dark.svg#gh-dark-mode-only)。
 
 1. 设6个32位整数为 ![g0-5](assets/formula/27-light.svg#gh-light-mode-only)![g0-5](assets/formula/27-dark.svg#gh-dark-mode-only)，则有
@@ -175,7 +149,7 @@ WinRAR 在做完 SHA1 计算后，采用大数 ![h](assets/formula/h-inlined-lig
 
 2. 令 ![g0=0](assets/formula/29-light.svg#gh-light-mode-only)![g0=0](assets/formula/29-dark.svg#gh-dark-mode-only)。
 
-3. 如果 ![l!=0](assets/formula/30-light.svg#gh-light-mode-only)![l!=0](assets/formula/30-dark.svg#gh-dark-mode-only) 则计算 ![TT](assets/formula/TT-inlined-light.svg#gh-light-mode-only)![T](assets/formula/TT-inlined-dark.svg#gh-dark-mode-only) 的 SHA1 值，并将状态值 ![Si](assets/formula/31-light.svg#gh-light-mode-only)![Si](assets/formula/31-dark.svg#gh-dark-mode-only) 赋值给 ![gi+1](assets/formula/32-light.svg#gh-light-mode-only)![gi+1](assets/formula/32-dark.svg#gh-dark-mode-only)：
+3. 如果 ![l!=0](assets/formula/30-light.svg#gh-light-mode-only)![l!=0](assets/formula/30-dark.svg#gh-dark-mode-only) 则计算 ![T](assets/formula/TT-inlined-light.svg#gh-light-mode-only)![T](assets/formula/TT-inlined-dark.svg#gh-dark-mode-only) 的 SHA1 值，并将状态值 ![Si](assets/formula/31-light.svg#gh-light-mode-only)![Si](assets/formula/31-dark.svg#gh-dark-mode-only) 赋值给 ![gi+1](assets/formula/32-light.svg#gh-light-mode-only)![gi+1](assets/formula/32-dark.svg#gh-dark-mode-only)：
 
    <p align="center">
        <img src="assets/formula/33-light.svg#gh-light-mode-only">
@@ -219,8 +193,6 @@ WinRAR 的私钥 ![k](assets/formula/k-inlined-light.svg#gh-light-mode-only)![k]
     <img src="assets/formula/42-light.svg#gh-light-mode-only">
     <img src="assets/formula/42-dark.svg#gh-dark-mode-only">
 </p>
-
-
 该私钥是通过算法5生成的，其中数据 ![T](assets/formula/TT-inlined-light.svg#gh-light-mode-only)![T](assets/formula/TT-inlined-dark.svg#gh-dark-mode-only) 的长度为0。
 
 公钥 ![P](assets/formula/PP-inlined-light.svg#gh-light-mode-only)![P](assets/formula/PP-inlined-dark.svg#gh-dark-mode-only) 为：
@@ -229,8 +201,6 @@ WinRAR 的私钥 ![k](assets/formula/k-inlined-light.svg#gh-light-mode-only)![k]
     <img src="assets/formula/43-light.svg#gh-light-mode-only">
     <img src="assets/formula/43-dark.svg#gh-dark-mode-only">
 </p>
-
-
 ## 7. 授权文件"rarreg.key"的生成
 
 授权文件的生成需要两个参数：
@@ -338,7 +308,7 @@ WinRAR 的私钥 ![k](assets/formula/k-inlined-light.svg#gh-light-mode-only)![k]
     * UID，占一行：
 
       <p align="center">
-        <img src="assets/formula/68-light.svg#gh-light-mode-only">
+      	<img src="assets/formula/68-light.svg#gh-light-mode-only">
           <img src="assets/formula/68-dark.svg#gh-dark-mode-only">
       </p>
     
