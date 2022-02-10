@@ -63,7 +63,7 @@ WinRAR 使用了基于 ECC 的签名算法来生成 `rarreg.key` 文件，其使
 </p>
 
 
-## 2. 复合域 ![GF2p15p17-inlined] 上的椭圆曲线
+## 2. 复合域 ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-light.svg#gh-light-mode-only) ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-dark.svg#gh-dark-mode-only) 上的椭圆曲线
 
 曲线方程为：
 
@@ -138,7 +138,7 @@ WinRAR 在做完 SHA1 计算后，采用大数 ![h](assets/formula/h-inlined-lig
    </p>
 
 
-   其中 ![RNDGx](assets/formula/20-light.svg#gh-light-mode-only)![RNDGx](assets/formula/20-dark.svg#gh-dark-mode-only) 表示取 ![RNDG](assets/formula/21-light.svg#gh-light-mode-only)![RNDG](assets/formula/21-dark.svg#gh-dark-mode-only) 的 X 坐标，同时将 X 坐标从 !![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-light.svg#gh-light-mode-only) ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-dark.svg#gh-dark-mode-only) 转换为大数。
+   其中 ![RNDGx](assets/formula/20-light.svg#gh-light-mode-only)![RNDGx](assets/formula/20-dark.svg#gh-dark-mode-only) 表示取 ![RNDG](assets/formula/21-light.svg#gh-light-mode-only)![RNDG](assets/formula/21-dark.svg#gh-dark-mode-only) 的 X 坐标，同时将 X 坐标从 ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-light.svg#gh-light-mode-only) ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-dark.svg#gh-dark-mode-only) 转换为大数。
 
    若 ![r=0](assets/formula/22-light.svg#gh-light-mode-only)![r=0](assets/formula/22-dark.svg#gh-dark-mode-only) 或者 ![rRnd](assets/formula/23-light.svg#gh-light-mode-only)![rRnd](assets/formula/23-dark.svg#gh-dark-mode-only) 则回到步骤1。
 
@@ -273,7 +273,7 @@ WinRAR 的私钥 ![k](assets/formula/k-inlined-light.svg#gh-light-mode-only)![k]
        <img src="assets/formula/51-dark.svg#gh-dark-mode-only">
    </p>
 
-5. 对授权类型 ![L](assets/formula/LL-inlined-light.svg#gh-light-mode-only)![L](assets/formulaLL-inlined-dark.svg#gh-dark-mode-only) 使用算法4得到签名 ![(rl,sl)](assets/formula/52-light.svg#gh-light-mode-only)![(rl,sl)](assets/formula/52-dark.svg#gh-dark-mode-only)，其中私钥见第6节。
+5. 对授权类型 ![L](assets/formula/LL-inlined-light.svg#gh-light-mode-only)![L](assets/formula/LL-inlined-dark.svg#gh-dark-mode-only) 使用算法4得到签名 ![(rl,sl)](assets/formula/52-light.svg#gh-light-mode-only)![(rl,sl)](assets/formula/52-dark.svg#gh-dark-mode-only)，其中私钥见第6节。
 
    要求 ![rl](assets/formula/53-light.svg#gh-light-mode-only)![rl](assets/formula/53-dark.svg#gh-dark-mode-only) 和 ![sl](assets/formula/54-light.svg#gh-light-mode-only)![sl](assets/formula/54-dark.svg#gh-dark-mode-only) 的长度都不得超过240比特，否则重复该步骤。
 
