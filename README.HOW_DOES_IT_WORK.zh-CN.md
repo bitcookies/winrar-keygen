@@ -14,14 +14,18 @@ WinRAR 使用了基于 ECC 的签名算法来生成 `rarreg.key` 文件，其使
 各项系数全部位于 ![GF2p15-inlined](assets/formula/GF2-inlined-light.svg#gh-light-mode-only)![GF2p15-inlined](assets/formula/GF2-inlined-dark.svg#gh-dark-mode-only)。设基域的标准基为：
 
 <p align="center">
-    <img src="http://latex.codecogs.com/svg.latex?B_1%3D%5C%7B1%2C%5Calpha%2C%5Calpha%5E2%2C%5Cldots%2C%5Calpha%5E%7B14%7D%5C%7D")
+    <img src="assets/formula/2-light.svg#gh-light-mode-only">
+    <img src="assets/formula/2-dark.svg#gh-dark-mode-only">
 </p>
+
 
 则位于基域 ![GF2p15-inlined](assets/formula/GF2p15-inlined-light.svg#gh-light-mode-only)![GF2p15-inlined](assets/formula/GF2p15-inlined-dark.svg#gh-dark-mode-only) 上的元素 ![A-inlined] 可以用如下方式表达：
 
 <p align="center">
-    <img src="http://latex.codecogs.com/svg.latex?A%3D%5Csum_%7Bi%3D0%7D%5E%7B14%7Da_i%5Calpha%5Ei%20%5Cquad%20%5Cquad%20%5Cquad%20a_i%5Cin%5Ctextrm%7BGF%7D%282%29")
+    <img src="assets/formula/3-light.svg#gh-light-mode-only">
+    <img src="assets/formula/3-dark.svg#gh-dark-mode-only">
 </p>
+
 
 ---
 
