@@ -32,150 +32,183 @@ WinRAR 使用了基于 ECC 的签名算法来生成 `rarreg.key` 文件，其使
 复合域 ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-light.svg#gh-light-mode-only) ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-dark.svg#gh-dark-mode-only) 的不可约多项式为：
 
 <p align="center">
-    <img src="http://latex.codecogs.com/svg.latex?Q%28%5Cbeta%29%3D%5Cbeta%5E%7B17%7D&plus;%5Cbeta%5E3&plus;1")
+    <img src="assets/formula/4-light.svg#gh-light-mode-only">
+    <img src="assets/formula/4-dark.svg#gh-dark-mode-only">
 </p>
+
 
 各项系数全部位于 ![GF2p15-inlined](assets/formula/GF2p15-inlined-light.svg#gh-light-mode-only)![GF2p15-inlined](assets/formula/GF2p15-inlined-dark.svg#gh-dark-mode-only)。设复合域的标准基为：
 
 <p align="center">
-    <img src="http://latex.codecogs.com/svg.latex?B_2%3D%5C%7B1%2C%5Cbeta%2C%5Cbeta%5E2%2C%5Cldots%2C%5Cbeta%5E%7B16%7D%5C%7D")
+    <img src="assets/formula/5-light.svg#gh-light-mode-only">
+    <img src="assets/formula/5-dark.svg#gh-dark-mode-only">
 </p>
+
 
 则位于复合域 ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-light.svg#gh-light-mode-only) ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-dark.svg#gh-dark-mode-only) 上的元素 ![B-inlined] 可以用如下方式表达：
 
 <p align="center">
-    <img src="http://latex.codecogs.com/svg.latex?B%3D%5Csum_%7Bj%3D0%7D%5E%7B16%7D%28%5Csum_%7Bi%3D0%7D%5E%7B14%7Da_%7Bj%2Ci%7D%5Calpha%5Ei%29%5Cbeta%5Ej%3D%5Csum_%7Bj%3D0%7D%5E%7B16%7D%5Csum_%7Bi%3D0%7D%5E%7B14%7Da_%7Bj%2Ci%7D%5Calpha%5Ei%5Cbeta%5Ej%20%5Cquad%20%5Cquad%20%5Cquad%20a_%7Bj%2Ci%7D%5Cin%5Ctextrm%7BGF%7D%282%29")
+    <img src="assets/formula/6-light.svg#gh-light-mode-only">
+    <img src="assets/formula/6-dark.svg#gh-dark-mode-only">
 </p>
+
 
 ---
 
 为了方便表述我们用255比特的大数 ![D-inlined] 来表示位于复合域 ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-light.svg#gh-light-mode-only) ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-dark.svg#gh-dark-mode-only) 上的元素 ![B-inlined]。它们的对应关系为：
 
 <p align="center">
-    <img src="http://latex.codecogs.com/svg.latex?B%3D%5Csum_%7Bj%3D0%7D%5E%7B16%7D%5Csum_%7Bi%3D0%7D%5E%7B14%7Da_%7Bj%2Ci%7D%5Calpha%5Ei%5Cbeta%5Ej%20%5Cleftrightarrow%20D%3D%5Csum_%7Bj%3D0%7D%5E%7B16%7D%5Csum_%7Bi%3D0%7D%5E%7B14%7Da_%7Bj%2Ci%7D%5Ccdot%202%5E%7B15j&plus;i%7D")
+    <img src="assets/formula/7-light.svg#gh-light-mode-only">
+    <img src="assets/formula/7-dark.svg#gh-dark-mode-only">
 </p>
+
 
 ## 2. 复合域 ![GF2p15p17-inlined] 上的椭圆曲线
 
 曲线方程为：
 
 <p align="center">
-    <img src="http://latex.codecogs.com/svg.latex?y%5E2&plus;xy%3Dx%5E3&plus;161%20%5Cquad%20%5Cquad%20%5Cquad%20161%5Cin%5Ctextrm%7BGF%7D%28%282%5E%7B15%7D%29%5E%7B17%7D%29")
+    <img src="assets/formula/8-light.svg#gh-light-mode-only">
+    <img src="assets/formula/8-dark.svg#gh-dark-mode-only">
 </p>
+
 
 基点 ![G-inlined] 为：
 
 <p align="center">
-    <img src="http://latex.codecogs.com/svg.latex?%5Cbegin%7Baligned%7D%20G%26%3D%28G_x%2CG_y%29%20%5C%5C%20G_x%26%3D%5Ctextrm%7B0x56fdcbc6a27acee0cc2996e0096ae74feb1acf220a2341b898b549440297b8cc%7D%20%5Cquad%20G_x%5Cin%5Ctextrm%7BGF%7D%28%282%5E%7B15%7D%29%5E%7B17%7D%29%5C%5C%20G_y%26%3D%5Ctextrm%7B0x20da32e8afc90b7cf0e76bde44496b4d0794054e6ea60f388682463132f931a7%7D%20%5Cquad%20G_y%5Cin%5Ctextrm%7BGF%7D%28%282%5E%7B15%7D%29%5E%7B17%7D%29%20%5Cend%7Baligned%7D")
+    <img src="assets/formula/9-light.svg#gh-light-mode-only">
+    <img src="assets/formula/9-dark.svg#gh-dark-mode-only">
 </p>
+
 
 基点 ![G-inlined] 的阶 ![n-inlined] 为：
 
 <p align="center">
-    <img src="http://latex.codecogs.com/svg.latex?n%3D%5Ctextrm%7B0x1026dd85081b82314691ced9bbec30547840e4bf72d8b5e0d258442bbcd31%7D%20%5Cquad%20n%5Cin%5Cnolinebreak%5Cmathbb%7BZ%7D")
+    <img src="assets/formula/10-light.svg#gh-light-mode-only">
+    <img src="assets/formula/10-dark.svg#gh-dark-mode-only">
 </p>
+
 
 ## 3. 消息哈希算法
 
 设长度为 ![l-inlined] 的消息为：
 
 <p align="center">
-    <img src="http://latex.codecogs.com/svg.latex?M%3Dm_0m_1%20%5Cldots%20m_%7Bl-1%7D%20%5Cquad%20%5Cquad%20m_i%5Cin%5B0%2C%20256%29")
+    <img src="assets/formula/11-light.svg#gh-light-mode-only">
+    <img src="assets/formula/11-dark.svg#gh-dark-mode-only">
 </p>
+
 
 则消息 ![M-inlined] 的SHA1值为：
 
 <p align="center">
-    <img src="http://latex.codecogs.com/svg.latex?%5Ctextrm%7BSHA%7D_1%28M%29%3DS_0%7C%7CS_1%7C%7CS_2%7C%7CS_3%7C%7CS_4%20%5Cquad%20%5Cquad%20S_i%5Cin%5B0%2C%202%5E%7B32%7D%29")
+    <img src="assets/formula/12-light.svg#gh-light-mode-only">
+    <img src="assets/formula/12-dark.svg#gh-dark-mode-only">
 </p>
 
-其中 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20S_0%2CS_1%2CS_2%2CS_3%2CS_4) 为SHA1算法输出时的5个状态值；将这5个状态值按照大端字节序依次输出，即为的SHA1哈希值 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20%5Ctextrm%7BSHA%7D_1%28M%29)。
 
-WinRAR在做完SHA1计算后，采用大数 ![h-inlined] 作为ECC签名时消息的哈希：
+其中 ![s0,4](assets/formula/13-light.svg#gh-light-mode-only)![s0,4](assets/formula/13-dark.svg#gh-dark-mode-only) 为SHA1算法输出时的5个状态值；将这5个状态值按照大端字节序依次输出，即为的SHA1哈希值 ![SHA1M](assets/formula/14-light.svg#gh-light-mode-only)![SHA1M](assets/formula/14-dark.svg#gh-dark-mode-only)。
+
+WinRAR 在做完 SHA1 计算后，采用大数 ![h-inlined] 作为 ECC 签名时消息的哈希：
 
 <p align="center">
-    <img src="http://latex.codecogs.com/svg.latex?h%3D%28%5Csum_%7Bi%3D0%7D%5E%7B4%7DS_i%20%5Ccdot%202%5E%7B32i%7D%29&plus;%5Ctextrm%7B0x1bd10xb4e33c7c0ffd8d43%7D%20%5Ccdot%202%5E%7B32*5%7D")
+    <img src="assets/formula/15-light.svg#gh-light-mode-only">
+    <img src="assets/formula/15-dark.svg#gh-dark-mode-only">
 </p>
-
 
 ## 4. ECC签名算法
 
 设私钥为 ![k-inlined]，公钥为 ![P-inlined]，即：
 
 <p align="center">
-    <img src="http://latex.codecogs.com/svg.latex?P%3Dk%20%5Ccdot%20G")
+    <img src="assets/formula/16-light.svg#gh-light-mode-only">
+    <img src="assets/formula/16-dark.svg#gh-dark-mode-only">
 </p>
 
-消息哈希为 ![h-inlined]，则签名 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20%28r%2Cs%29) 为：
 
-1. 生成随机数 ![Rnd-inlined]，满足 ![](http://latex.codecogs.com/svg.latex?%5Cinline%200%3CRnd%3Cn)。
+消息哈希为 ![h-inlined]，则签名 ![(r,s)](assets/formula/17-light.svg#gh-light-mode-only)![(r,s)](assets/formula/17-dark.svg#gh-dark-mode-only) 为：
+
+1. 生成随机数 ![Rnd-inlined]，满足 ![RND](assets/formula/18-light.svg#gh-light-mode-only)![RND](assets/formula/18-dark.svg#gh-dark-mode-only)。
 
 2. 计算 ![r-inlined]
 
    <p align="center">
-       <img src="http://latex.codecogs.com/svg.latex?r%3D%28%28Rnd%20%5Ccdot%20G%29_x&plus;h%29%5C%20%5C%20Mod%5C%20%5C%20n">
+       <img src="assets/formula/19-light.svg#gh-light-mode-only">
+       <img src="assets/formula/19-dark.svg#gh-dark-mode-only">
    </p>
 
-   其中 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20%28Rnd%20%5Ccdot%20G%29_x) 表示取 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20Rnd%20%5Ccdot%20G) 的X坐标，同时将X坐标从 ![GF2p15p17-inlined] 转换为大数。
 
-   若 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20r%3D0) 或者 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20r&plus;Rnd%3Dn) 则回到步骤1。
+   其中 ![RNDGx](assets/formula/20-light.svg#gh-light-mode-only)![RNDGx](assets/formula/20-dark.svg#gh-dark-mode-only) 表示取 ![RNDG](assets/formula/21-light.svg#gh-light-mode-only)![RNDG](assets/formula/21-dark.svg#gh-dark-mode-only) 的 X 坐标，同时将 X 坐标从 !![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-light.svg#gh-light-mode-only) ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-dark.svg#gh-dark-mode-only) 转换为大数。
+
+   若 ![r=0](assets/formula/22-light.svg#gh-light-mode-only)![r=0](assets/formula/22-dark.svg#gh-dark-mode-only) 或者 ![rRnd](assets/formula/23-light.svg#gh-light-mode-only)![rRnd](assets/formula/23-dark.svg#gh-dark-mode-only) 则回到步骤1。
 
 3. 计算 ![s-inlined]
 
    <p align="center">
-       <img src="http://latex.codecogs.com/svg.latex?s%3D%28Rnd-kr%29%5C%20%5C%20Mod%5C%20%5C%20n">
+       <img src="assets/formula/24-light.svg#gh-light-mode-only">
+       <img src="assets/formula/24-dark.svg#gh-dark-mode-only">
    </p>
 
-   若 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20s%3D0) 则回到步骤1。
 
-4. 输出 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20%28r%2Cs%29)。
+   若 ![s=0](assets/formula/25-light.svg#gh-light-mode-only)![s=0](assets/formula/25-dark.svg#gh-dark-mode-only) 则回到步骤1。
+
+4. 输出 ![(r,s)](assets/formula/17-light.svg#gh-light-mode-only)![(r,s)](assets/formula/17-dark.svg#gh-dark-mode-only)。
 
 ## 5. WinRAR的私钥生成算法
 
 该算法会利用长度为 ![l-inlined] 的数据 
 
 <p align="center">
-    <img src="http://latex.codecogs.com/svg.latex?T%3Dt_0t_1%20%5Cldots%20t_%7Bl-1%7D%20%5Cquad%20%5Cquad%20t_i%5Cin%5B0%2C256%29">
+    <img src="assets/formula/26-light.svg#gh-light-mode-only">
+    <img src="assets/formula/26-dark.svg#gh-dark-mode-only">
 </p>
+
 
 来生成私钥 ![k-inlined]。
 
-1. 设6个32位整数为 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20g_0%2Cg_1%2Cg_2%2Cg_3%2Cg_4%2Cg_5)，则有
+1. 设6个32位整数为 ![g0-5](assets/formula/27-light.svg#gh-light-mode-only)![g0-5](assets/formula/27-dark.svg#gh-dark-mode-only)，则有
 
    <p align="center">
-       <img src="http://latex.codecogs.com/svg.latex?g_j%3D%5Csum_%7Bi%3D0%7D%5E%7B3%7Dg_%7Bj%2Ci%7D%20%5Ccdot%202%5E%7B8i%7D%20%5Cquad%20%5Cquad%20g_%7Bj%2Ci%7D%5Cin%5B0%2C256%29">
+       <img src="assets/formula/28-light.svg#gh-light-mode-only">
+       <img src="assets/formula/28-dark.svg#gh-dark-mode-only">
    </p>
 
-2. 令 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20g_0%3D0)。
+2. 令 ![g0=0](assets/formula/29-light.svg#gh-light-mode-only)![g0=0](assets/formula/29-dark.svg#gh-dark-mode-only)。
 
-3. 如果 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20l%5Cneq%200) 则计算 ![T-inlined] 的SHA1值，并将状态值 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20S_i) 赋值给 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20g_%7Bi&plus;1%7D)：
+3. 如果 ![l!=0](assets/formula/30-light.svg#gh-light-mode-only)![l!=0](assets/formula/30-dark.svg#gh-dark-mode-only) 则计算 ![T-inlined] 的 SHA1 值，并将状态值 ![Si](assets/formula/31-light.svg#gh-light-mode-only)![Si](assets/formula/31-dark.svg#gh-dark-mode-only) 赋值给 ![gi+1](assets/formula/32-light.svg#gh-light-mode-only)![gi+1](assets/formula/32-dark.svg#gh-dark-mode-only)：
 
    <p align="center">
-       <img src="http://latex.codecogs.com/svg.latex?%5Cbegin%7Baligned%7D%20%5Ctextrm%7BSHA%7D_1%28T%29%26%3DS_0%7C%7CS_1%7C%7CS_2%7C%7CS_3%7C%7CS_4%20%5C%5C%20g_1%26%3DS_0%20%5C%5C%20g_2%26%3DS_1%20%5C%5C%20g_3%26%3DS_2%20%5C%5C%20g_4%26%3DS_3%20%5C%5C%20g_5%26%3DS_4%20%5C%5C%20%5Cend%7Baligned%7D">
+       <img src="assets/formula/33-light.svg#gh-light-mode-only">
+       <img src="assets/formula/33-dark.svg#gh-dark-mode-only">
    </p>
 
-   否则，即 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20l%3D0) 时，令：
+
+   否则，即 ![l=0](assets/formula/34-light.svg#gh-light-mode-only)![l=0](assets/formula/34-dark.svg#gh-dark-mode-only) 时，令：
 
    <p align="center">
-       <img src="http://latex.codecogs.com/svg.latex?%5Cbegin%7Baligned%7D%20g_1%26%3D%5Ctextrm%7B0xeb3eb781%7D%20%5C%5C%20g_2%26%3D%5Ctextrm%7B0x50265329%7D%20%5C%5C%20g_3%26%3D%5Ctextrm%7B0xdc5ef4a3%7D%20%5C%5C%20g_4%26%3D%5Ctextrm%7B0x6847b9d5%7D%20%5C%5C%20g_5%26%3D%5Ctextrm%7B0xcde43b4c%7D%20%5C%5C%20%5Cend%7Baligned%7D">
+       <img src="assets/formula/35-light.svg#gh-light-mode-only">
+       <img src="assets/formula/35-dark.svg#gh-dark-mode-only">
    </p>
 
-4. 把 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20g_0) 作为计数器，自增1。
+4. 把 ![g0](assets/formula/36-light.svg#gh-light-mode-only)![g0](assets/formula/36-dark.svg#gh-dark-mode-only)  作为计数器，自增1。
 
-   计算SHA1值：
+   计算 SHA1 值：
 
    <p align="center">
-       <img src="http://latex.codecogs.com/svg.latex?%5Ctextrm%7BSHA%7D_1%28g_%7B0%2C0%7D%7C%7Cg_%7B0%2C1%7D%7C%7Cg_%7B0%2C2%7D%7C%7Cg_%7B0%2C3%7D%7C%7Cg_%7B1%2C0%7D%7C%7Cg_%7B1%2C1%7D%7C%7C%5Cldots%7C%7Cg_%7B5%2C0%7D%7C%7Cg_%7B5%2C1%7D%7C%7Cg_%7B5%2C2%7D%7C%7Cg_%7B5%2C3%7D%29%3DS_0%7C%7CS_1%7C%7CS_2%7C%7CS_3%7C%7CS_4">
+       <img src="assets/formula/37-light.svg#gh-light-mode-only">
+       <img src="assets/formula/37-dark.svg#gh-dark-mode-only">
    </p>
 
-   取 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20S_0) 的低16位并记为 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20k_%7Bg_0%7D)。
+
+   取 ![S0](assets/formula/38-light.svg#gh-light-mode-only)![S0](assets/formula/38-dark.svg#gh-dark-mode-only) 的低16位并记为 ![Kg0](assets/formula/39-light.svg#gh-light-mode-only)![Kg0](assets/formula/39-dark.svg#gh-dark-mode-only)。
 
 5. 步骤4再重复14次。
 
-6. 重复执行完后会得到 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20k_1%2Ck_2%2Ck_3%2C%5Cldots%2Ck_%7B15%7D)，则输出私钥
+6. 重复执行完后会得到 ![k1-15](assets/formula/40-light.svg#gh-light-mode-only)![k1-15](assets/formula/40-dark.svg#gh-dark-mode-only)，则输出私钥
 
    <p align="center">
-       <img src="http://latex.codecogs.com/svg.latex?k%3D%5Csum_%7Bi%3D1%7D%5E%7B15%7Dk_i%20%5Ccdot%202%5E%7B16i%7D">
+       <img src="assets/formula/41-light.svg#gh-light-mode-only">
+       <img src="assets/formula/41-dark.svg#gh-dark-mode-only">
    </p>
 
 ## 6. WinRAR的公钥和私钥
@@ -183,106 +216,121 @@ WinRAR在做完SHA1计算后，采用大数 ![h-inlined] 作为ECC签名时消�
 WinRAR的私钥 ![k-inlined] 为：
 
 <p align="center">
-    <img src="http://latex.codecogs.com/svg.latex?k%3D%5Ctextrm%7B0x59fe6abcca90bdb95f0105271fa85fb9f11f467450c1ae9044b7fd61d65e%7D%20%5Cquad%20%5Cquad%20k%5Cin%5Cnolinebreak%5Cmathbb%7BZ%7D">
+    <img src="assets/formula/42-light.svg#gh-light-mode-only">
+    <img src="assets/formula/42-dark.svg#gh-dark-mode-only">
 </p>
+
 
 该私钥是通过算法5生成的，其中数据 ![T-inlined] 的长度为0。
 
 公钥 ![P-inlined] 为：
 
 <p align="center">
-    <img src="http://latex.codecogs.com/svg.latex?%5Cbegin%7Baligned%7D%20P%26%3D%28P_x%2CP_y%29%20%5C%5C%20P_x%26%3D%5Ctextrm%7B0x3861220ed9b36c9753df09a159dfb148135d495db3af8373425ee9a28884ba1a%7D%20%5Cquad%20P_x%5Cin%5Ctextrm%7BGF%7D%28%282%5E%7B15%7D%29%5E%7B17%7D%29%20%5C%5C%20P_y%26%3D%5Ctextrm%7B0x12b64e62db43a56114554b0cbd573379338cea9124c8443c4f50e6c8b013ec20%7D%20%5Cquad%20P_y%5Cin%5Ctextrm%7BGF%7D%28%282%5E%7B15%7D%29%5E%7B17%7D%29%20%5Cend%7Baligned%7D">
+    <img src="assets/formula/43-light.svg#gh-light-mode-only">
+    <img src="assets/formula/43-dark.svg#gh-dark-mode-only">
 </p>
+
 
 ## 7. 授权文件"rarreg.key"的生成
 
 授权文件的生成需要两个参数：
 
-1. 用户名的ANSI字符串，不包括null-terminator；记为 
+1. 用户名的 ANSI 字符串，不包括 null-terminator；记为 
 
    <p align="center">
-       <img src="http://latex.codecogs.com/svg.latex?U%3Du_0u_1%20%5Cldots%20u_%7Bl-1%7D">
+       <img src="assets/formula/44-light.svg#gh-light-mode-only">
+       <img src="assets/formula/44-dark.svg#gh-dark-mode-only">
    </p>
 
-2. 授权类型的ANSI字符串，不包括null-terminator；记为
+2. 授权类型的 ANSI 字符串，不包括 null-terminator；记为
 
    <p align="center">
-       <img src="http://latex.codecogs.com/svg.latex?L%3Dl_0l_1%20%5Cldots%20l_%7Bl-1%7D">
+       <img src="assets/formula/45-light.svg#gh-light-mode-only">
+       <img src="assets/formula/45-dark.svg#gh-dark-mode-only">
    </p>
 
 `rarreg.key` 的生成算法如下：
 
-1. 使用用户名 ![UU-inlined] 通过算法5计算出私钥 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20k_U) 以及公钥 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20P_U)，并将公钥 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20P_U) 按照SM2压缩公钥格式以Hex字符串（ASCII编码）的形式输出。得到的Hex字符串记为临时值 ![Temp-inlined]。
+1. 使用用户名 ![UU-inlined] 通过算法5计算出私钥 ![ku](assets/formula/46-light.svg#gh-light-mode-only)![ku](assets/formula/46-dark.svg#gh-dark-mode-only) 以及公钥 ![pu](assets/formula/47-light.svg#gh-light-mode-only)![pu](assets/formula/47-dark.svg#gh-dark-mode-only)，并将公钥 ![pu](assets/formula/47-light.svg#gh-light-mode-only)![pu](assets/formula/47-dark.svg#gh-dark-mode-only) 按照 SM2 压缩公钥格式以Hex字符串（ASCII编码)的形式输出。得到的 Hex 字符串记为临时值 ![Temp-inlined]。
 
-   ![Temp-inlined] 的长度应该为64；若长度不足，则在前面补字符`'0'`，直到长度为64。
+   ![Temp-inlined] 的长度应该为64；若长度不足，则在前面补字符 `'0'`，直到长度为64。
 
 2. 令字符串 ![Data3-inlined]为
 
    <p align="center">
-       <img src="http://latex.codecogs.com/svg.latex?Data%5E3%3D%5Ctexttt%7B%2260%22%7D%7C%7CTemp_0%7C%7CTemp_1%7C%7C%5Cldots%7C%7CTemp_%7B47%7D">
+       <img src="assets/formula/48-light.svg#gh-light-mode-only">
+       <img src="assets/formula/48-dark.svg#gh-dark-mode-only">
    </p>
 
-3. 使用 ![Data3-inlined] 通过算法5计算出私钥 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20k_%7BData%5E3%7D) 以及公钥 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20P_%7BData%5E3%7D)，并将公钥 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20P_%7BData%5E3%7D) 按照SM2压缩公钥格式以Hex字符串（ASCII编码）的形式输出。得到的Hex字符串记为 ![Data0-inlined]。
+3. 使用 ![Data3-inlined] 通过算法5计算出私钥 ![kdata3](assets/formula/49-light.svg#gh-light-mode-only)![kdata3](assets/formula/49-dark.svg#gh-dark-mode-only) 以及公钥 ![pdata3](assets/formula/50-light.svg#gh-light-mode-only)![pdata3](assets/formula/50-dark.svg#gh-dark-mode-only)，并将公钥 ![pdata3](assets/formula/50-light.svg#gh-light-mode-only)![pdata3](assets/formula/50-dark.svg#gh-dark-mode-only) 按照 SM2 压缩公钥格式以 Hex 字符串（ASCII编码)的形式输出。得到的Hex字符串记为 ![Data0-inlined]。
 
    ![Data0-inlined] 的长度应该为64；若长度不足，则在前面补字符`'0'`，直到长度为64。
 
 4. 令字符串 ![UID-inlined]为
 
    <p align="center">
-       <img src="http://latex.codecogs.com/svg.latex?UID%3DTemp_%7B48%7D%7C%7CTemp_%7B49%7D%7C%7C%5Cldots%7C%7CTemp_%7B63%7D%7C%7CData%5E0_0%7C%7CData%5E0_1%7C%7CData%5E0_2%7C%7CData%5E0_3">
+       <img src="assets/formula/51-light.svg#gh-light-mode-only">
+       <img src="assets/formula/51-dark.svg#gh-dark-mode-only">
    </p>
 
-5. 对授权类型 ![LL-inlined] 使用算法4得到签名 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20%28r_L%2Cs_L%29)，其中私钥见第6节。
+5. 对授权类型 ![LL-inlined] 使用算法4得到签名 ![(rl,sl)](assets/formula/52-light.svg#gh-light-mode-only)![(rl,sl)](assets/formula/52-dark.svg#gh-dark-mode-only)，其中私钥见第6节。
 
-   要求 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20r_L) 和 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20s_L) 的长度都不得超过240比特，否则重复该步骤。
+   要求 ![rl](assets/formula/53-light.svg#gh-light-mode-only)![rl](assets/formula/53-dark.svg#gh-dark-mode-only) 和 ![sl](assets/formula/54-light.svg#gh-light-mode-only)![sl](assets/formula/54-dark.svg#gh-dark-mode-only) 的长度都不得超过240比特，否则重复该步骤。
 
-6. 将 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20r_L) 和 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20s_L) 以16进制形式输出（无`"0x"`前缀），分别记为 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20SZ%5E%7Br_L%7D) 和 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20SZ%5E%7Bs_L%7D)。
+6. 将 ![rl](assets/formula/53-light.svg#gh-light-mode-only)![rl](assets/formula/53-dark.svg#gh-dark-mode-only) 和 ![sl](assets/formula/54-light.svg#gh-light-mode-only)![sl](assets/formula/54-dark.svg#gh-dark-mode-only) 以16进制形式输出（无`"0x"`前缀），分别记为 ![SZrl](assets/formula/55-light.svg#gh-light-mode-only)![SZrl](assets/formula/55-dark.svg#gh-dark-mode-only) 和 ![SZsl](assets/formula/56-light.svg#gh-light-mode-only)![SZsl](assets/formula/56-dark.svg#gh-dark-mode-only)。
 
-   若长度不满60，则在前面补字符`'0'`，直到长度为60。
+   若长度不满60，则在前面补字符 `'0'`，直到长度为60。
 
 7. 令字符串 ![Data1-inlined]为
 
    <p align="center">
-       <img src="http://latex.codecogs.com/svg.latex?Data%5E1%3D%5Ctexttt%7B%2260%22%7D%7C%7CSZ%5E%7Bs_L%7D%7C%7CSZ%5E%7Br_L%7D">
+       <img src="assets/formula/57-light.svg#gh-light-mode-only">
+       <img src="assets/formula/57-dark.svg#gh-dark-mode-only">
    </p>
 
 8. 令字符串 ![Temp-inlined]为
 
    <p align="center">
-       <img src="http://latex.codecogs.com/svg.latex?Temp%3DU%7C%7CData%5E0">
+       <img src="assets/formula/58-light.svg#gh-light-mode-only">
+       <img src="assets/formula/58-dark.svg#gh-dark-mode-only">
    </p>
 
-   对 ![Temp-inlined] 使用算法4得到签名 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20%28r_%7BTemp%7D%2Cs_%7BTemp%7D%29)，其中私钥见第6节。
-   
-   要求 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20r_%7BTemp%7D) 和 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20s_%7BTemp%7D) 的长度都不得超过240比特，否则重复该步骤。
 
-9. 将 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20r_%7BTemp%7D) 和 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20s_%7BTemp%7D) 以16进制形式输出（无`"0x"`前缀），分别记为 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20SZ%5E%7Br_%7BTemp%7D%7D) 和 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20SZ%5E%7Bs_%7BTemp%7D%7D)。
+   对 ![Temp-inlined] 使用算法4得到签名 ![(rTemp,sTemp)](assets/formula/59-light.svg#gh-light-mode-only)![(rTemp,sTemp)](assets/formula/59-dark.svg#gh-dark-mode-only)，其中私钥见第6节。
+
+   要求 ![rTemp](assets/formula/60-light.svg#gh-light-mode-only)![rTemp](assets/formula/60-dark.svg#gh-dark-mode-only) 和 ![sTemp](assets/formula/61-light.svg#gh-light-mode-only)![sTemp](assets/formula/61-dark.svg#gh-dark-mode-only)  的长度都不得超过240比特，否则重复该步骤。
+
+9. 将 ![rTemp](assets/formula/60-light.svg#gh-light-mode-only)![rTemp](assets/formula/60-dark.svg#gh-dark-mode-only) 和 ![sTemp](assets/formula/61-light.svg#gh-light-mode-only)![sTemp](assets/formula/61-dark.svg#gh-dark-mode-only) 以16进制形式输出（无`"0x"`前缀），分别记为 ![SZrTemp](assets/formula/62-light.svg#gh-light-mode-only)![SZrTemp](assets/formula/62-dark.svg#gh-dark-mode-only) 和 ![SZsTemp](assets/formula/63-light.svg#gh-light-mode-only)![SZsTemp](assets/formula/63-dark.svg#gh-dark-mode-only)。
 
    若长度不满60，则在前面补字符`'0'`，直到长度为60。
 
 10. 令字符串 ![Data2-inlined]为
 
     <p align="center">
-        <img src="http://latex.codecogs.com/svg.latex?Data%5E2%3D%5Ctexttt%7B%2260%22%7D%7C%7CSZ%5E%7Bs_%7BTemp%7D%7D%7C%7CSZ%5E%7Br_%7BTemp%7D%7D">
+        <img src="assets/formula/64-light.svg#gh-light-mode-only">
+        <img src="assets/formula/64-dark.svg#gh-dark-mode-only">
     </p>
 
 11. 对
 
     <p align="center">
-        <img src="http://latex.codecogs.com/svg.latex?L%7C%7CU%7C%7CData%5E0%7C%7CData%5E1%7C%7CData%5E2%7C%7CData%5E3">
+        <img src="assets/formula/65-light.svg#gh-light-mode-only">
+        <img src="assets/formula/65-dark.svg#gh-dark-mode-only">
     </p>
 
-    计算CRC32值，最终校验和为CRC32值的反。将校验和以10进制形式输出，若长度不满10，则在前面补字符`'0'`，直到长度为10，记为 ![](http://latex.codecogs.com/svg.latex?%5Cinline%20SZ%5E%7Bchecksum%7D)。
+
+    计算 CRC32 值，最终校验和为 CRC32 值的反。将校验和以10进制形式输出，若长度不满10，则在前面补字符 `'0'`，直到长度为10，记为 ![SZchecksum](assets/formula/66-light.svg#gh-light-mode-only)![SZchecksum](assets/formula/66-dark.svg#gh-dark-mode-only)。
 
 12. 令字符串 ![Data-inlined]为
 
     <p align="center">
-        <img src="http://latex.codecogs.com/svg.latex?%5Cinline%20Data%3DData%5E0%7C%7CData%5E1%7C%7CData%5E2%7C%7CData%5E3%7C%7CSZ%5E%7Bchecksum%7D">
+        <img src="assets/formula/67-light.svg#gh-light-mode-only">
+        <img src="assets/formula/67-dark.svg#gh-dark-mode-only">
     </p>
 
 13. 格式化输出。
 
-    * 固定文件头`"RAR registration data"`，占一行。
+    * 固定文件头 `"RAR registration data"`，占一行。
 
     * 用户名，占一行。
 
@@ -291,7 +339,8 @@ WinRAR的私钥 ![k-inlined] 为：
     * UID，占一行：
 
       <p align="center">
-        <img src="http://latex.codecogs.com/svg.latex?%5Ctexttt%7B%22UID%3D%22%7D%7C%7CUID">
+        <img src="assets/formula/68-light.svg#gh-light-mode-only">
+          <img src="assets/formula/68-dark.svg#gh-dark-mode-only">
       </p>
-
+    
     * 将 ![Data-inlined] 按照每行54个字符输出。
