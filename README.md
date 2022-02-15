@@ -17,12 +17,10 @@
   <a href="https://github.com/bitcookies/winrar-keygen/blob/master/LICENSE">
   	<img alt="License" src="https://img.shields.io/github/license/bitcookies/winrar-keygen.svg" />
   </a>
-  <img alt="Visitors" src="https://jwenjian-visitor-badge-5.glitch.me/badge?page_id=bitcookies.winrar-keygen" />
 </p>
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> | <a href="README.md">English</a>
 </p>
-
 
 ## 1. What is WinRAR?
 
