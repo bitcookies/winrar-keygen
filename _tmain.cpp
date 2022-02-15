@@ -7,12 +7,12 @@
 #include <system_error>
 
 void Help() {
+    _putts(TEXT("Please use the following command:\n"));
     _putts(TEXT("Usage:"));
     _putts(TEXT("        winrar-keygen.exe <Your Name> <Your License>"));
     _putts(TEXT(""));
     _putts(TEXT("Example:"));
-    _putts(TEXT(""));
-    _putts(TEXT("        winrar-keygen.exe \"Github\" \"Github.com\""));
+    _putts(TEXT("        winrar-keygen.exe \"Github\" \"Github.com\"\n"));
     _putts(TEXT("  or:"));
     _putts(TEXT("        winrar-keygen.exe \"Github\" \"Github.com\" > rarreg.key\n"));
     _putts(TEXT("  or:"));
