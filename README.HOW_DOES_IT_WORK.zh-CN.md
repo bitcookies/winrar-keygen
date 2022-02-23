@@ -236,7 +236,7 @@ WinRAR 的私钥 ![k](assets/formula/k-inlined-light.svg#gh-light-mode-only)![k]
 
 `rarreg.key` 的生成算法如下：
 
-1. 使用用户名 ![U](assets/formula/UU-inlined-light.svg#gh-light-mode-only)![U](assets/formula/UU-inlined-dark.svg#gh-dark-mode-only) 通过算法5计算出私钥 ![ku](assets/formula/46-light.svg#gh-light-mode-only)![ku](assets/formula/46-dark.svg#gh-dark-mode-only) 以及公钥 ![pu](assets/formula/47-light.svg#gh-light-mode-only)![pu](assets/formula/47-dark.svg#gh-dark-mode-only)，并将公钥 ![pu](assets/formula/47-light.svg#gh-light-mode-only)![pu](assets/formula/47-dark.svg#gh-dark-mode-only) 按照 SM2 压缩公钥格式以 Hex 字符串（ASCII编码)的形式输出。得到的 Hex 字符串记为临时值 ![Temp](assets/formula/Temp-inlined-light.svg#gh-light-mode-only)![Temp](assets/formula/Temp-inlined-dark.svg#gh-dark-mode-only)。
+1. 使用用户名 ![U](assets/formula/UU-inlined-light.svg#gh-light-mode-only)![U](assets/formula/UU-inlined-dark.svg#gh-dark-mode-only) 通过算法5计算出私钥 ![ku](assets/formula/46-light.svg#gh-light-mode-only)![ku](assets/formula/46-dark.svg#gh-dark-mode-only) 以及公钥 ![pu](assets/formula/47-light.svg#gh-light-mode-only)![pu](assets/formula/47-dark.svg#gh-dark-mode-only)，并将公钥 ![pu](assets/formula/47-light.svg#gh-light-mode-only)![pu](assets/formula/47-dark.svg#gh-dark-mode-only) 按照 SM2 压缩公钥格式以 Hex 字符串（ASCII编码）的形式输出。得到的 Hex 字符串记为临时值 ![Temp](assets/formula/Temp-inlined-light.svg#gh-light-mode-only)![Temp](assets/formula/Temp-inlined-dark.svg#gh-dark-mode-only)。
 
    ![Temp](assets/formula/Temp-inlined-light.svg#gh-light-mode-only)![Temp](assets/formula/Temp-inlined-dark.svg#gh-dark-mode-only) 的长度应该为64；若长度不足，则在前面补字符 `'0'`，直到长度为64。
 
@@ -247,7 +247,7 @@ WinRAR 的私钥 ![k](assets/formula/k-inlined-light.svg#gh-light-mode-only)![k]
        <img src="assets/formula/48-dark.svg#gh-dark-mode-only">
    </p>
 
-3. 使用 ![Data3](assets/formula/Data3-inlined-light.svg#gh-light-mode-only)![Data3](assets/formula/Data3-inlined-dark.svg#gh-dark-mode-only) 通过算法5计算出私钥 ![kdata3](assets/formula/49-light.svg#gh-light-mode-only)![kdata3](assets/formula/49-dark.svg#gh-dark-mode-only) 以及公钥 ![pdata3](assets/formula/50-light.svg#gh-light-mode-only)![pdata3](assets/formula/50-dark.svg#gh-dark-mode-only)，并将公钥 ![pdata3](assets/formula/50-light.svg#gh-light-mode-only)![pdata3](assets/formula/50-dark.svg#gh-dark-mode-only) 按照 SM2 压缩公钥格式以 Hex 字符串（ASCII编码)的形式输出。得到的 Hex 字符串记为 ![Data0](assets/formula/Data0-inlined-light.svg#gh-light-mode-only)![Data0](assets/formula/Data0-inlined-dark.svg#gh-dark-mode-only)。
+3. 使用 ![Data3](assets/formula/Data3-inlined-light.svg#gh-light-mode-only)![Data3](assets/formula/Data3-inlined-dark.svg#gh-dark-mode-only) 通过算法5计算出私钥 ![kdata3](assets/formula/49-light.svg#gh-light-mode-only)![kdata3](assets/formula/49-dark.svg#gh-dark-mode-only) 以及公钥 ![pdata3](assets/formula/50-light.svg#gh-light-mode-only)![pdata3](assets/formula/50-dark.svg#gh-dark-mode-only)，并将公钥 ![pdata3](assets/formula/50-light.svg#gh-light-mode-only)![pdata3](assets/formula/50-dark.svg#gh-dark-mode-only) 按照 SM2 压缩公钥格式以 Hex 字符串（ASCII编码）的形式输出。得到的 Hex 字符串记为 ![Data0](assets/formula/Data0-inlined-light.svg#gh-light-mode-only)![Data0](assets/formula/Data0-inlined-dark.svg#gh-dark-mode-only)。
 
    ![Data0](assets/formula/Data0-inlined-light.svg#gh-light-mode-only)![Data0](assets/formula/Data0-inlined-dark.svg#gh-dark-mode-only) 的长度应该为64；若长度不足，则在前面补字符 `'0'`，直到长度为64。
 
