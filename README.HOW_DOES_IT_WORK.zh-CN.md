@@ -262,7 +262,7 @@ WinRAR 的私钥 ![k](assets/formula/k-inlined-light.svg#gh-light-mode-only)![k]
 
    要求 ![rl](assets/formula/53-light.svg#gh-light-mode-only)![rl](assets/formula/53-dark.svg#gh-dark-mode-only) 和 ![sl](assets/formula/54-light.svg#gh-light-mode-only)![sl](assets/formula/54-dark.svg#gh-dark-mode-only) 的长度都不得超过240比特，否则重复该步骤。
 
-6. 将 ![rl](assets/formula/53-light.svg#gh-light-mode-only)![rl](assets/formula/53-dark.svg#gh-dark-mode-only) 和 ![sl](assets/formula/54-light.svg#gh-light-mode-only)![sl](assets/formula/54-dark.svg#gh-dark-mode-only) 以16进制形式输出（无`"0x"`前缀），分别记为 ![SZrl](assets/formula/55-light.svg#gh-light-mode-only)![SZrl](assets/formula/55-dark.svg#gh-dark-mode-only) 和 ![SZsl](assets/formula/56-light.svg#gh-light-mode-only)![SZsl](assets/formula/56-dark.svg#gh-dark-mode-only)。
+6. 将 ![rl](assets/formula/53-light.svg#gh-light-mode-only)![rl](assets/formula/53-dark.svg#gh-dark-mode-only) 和 ![sl](assets/formula/54-light.svg#gh-light-mode-only)![sl](assets/formula/54-dark.svg#gh-dark-mode-only) 以16进制形式输出（无 `"0x"` 前缀），分别记为 ![SZrl](assets/formula/55-light.svg#gh-light-mode-only)![SZrl](assets/formula/55-dark.svg#gh-dark-mode-only) 和 ![SZsl](assets/formula/56-light.svg#gh-light-mode-only)![SZsl](assets/formula/56-dark.svg#gh-dark-mode-only)。
 
    若长度不满60，则在前面补字符 `'0'`，直到长度为60。
 
@@ -285,7 +285,7 @@ WinRAR 的私钥 ![k](assets/formula/k-inlined-light.svg#gh-light-mode-only)![k]
 
    要求 ![rTemp](assets/formula/60-light.svg#gh-light-mode-only)![rTemp](assets/formula/60-dark.svg#gh-dark-mode-only) 和 ![sTemp](assets/formula/61-light.svg#gh-light-mode-only)![sTemp](assets/formula/61-dark.svg#gh-dark-mode-only)  的长度都不得超过240比特，否则重复该步骤。
 
-9. 将 ![rTemp](assets/formula/60-light.svg#gh-light-mode-only)![rTemp](assets/formula/60-dark.svg#gh-dark-mode-only) 和 ![sTemp](assets/formula/61-light.svg#gh-light-mode-only)![sTemp](assets/formula/61-dark.svg#gh-dark-mode-only) 以16进制形式输出（无`"0x"`前缀），分别记为 ![SZrTemp](assets/formula/62-light.svg#gh-light-mode-only)![SZrTemp](assets/formula/62-dark.svg#gh-dark-mode-only) 和 ![SZsTemp](assets/formula/63-light.svg#gh-light-mode-only)![SZsTemp](assets/formula/63-dark.svg#gh-dark-mode-only)。
+9. 将 ![rTemp](assets/formula/60-light.svg#gh-light-mode-only)![rTemp](assets/formula/60-dark.svg#gh-dark-mode-only) 和 ![sTemp](assets/formula/61-light.svg#gh-light-mode-only)![sTemp](assets/formula/61-dark.svg#gh-dark-mode-only) 以16进制形式输出（无 `"0x"` 前缀），分别记为 ![SZrTemp](assets/formula/62-light.svg#gh-light-mode-only)![SZrTemp](assets/formula/62-dark.svg#gh-dark-mode-only) 和 ![SZsTemp](assets/formula/63-light.svg#gh-light-mode-only)![SZsTemp](assets/formula/63-dark.svg#gh-dark-mode-only)。
 
    若长度不满60，则在前面补字符 `'0'`，直到长度为60。
 
