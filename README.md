@@ -224,7 +224,7 @@ Example:
   or:
         winrar-keygen.exe "Github" "Github.com" > rarreg.key
   or: 
-        winrar-keygen.exe "Github" "Github.com" > rarreg.key | out-file -encoding ascii rarreg.key
+        winrar-keygen.exe "Github" "Github.com" | Out-File -Encoding ASCII rarreg.key
 ```
 
 ![Terminal](assets/terminal.png)
@@ -276,7 +276,7 @@ In the newer Windows 10, PowerShell will export in **UTF16-LE** format by defaul
 Please use the following command:
 
 ```console
-winrar-keygen.exe "Github" "Github.com" > rarreg.key | out-file -encoding ascii rarreg.key
+winrar-keygen.exe "Github" "Github.com" | Out-File -Encoding ASCII rarreg.key
 ```
 
 ### 7.3 Location of Key
