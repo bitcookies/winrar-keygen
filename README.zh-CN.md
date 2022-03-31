@@ -222,7 +222,7 @@ Example:
   or:
         winrar-keygen.exe "Github" "Github.com" > rarreg.key
   or:
-        winrar-keygen.exe "Github" "Github.com" > rarreg.key | out-file -encoding ascii rarreg.key
+        winrar-keygen.exe "Github" "Github.com" | Out-File -Encoding ASCII rarreg.key
 ```
 
 ![Terminal](assets/terminal.png)
@@ -274,7 +274,7 @@ winrar-keygen.exe "Github" "Github.com" > rarreg.key
 请使用如下命令：
 
 ```console
-winrar-keygen.exe "Github" "Github.com" > rarreg.key | out-file -encoding ascii rarreg.key
+winrar-keygen.exe "Github" "Github.com" | Out-File -Encoding ASCII rarreg.key
 ```
 
 ### 7.3 Key的位置
