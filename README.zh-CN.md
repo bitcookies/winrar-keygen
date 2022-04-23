@@ -100,7 +100,8 @@ WinRAR不是免费软件。如果你想使用它，你应当向 [__RARLAB__](htt
 
 <details>
 <summary>点击展开</summary>
-使用 push 操作进行 key 的生成非常的简单和方便，但是当有更新同步时你需要手动进行冲突合并。所以我建议优先 [通过 Secrets 使用 Github Actions](#4-通过-secrets-使用-github-actions)，但是你仍可以使用 push 操作：
+ 
+使用 push 操作进行 key 的生成非常的简单和方便，但是当有更新同步时你需要手动进行冲突合并。所以我建议优先 [通过 Secrets 使用 Github Actions](#4-通过-Secrets-使用-Github-Actions) ，但是你仍可以使用 push 操作：
 
 ### 5.1 Fork
 
@@ -251,7 +252,7 @@ de3cdc56b311475b484e80b48157a0c3af60ca4f7f9c75d49bc50d
 
 ### 7.1 ANSI编码
 
-`test1` 以及 `test2` 生成的许可文本，均是 **ANSI 编码，目前已经支持空格** [Issu es #5](https://github.com/bitcookies/winrar-keygen/issues/5)。
+`test1` 以及 `test2` 生成的许可文本，均是 **ANSI 编码，目前已经支持空格** [Issues #5](https://github.com/bitcookies/winrar-keygen/issues/5)。
 
 ```console
 winrar-keygen.exe <text1> <text2>
