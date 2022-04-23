@@ -100,7 +100,8 @@ After running successfully, open the corresponding task and select **rarreg_file
 
 <details>
 <summary>Click to expand</summary>
-Using push for key generation is very simple and convenient, but when there are updates to fetch upstream, you need to manually merge conflicts. So I would recommend [use Github Actions with Secrets](#4-Use-Github-Actions-with-Secrets), but you can still use the push action.
+ 
+Using push for key generation is very simple and convenient, but when there are updates to fetch upstream, you need to manually merge conflicts. So I would recommend [Use Github Actions with Secrets](#4-Use-Github-Actions-with-Secrets), but you can still use the push action.
 
 ### 5.1 Fork
 
