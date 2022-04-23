@@ -40,16 +40,17 @@ See [here](README.HOW_DOES_IT_WORK.md).
 
 There are several ways to use it 🧐:
 
-- [Use Github Actions with Push](#4-Use-Github-Actions-with-Push)
-- [Use Github Actions with Secrets](#5-Use-Github-Actions-with-Secrets)
+- [Use Github Actions with Secrets](#4-Use-Github-Actions-with-Secrets) *(⭐ Recommend)*
+- [Use Github Actions with Push](#5-Use-Github-Actions-with-Push)
 - [Build in Visual Studio](#6-Build-in-Visual-Studio)
 
-## 4. Use Github Actions with Push
+## 4. Use Github Actions with Secrets
 
 <details>
 <summary>Click to expand</summary>
 
-Github Action is a CI/CD tool introduced after Microsoft acquired Github, and you can run programs on GitHub Action by following these steps.
+
+Use [Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) you don't need to commits to the repository, so you can fetch upstream without conflicts. So I recommend using this method.
 
 ### 4.1 Fork
 
@@ -59,11 +60,61 @@ Github Action is a CI/CD tool introduced after Microsoft acquired Github, and yo
 
 ![Fork](assets/fork-dark.png#gh-dark-mode-only)
 
+### 4.2 Creating Secrets
+
+Open your forked repository, and go to **Settings > Secrets > Actions > New repository secret**.
+
+![Secrets](assets/secrets-light.png#gh-light-mode-only)
+
+![Secrets](assets/secrets-dark.png#gh-dark-mode-only)
+
+Create two Secrets named `text1` and `text2` and fill in values.
+
+![Add Secrets](assets/secrets-add-light.png#gh-light-mode-only)
+
+![Add Secrets](assets/secrets-add-dark.png#gh-dark-mode-only)
+
+Once created, you will see:
+
+![Secrets Repo](assets/secrets-repo-light.png#gh-light-mode-only)
+
+![Secrets Repo](assets/secrets-repo-dark.png#gh-dark-mode-only)
+
+### 4.3 Run Workflow
+
+Go to **Actions** and select **WinRAR Keygen Secrets** to run Workflow manually.
+
+![Run](assets/run-workflow-light.png#gh-light-mode-only)
+
+![Run](assets/run-workflow-dark.png#gh-dark-mode-only)
+
+After running successfully, open the corresponding task and select **rarreg_file** to download.
+
+![Download](assets/file-download-light.png##gh-light-mode-only)
+
+![Download](assets/file-download-dark.png#gh-dark-mode-only)
+
+</details>
+
+## 5. Use Github Actions with Push
+
+<details>
+<summary>Click to expand</summary>
+Using push for key generation is very simple and convenient, but when there are updates to fetch upstream, you need to manually merge conflicts. So I would recommend [use Github Actions with Secrets](#4-Use-Github-Actions-with-Secrets), but you can still use the push action.
+
+### 5.1 Fork
+
+**Fork** this repo.
+
+![Fork](assets/fork-light.png#gh-light-mode-only)
+
+![Fork](assets/fork-dark.png#gh-dark-mode-only)
+
 If you've forked before and I've committed new code, but you don't know how to merge the new content into your repository, then you can delete the current fork and fork again.
 
-### 4.2 Modify info.json
+### 5.2 Modify info.json
 
-Go to `keygen/info.json` and click on the edit button to edit the file.
+Open your forked repository, and go to `keygen/info.json` and click on the edit button to edit the file.
 
 ![Edit](assets/edit-json-light.png#gh-light-mode-only)
 
@@ -93,7 +144,7 @@ Once you have finished making changes, click the **Commit changes** button and G
 
 If Github Actions does not start automatically, you will need to click on the Actions page to **allow this workflows to run**, then modify and commit `keygen/info.json` again.
 
-### 4.3 Download Key
+### 5.3 Download Key
 
 Go to **Actions** and select **WinRAR Keygen** to see the status of the program.
 
@@ -110,57 +161,6 @@ Green means it ran successfully, yellow means it is running, red means it failed
 After extract `rarreg_file.zip`, you will get `rarreg.key`, just drag and drop it into WinRAR.
 
 If you get an invalid key, please check [the specific solution](#7-invalid-key).
-
-</details>
-
-## 5. Use Github Actions with Secrets
-
-<details>
-<summary>Click to expand</summary>
-
-In order to make Merge and Pull easier for everyone, a new method for using Github Actions through [Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) has been added:
-
-### 5.1 Fork
-
-**Fork** this repo.
-
-![Fork](assets/fork-light.png#gh-light-mode-only)
-
-![Fork](assets/fork-dark.png#gh-dark-mode-only)
-
-### 5.2 Creating Secrets
-
-Go to **Settings > Secrets > Actions > New repository secret**:
-
-![Secrets](assets/secrets-light.png#gh-light-mode-only)
-
-![Secrets](assets/secrets-dark.png#gh-dark-mode-only)
-
-Create two Secrets named `text1` and `text2` and fill in values:
-
-![Add Secrets](assets/secrets-add-light.png#gh-light-mode-only)
-
-![Add Secrets](assets/secrets-add-dark.png#gh-dark-mode-only)
-
-Once created, you will see:
-
-![Secrets Repo](assets/secrets-repo-light.png#gh-light-mode-only)
-
-![Secrets Repo](assets/secrets-repo-dark.png#gh-dark-mode-only)
-
-### 5.3 Run Workflow
-
-Go to **Actions** and select **WinRAR Keygen Secrets** to run Workflow manually:
-
-![Run](assets/run-workflow-light.png#gh-light-mode-only)
-
-![Run](assets/run-workflow-dark.png#gh-dark-mode-only)
-
-After running successfully, open the corresponding task and select **rarreg_file** to download.
-
-![Download](assets/file-download-light.png##gh-light-mode-only)
-
-![Download](assets/file-download-dark.png#gh-dark-mode-only)
 
 </details>
 

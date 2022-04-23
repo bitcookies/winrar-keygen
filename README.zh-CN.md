@@ -40,16 +40,17 @@ WinRAR不是免费软件。如果你想使用它，你应当向 [__RARLAB__](htt
 
 有多种方法可供选择 🧐：
 
-+ [通过 Push 使用 Github Actions](#4-通过-Push-使用-Github-Actions)
-+ [通过 Secrets 使用 Github Actions](#5-通过-Secrets-使用-Github-Actions)
++ [通过 Secrets 使用 Github Actions](#4-通过-Secrets-使用-Github-Actions) *（⭐ 推荐）*
++ [通过 Push 使用 Github Actions](#5-通过-Push-使用-Github-Actions)
 + [通过 Visual Studio 编译使用](#6-通过-Visual-Studio-编译使用)
 
-## 4. 通过 Push 使用 Github Actions
+## 4. 通过 Secrets 使用 Github Actions
 
 <details>
 <summary>点击展开</summary>
 
-Github Action 是微软收购 Github 之后推出的 CI/CD 工具，通过以下步骤即可在 GitHub Action 上运行程序：
+
+使用 [Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) 可以不用对仓库代码进行修改，方便你以后可以无冲突的对仓库进行同步更新，所以我优先推荐使用这种方法：
 
 ### 4.1 Fork
 
@@ -59,11 +60,61 @@ Github Action 是微软收购 Github 之后推出的 CI/CD 工具，通过以下
 
 ![Fork](assets/fork-dark.png#gh-dark-mode-only)
 
+### 4.2 创建 Secrets
+
+打开你 fork 后的仓库，进入 **Settings > Secrets > Actions > New repository secret** 来创建：
+
+![Secrets](assets/secrets-light.png#gh-light-mode-only)
+
+![Secrets](assets/secrets-dark.png#gh-dark-mode-only)
+
+创建两个 Secrets，名称为 `text1` 和 `text2`，并填入相关值：
+
+![Add Secrets](assets/secrets-add-light.png#gh-light-mode-only)
+
+![Add Secrets](assets/secrets-add-dark.png#gh-dark-mode-only)
+
+创建完成后，你将会看到：
+
+![Secrets Repo](assets/secrets-repo-light.png#gh-light-mode-only)
+
+![Secrets Repo](assets/secrets-repo-dark.png#gh-dark-mode-only)
+
+### 4.3 运行 Workflow
+
+进入 **Actions** 并选择 **WinRAR Keygen Secrets** 来手动执行 Workflow：
+
+![Run](assets/run-workflow-light.png#gh-light-mode-only)
+
+![Run](assets/run-workflow-dark.png#gh-dark-mode-only)
+
+运行成功之后，打开对应的任务，选择 **rarreg_file** 下载：
+
+![Download](assets/file-download-light.png##gh-light-mode-only)
+
+![Download](assets/file-download-dark.png#gh-dark-mode-only)
+
+</details>
+
+## 5. 通过 Push 使用 Github Actions
+
+<details>
+<summary>点击展开</summary>
+使用 push 操作进行 key 的生成非常的简单和方便，但是当有更新同步时你需要手动进行冲突合并。所以我建议优先 [通过 Secrets 使用 Github Actions](#4-通过-Secrets-使用-Github-Actions)，但是你仍可以使用 push 操作：
+
+### 5.1 Fork
+
+点击该项目右上角的 **Fork** 按钮，fork 一份代码到你的 Github：
+
+![Fork](assets/fork-light.png#gh-light-mode-only)
+
+![Fork](assets/fork-dark.png#gh-dark-mode-only)
+
 如果你之前 fork 过，然后我提交了新的代码，但是你不懂得如何合并新内容到你的仓库，那你也可以删掉当前 fork 的仓库，然后重新 fork 一次。
 
-### 4.2 修改 info.json
+### 5.2 修改 info.json
 
-进入 `keygen/info.json`，点击编辑按钮，对该文件进行编辑：
+打开你 fork 后的仓库，进入 `keygen/info.json`，点击编辑按钮，对该文件进行编辑：
 
 ![Edit](assets/edit-json-light.png#gh-light-mode-only)
 
@@ -93,7 +144,7 @@ Github Action 是微软收购 Github 之后推出的 CI/CD 工具，通过以下
 
 如果 Github Actions 未自动开始，你需要先点击 Actions 页面 **允许此 workflows 运行**，然后再次修改并提交 `keygen/info.json` 。
 
-### 4.3 下载文件
+### 5.3 下载文件
 
 进入 **Actions** 并选择 **WinRAR Keygen** 页面查看程序运行状况：
 
@@ -110,59 +161,6 @@ Github Action 是微软收购 Github 之后推出的 CI/CD 工具，通过以下
 将 `rarreg_file.zip` 解压缩后会得到 `rarreg.key`，然后拖动导入 WinRAR 即可。
 
 如果你得到的是 key 是无效的，请查看 [解决方法](#7-无效的key)。
-
-</details>
-
-## 5. 通过 Secrets 使用 Github Actions
-
-<details>
-<summary>点击展开</summary>
-
-为了更好的方便大家 Merge 和 Pull，现在新增了通过 [Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) 使用 Github Actions 的方法：
-
-### 5.1 Fork
-
-点击该项目右上角的 **Fork** 按钮，fork 一份代码到你的 Github：
-
-![Fork](assets/fork-light.png#gh-light-mode-only)
-
-![Fork](assets/fork-dark.png#gh-dark-mode-only)
-
-如果你之前 fork 过，然后我提交了新的代码，但是你不懂得如何合并新内容到你的仓库，那你也可以删掉当前 fork 的仓库，然后重新 fork 一次。
-
-### 5.2 创建 Secrets
-
-进入 **Settings > Secrets > Actions > New repository secret** 来创建：
-
-![Secrets](assets/secrets-light.png#gh-light-mode-only)
-
-![Secrets](assets/secrets-dark.png#gh-dark-mode-only)
-
-创建两个 Secrets，名称为 `text1` 和 `text2`，并填入相关值：
-
-![Add Secrets](assets/secrets-add-light.png#gh-light-mode-only)
-
-![Add Secrets](assets/secrets-add-dark.png#gh-dark-mode-only)
-
-创建完成后，你将会看到：
-
-![Secrets Repo](assets/secrets-repo-light.png#gh-light-mode-only)
-
-![Secrets Repo](assets/secrets-repo-dark.png#gh-dark-mode-only)
-
-### 5.3 运行 Workflow
-
-进入 **Actions** 并选择 **WinRAR Keygen Secrets** 来手动执行 Workflow：
-
-![Run](assets/run-workflow-light.png#gh-light-mode-only)
-
-![Run](assets/run-workflow-dark.png#gh-dark-mode-only)
-
-运行成功之后，打开对应的任务，选择 **rarreg_file** 下载：
-
-![Download](assets/file-download-light.png##gh-light-mode-only)
-
-![Download](assets/file-download-dark.png#gh-dark-mode-only)
 
 </details>
 
