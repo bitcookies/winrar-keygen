@@ -16,7 +16,7 @@ void Help() {
     _putts(TEXT("  or:"));
     _putts(TEXT("        winrar-keygen.exe \"Github\" \"Github.com\" > rarreg.key\n"));
     _putts(TEXT("  or:"));
-    _putts(TEXT("        winrar-keygen.exe \"Github\" \"Github.com\" | out-file -encoding ascii rarreg.key\n"));
+    _putts(TEXT("        winrar-keygen.exe \"Github\" \"Github.com\" | Out-File -Encoding ASCII rarreg.key\n"));
 }
 
 void PrintRegisterInfo(const WinRarKeygen<WinRarConfig>::RegisterInfo& Info) {

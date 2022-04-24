@@ -238,7 +238,8 @@ public:
             RegInfo.Checksum
         );
 
-        // The length has been limited to 60, this maybe it's been fixed.
+        // The length has been limited to 60
+        // This problem has been fixed, this prompt should no longer appear
         if (RegInfo.HexData.length() % 54 != 0) {
             throw std::runtime_error("InternalError: The length of register data is not correct.");
         }
