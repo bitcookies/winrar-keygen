@@ -38,9 +38,9 @@ WinRAR不是免费软件。如果你想使用它，你应当向 [__RARLAB__](htt
 
 ## 3. 使用方法
 
-有多种方法可供选择 🧐：
+有多种方法可供选择：
 
-+ [通过 Secrets 使用 Github Actions](#4-通过-Secrets-使用-Github-Actions) *（⭐ 推荐）*
++ [通过 Secrets 使用 Github Actions](#4-通过-Secrets-使用-Github-Actions) *<⭐ 推荐>*
 + [通过 Push 使用 Github Actions](#5-通过-Push-使用-Github-Actions)
 + [通过 Visual Studio 编译使用](#6-通过-Visual-Studio-编译使用)
 
@@ -100,7 +100,7 @@ WinRAR不是免费软件。如果你想使用它，你应当向 [__RARLAB__](htt
 
 <details>
 <summary>点击展开</summary>
- 
+
 使用 push 操作进行 key 的生成非常的简单和方便，但是当有更新同步时你需要手动进行冲突合并。所以我建议优先 [通过 Secrets 使用 Github Actions](#4-通过-Secrets-使用-Github-Actions) ，但是你仍可以使用 push 操作：
 
 ### 5.1 Fork

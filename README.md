@@ -38,9 +38,9 @@ See [here](README.HOW_DOES_IT_WORK.md).
 
 ## 3. How to use?
 
-There are several ways to use it 🧐:
+There are several ways to use it:
 
-- [Use Github Actions with Secrets](#4-Use-Github-Actions-with-Secrets) *(⭐ Recommend)*
+- [Use Github Actions with Secrets](#4-Use-Github-Actions-with-Secrets) *<⭐ Recommend>*
 - [Use Github Actions with Push](#5-Use-Github-Actions-with-Push)
 - [Build in Visual Studio](#6-Build-in-Visual-Studio)
 
@@ -100,7 +100,7 @@ After running successfully, open the corresponding task and select **rarreg_file
 
 <details>
 <summary>Click to expand</summary>
- 
+
 Using push for key generation is very simple and convenient, but when there are updates to fetch upstream, you need to manually merge conflicts. So I would recommend [Use Github Actions with Secrets](#4-Use-Github-Actions-with-Secrets), but you can still use the push action.
 
 ### 5.1 Fork
