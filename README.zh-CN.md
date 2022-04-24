@@ -145,6 +145,10 @@ WinRAR不是免费软件。如果你想使用它，你应当向 [__RARLAB__](htt
 
 如果 Github Actions 未自动开始，你需要先点击 Actions 页面 **允许此 workflows 运行**，然后再次修改并提交 `keygen/info.json` 。
 
+![Workflow](assets/enable-workflows-light.png#gh-light-mode-only)
+
+![Workflow](assets/enable-workflows-dark.png#gh-dark-mode-only)
+
 ### 5.3 下载文件
 
 进入 **Actions** 并选择 **WinRAR Keygen** 页面查看程序运行状况：

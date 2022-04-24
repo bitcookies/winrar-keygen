@@ -145,6 +145,10 @@ Once you have finished making changes, click the **Commit changes** button and G
 
 If Github Actions does not start automatically, you will need to click on the Actions page to **allow this workflows to run**, then modify and commit `keygen/info.json` again.
 
+![Workflow](assets/enable-workflows-light.png#gh-light-mode-only)
+
+![Workflow](assets/enable-workflows-dark.png#gh-dark-mode-only)
+
 ### 5.3 Download Key
 
 Go to **Actions** and select **WinRAR Keygen** to see the status of the program.
