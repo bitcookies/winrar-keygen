@@ -12,7 +12,7 @@
   </a>
   <img src="https://img.shields.io/badge/Visual%20Studio-2022-5D4298" />
   <a href="https://github.com/bitcookies/winrar-keygen/actions">
-      <img src="https://img.shields.io/badge/Github-Actions-4184F4" />
+      <img src="https://github.com/bitcookies/winrar-keygen/actions/workflows/action.yml/badge.svg" />
   </a>
   <a href="https://github.com/bitcookies/winrar-keygen/blob/master/LICENSE">
   	<img alt="License" src="https://img.shields.io/github/license/bitcookies/winrar-keygen.svg" />
@@ -21,6 +21,7 @@
 <p align="center">
   <a href="README.zh-CN.md">简体中文</a> | <a href="README.md">English</a>
 </p>
+
 
 ## 1. WinRAR是什么？
 
