@@ -9,10 +9,10 @@ on:
 jobs:
   build:
 
-    runs-on: windows-2019
+    runs-on: windows-2022
 
     steps:
-    - uses: actions/checkout@v2.4.0
+    - uses: actions/checkout@v3.1.0
     
     - name: Get key text1
       id: text1
@@ -33,7 +33,7 @@ jobs:
       run: bin/x64-Release/winrar-keygen.exe "${{steps.text1.outputs.prop}}" "${{steps.text2.outputs.prop}}" | Out-File -Encoding ASCII rarreg.key
       
     - name: Upload key
-      uses: actions/upload-artifact@v2.3.1
+      uses: actions/upload-artifact@v3.1.1
       with:
         name: rarreg_file
         path: rarreg.key
