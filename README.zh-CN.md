@@ -291,7 +291,28 @@ C:\Users\yourname\AppData\Roaming\WinRAR\rarreg.key
 
 ### 7.4 关于简体中文版
 
-在 [__RARLAB__](https://www.rarlab.com/) 下载的简体中文版 WinRAR 将会自带广告组件，即使使用了 `rarreg.key` 授权，广告组件依旧会出现。如果您介意广告，可以下载其他语言版。
+在 [__RARLAB__](https://www.rarlab.com/) 下载的简体中文版 WinRAR 将会自带广告组件，即使使用了 `rarreg.key` 授权，广告组件依旧会出现。这是由于简体中文代理商的一些意见，RARLAB 已将简体中文安装包的公开链接更换成了带有广告的简体中文安装包。
+
+感谢 [@hoochanlon](https://github.com/hoochanlon) 提供的一些方法。可以使用 [win-rar-extractor](https://github.com/lvtx/WinRAR-Extractor) 获取简体中文商业版的下载连接；也可以根据商业版的地址规律，获取相应版本的简体中文安装包：
+
+简体中文**商业版**（以 6.11 版本为例）：
+
+```
+win-rar 渠道：
+https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20220317/rrlb/winrar-x64-611sc.exe
+```
+
+简体中文**广告版**（以 6.11 版本为例）：
+
+```
+win-rar 渠道：
+https://www.win-rar.com/fileadmin/winrar-versions/winrar/winrar-x64-611sc.exe
+
+rarlab 渠道：
+https://www.rarlab.com/rar/winrar-x64-611sc.exe
+```
+
+请注意区分上述连接地址，更多方法可以查看 [Issues #14](https://github.com/bitcookies/winrar-keygen/issues/14) 和 [Issues #19](https://github.com/bitcookies/winrar-keygen/issues/19)。
 
 ## 8. 贡献
 
