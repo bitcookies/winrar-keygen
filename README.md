@@ -164,7 +164,7 @@ Green means it ran successfully, yellow means it is running, red means it failed
 
 ![Download](assets/file-download-dark.png#gh-dark-mode-only)
 
-After extract `rarreg_file.zip`, you will get `rarreg.key`, just drag and drop it into WinRAR.
+After extract `rarreg_file.zip`, you will get `rarreg.key`, just drag and drop it into WinRAR. You can also compress `rarreg.key` into `rarkey.rar` and double-click it to run it, and the license import will take place automatically.
 
 If you get an invalid key, please check [the specific solution](#7-invalid-key).
 
@@ -292,6 +292,8 @@ If you are unable to drag, you can try to put the `rarreg.key` in the following 
 ```console
 C:\Users\yourname\AppData\Roaming\WinRAR\rarreg.key
 ```
+
+You can also compress `rarreg.key` into `rarkey.rar` and double-click it to run it, and the license import will take place automatically.
 
 ## 8. Contributing
 

@@ -164,7 +164,7 @@ WinRAR不是免费软件。如果你想使用它，你应当向 [__RARLAB__](htt
 
 ![Download](assets/file-download-dark.png#gh-dark-mode-only)
 
-将 `rarreg_file.zip` 解压缩后会得到 `rarreg.key`，然后拖动导入 WinRAR 即可。
+将 `rarreg_file.zip` 解压缩后会得到 `rarreg.key`，然后拖动导入 WinRAR 即可。你也可以将 `rarreg.key` 压缩成 `rarkey.rar`，然后双击运行，授权导入将会自动进行。
 
 如果你得到的是 key 是无效的，请查看 [解决方法](#7-无效的key)。
 
@@ -288,6 +288,8 @@ winrar-keygen.exe "Github" "Github.com" | Out-File -Encoding ASCII rarreg.key
 ```console
 C:\Users\yourname\AppData\Roaming\WinRAR\rarreg.key
 ```
+
+你也可以将 `rarreg.key` 压缩成 `rarkey.rar`，然后双击运行，授权导入将会自动进行。
 
 ### 7.4 关于简体中文版
 
