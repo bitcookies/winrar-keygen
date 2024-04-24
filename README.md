@@ -12,7 +12,7 @@
   </a>
   <img src="https://img.shields.io/badge/Visual%20Studio-2022-5D4298" />
   <a href="https://github.com/bitcookies/winrar-keygen/actions">
-      <img src="https://github.com/bitcookies/winrar-keygen/actions/workflows/action.yml/badge.svg" />
+      <img src="https://github.com/bitcookies/winrar-keygen/actions/workflows/action_secrets.yml/badge.svg" />
   </a>
   <a href="https://github.com/bitcookies/winrar-keygen/blob/master/LICENSE">
   	<img alt="License" src="https://img.shields.io/github/license/bitcookies/winrar-keygen.svg" />
@@ -61,9 +61,17 @@ Use [Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secre
 
 ![Fork](assets/fork-dark.png#gh-dark-mode-only)
 
-### 4.2 Creating Secrets
+### 4.2 Allow Fork repo to run Workflows
 
-Open your forked repository, and go to **Settings > Secrets > Actions > New repository secret**.
+Go back to the repo you just forked and click **Actions** to allow Workflows to run in your forked repo.
+
+![Workflow](assets/enable-workflows-light.png#gh-light-mode-only)
+
+![Workflow](assets/enable-workflows-dark.png#gh-dark-mode-only)
+
+### 4.3 Creating Secrets
+
+After allowing Workflows, go to **Settings > Secrets and variables > Actions > New repository secret**.
 
 ![Secrets](assets/secrets-light.png#gh-light-mode-only)
 
@@ -81,7 +89,7 @@ Once created, you will see:
 
 ![Secrets Repo](assets/secrets-repo-dark.png#gh-dark-mode-only)
 
-### 4.3 Run Workflow
+### 4.4 Run Workflow
 
 Go to **Actions** and select **WinRAR Keygen Secrets** to run Workflow manually.
 
@@ -94,6 +102,10 @@ After running successfully, open the corresponding task and select **rarreg_file
 ![Download](assets/file-download-light.png##gh-light-mode-only)
 
 ![Download](assets/file-download-dark.png#gh-dark-mode-only)
+
+After extract `rarreg_file.zip`, you will get `rarreg.key`, just drag and drop it into WinRAR. You can also compress `rarreg.key` into `rarkey.rar` and double-click it to run it, and the license import will take place automatically.
+
+If you get an invalid key, please check [the specific solution](#7-invalid-key).
 
 </details>
 
@@ -114,7 +126,15 @@ Using push for key generation is very simple and convenient, but when there are 
 
 If you've forked before and I've committed new code, but you don't know how to merge the new content into your repository, then you can delete the current fork and fork again.
 
-### 5.2 Modify info.json
+### 5.2 Allow Fork repo to run Workflows
+
+Go back to the repo you just forked and click **Actions** to allow Workflows to run in your forked repo.
+
+![Workflow](assets/enable-workflows-light.png#gh-light-mode-only)
+
+![Workflow](assets/enable-workflows-dark.png#gh-dark-mode-only)
+
+### 5.3 Edit info.json
 
 Open your forked repository, and go to `keygen/info.json` and click on the edit button to edit the file.
 
@@ -144,13 +164,7 @@ It is important to note that `test1` and `test2` are **ANSI-encoded string, spac
 
 Once you have finished making changes, click the **Commit changes** button and Github Actions will start automatically.
 
-If Github Actions does not start automatically, you will need to click on the Actions page to **allow this workflows to run**, then modify and commit `keygen/info.json` again.
-
-![Workflow](assets/enable-workflows-light.png#gh-light-mode-only)
-
-![Workflow](assets/enable-workflows-dark.png#gh-dark-mode-only)
-
-### 5.3 Download Key
+### 5.4 Download Key
 
 Go to **Actions** and select **WinRAR Keygen** to see the status of the program.
 

@@ -12,7 +12,7 @@
   </a>
   <img src="https://img.shields.io/badge/Visual%20Studio-2022-5D4298" />
   <a href="https://github.com/bitcookies/winrar-keygen/actions">
-      <img src="https://github.com/bitcookies/winrar-keygen/actions/workflows/action.yml/badge.svg" />
+      <img src="https://github.com/bitcookies/winrar-keygen/actions/workflows/action_secrets.yml/badge.svg" />
   </a>
   <a href="https://github.com/bitcookies/winrar-keygen/blob/master/LICENSE">
   	<img alt="License" src="https://img.shields.io/github/license/bitcookies/winrar-keygen.svg" />
@@ -25,13 +25,13 @@
 
 ## 1. WinRAR是什么？
 
-WinRAR是一款用于管理压缩包文件的共享软件。其算法由作者尤金·罗谢尔研发，享有原创专利。
+WinRAR 是一款用于管理压缩包文件的共享软件。其算法由作者尤金·罗谢尔研发，享有原创专利。
 
-它可以用来创建或浏览RAR、ZIP等众多格式的压缩包。
+它可以用来创建或浏览 RAR、ZIP 等众多格式的压缩包。
 
-WinRAR不是免费软件。如果你想使用它，你应当向 [__RARLAB__](https://www.rarlab.com/) 付费，然后获得一个授权文件 `rarreg.key`。
+WinRAR 不是免费软件。如果你想使用它，你应当向 [__RARLAB__](https://www.rarlab.com/) 付费，然后获得一个授权文件 `rarreg.key`。
 
-这份repo将会告诉你 `rarreg.key` 是如何生成的。
+这份 repo 将会告诉你 `rarreg.key` 是如何生成的。
 
 ## 2. "rarreg.key"是如何生成的？
 
@@ -61,9 +61,17 @@ WinRAR不是免费软件。如果你想使用它，你应当向 [__RARLAB__](htt
 
 ![Fork](assets/fork-dark.png#gh-dark-mode-only)
 
-### 4.2 创建 Secrets
+### 4.2 允许 Fork 代码运行 Workflows
 
-打开你 fork 后的仓库，进入 **Settings > Secrets > Actions > New repository secret** 来创建：
+返回到你刚刚 fork 完成的 repo，然后点击 **Actions** 去允许 Workflows 在你的 fork repo 中运行：
+
+![Workflow](assets/enable-workflows-light.png#gh-light-mode-only)
+
+![Workflow](assets/enable-workflows-dark.png#gh-dark-mode-only)
+
+### 4.3 创建 Secrets
+
+允许 Workflows 后，进入 **Settings > Secrets and variables > Actions > New repository secret** 来创建 Secrets：
 
 ![Secrets](assets/secrets-light.png#gh-light-mode-only)
 
@@ -81,9 +89,9 @@ WinRAR不是免费软件。如果你想使用它，你应当向 [__RARLAB__](htt
 
 ![Secrets Repo](assets/secrets-repo-dark.png#gh-dark-mode-only)
 
-### 4.3 运行 Workflow
+### 4.4 运行 Workflow
 
-进入 **Actions** 并选择 **WinRAR Keygen Secrets** 来手动执行 Workflow：
+进入 **Actions** 并选择 **WinRAR Keygen Secrets  >  Run workflow > Run workflow ** 来手动执行 Workflow：
 
 ![Run](assets/run-workflow-light.png#gh-light-mode-only)
 
@@ -94,6 +102,10 @@ WinRAR不是免费软件。如果你想使用它，你应当向 [__RARLAB__](htt
 ![Download](assets/file-download-light.png##gh-light-mode-only)
 
 ![Download](assets/file-download-dark.png#gh-dark-mode-only)
+
+将 `rarreg_file.zip` 解压缩后会得到 `rarreg.key`，然后拖动导入 WinRAR 即可。你也可以将 `rarreg.key` 压缩成 `rarkey.rar`，然后双击运行，授权导入将会自动进行。
+
+如果你得到的是 key 是无效的，请查看 [解决方法](#7-无效的-Key)。
 
 </details>
 
@@ -114,9 +126,17 @@ WinRAR不是免费软件。如果你想使用它，你应当向 [__RARLAB__](htt
 
 如果你之前 fork 过，然后我提交了新的代码，但是你不懂得如何合并新内容到你的仓库，那你也可以删掉当前 fork 的仓库，然后重新 fork 一次。
 
-### 5.2 修改 info.json
+### 5.2 允许 Fork 代码运行 Workflows
 
-打开你 fork 后的仓库，进入 `keygen/info.json`，点击编辑按钮，对该文件进行编辑：
+返回到你刚刚 fork 完成的 repo，然后点击 Actions 去允许 Workflows 在你的 fork repo 中运行：
+
+![Workflow](assets/enable-workflows-light.png#gh-light-mode-only)
+
+![Workflow](assets/enable-workflows-dark.png#gh-dark-mode-only)
+
+### 5.3 修改 info.json
+
+允许 Workflows 后，进入 `keygen/info.json`，点击编辑按钮，对该文件进行编辑：
 
 ![Edit](assets/edit-json-light.png#gh-light-mode-only)
 
@@ -144,13 +164,7 @@ WinRAR不是免费软件。如果你想使用它，你应当向 [__RARLAB__](htt
 
 修改完成之后，点击 **Commit changes** 按钮，Github Actions 会自动开始执行。
 
-如果 Github Actions 未自动开始，你需要先点击 Actions 页面 **允许此 workflows 运行**，然后再次修改并提交 `keygen/info.json` 。
-
-![Workflow](assets/enable-workflows-light.png#gh-light-mode-only)
-
-![Workflow](assets/enable-workflows-dark.png#gh-dark-mode-only)
-
-### 5.3 下载文件
+### 5.4 下载文件
 
 进入 **Actions** 并选择 **WinRAR Keygen** 页面查看程序运行状况：
 
@@ -166,7 +180,7 @@ WinRAR不是免费软件。如果你想使用它，你应当向 [__RARLAB__](htt
 
 将 `rarreg_file.zip` 解压缩后会得到 `rarreg.key`，然后拖动导入 WinRAR 即可。你也可以将 `rarreg.key` 压缩成 `rarkey.rar`，然后双击运行，授权导入将会自动进行。
 
-如果你得到的是 key 是无效的，请查看 [解决方法](#7-无效的key)。
+如果你得到的是 key 是无效的，请查看 [解决方法](#7-无效的-Key)。
 
 </details>
 
@@ -251,11 +265,11 @@ de3cdc56b311475b484e80b48157a0c3af60ca4f7f9c75d49bc50d
 
 </details>
 
-## 7. 无效的Key
+## 7. 无效的 Key
 
 为什么我生成的 `rarreg.key` 是无效的？
 
-### 7.1 ANSI编码
+### 7.1 ANSI 编码
 
 `test1` 以及 `test2` 生成的许可文本，均是 **ANSI 编码，目前已经支持空格** [Issues #5](https://github.com/bitcookies/winrar-keygen/issues/5)。
 
@@ -265,7 +279,7 @@ winrar-keygen.exe <text1> <text2>
 
 具体可参考原理文档：[授权文件"rarreg.key"的生成](https://github.com/bitcookies/winrar-keygen/blob/master/README.HOW_DOES_IT_WORK.zh-CN.md#7-%E6%8E%88%E6%9D%83%E6%96%87%E4%BB%B6rarregkey%E7%9A%84%E7%94%9F%E6%88%90)
 
-### 7.2 TXT编码
+### 7.2 TXT 编码
 
 如果你使用了如下命令：
 
@@ -281,7 +295,7 @@ winrar-keygen.exe "Github" "Github.com" > rarreg.key
 winrar-keygen.exe "Github" "Github.com" | Out-File -Encoding ASCII rarreg.key
 ```
 
-### 7.3 Key的位置
+### 7.3 Key 的位置
 
 如果你无法执行拖动操作，你可以尝试把 `rarreg.key` 放在以下目录中：
 
