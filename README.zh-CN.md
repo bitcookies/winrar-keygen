@@ -91,7 +91,7 @@ WinRAR 不是免费软件。如果你想使用它，你应当向 [__RARLAB__](ht
 
 ### 4.4 运行 Workflow
 
-进入 **Actions** 并选择 **WinRAR Keygen Secrets  >  Run workflow > Run workflow ** 来手动执行 Workflow：
+进入 **Actions** 并选择 **WinRAR Keygen Secrets  >  Run workflow > Run workflow** 来手动执行 Workflow：
 
 ![Run](assets/run-workflow-light.png#gh-light-mode-only)
 
@@ -218,8 +218,8 @@ WinRAR 不是免费软件。如果你想使用它，你应当向 [__RARLAB__](ht
 
 ### 6.2 编译
 
-1. 在 __Visual Studio__ 中打开这个项目。
-2. 选择 `Release` 配置。
+1. 在 __Visual Studio__ 中打开这个项目；
+2. 选择 `Release` 配置；
 3. 选择 __生成 > 生成解决方案__。
 
 你将在 `bin/` 目录下看到生成的文件。
