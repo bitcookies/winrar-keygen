@@ -2,7 +2,6 @@
 .pdb
 .vs/
 obj/
-bin/
 
 # Windows image file caches
 Thumbs.db
