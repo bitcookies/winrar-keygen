@@ -1,0 +1,107 @@
+name: WinRAR Keygen
+on: 
+  workflow_dispatch:
+    inputs:
+      KEY_ENCODING:
+        type: string
+        description: License encoding ascii, ansi or utf8
+        default: 'utf8'
+        required: true
+
+      KEY_USERNAME:
+        type: string
+        description: Input your username
+        required: true
+        
+      KEY_LICENSE_NAME:
+        type: string
+        description: Input your license name
+        default: 'Single PC usage license'
+        required: true
+
+jobs:
+  keygen-ascii:
+    name: Generating ASCII License
+    runs-on: windows-2022
+    env:
+      KEY_ENCODING: ${{ github.event.inputs.KEY_ENCODING }}
+      KEY_USERNAME: ${{ github.event.inputs.KEY_USERNAME }}
+      KEY_LICENSE_NAME: ${{ github.event.inputs.KEY_LICENSE_NAME }}
+    if: github.event.inputs.KEY_ENCODING == 'ascii'
+
+    steps:
+    - uses: actions/checkout@v4.1.5
+    
+    - name: Generating License (ASCII)
+      # Do Not Use pwsh
+      shell: powershell
+      run: |
+        $OutputEncoding = [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
+        $PSVersionTable.PSVersion
+        bin/x64-Release/winrar-keygen.exe "${{env.KEY_USERNAME}}" "${{env.KEY_LICENSE_NAME}}" | Out-File -Encoding ${{env.KEY_ENCODING}} rarreg.key
+
+    - name: Uploading License
+      uses: actions/upload-artifact@v4.3.3
+      with:
+        name: rarreg_file_${{env.KEY_ENCODING}}
+        path: rarreg.key
+        if-no-files-found: error
+        retention-days: 90
+
+
+  keygen-ansi:
+    name: Generating ANSI License
+    runs-on: windows-2022
+    env:
+      KEY_ENCODING: ${{ github.event.inputs.KEY_ENCODING }}
+      KEY_USERNAME: ${{ github.event.inputs.KEY_USERNAME }}
+      KEY_LICENSE_NAME: ${{ github.event.inputs.KEY_LICENSE_NAME }}
+    if: github.event.inputs.KEY_ENCODING == 'ansi'
+
+    steps:
+    - uses: actions/checkout@v4.1.5
+    
+    - name: Generating License (ANSI)
+      shell: pwsh
+      run: |
+        $OutputEncoding = [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
+        $OutputEncoding
+        bin/x64-Release/winrar-keygen.exe "${{env.KEY_USERNAME}}" "${{env.KEY_LICENSE_NAME}}"
+        bin/x64-Release/winrar-keygen.exe "${{env.KEY_USERNAME}}" "${{env.KEY_LICENSE_NAME}}" | Out-File -Encoding ${{env.KEY_ENCODING}} rarreg.key
+
+    - name: Uploading License
+      uses: actions/upload-artifact@v4.3.3
+      with:
+        name: rarreg_file_${{env.KEY_ENCODING}}
+        path: rarreg.key
+        if-no-files-found: error
+        retention-days: 90
+
+
+  keygen-uft8:
+    name: Generating UTF8 License
+    runs-on: windows-2022
+    env:
+      KEY_ENCODING: ${{ github.event.inputs.KEY_ENCODING }}
+      KEY_USERNAME: ${{ github.event.inputs.KEY_USERNAME }}
+      KEY_LICENSE_NAME: ${{ github.event.inputs.KEY_LICENSE_NAME }}
+    if: github.event.inputs.KEY_ENCODING == 'utf8'
+
+    steps:
+    - uses: actions/checkout@v4.1.5
+
+    - name: Generating License (UTF-8)
+      # Do Not Use pwsh
+      shell: powershell
+      run: |
+        $OutputEncoding = [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
+        $PSVersionTable.PSVersion
+        bin/x64-Release/winrar-keygen.exe "utf8:${{env.KEY_USERNAME}}" "${{env.KEY_LICENSE_NAME}}" | Out-File -Encoding ${{env.KEY_ENCODING}} rarreg.key
+      
+    - name: Uploading License
+      uses: actions/upload-artifact@v4.3.3
+      with:
+        name: rarreg_file_${{env.KEY_ENCODING}}
+        path: rarreg.key
+        if-no-files-found: error
+        retention-days: 90
