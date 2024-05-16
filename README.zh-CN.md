@@ -319,7 +319,7 @@ winrar-keygen.exe "utf8:한국어" "license" | Out-File -Encoding utf8 rarreg.ke
 
 参数 `TEXT1` 和 `TEXT2` 需要满足[对应的编码要求](#4-编码说明)：
 
-```shell
+```console
 winrar-keygen.exe <TEXT1> <TEXT2>
 ```
 

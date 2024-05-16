@@ -49,8 +49,8 @@ There are several ways to use it:
 
 WinRAR Keygen supports `ASCII`, `ANSI` and `UTF-8` encoding types, the following is a brief description of the three encoding types.
 
-> [WARNING]
-> It is recommended that you do not use the ANSI encoding method for the time being, as there are garbled PowerShell console characters for Chinese, Japanese, and Korean on Windows Server 2022 [Microsoft is working on a fix for this issue](https://learn.microsoft.com/en-us/troubleshoot/ windows-server/system-management-components/powershell-shell-characters-garbled-for-cjk-languages).
+> [!WARNING]
+> It is recommended that you do not use the ANSI encoding method for the time being, as there are garbled PowerShell console characters for Chinese, Japanese, and Korean on Windows Server 2022 [Microsoft is working on a fix for this issue](https://learn.microsoft.com/en-us/troubleshoot/windows-server/system-management-components/powershell-shell-characters-garbled-for-cjk-languagess).
 
 | Encoding                                     | Instruction                                                  | Supported Characters                                         |
 | -------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -325,7 +325,7 @@ Why is my `rarreg.key` invalid?
 
 `TEXT1` and `TEXT2` are required to fulfill [corresponding coding requirements](#4 - coding description).
 
-```shell
+```console
 winrar-keygen.exe <TEXT1> <TEXT2>
 ```
 
