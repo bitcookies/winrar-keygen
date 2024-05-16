@@ -42,12 +42,15 @@ See [here](README.HOW_DOES_IT_WORK.md).
 There are several ways to use it:
 
 - [Use Github Actions](#6-Use-Github-Actions) 
-- [Use Github Actions with Push](#7-Use-Github-Actions-with-secrets)
+- [Use Github Actions with secrets](#7-Use-Github-Actions-with-secrets)
 - [Build in Visual Studio](#8-Build-in-Visual-Studio)
 
 ## 4. Encoding
 
-WinRAR Keygen supports `ASCII`, `ANSI` and `UTF-8` encoding types, the following is a brief description of the three encoding types:
+WinRAR Keygen supports `ASCII`, `ANSI` and `UTF-8` encoding types, the following is a brief description of the three encoding types.
+
+> [WARNING]
+> It is recommended that you do not use the ANSI encoding method for the time being, as there are garbled PowerShell console characters for Chinese, Japanese, and Korean on Windows Server 2022 [Microsoft is working on a fix for this issue](https://learn.microsoft.com/en-us/troubleshoot/ windows-server/system-management-components/powershell-shell-characters-garbled-for-cjk-languages).
 
 | Encoding                                     | Instruction                                                  | Supported Characters                                         |
 | -------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -59,10 +62,10 @@ WinRAR Keygen supports `ASCII`, `ANSI` and `UTF-8` encoding types, the following
 
 There are two types of WinRAR licenses, `rarreg.key` and `rarkey.rar`, which differ only in their import.
 
-| <img width="60px">rarreg.key<img width="60px"> |  <img width="60px">rarkey.rar<img width="60px">  |
+|                   rarreg.key                   |                    rarkey.rar                    |
 | :--------------------------------------------: | :----------------------------------------------: |
 | <img width="100px" src="assets/file-icon.svg"> | <img width="100px" src="assets/winrar-icon.svg"> |
-| Drag to import or place in a specific location |       Double-click to run automatic import       |
+|     Drag to import or place in a location      |       Double-click to run automatic import       |
 
 ## 6. Use Github Actions
 
@@ -89,7 +92,7 @@ Go back to the repo you just forked and click **Actions** to allow Workflows to 
 
 ![Workflow](assets/enable-workflows-dark.png#gh-dark-mode-only)
 
-### 6.3 Run WinRAR Keygen
+### 6.3 Run workflow
 
 After allowing the workflow, go to **Actions > WinRAR Keygen > Run workflow** and fill in the information to start generating.
 

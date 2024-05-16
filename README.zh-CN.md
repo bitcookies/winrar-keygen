@@ -92,7 +92,7 @@ WinRAR license 有 `rarreg.key` 和 `rarkey.rar` 两种类型，它们仅在导�
 
 ![Workflow](assets/enable-workflows-dark.png#gh-dark-mode-only)
 
-### 6.3 运行 WinRAR Keygen
+### 6.3 运行 workflow
 
 允许 workflow 后，选择 **WinRAR Keygen > Run workflow** 并填入信息就可以开始生成了：
 
@@ -167,7 +167,7 @@ WinRAR license 有 `rarreg.key` 和 `rarkey.rar` 两种类型，它们仅在导�
 
 ![Secrets Repo](assets/secrets-repo-dark.png#gh-dark-mode-only)
 
-### 7.4 运行 Workflow
+### 7.4 运行 workflow
 
 进入 **Actions** 选择 **WinRAR Keygen with secrets  >  Run workflow** 并填入信息：
 
