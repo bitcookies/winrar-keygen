@@ -50,7 +50,7 @@ WinRAR 不是免费软件。如果你想使用它，你应当向 [__RARLAB__](ht
 WinRAR Keygen 支持 `ASCII`、`ANSI` 和 `UTF-8` 三种编码类型，以下是三种编码的简单说明：
 
 > [!WARNING]
-> 建议暂时先不要使用 ANSI 编码方式，因为在 Windows Server 2022 上中文、日语和韩语的 PowerShell 控制台字符会出现乱码问题，[微软正在修复该问题](https://learn.microsoft.com/en-us/troubleshoot/windows-server/system-management-components/powershell-shell-characters-garbled-for-cjk-languages)。
+> 建议暂时先不要使用 ANSI 编码方式，因为在 Windows Server 2022 上中文、日语和韩语的 PowerShell 控制台字符会出现乱码问题，[微软正在修复该问题](https://learn.microsoft.com/en-us/troubleshoot/windows-server/system-management-components/powershell-console-characters-garbled-for-cjk-languages)。
 
 | 编码                                         | 说明                                                         | 支持的字符                                            |
 | -------------------------------------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
