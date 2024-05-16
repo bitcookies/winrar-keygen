@@ -312,4 +312,3 @@ public:
         return Point(*this, pbX, cbX, pbY, cbY);
     }
 };
-

@@ -9,14 +9,10 @@
 void Help() {
     _putts(TEXT("Please use the following command:\n"));
     _putts(TEXT("Usage:"));
-    _putts(TEXT("        winrar-keygen.exe <Your Name> <Your License>"));
+    _putts(TEXT("        winrar-keygen.exe <Username> <License Name>"));
     _putts(TEXT(""));
     _putts(TEXT("Example:"));
-    _putts(TEXT("        winrar-keygen.exe \"Github\" \"Github.com\"\n"));
-    _putts(TEXT("  or:"));
-    _putts(TEXT("        winrar-keygen.exe \"Github\" \"Github.com\" > rarreg.key\n"));
-    _putts(TEXT("  or:"));
-    _putts(TEXT("        winrar-keygen.exe \"Github\" \"Github.com\" | Out-File -Encoding ASCII rarreg.key\n"));
+    _putts(TEXT("        winrar-keygen.exe \"Github\" \"Single PC usage license\"\n"));
 }
 
 void PrintRegisterInfo(const WinRarKeygen<WinRarConfig>::RegisterInfo& Info) {
@@ -73,4 +69,3 @@ int _tmain(int argc, PTSTR argv[]) {
     }
     return 0;
 }
-
