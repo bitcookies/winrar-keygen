@@ -266,7 +266,7 @@ Example:
 
 Now you can see the newly generated file.
 
-```shell
+```console
 RAR registration data
 Github
 Single PC usage license
@@ -286,7 +286,7 @@ Save the generated information in **ANSI encoding** as `rarreg.key`.
 
 Execute the following code in the terminal and configure two paramet
 
-When using ANSI encoding, you can only use characters from the country or region where your operating system is located. ANSI encoding is supported from Powershell 7.4 onwards, and you will also need to [upgrade your Powershell](https://learn.microsoft.com/en-us/powershell/ scripting/install/installing-powershell-on-windows?view=powershell-7.4).
+When using ANSI encoding, you can only use characters from the country or region where your operating system is located. ANSI encoding is supported from Powershell 7.4 onwards, and you will also need to [upgrade your Powershell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4).
 
 Generate multi-language licenses in ANSI encoding.
 
@@ -330,7 +330,7 @@ winrar-keygen.exe "utf8:한국어" "license" | Out-File -Encoding utf8 rarreg.ke
 
 Why is my `rarreg.key` invalid?
 
-### 9.1 Incorrect encoding
+### 9.1 Character encoding
 
 `TEXT1` and `TEXT2` are required to fulfill [corresponding coding requirements](#4 - coding description).
 
@@ -340,7 +340,7 @@ winrar-keygen.exe <TEXT1> <TEXT2>
 
 You can refer to: [Generation of "rarreg.key"](https://github.com/bitcookies/winrar-keygen/blob/master/README.HOW_DOES_IT_WORK.md#7-generation-of-rarregkey)
 
-### 9.2 Key encoding
+### 9.2 Text encoding
 
 If you use the following command:
 
@@ -353,7 +353,11 @@ In the newer Windows 10, PowerShell will export in **UTF16-LE** format by defaul
 Please use the following command:
 
 ```shell
-winrar-keygen.exe "Github" "Github.com" | Out-File -Encoding ASCII rarreg.key
+winrar-keygen.exe "Github" "Github.com" | Out-File -Encoding ascii rarreg.key
+
+winrar-keygen.exe "Github" "Github.com" | Out-File -Encoding ansi rarreg.key
+
+winrar-keygen.exe "utf8:Github" "Github.com" | Out-File -Encoding utf8 rarreg.key
 ```
 
 ## 10. Contributing

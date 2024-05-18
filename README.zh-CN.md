@@ -129,7 +129,7 @@ C:\Users\yourname\AppData\Roaming\WinRAR\rarreg.key
 <details>
 <summary>点击展开</summary>
 
-使用 [Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) 可以帮助你隐藏 license 信息。
+使用 [secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) 可以帮助你隐藏 license 信息。
 
 ### 7.1 Fork
 
@@ -261,7 +261,7 @@ Example:
 
 现在你可以看到新生成的文件：
 
-```shell
+```console
 RAR registration data
 Github
 Single PC usage license
@@ -323,7 +323,7 @@ winrar-keygen.exe "utf8:한국어" "license" | Out-File -Encoding utf8 rarreg.ke
 
 为什么我生成的 `rarreg.key` 是无效的？
 
-### 9.1 编码不正确
+### 9.1 字符编码不正确
 
 参数 `TEXT1` 和 `TEXT2` 需要满足[对应的编码要求](#4-编码说明)：
 
@@ -333,7 +333,7 @@ winrar-keygen.exe <TEXT1> <TEXT2>
 
 具体可参考原理文档：[授权文件"rarreg.key"的生成](https://github.com/bitcookies/winrar-keygen/blob/master/README.HOW_DOES_IT_WORK.zh-CN.md#7-%E6%8E%88%E6%9D%83%E6%96%87%E4%BB%B6rarregkey%E7%9A%84%E7%94%9F%E6%88%90)
 
-### 9.2 文件储存编码
+### 9.2 文本储存编码不正确
 
 如果你使用了如下命令：
 
@@ -346,7 +346,11 @@ winrar-keygen.exe "Github" "Single PC usage license" > rarreg.key
 请指定输出编码格式，例如：
 
 ```shell
-winrar-keygen.exe "Github" "Github.com" | Out-File -Encoding ASCII rarreg.key
+winrar-keygen.exe "Github" "Github.com" | Out-File -Encoding ascii rarreg.key
+
+winrar-keygen.exe "Github" "Github.com" | Out-File -Encoding ansi rarreg.key
+
+winrar-keygen.exe "utf8:Github" "Github.com" | Out-File -Encoding utf8 rarreg.key
 ```
 
 ### 9.3 关于简体中文版
