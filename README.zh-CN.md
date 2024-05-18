@@ -50,13 +50,13 @@ WinRAR 不是免费软件。如果你想使用它，你应当向 [__RARLAB__](ht
 WinRAR Keygen 支持 `ASCII`、`ANSI` 和 `UTF-8` 三种编码类型，以下是三种编码的简单说明：
 
 > [!WARNING]
-> 建议暂时先不要使用 ANSI 编码方式，因为在 Windows Server 2022 上中文、日语和韩语的 PowerShell 控制台字符会出现乱码问题，[微软正在修复该问题](https://learn.microsoft.com/en-us/troubleshoot/windows-server/system-management-components/powershell-console-characters-garbled-for-cjk-languages)。
+> 建议暂时不要用 ANSI 编码方式生成非 ASCII 字符的 license，因为在 Windows Server 2022 上中文、日语和韩语的 PowerShell 控制台字符会出现乱码问题，[该问题微软正在修复](https://learn.microsoft.com/en-us/troubleshoot/windows-server/system-management-components/powershell-console-characters-garbled-for-cjk-languages)。
 
 | 编码                                         | 说明                                                         | 支持的字符                                            |
 | -------------------------------------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | [ASCII](https://en.wikipedia.org/wiki/ASCII) | 单字节编码，只使用最下面的 7 位，没有重音符号等              | 仅支持 ASCII 字符                                     |
 | ANSI                                         | 没有一种固定的 ANSI 编码。通常说的 ANSI 是指 “系统默认的本地/代码页”，它通过 [Encoding.Default](http://msdn.microsoft.com/en-us/library/system.text.encoding.default.aspx) 获得，通常是 [Windows-1252](http://en.wikipedia.org/wiki/Windows-1252)，但也可以是其他本地 | 仅支持 ASCII 字符和您操作系统所设国家或地区的语言编码 |
-| [UTF8](https://en.wikipedia.org/wiki/UTF-8)  | 可变长度编码，每个码位 1-4 个字节。ASCII 值用 1 个字节编码为 ASCII | 支持 UTF-8 编码字符                                   |
+| [UTF8](https://en.wikipedia.org/wiki/UTF-8)  | 可变长度编码，每个码位 1-4 个字节（ASCII 值用 1 个字节编码为 ASCII） | 支持 UTF-8 编码字符                                   |
 
 ## 5. License 类型
 
@@ -67,6 +67,14 @@ WinRAR license 有 `rarreg.key` 和 `rarkey.rar` 两种类型，它们仅在导�
 | <img width="100px" src="assets/file-icon.svg"> | <img width="100px" src="assets/winrar-icon.svg"> |
 |             拖动导入或放于指定位置             |                 双击运行自动导入                 |
 
+如果你无法执行拖动操作，你可以尝试把 `rarreg.key` 放置与以下目录中：
+
+```shell
+C:\Users\yourname\AppData\Roaming\WinRAR\rarreg.key
+```
+
+你也可以将 `rarreg.key` 压缩成 `rarkey.rar` 然后双击运行，授权导入将会自动进行。
+
 ## 6. 使用 Github Actions
 
 <details>
@@ -74,7 +82,7 @@ WinRAR license 有 `rarreg.key` 和 `rarkey.rar` 两种类型，它们仅在导�
 
 新的 workflow 能很方便的帮助你生成 license，你只需跟随以下步骤即可：
 
-> 你的 Username 和 License Name 会出现在 Actions 日志中，如果你不想泄露这些信息，请参考 [7. 使用 Github Actions with secrets](#7-使用-Github-Actions-with-secrets)。
+> 你的 `Username` 和 `License Name` 会出现在 actions 日志中，如果你不想泄露这些信息，请参考 [7. 使用 Github Actions with secrets](#7-使用-Github-Actions-with-secrets)。
 
 ### 6.1 Fork
 
@@ -151,11 +159,11 @@ WinRAR license 有 `rarreg.key` 和 `rarkey.rar` 两种类型，它们仅在导�
 
 > 填入的值应与你选择的编码类型保持一致。
 
-| Secrets Name | Explanation |
-| ------------ | ----------- |
-| TEXT1        | 用户名      |
-| TEXT2        | 许可名      |
-| PWD          | 压缩包密码  |
+| Secrets Name<img width="120px"> | Explanation<img width="120px"> |
+| ------------------------------- | ------------------------------ |
+| TEXT1                           | 用户名                         |
+| TEXT2                           | 许可名                         |
+| PWD                             | 压缩包密码                     |
 
 ![Add Secrets](assets/secrets-add-light.png#gh-light-mode-only)
 
@@ -289,7 +297,7 @@ winrar-keygen.exe "日本語" "license" | Out-File -Encoding ansi rarreg.key
 winrar-keygen.exe "한국어" "license" | Out-File -Encoding ansi rarreg.key
 ```
 
-使用 UTF-8 编码生成多语言的 license 时，你可能需要在 “控制面板 > 时钟和区域 > 区域 > 管理 > 更改系统区域设置 ” 中勾选使用 “Beta版:使用Unicode UTF-8提供全球语言支持” 才能正确的处理数据。但是不建议你这么操作，这可能会导致很多软件无法正常运行，建议[使用 Github Actions](#6-使用-Github-Actions)。
+使用 UTF-8 编码生成多语言的 license 时，你可能需要在 “控制面板 > 时钟和区域 > 区域 > 管理 > 更改系统区域设置 ” 中勾选使用 “[Beta版:使用Unicode UTF-8提供全球语言支持](https://stackoverflow.com/a/57134096/10242225)” 才能正确的处理数据。但是不建议你这么操作，这可能会导致很多软件无法正常运行，建议[使用 Github Actions](#6-使用-Github-Actions)。
 
 用 UTF-8 编码生成多语言的 license：
 
@@ -341,17 +349,7 @@ winrar-keygen.exe "Github" "Single PC usage license" > rarreg.key
 winrar-keygen.exe "Github" "Github.com" | Out-File -Encoding ASCII rarreg.key
 ```
 
-### 9.3 Key 的位置
-
-如果你无法执行拖动操作，你可以尝试把 `rarreg.key` 放置与以下目录中：
-
-```shell
-C:\Users\yourname\AppData\Roaming\WinRAR\rarreg.key
-```
-
-你也可以将 `rarreg.key` 压缩成 `rarkey.rar` 然后双击运行，授权导入将会自动进行。
-
-### 9.4 关于简体中文版
+### 9.3 关于简体中文版
 
 在 [__RARLAB__](https://www.rarlab.com/) 下载的简体中文版 WinRAR 将会自带广告组件，即使使用了 `rarreg.key` 授权，广告组件依旧会出现。这是由于简体中文代理商的一些意见，RARLAB 已将简体中文安装包的公开链接更换成了带有广告的简体中文安装包。
 

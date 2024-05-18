@@ -50,7 +50,8 @@ There are several ways to use it:
 WinRAR Keygen supports `ASCII`, `ANSI` and `UTF-8` encoding types, the following is a brief description of the three encoding types.
 
 > [!WARNING]
-> It is recommended that you do not use the ANSI encoding method for the time being, as there are garbled PowerShell console characters for Chinese, Japanese, and Korean on Windows Server 2022 [Microsoft is working on a fix for this issue](https://learn.microsoft.com/en-us/troubleshoot/windows-server/system-management-components/powershell-console-characters-garbled-for-cjk-languages).
+> It is recommended that you do not generate licenses with non-ASCII characters in ANSI encoding for the time being, as there is a problem with garbled PowerShell console characters for Chinese, Japanese, and Korean on Windows Server 2022, [which is being fixed by Microsoft](https://learn.microsoft.com/en-us/troubleshoot/windows-server/system-management-components/powershell-console-characters-garbled-for-cjk-languages).
+>
 
 | Encoding                                     | Instruction                                                  | Supported Characters                                         |
 | -------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -67,6 +68,14 @@ There are two types of WinRAR licenses, `rarreg.key` and `rarkey.rar`, which dif
 | <img width="100px" src="assets/file-icon.svg"> | <img width="100px" src="assets/winrar-icon.svg"> |
 |     Drag to import or place in a location      |       Double-click to run automatic import       |
 
+If you are unable to drag, you can try to put the `rarreg.key` in the following directory.
+
+```shell
+C:\Users\yourname\AppData\Roaming\WinRAR\rarreg.key
+```
+
+You can also compress `rarreg.key` into `rarkey.rar` and double-click it to run it, and the license import will take place automatically.
+
 ## 6. Use Github Actions
 
 <details>
@@ -74,7 +83,7 @@ There are two types of WinRAR licenses, `rarreg.key` and `rarkey.rar`, which dif
 
 The new workflow can easily help you generate a license, you just need to follow these steps.
 
-> Your Username and License Name will appear in the Actions log, if you don't want to give out this information, see [7. Using Github Actions with secrets](#7-Use-Github-Actions-with-secrets).
+> Your `Username` and `License Name` will appear in the actions log, if you don't want to give out this information, see [7. Using Github Actions with secrets](#7-Use-Github-Actions-with-secrets).
 
 ### 6.1 Fork
 
@@ -104,13 +113,13 @@ After allowing the workflow, go to **Actions > WinRAR Keygen > Run workflow** an
 
 After running successfully, open the corresponding task and select **rarreg_file** to download.
 
-> Files are retained for 90 days and are automatically destroyed after that time.
+> File retention 90 days.
 
 ![Download](assets/file-download-light.png#gh-light-mode-only)
 
 ![Download](assets/file-download-dark.png#gh-dark-mode-only)
 
-After extract `rarreg_file.zip`, you will get `rarreg.key`, just drag and drop it into WinRAR. You can also compress `rarreg.key` into `rarkey.rar` and double-click it to run it, and the license import will take place automatically.
+Extract rarreg_file.zip to get `rarreg.key` and drag to import into WinRAR. You can also compress `rarreg.key` into `rarkey.rar`, then double-click it to run it, and the license import will be done automatically.
 
 If you get an invalid key, please check [the specific solution](#9-invalid-key).
 
@@ -121,7 +130,7 @@ If you get an invalid key, please check [the specific solution](#9-invalid-key).
 <details>
 <summary>Click to expand</summary>
 
-Using [Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) can help you hide license information.
+Using [secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) can help you hide license information.
 
 ### 7.1 Fork
 
@@ -151,11 +160,11 @@ Create three Secrets with the names `TEXT1`, `TEXT2` and `PWD` and fill in the r
 
 > The value filled in should be consistent with the type of code you have chosen.
 
-| Secrets Name | Explanation       |
-| ------------ | ----------------- |
-| TEXT1        | Your Name         |
-| TEXT2        | Your License Name |
-| PWD          | 7-Zip Password    |
+| Secrets Name<img width="120px"> | Explanation<img width="120px"> |
+| ------------------------------- | ------------------------------ |
+| TEXT1                           | Your Name                      |
+| TEXT2                           | Your License Name              |
+| PWD                             | 7-Zip Password                 |
 
 ![Add Secrets](assets/secrets-add-light.png#gh-light-mode-only)
 
@@ -169,7 +178,7 @@ Once created, you will see it.
 
 ### 7.4 Run workflow
 
-Go to **Actions** and select **WinRAR Keygen Secrets** to run Workflow manually.
+Go to **Actions** and select **WinRAR Keygen with secrets** to run workflow manually.
 
 For the difference of license encoding, please refer to [4. Encoding](#4-Encoding).
 
@@ -179,13 +188,13 @@ For the difference of license encoding, please refer to [4. Encoding](#4-Encodin
 
 After running successfully, open the corresponding task and select **rarreg_file** to download.
 
-> The file will only be available for **1 day**, so please download it in time.
+> File retained for **1 day** only.
 
 ![Download](assets/file-download-light.png#gh-light-mode-only)
 
 ![Download](assets/file-download-dark.png#gh-dark-mode-only)
 
-After extract `rarreg_file.zip`, you will get `rarreg.key`, just drag and drop it into WinRAR. You can also compress `rarreg.key` into `rarkey.rar` and double-click it to run it, and the license import will take place automatically.
+Extract rarreg_file.zip to get `rarreg.7z`, unzip it with the password to get `rarreg.key`, then drag and drop to import into WinRAR. You can also compress `rarreg.key` into `rarkey.rar`, then double-click it to run it, and the license import will be done automatically.
 
 If you get an invalid key, please check [the specific solution](#9-invalid-key).
 
@@ -295,7 +304,7 @@ winrar-keygen.exe "日本語" "license" | Out-File -Encoding ansi rarreg.key
 winrar-keygen.exe "한국어" "license" | Out-File -Encoding ansi rarreg.key
 ```
 
-When generating utf-8 licenses, you may need to check Use ***Beta:Use Unicode UTF-8 for global language support*** in **Control Panel > Clock and Regions > Regions > Administration > Change System Region Settings** in order to process the data correctly. However, it is not recommended that you do this, which may cause many software to not work properly, and it is recommended to [Use Github Actions](#6-Use-Github-Actions).
+When generating utf-8 licenses, you may need to check Use ***[Beta:Use Unicode UTF-8 for global language support](https://stackoverflow.com/a/57134096/10242225)*** in **Control Panel > Clock and Regions > Regions > Administration > Change System Region Settings** in order to process the data correctly. However, it is not recommended that you do this, which may cause many software to not work properly, and it is recommended to [Use Github Actions](#6-Use-Github-Actions).
 
 Generate multi-language licenses with UTF-8 encoding.
 
@@ -346,16 +355,6 @@ Please use the following command:
 ```shell
 winrar-keygen.exe "Github" "Github.com" | Out-File -Encoding ASCII rarreg.key
 ```
-
-### 9.3 Location of key
-
-If you are unable to drag, you can try to put the `rarreg.key` in the following directory.
-
-```shell
-C:\Users\yourname\AppData\Roaming\WinRAR\rarreg.key
-```
-
-You can also compress `rarreg.key` into `rarkey.rar` and double-click it to run it, and the license import will take place automatically.
 
 ## 10. Contributing
 
