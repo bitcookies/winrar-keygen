@@ -39,27 +39,26 @@ See [here](README.HOW_DOES_IT_WORK.md).
 
 ## 3. How to use?
 
-There are several ways to use it:
+There are several ways to use it.
 
-- [Use Github Actions](#6-Use-Github-Actions) 
-- [Use Github Actions with secrets](#7-Use-Github-Actions-with-secrets)
-- [Build in Visual Studio](#8-Build-in-Visual-Studio)
+- [Use Github Actions](#4-Use-Github-Actions) 
+- [Use Github Actions with secrets](#5-Use-Github-Actions-with-secrets)
+- [Build in Visual Studio](#6-Build-in-Visual-Studio)
 
-## 4. Encoding
+### 3.1 Encoding
 
-WinRAR Keygen supports `ASCII`, `ANSI` and `UTF-8` encoding types, the following is a brief description of the three encoding types.
+WinRAR Keygen supports `ASCII`, `ANSI` and `UTF-8` encoding types, the corresponding supported characters are listed in the table below.
 
-> [!WARNING]
-> It is recommended that you do not generate licenses with non-ASCII characters in ANSI encoding for the time being, as there is a problem with garbled PowerShell console characters for Chinese, Japanese, and Korean on Windows Server 2022, [which is being fixed by Microsoft](https://learn.microsoft.com/en-us/troubleshoot/windows-server/system-management-components/powershell-console-characters-garbled-for-cjk-languages).
->
+> [!NOTE]
+> The default is `utf8`, but you can specify the encoding as `ascii` or `ansi`.
 
-| Encoding                                     | Instruction                                                  | Supported Characters                                         |
+| Encoding                                     | Supported Characters                                         | Character Examples                                           |
 | -------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [ASCII](https://en.wikipedia.org/wiki/ASCII) | Single byte encoding only using the bottom 7 bits. (Unicode code points 0-127.) No accents etc. | Only full ASCII characters are supported.                    |
-| ANSI                                         | There's no one fixed ANSI encoding - there are lots of them. Usually when people say "ANSI" they mean "the default locale/codepage for my system" which is obtained via [Encoding.Default](http://msdn.microsoft.com/en-us/library/system.text.encoding.default.aspx), and is often [Windows-1252](http://en.wikipedia.org/wiki/Windows-1252) but can be other locales. | Only full ASCII characters and the language of your operating system are supported. |
-| [UTF-8](https://en.wikipedia.org/wiki/UTF-8) | Variable length encoding, 1-4 bytes per code point. ASCII values are encoded as ASCII using 1 byte. | Support full UTF8 encoded characters.                        |
+| [ASCII](https://en.wikipedia.org/wiki/ASCII) | Only full ASCII characters are supported.                    | <img width="300px" src="assets/ascii-characters-light.svg#gh-light-mode-only"><img width="300px" src="assets/ascii-characters-dark.svg#gh-dark-mode-only"> |
+| ANSI                                         | There is no one fixed ANSI code, usually [Windows-1252](https://en.wikipedia.org/wiki/Windows-1252), but other local codes are also possible. | <img width="300px" src="assets/windows-1252-characters-light.svg#gh-light-mode-only"><img width="300px" src="assets/windows-1252-characters-dark.svg#gh-dark-mode-only"> |
+| [UTF-8](https://en.wikipedia.org/wiki/UTF-8) | Support full UTF8 encoded characters.                        | ASCII characters, English, 简体中文, 繁體中文, Deutsch, Français, 日本語, 한국어, et al. |
 
-## 5. License type
+### 3.2 License type
 
 There are two types of WinRAR licenses, `rarreg.key` and `rarkey.rar`, which differ only in their import.
 
@@ -76,16 +75,16 @@ C:\Users\yourname\AppData\Roaming\WinRAR\rarreg.key
 
 You can also compress `rarreg.key` into `rarkey.rar` and double-click it to run it, and the license import will take place automatically.
 
-## 6. Use Github Actions
+## 4. Use Github Actions
 
 <details>
 <summary>Click to expand</summary>
 
 The new workflow can easily help you generate a license, you just need to follow these steps.
 
-> Your `Username` and `License Name` will appear in the actions log, if you don't want to give out this information, see [7. Using Github Actions with secrets](#7-Use-Github-Actions-with-secrets).
+> Your `Username` and `License Name` will appear in the actions log, if you don't want to give out this information, see [5. Using Github Actions with secrets](#5-Use-Github-Actions-with-secrets).
 
-### 6.1 Fork
+### 4.1 Fork
 
 **Fork** this repo.
 
@@ -93,7 +92,7 @@ The new workflow can easily help you generate a license, you just need to follow
 
 ![Fork](assets/fork-dark.png#gh-dark-mode-only)
 
-### 6.2 Allow fork repo to run workflows
+### 4.2 Allow fork repo to run workflows
 
 Go back to the repo you just forked and click **Actions** to allow Workflows to run in your forked repo.
 
@@ -101,11 +100,11 @@ Go back to the repo you just forked and click **Actions** to allow Workflows to 
 
 ![Workflow](assets/enable-workflows-dark.png#gh-dark-mode-only)
 
-### 6.3 Run workflow
+### 4.3 Run workflow
 
 After allowing the workflow, go to **Actions > WinRAR Keygen > Run workflow** and fill in the information to start generating.
 
-> For the difference of license encoding, please refer to [4. Encoding](#4-Encoding).
+> For the difference of license encoding, please refer to [3.1 Encoding](#31-Encoding).
 
 ![Secrets](assets/run-ketgen-light.png#gh-light-mode-only)
 
@@ -121,18 +120,18 @@ After running successfully, open the corresponding task and select **rarreg_file
 
 Extract rarreg_file.zip to get `rarreg.key` and drag to import into WinRAR. You can also compress `rarreg.key` into `rarkey.rar`, then double-click it to run it, and the license import will be done automatically.
 
-If you get an invalid key, please check [the specific solution](#9-invalid-key).
+If you get an invalid key, please check [the specific solution](#7-invalid-key).
 
 </details>
 
-## 7. Use Github Actions with secrets
+## 5. Use Github Actions with secrets
 
 <details>
 <summary>Click to expand</summary>
 
 Using [secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) can help you hide license information.
 
-### 7.1 Fork
+### 5.1 Fork
 
 **Fork** this repo.
 
@@ -140,7 +139,7 @@ Using [secrets](https://docs.github.com/en/actions/security-guides/encrypted-sec
 
 ![Fork](assets/fork-dark.png#gh-dark-mode-only)
 
-### 7.2 Allow fork repo to run Workflows
+### 5.2 Allow fork repo to run workflows
 
 Go back to the repo you just forked and click **Actions** to allow Workflows to run in your forked repo.
 
@@ -148,7 +147,7 @@ Go back to the repo you just forked and click **Actions** to allow Workflows to 
 
 ![Workflow](assets/enable-workflows-dark.png#gh-dark-mode-only)
 
-### 7.3 Create secrets
+### 5.3 Create secrets
 
 After allowing the workflow, go to **Settings > Secrets and variables > Actions > New repository secret** to create a secret.
 
@@ -156,7 +155,7 @@ After allowing the workflow, go to **Settings > Secrets and variables > Actions 
 
 ![Secrets](assets/secrets-dark.png#gh-dark-mode-only)
 
-Create three Secrets with the names `TEXT1`, `TEXT2` and `PWD` and fill in the relevant values.
+Create three secrets with the names `TEXT1`, `TEXT2` and `PWD` and fill in the relevant values.
 
 > The value filled in should be consistent with the type of code you have chosen.
 
@@ -176,11 +175,11 @@ Once created, you will see it.
 
 ![Secrets Repo](assets/secrets-repo-dark.png#gh-dark-mode-only)
 
-### 7.4 Run workflow
+### 5.4 Run workflow
 
 Go to **Actions** and select **WinRAR Keygen with secrets** to run workflow manually.
 
-For the difference of license encoding, please refer to [4. Encoding](#4-Encoding).
+For the difference of license encoding, please refer to [3.1 Encoding](#31-Encoding).
 
 ![Run](assets/run-workflow-light.png#gh-light-mode-only)
 
@@ -194,13 +193,13 @@ After running successfully, open the corresponding task and select **rarreg_file
 
 ![Download](assets/file-download-dark.png#gh-dark-mode-only)
 
-Extract rarreg_file.zip to get `rarreg.7z`, unzip it with the password to get `rarreg.key`, then drag and drop to import into WinRAR. You can also compress `rarreg.key` into `rarkey.rar`, then double-click it to run it, and the license import will be done automatically.
+Extract `rarreg_file.zip` to get `rarreg.7z`, unzip it with the password to get `rarreg.key`, then drag and drop to import into WinRAR. You can also compress `rarreg.key` into `rarkey.rar`, then double-click it to run it, and the license import will be done automatically.
 
-If you get an invalid key, please check [the specific solution](#9-invalid-key).
+If you get an invalid key, please check [the specific solution](#7-invalid-key).
 
 </details>
 
-## 8. Build in Visual Studio
+## 6. Build in Visual Studio
 
 <details>
 <summary>Click to expand</summary>
@@ -209,7 +208,7 @@ I recommend using the Github Actions, but you can still do your own compilation.
 
 If you don't want to compile it yourself, you can also go to the [release](https://github.com/bitcookies/winrar-keygen/releases/) page to get `winrar-keygen.exe`.
 
-### 8.1 Prerequisites
+### 6.1 Prerequisites
 
 1. Please make sure that you have **Visual Studio 2022**. Because this is a VS2022 project. If you are still using Visual Studio 2019, you can find projects for VS2019 in the [vs2019](https://github.com/bitcookies/winrar-keygen/tree/vs2019) branch, but this branch will no longer be maintained.
 
@@ -234,7 +233,7 @@ If you don't want to compile it yourself, you can also go to the [release](https
    ```
    
 
-### 8.2 Build
+### 6.2 Build
 
 1. Open this project in __Visual Studio__.
 
@@ -244,7 +243,7 @@ If you don't want to compile it yourself, you can also go to the [release](https
 
 You will see executable files in `bin/` directory. 
 
-### 8.3 How to use?
+### 6.3 How to use?
 
 Execute the following code in the terminal and configure two parameters to generate `rarreg.key`.
 
@@ -282,7 +281,7 @@ dd4ab952600ba16a99236d910bfa995d5f60651ec451f462511507
 
 Save the generated information in **ANSI encoding** as `rarreg.key`.
 
-### 8.4 Multi-language support
+### 6.4 Multi-language support
 
 Execute the following code in the terminal and configure two paramet
 
@@ -304,7 +303,7 @@ winrar-keygen.exe "日本語" "license" | Out-File -Encoding ansi rarreg.key
 winrar-keygen.exe "한국어" "license" | Out-File -Encoding ansi rarreg.key
 ```
 
-When generating utf-8 licenses, you may need to check Use ***[Beta:Use Unicode UTF-8 for global language support](https://stackoverflow.com/a/57134096/10242225)*** in **Control Panel > Clock and Regions > Regions > Administration > Change System Region Settings** in order to process the data correctly. However, it is not recommended that you do this, which may cause many software to not work properly, and it is recommended to [Use Github Actions](#6-Use-Github-Actions).
+When generating utf-8 licenses, you may need to check Use ***[Beta:Use Unicode UTF-8 for global language support](https://stackoverflow.com/a/57134096/10242225)*** in **Control Panel > Clock and Regions > Regions > Administration > Change System Region Settings** in order to process the data correctly. However, it is not recommended that you do this, which may cause many software to not work properly, and it is recommended to [use Github Actions](#4-Use-Github-Actions).
 
 Generate multi-language licenses with UTF-8 encoding.
 
@@ -326,13 +325,13 @@ winrar-keygen.exe "utf8:한국어" "license" | Out-File -Encoding utf8 rarreg.ke
 
 </details>
 
-## 9. Invalid key
+## 7. Invalid key
 
 Why is my `rarreg.key` invalid?
 
-### 9.1 Character encoding
+### 7.1 Character encoding
 
-`TEXT1` and `TEXT2` are required to fulfill [corresponding coding requirements](#4 - coding description).
+`TEXT1` and `TEXT2` are required to fulfill [corresponding coding requirements](#31-Encoding).
 
 ```console
 winrar-keygen.exe <TEXT1> <TEXT2>
@@ -340,7 +339,7 @@ winrar-keygen.exe <TEXT1> <TEXT2>
 
 You can refer to: [Generation of "rarreg.key"](https://github.com/bitcookies/winrar-keygen/blob/master/README.HOW_DOES_IT_WORK.md#7-generation-of-rarregkey)
 
-### 9.2 Text encoding
+### 7.2 Text encoding
 
 If you use the following command:
 
@@ -360,20 +359,20 @@ winrar-keygen.exe "Github" "Github.com" | Out-File -Encoding ansi rarreg.key
 winrar-keygen.exe "utf8:Github" "Github.com" | Out-File -Encoding utf8 rarreg.key
 ```
 
-## 10. Contributing
+## 8. Contributing
 
-### 10.1 Suggestion
+### 8.1 Suggestion
 
 If you encounter some problems, you can report on the [Issues](https://github.com/bitcookies/winrar-keygen/issues) page. There will be many enthusiastic developers or Github users to help you.
 
 This project welcomes contributions and suggestions. You can make suggestions in [Issues](https://github.com/bitcookies/winrar-keygen/issues), or submit a pull request 😄
 
-### 10.2 Thanks
+### 8.2 Thanks
 
 Thank you very much to some enthusiastic developers for helping answer some questions in [Issues](https://github.com/bitcookies/winrar-keygen/issues).
 
 🏆 Special Thanks [@Sonic-The-Hedgehog-LNK1123](https://github.com/Sonic-The-Hedgehog-LNK1123)
 
-## 11. License
+## 9. License
 
 The code is available under the [MIT license](https://github.com/bitcookies/winrar-keygen/blob/master/LICENSE)
