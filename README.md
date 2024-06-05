@@ -54,9 +54,9 @@ WinRAR Keygen supports `ASCII`, `ANSI` and `UTF-8` encoding types, the correspon
 
 | Encoding                                     | Supported Characters                                         | Character Examples                                           |
 | -------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [ASCII](https://en.wikipedia.org/wiki/ASCII) | Only full ASCII characters are supported.                    | <img width="300px" src="assets/ascii-characters-light.svg#gh-light-mode-only"><img width="300px" src="assets/ascii-characters-dark.svg#gh-dark-mode-only"> |
-| ANSI                                         | There is no one fixed ANSI code, usually [Windows-1252](https://en.wikipedia.org/wiki/Windows-1252), but other local codes are also possible. | <img width="300px" src="assets/windows-1252-characters-light.svg#gh-light-mode-only"><img width="300px" src="assets/windows-1252-characters-dark.svg#gh-dark-mode-only"> |
-| [UTF-8](https://en.wikipedia.org/wiki/UTF-8) | Support full UTF8 encoded characters.                        | ASCII characters, English, 简体中文, 繁體中文, Deutsch, Français, 日本語, 한국어, et al. |
+| [ascii](https://en.wikipedia.org/wiki/ASCII) | Only full ASCII characters are supported.                    | <img width="300px" src="assets/ascii-characters-light.svg#gh-light-mode-only"><img width="300px" src="assets/ascii-characters-dark.svg#gh-dark-mode-only"> |
+| ansi                                         | There is no one fixed ANSI code, usually [Windows-1252](https://en.wikipedia.org/wiki/Windows-1252), but other local codes are also possible. | <img width="300px" src="assets/windows-1252-characters-light.svg#gh-light-mode-only"><img width="300px" src="assets/windows-1252-characters-dark.svg#gh-dark-mode-only"> |
+| [utf8](https://en.wikipedia.org/wiki/UTF-8)  | Support full UTF-8 encoded characters.                       | ASCII characters, English, 简体中文, 繁體中文, Deutsch, Français, Русский, Italiano, 日本語, 한국어, Lengua española, Ελληνική γλώσσα, et al. |
 
 ### 3.2 License type
 

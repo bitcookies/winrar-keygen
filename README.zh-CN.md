@@ -54,9 +54,9 @@ WinRAR Keygen 支持 `ASCII`、`ANSI` 和 `UTF-8` 三种编码类型，对应支
 
 | 编码                                         | 支持的字符                                                   | 字符示例                                                     |
 | -------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [ASCII](https://en.wikipedia.org/wiki/ASCII) | 仅支持 ASCII 编码字符                                        | <img width="300px" src="assets/ascii-characters-light.svg#gh-light-mode-only"><img width="300px" src="assets/ascii-characters-dark.svg#gh-dark-mode-only"> |
-| ANSI                                         | 没有一种固定的 ANSI 编码，通常是 [Windows-1252](http://en.wikipedia.org/wiki/Windows-1252)，但也可以是其他本地 | <img width="300px" src="assets/windows-1252-characters-light.svg#gh-light-mode-only"><img width="300px" src="assets/windows-1252-characters-dark.svg#gh-dark-mode-only"> |
-| [UTF8](https://en.wikipedia.org/wiki/UTF-8)  | 支持 UTF-8 编码字符                                          | ASCII characters, English, 简体中文, 繁體中文, Deutsch, Français, 日本語, 한국어, et al. |
+| [ascii](https://en.wikipedia.org/wiki/ASCII) | 仅支持 ASCII 编码字符                                        | <img width="300px" src="assets/ascii-characters-light.svg#gh-light-mode-only"><img width="300px" src="assets/ascii-characters-dark.svg#gh-dark-mode-only"> |
+| ansi                                         | 没有一种固定的 ANSI 编码，通常是 [Windows-1252](http://en.wikipedia.org/wiki/Windows-1252)，但也可以是其他本地 | <img width="300px" src="assets/windows-1252-characters-light.svg#gh-light-mode-only"><img width="300px" src="assets/windows-1252-characters-dark.svg#gh-dark-mode-only"> |
+| [utf8](https://en.wikipedia.org/wiki/UTF-8)  | 支持 UTF-8 编码字符                                          | ASCII characters, English, 简体中文, 繁體中文, Deutsch, Français, Русский, Italiano, 日本語, 한국어, Lengua española, Ελληνική γλώσσα 等。 |
 
 ### 3.2 License 类型
 
