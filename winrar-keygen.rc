@@ -13,7 +13,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// 中文(简体，中国) resources
+// resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
 LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
@@ -101,7 +101,7 @@ IDB_PNG1                PNG                     "icon.png"
 // remains consistent on all systems.
 IDI_ICON1               ICON                    "icon.ico"
 
-#endif    // 中文(简体，中国) resources
+#endif    // resources
 /////////////////////////////////////////////////////////////////////////////
 
 
