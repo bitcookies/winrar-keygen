@@ -1,8 +1,8 @@
 <svg width="1720" height="760" viewBox="0 0 172 76" xmlns="http://www.w3.org/2000/svg">
   <style type="text/css">.text{fill:#fff;}</style>
-  <text class="text" y="12" x="2" textLength="170" style="white-space: pre" letter-spacing=".55" font-family="monospace" font-size="14"> !&quot;#$%&amp;'()*+,-./012</text>
-  <text class="text" y="27" x="2" textLength="170" style="white-space: pre" letter-spacing=".55" font-family="monospace" font-size="14">3456789:;&lt;=&gt;?@ABCDE</text>
-  <text class="text" y="42" x="2" textLength="170" style="white-space: pre" letter-spacing=".55" font-family="monospace" font-size="14">FGHIJKLMNOPQRSTUVWX</text>
-  <text class="text" y="57" x="2" textLength="170" style="white-space: pre" letter-spacing=".55" font-family="monospace" font-size="14">YZ[\]^_`abcdefghijk</text>
-  <text class="text" y="72" x="2" textLength="170" style="white-space: pre" letter-spacing=".55" font-family="monospace" font-size="14">lmnopqrstuvwxyz{|}~</text>
+  <text class="text" y="12" x="2" textLength="170" style="white-space: pre" letter-spacing=".55" font-family="DejaVu Sans Mono" font-size="14"> !&quot;#$%&amp;'()*+,-./012</text>
+  <text class="text" y="27" x="2" textLength="170" style="white-space: pre" letter-spacing=".55" font-family="DejaVu Sans Mono" font-size="14">3456789:;&lt;=&gt;?@ABCDE</text>
+  <text class="text" y="42" x="2" textLength="170" style="white-space: pre" letter-spacing=".55" font-family="DejaVu Sans Mono" font-size="14">FGHIJKLMNOPQRSTUVWX</text>
+  <text class="text" y="57" x="2" textLength="170" style="white-space: pre" letter-spacing=".55" font-family="DejaVu Sans Mono" font-size="14">YZ[\]^_`abcdefghijk</text>
+  <text class="text" y="72" x="2" textLength="170" style="white-space: pre" letter-spacing=".55" font-family="DejaVu Sans Mono" font-size="14">lmnopqrstuvwxyz{|}~</text>
 </svg>
