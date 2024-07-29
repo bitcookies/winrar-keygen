@@ -41,7 +41,7 @@ jobs:
         bin/x64-Release/winrar-keygen.exe "${{env.KEY_USERNAME}}" "${{env.KEY_LICENSE_NAME}}" | Out-File -Encoding ${{env.KEY_ENCODING}} rarreg.key
 
     - name: Uploading License
-      uses: actions/upload-artifact@v4.3.3
+      uses: actions/upload-artifact@v4.3.4
       with:
         name: rarreg_file_${{env.KEY_ENCODING}}
         path: rarreg.key
@@ -70,7 +70,7 @@ jobs:
         bin/x64-Release/winrar-keygen.exe "${{env.KEY_USERNAME}}" "${{env.KEY_LICENSE_NAME}}" | Out-File -Encoding ${{env.KEY_ENCODING}} rarreg.key
 
     - name: Uploading License
-      uses: actions/upload-artifact@v4.3.3
+      uses: actions/upload-artifact@v4.3.4
       with:
         name: rarreg_file_${{env.KEY_ENCODING}}
         path: rarreg.key
@@ -99,7 +99,7 @@ jobs:
         bin/x64-Release/winrar-keygen.exe "utf8:${{env.KEY_USERNAME}}" "${{env.KEY_LICENSE_NAME}}" | Out-File -Encoding ${{env.KEY_ENCODING}} rarreg.key
       
     - name: Uploading License
-      uses: actions/upload-artifact@v4.3.3
+      uses: actions/upload-artifact@v4.3.4
       with:
         name: rarreg_file_${{env.KEY_ENCODING}}
         path: rarreg.key
