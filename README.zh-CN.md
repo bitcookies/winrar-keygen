@@ -351,21 +351,28 @@ winrar-keygen.exe "utf8:Github" "Github.com" | Out-File -Encoding utf8 rarreg.ke
 
 感谢 [@hoochanlon](https://github.com/hoochanlon) 提供的一些方法。可以使用 [win-rar-extractor](https://github.com/lvtx/WinRAR-Extractor) 获取简体中文商业版的下载连接；也可以根据商业版的地址规律，获取相应版本的简体中文安装包：
 
-简体中文**商业版**（以 6.11 版本为例）：
+简体中文**商业版**（以 6.24 和 7.01 版本为例）：
+
+```
+6.24
+https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20231013/wrr/winrar-x32-624sc.exe
+https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20231013/wrr/winrar-x64-624sc.exe
+
+7.01
+https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20240528/wrr/winrar-x32-701sc.exe
+https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20240528/wrr/winrar-x64-701sc.exe
+```
+
+简体中文**广告版**（以 6.24 版本为例）：
 
 ```
 win-rar 渠道：
-https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20220317/rrlb/winrar-x64-611sc.exe
-```
-
-简体中文**广告版**（以 6.11 版本为例）：
-
-```
-win-rar 渠道：
-https://www.win-rar.com/fileadmin/winrar-versions/winrar/winrar-x64-611sc.exe
+https://www.win-rar.com/fileadmin/winrar-versions/winrar/winrar-x32-624sc.exe
+https://www.win-rar.com/fileadmin/winrar-versions/winrar/winrar-x64-624sc.exe
 
 rarlab 渠道：
-https://www.rarlab.com/rar/winrar-x64-611sc.exe
+https://www.rarlab.com/rar/winrar-x32-624sc.exe
+https://www.rarlab.com/rar/winrar-x64-624sc.exe
 ```
 
 请注意区分上述连接地址，更多方法可以查看 [Issues #14](https://github.com/bitcookies/winrar-keygen/issues/14) 和 [Issues #19](https://github.com/bitcookies/winrar-keygen/issues/19)。
