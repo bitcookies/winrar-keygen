@@ -351,19 +351,25 @@ winrar-keygen.exe "utf8:Github" "Github.com" | Out-File -Encoding utf8 rarreg.ke
 
 感谢 [@hoochanlon](https://github.com/hoochanlon) 提供的一些方法。可以使用 [win-rar-extractor](https://github.com/lvtx/WinRAR-Extractor) 获取简体中文商业版的下载连接；也可以根据商业版的地址规律，获取相应版本的简体中文安装包：
 
-简体中文**商业版**（以 6.24 和 7.01 版本为例）：
+简体中文**商业版**（以 `6.24` 、`7.01` 和 `7.10` 版本为例）：
 
 ```
-6.24
+v6.24
 https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20231013/wrr/winrar-x32-624sc.exe
 https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20231013/wrr/winrar-x64-624sc.exe
 
-7.01
+v7.01
 https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20240528/wrr/winrar-x32-701sc.exe
 https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20240528/wrr/winrar-x64-701sc.exe
+
+7.10
+https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20251003/rrlb/winrar-x64-710sc.exe
+https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20251003/wrr/winrar-x64-710sc.exe
+
+# 注意：7.10 版将日期改为 YYYYDDMM 格式，感谢 @ghf50
 ```
 
-简体中文**广告版**（以 6.24 版本为例）：
+简体中文**广告版**（以 `6.24` 版本为例）：
 
 ```
 win-rar 渠道：
