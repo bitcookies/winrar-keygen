@@ -354,11 +354,11 @@ winrar-keygen.exe "utf8:Github" "Github.com" | Out-File -Encoding utf8 rarreg.ke
 简体中文**商业版**（以 `6.24` 、`7.01` 和 `7.10` 版本为例）：
 
 ```
-v6.24
+6.24
 https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20231013/wrr/winrar-x32-624sc.exe
 https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20231013/wrr/winrar-x64-624sc.exe
 
-v7.01
+7.01
 https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20240528/wrr/winrar-x32-701sc.exe
 https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20240528/wrr/winrar-x64-701sc.exe
 
