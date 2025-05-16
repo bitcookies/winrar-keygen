@@ -73,6 +73,8 @@ WinRAR 使用了基于 ECC 的签名算法来生成 `rarreg.key` 文件，其使
     <img src="assets/formula/9-dark.svg#gh-dark-mode-only">
 </p>
 
+基点 ![G](assets/formula/GG-inlined-light.svg#gh-light-mode-only)![G](assets/formula/GG-inlined-dark.svg#gh-dark-mode-only) 在曲线上的[验证示例](README.VERIFY_Point_G.zh-CN.md)。
+
 基点 ![G](assets/formula/GG-inlined-light.svg#gh-light-mode-only)![G](assets/formula/GG-inlined-dark.svg#gh-dark-mode-only) 的阶 ![n](assets/formula/n-inlined-light.svg#gh-light-mode-only)![n](assets/formula/n-inlined-dark.svg#gh-dark-mode-only) 为：
 
 <p align="center">

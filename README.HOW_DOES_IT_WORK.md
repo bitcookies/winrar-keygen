@@ -11,7 +11,6 @@ Elements in ground field ![GF2p15-inlined](assets/formula/GF2p15-inlined-light.s
     <img src="assets/formula/1-dark.svg#gh-dark-mode-only">
 </p>
 
-
 where each coefficients is in ![GF2-inlined](assets/formula/GF2-inlined-light.svg#gh-light-mode-only)![GF2-inlined](assets/formula/GF2-inlined-dark.svg#gh-dark-mode-only). If we use 
 
 <p align="center">
@@ -19,14 +18,12 @@ where each coefficients is in ![GF2-inlined](assets/formula/GF2-inlined-light.sv
     <img src="assets/formula/2-dark.svg#gh-dark-mode-only">
 </p>
 
-
 as the standard basis of the ground field, an element ![A](assets/formula/AA-inlined-light.svg#gh-light-mode-only)![A](assets/formula/AA-inlined-dark.svg#gh-dark-mode-only) in ![GF2p15-inlined](assets/formula/GF2p15-inlined-light.svg#gh-light-mode-only)![GF2p15-inlined](assets/formula/GF2p15-inlined-dark.svg#gh-dark-mode-only) can be denoted as
 
 <p align="center">
     <img src="assets/formula/3-light.svg#gh-light-mode-only">
     <img src="assets/formula/3-dark.svg#gh-dark-mode-only">
 </p>
-
 
 ---
 
@@ -37,7 +34,6 @@ The irreducible polynomial of composite field ![GF2p15p17-inlined](assets/formul
     <img src="assets/formula/4-dark.svg#gh-dark-mode-only">
 </p>
 
-
 where each coefficients is in ![GF2p15-inlined](assets/formula/GF2p15-inlined-light.svg#gh-light-mode-only)![GF2p15-inlined](assets/formula/GF2p15-inlined-dark.svg#gh-dark-mode-only). If we use 
 
 <p align="center">
@@ -45,14 +41,12 @@ where each coefficients is in ![GF2p15-inlined](assets/formula/GF2p15-inlined-li
     <img src="assets/formula/5-dark.svg#gh-dark-mode-only">
 </p>
 
-
 as the standard basis of the composite field, an element ![B](assets/formula/BB-inlined-light.svg#gh-light-mode-only)![B](assets/formula/BB-inlined-dark.svg#gh-dark-mode-only) in ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-light.svg#gh-light-mode-only) ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-dark.svg#gh-dark-mode-only) can be denoted as
 
 <p align="center">
     <img src="assets/formula/6-light.svg#gh-light-mode-only">
     <img src="assets/formula/6-dark.svg#gh-dark-mode-only">
 </p>
-
 
 ---
 
@@ -63,7 +57,6 @@ For clarity, we use ![D](assets/formula/DD-inlined-light.svg#gh-light-mode-only)
     <img src="assets/formula/7-dark.svg#gh-dark-mode-only">
 </p>
 
-
 ## 2. Elliptic curve over ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-light.svg#gh-light-mode-only) ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-dark.svg#gh-dark-mode-only)
 
 The equation of the elliptic curve that WinRAR uses is
@@ -73,7 +66,6 @@ The equation of the elliptic curve that WinRAR uses is
     <img src="assets/formula/8-dark.svg#gh-dark-mode-only">
 </p>
 
-
 The base point ![G](assets/formula/GG-inlined-light.svg#gh-light-mode-only)![G](assets/formula/GG-inlined-dark.svg#gh-dark-mode-only) is
 
 <p align="center">
@@ -81,6 +73,7 @@ The base point ![G](assets/formula/GG-inlined-light.svg#gh-light-mode-only)![G](
     <img src="assets/formula/9-dark.svg#gh-dark-mode-only">
 </p>
 
+A [verification example](README.VERIFY_Point_G.md) of the base point ![G](assets/formula/GG-inlined-light.svg#gh-light-mode-only)![G](assets/formula/GG-inlined-dark.svg#gh-dark-mode-only) on the curve.
 
 whose order ![n](assets/formula/n-inlined-light.svg#gh-light-mode-only)![n](assets/formula/n-inlined-dark.svg#gh-dark-mode-only)  is
 
@@ -88,7 +81,6 @@ whose order ![n](assets/formula/n-inlined-light.svg#gh-light-mode-only)![n](asse
     <img src="assets/formula/10-light.svg#gh-light-mode-only">
     <img src="assets/formula/10-dark.svg#gh-dark-mode-only">
 </p>
-
 
 ## 3. Message hash algorithm
 
@@ -99,14 +91,12 @@ We use
     <img src="assets/formula/11-dark.svg#gh-dark-mode-only">
 </p>
 
-
 to denote a message whose length is ![l](assets/formula/l-inlined-light.svg#gh-light-mode-only)![l](assets/formula/l-inlined-dark.svg#gh-dark-mode-only). So the SHA1 value of ![M](assets/formula/MM-inlined-light.svg#gh-light-mode-only)![M](assets/formula/MM-inlined-dark.svg#gh-dark-mode-only) should be 
 
 <p align="center">
     <img src="assets/formula/12-light.svg#gh-light-mode-only">
     <img src="assets/formula/12-dark.svg#gh-dark-mode-only">
 </p>
-
 
 where ![s0,4](assets/formula/13-light.svg#gh-light-mode-only)![s0,4](assets/formula/13-dark.svg#gh-dark-mode-only) are 5 state values when SHA1 outputs. Generally speaking, the final SHA1 value should be the join of these 5 state values while each of state values is serialized in big-endian.
 
@@ -117,7 +107,6 @@ However, WinRAR doesn't serialize the 5 state values. Instead, it use a big inte
     <img src="assets/formula/15-dark.svg#gh-dark-mode-only">
 </p>
 
-
 ## 4. ECC digital signature algorithm
 
 We use ![k](assets/formula/k-inlined-light.svg#gh-light-mode-only)![k](assets/formula/k-inlined-dark.svg#gh-dark-mode-only) to denote private key, ![P](assets/formula/PP-inlined-light.svg#gh-light-mode-only)![P](assets/formula/PP-inlined-dark.svg#gh-dark-mode-only) to denote public key. So there must be
@@ -126,7 +115,6 @@ We use ![k](assets/formula/k-inlined-light.svg#gh-light-mode-only)![k](assets/fo
     <img src="assets/formula/16-light.svg#gh-light-mode-only">
     <img src="assets/formula/16-dark.svg#gh-dark-mode-only">
 </p>
-
 
 If we use ![h](assets/formula/h-inlined-light.svg#gh-light-mode-only)![h](assets/formula/h-inlined-dark.svg#gh-dark-mode-only) to denote the hash of input data, WinRAR use the following algorithm to perform signing:
 
@@ -165,7 +153,6 @@ We use
     <img src="assets/formula/26-dark.svg#gh-dark-mode-only">
 </p>
 
-
 to denote input data whose length is ![l](assets/formula/l-inlined-light.svg#gh-light-mode-only)![l](assets/formula/l-inlined-dark.svg#gh-dark-mode-only). WinRAR use it to generate private key ![k](assets/formula/k-inlined-light.svg#gh-light-mode-only)![k](assets/formula/k-inlined-dark.svg#gh-dark-mode-only).
 
 1. We use ![g0-5](assets/formula/27-light.svg#gh-light-mode-only)![g0-5](assets/formula/27-dark.svg#gh-dark-mode-only) to denote 6 32-bits-long integer. So there is
@@ -184,7 +171,6 @@ to denote input data whose length is ![l](assets/formula/l-inlined-light.svg#gh-
        <img src="assets/formula/33-dark.svg#gh-dark-mode-only">
    </p>
 
-
    Otherwise, when ![l=0](assets/formula/34-light.svg#gh-light-mode-only)![l=0](assets/formula/34-dark.svg#gh-dark-mode-only), we let 
 
    <p align="center">
@@ -200,7 +186,6 @@ to denote input data whose length is ![l](assets/formula/l-inlined-light.svg#gh-
        <img src="assets/formula/37-light.svg#gh-light-mode-only">
        <img src="assets/formula/37-dark.svg#gh-dark-mode-only">
    </p>
-
 
    We takes the lowest 16 bits of ![S0](assets/formula/38-light.svg#gh-light-mode-only)![S0](assets/formula/38-dark.svg#gh-dark-mode-only) and donote it as ![Kg0](assets/formula/39-light.svg#gh-light-mode-only)![Kg0](assets/formula/39-dark.svg#gh-dark-mode-only).
 
@@ -221,7 +206,6 @@ Private key ![k](assets/formula/k-inlined-light.svg#gh-light-mode-only)![k](asse
     <img src="assets/formula/42-light.svg#gh-light-mode-only">
     <img src="assets/formula/42-dark.svg#gh-dark-mode-only">
 </p>
-
 
 This private key is generated by the algorithm describled in section 5 where the length of data ![T](assets/formula/TT-inlined-light.svg#gh-light-mode-only)![T](assets/formula/TT-inlined-dark.svg#gh-dark-mode-only) is zero.
 
@@ -297,7 +281,6 @@ The following is the algorithm to generate `rarreg.key`.
        <img src="assets/formula/58-dark.svg#gh-dark-mode-only">
    </p>
 
-
    Use the algorithm describled in section 4, with argument ![Temp](assets/formula/Temp-inlined-light.svg#gh-light-mode-only)![Temp](assets/formula/Temp-inlined-dark.svg#gh-dark-mode-only) and private key ![k](assets/formula/k-inlined-light.svg#gh-light-mode-only)![k](assets/formula/k-inlined-dark.svg#gh-dark-mode-only) describled section 6, to get signature ![(rTemp,sTemp)](assets/formula/59-light.svg#gh-light-mode-only)![(rTemp,sTemp)](assets/formula/59-dark.svg#gh-dark-mode-only).
 
    The bit length of ![rTemp](assets/formula/60-light.svg#gh-light-mode-only)![rTemp](assets/formula/60-dark.svg#gh-dark-mode-only) and ![sTemp](assets/formula/61-light.svg#gh-light-mode-only)![sTemp](assets/formula/61-dark.svg#gh-dark-mode-only) shall not be more than 240. Otherwise, repeat this step.
@@ -320,9 +303,8 @@ The following is the algorithm to generate `rarreg.key`.
         <img src="assets/formula/65-dark.svg#gh-dark-mode-only">
     </p>
 
-
     The final checksum the complement of CRC32 value. 
-
+    
     Then convert the checksum to decimal string ![SZchecksum](assets/formula/66-light.svg#gh-light-mode-only)![SZchecksum](assets/formula/66-dark.svg#gh-dark-mode-only). If the length is less than 10, pad character `'0'` until the length is 10.
 
 12. Let ![Data](assets/formula/Data-inlined-light.svg#gh-light-mode-only)![Data](assets/formula/Data-inlined-dark.svg#gh-dark-mode-only) be 
