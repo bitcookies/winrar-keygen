@@ -206,9 +206,9 @@ C:\Users\yourname\AppData\Roaming\WinRAR\rarreg.key
 
 2. 请确保你安装了 `vcpkg` 以及下面几个库：
 
-   - `mpir:x86-windows-static`
-
-   * `mpir:x64-windows-static`
+   + `mpir:x86-windows-static`
+   + `mpir:x64-windows-static`
+   + `mpir:gmp:x64-windows`
 
    你可以通过下的命令来安装：
 
@@ -273,7 +273,6 @@ dd4ab952600ba16a99236d910bfa995d5f60651ec451f462511507
 
 例如，用 UTF8NoBOM 编码生成 license：
 
-> [!NOTE]
 > `utf8:` 是为了保证在不同语言的 WinRAR 中做到不变的字符表示。
 
 ```shell
