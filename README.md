@@ -41,6 +41,7 @@ There are several ways to use it.
 
 WinRAR Keygen supports `ASCII`, `ANSI` and `UTF8NoBOM` encoding types, the corresponding supported characters are listed in the table below.
 
+[!NOTE]
 > The default is `utf8`, but you can specify the encoding as `ascii` or `ansi`.
 
 | Encoding                                     | Supported Characters                                         | Character Examples                                           |
@@ -277,7 +278,6 @@ In addition to using ASCII encoding, you can use ANSI and UTF8NoBOM to support m
 
 For example, generating a license with UTF8NoBOM encoding.
 
-> [!NOTE]
 > `utf8:` is to ensure constant character representation in WinRAR across languages.
 
 ```shell
