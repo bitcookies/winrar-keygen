@@ -33,17 +33,17 @@ jobs:
     - uses: actions/checkout@v4.2.2
     
     - name: Generating License (ASCII)
-      # Do Not Use pwsh
+      # Use PowerShell 5
       shell: powershell
       run: |
         $OutputEncoding = [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
         $PSVersionTable.PSVersion
-        bin/x64-Release/winrar-keygen.exe "${{env.KEY_USERNAME}}" "${{env.KEY_LICENSE_NAME}}" | Out-File -Encoding ${{env.KEY_ENCODING}} rarreg.key
+        bin/x64-Release/winrar-keygen.exe "${{ env.KEY_USERNAME }}" "${{ env.KEY_LICENSE_NAME }}" | Out-File -Encoding ${{ env.KEY_ENCODING }} rarreg.key
 
     - name: Uploading License
-      uses: actions/upload-artifact@v4.4.3
+      uses: actions/upload-artifact@v4.6.2
       with:
-        name: rarreg_file_${{env.KEY_ENCODING}}
+        name: rarreg_file_${{ env.KEY_ENCODING }}
         path: rarreg.key
         if-no-files-found: error
         retention-days: 90
@@ -67,12 +67,12 @@ jobs:
       run: |
         [System.Text.Encoding]::Default
         $OutputEncoding
-        bin/x64-Release/winrar-keygen.exe "${{env.KEY_USERNAME}}" "${{env.KEY_LICENSE_NAME}}" | Out-File -Encoding ${{env.KEY_ENCODING}} rarreg.key
+        bin/x64-Release/winrar-keygen.exe "${{ env.KEY_USERNAME }}" "${{ env.KEY_LICENSE_NAME }}" | Out-File -Encoding ${{ env.KEY_ENCODING }} rarreg.key
 
     - name: Uploading License
-      uses: actions/upload-artifact@v4.4.3
+      uses: actions/upload-artifact@v4.6.2
       with:
-        name: rarreg_file_${{env.KEY_ENCODING}}
+        name: rarreg_file_${{ env.KEY_ENCODING }}
         path: rarreg.key
         if-no-files-found: error
         retention-days: 90
@@ -91,17 +91,33 @@ jobs:
     - uses: actions/checkout@v4.2.2
 
     - name: Generating License (UTF-8)
-      # Do Not Use pwsh
-      shell: powershell
+      # Use PowerShell 7
+      shell: pwsh
       run: |
         $OutputEncoding = [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
         $PSVersionTable.PSVersion
-        bin/x64-Release/winrar-keygen.exe "utf8:${{env.KEY_USERNAME}}" "${{env.KEY_LICENSE_NAME}}" | Out-File -Encoding ${{env.KEY_ENCODING}} rarreg.key
-      
+        $user = "utf8:${{ env.KEY_USERNAME }}"
+        $license = "${{ env.KEY_LICENSE_NAME }}"
+
+        $allAscii = $true
+        foreach ($c in $license.ToCharArray()) {
+          if ([int][char]$c -gt 127) {
+            $allAscii = $false
+            break
+          }
+        }
+
+        if (-not $allAscii) {
+          $license = "utf8:" + $license
+        }
+
+        Write-Host "License string: $license"
+        bin/x64-Release/winrar-keygen.exe "$user" "$license" | Out-File -Encoding utf8NoBOM rarreg.key
+  
     - name: Uploading License
-      uses: actions/upload-artifact@v4.4.3
+      uses: actions/upload-artifact@v4.6.2
       with:
-        name: rarreg_file_${{env.KEY_ENCODING}}
+        name: rarreg_file_${{ env.KEY_ENCODING }}
         path: rarreg.key
         if-no-files-found: error
         retention-days: 90
