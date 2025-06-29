@@ -39,7 +39,7 @@ There are several ways to use it.
 
 ### 3.1 Encoding
 
-WinRAR Keygen supports `ASCII`, `ANSI` and `UTF-8` encoding types, the corresponding supported characters are listed in the table below.
+WinRAR Keygen supports `ASCII`, `ANSI` and `UTF8NoBOM` encoding types, the corresponding supported characters are listed in the table below.
 
 > [!NOTE]
 > The default is `utf8`, but you can specify the encoding as `ascii` or `ansi`.
@@ -48,7 +48,7 @@ WinRAR Keygen supports `ASCII`, `ANSI` and `UTF-8` encoding types, the correspon
 | -------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [ascii](https://en.wikipedia.org/wiki/ASCII) | Only full ASCII characters are supported.                    | <img width="300px" src="assets/ascii-characters-light.svg#gh-light-mode-only"><img width="300px" src="assets/ascii-characters-dark.svg#gh-dark-mode-only"> |
 | ansi                                         | There is no one fixed ANSI code, usually [Windows-1252](https://en.wikipedia.org/wiki/Windows-1252), but other local codes are also possible. | <img width="300px" src="assets/windows-1252-characters-light.svg#gh-light-mode-only"><img width="300px" src="assets/windows-1252-characters-dark.svg#gh-dark-mode-only"> |
-| [utf8](https://en.wikipedia.org/wiki/UTF-8)  | Support full UTF-8 encoded characters.                       | ASCII characters, English, 简体中文, 繁體中文, Deutsch, Français, Русский, Italiano, 日本語, 한국어, Lengua española, Ελληνική γλώσσα, et al. |
+| [utf8](https://en.wikipedia.org/wiki/UTF-8)  | Supports UTF-8 without BOM.                                  | ASCII characters, English, 简体中文, 繁體中文, Deutsch, Français, Русский, Italiano, 日本語, 한국어, Lengua española, Ελληνική γλώσσα, et al. |
 
 ### 3.2 License type
 
@@ -216,6 +216,7 @@ If you don't want to compile it yourself, you can also go to the [release](https
    ```shell
    $ vcpkg install mpir:x86-windows-static
    $ vcpkg install mpir:x64-windows-static
+   $ vcpkg install gmp:x64-windows
    ```
 
 3. Your `vcpkg` has been integrated into your __Visual Studio__, which means you have run successfully.
@@ -248,9 +249,6 @@ Usage:
 Example:
 
         winrar-keygen.exe "Github" "Single PC usage license"
-
-  or:
-        winrar-keygen.exe "Github" "Github.com" | Out-File -Encoding ASCII rarreg.key
 ```
 
 ![Terminal](assets/terminal.png)
@@ -271,48 +269,25 @@ dd4ab952600ba16a99236d910bfa995d5f60651ec451f462511507
 5eede7ed46566b10bf033daa6384062b259194b1acbd0378116064
 ```
 
-Save the generated information in **ANSI encoding** as `rarreg.key`.
+Save the generated information in **ASCII encoding** as `rarreg.key`.
 
-### 6.4 Multi-language support
+### 6.4 More character support
 
-Execute the following code in the terminal and configure two paramet
+In addition to using ASCII encoding, you can use ANSI and UTF8NoBOM to support more characters, but you will need to install [PowerShell 7.4 or later](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4).
 
-When using ANSI encoding, you can only use characters from the country or region where your operating system is located. ANSI encoding is supported from Powershell 7.4 onwards, and you will also need to [upgrade your Powershell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4).
+For example, generating a license with UTF8NoBOM encoding.
 
-Generate multi-language licenses in ANSI encoding.
-
-```shell
-winrar-keygen.exe "简体中文" "license" | Out-File -Encoding ansi rarreg.key
-
-winrar-keygen.exe "繁體中文" "license" | Out-File -Encoding ansi rarreg.key
-
-winrar-keygen.exe "Deutsch" "license" | Out-File -Encoding ansi rarreg.key
-
-winrar-keygen.exe "Français" "license" | Out-File -Encoding ansi rarreg.key
-
-winrar-keygen.exe "日本語" "license" | Out-File -Encoding ansi rarreg.key
-
-winrar-keygen.exe "한국어" "license" | Out-File -Encoding ansi rarreg.key
-```
-
-When generating utf-8 licenses, you may need to check Use ***[Beta:Use Unicode UTF-8 for global language support](https://stackoverflow.com/a/57134096/10242225)*** in **Control Panel > Clock and Regions > Regions > Administration > Change System Region Settings** in order to process the data correctly. However, it is not recommended that you do this, which may cause many software to not work properly, and it is recommended to [use Github Actions](#4-Use-Github-Actions).
-
-Generate multi-language licenses with UTF-8 encoding.
-
+> [!NOTE]
 > `utf8:` is to ensure constant character representation in WinRAR across languages.
 
 ```shell
-winrar-keygen.exe "utf8:简体中文" "license" | Out-File -Encoding utf8 rarreg.key
+winrar-keygen.exe "utf8:简体中文" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
 
-winrar-keygen.exe "utf8:繁體中文" "license" | Out-File -Encoding utf8 rarreg.key
+winrar-keygen.exe "utf8:Français" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
 
-winrar-keygen.exe "utf8:Deutsch" "license" | Out-File -Encoding utf8 rarreg.key
+winrar-keygen.exe "utf8:日本語" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
 
-winrar-keygen.exe "utf8:Français" "license" | Out-File -Encoding utf8 rarreg.key
-
-winrar-keygen.exe "utf8:日本語" "license" | Out-File -Encoding utf8 rarreg.key
-
-winrar-keygen.exe "utf8:한국어" "license" | Out-File -Encoding utf8 rarreg.key
+winrar-keygen.exe "utf8:한국어" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
 ```
 
 </details>
@@ -339,16 +314,16 @@ If you use the following command:
 winrar-keygen.exe "Github" "Single PC usage license" > rarreg.key
 ```
 
-In the newer Windows 10, PowerShell will export in **UTF16-LE** format by default, which will cause the error.
+In the newer Windows 10 / 11, PowerShell will export in **UTF16-LE** format by default, which will cause the error.
 
 Please use the following command:
 
 ```shell
-winrar-keygen.exe "Github" "Github.com" | Out-File -Encoding ascii rarreg.key
+winrar-keygen.exe "Github" "license" | Out-File -Encoding ascii rarreg.key
 
-winrar-keygen.exe "Github" "Github.com" | Out-File -Encoding ansi rarreg.key
+winrar-keygen.exe "Github" "license" | Out-File -Encoding ansi rarreg.key
 
-winrar-keygen.exe "utf8:Github" "Github.com" | Out-File -Encoding utf8 rarreg.key
+winrar-keygen.exe "utf8:Github" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
 ```
 
 ## 8. Contributing
