@@ -22,7 +22,7 @@ The base point ![G](assets/formula/GG-inlined-light.svg#gh-light-mode-only)![G](
 
 ## 2. Conversion point G
 
-Convert the point ![G](assets/formula/GG-inlined-light.svg#gh-light-mode-only)![G](assets/formula/GG-inlined-dark.svg#gh-dark-mode-only)(in large integer format) into the required little-endian representation of `15-bit` segments for the field  ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-dark.svg#gh-dark-mode-only). A Python for converting the point ![G](assets/formula/GG-inlined-light.svg#gh-light-mode-only)![G](assets/formula/GG-inlined-dark.svg#gh-dark-mode-only) is as follows.
+Convert the point ![G](assets/formula/GG-inlined-light.svg#gh-light-mode-only)![G](assets/formula/GG-inlined-dark.svg#gh-dark-mode-only) (in large integer format) into the required little-endian representation of `15-bit` segments for the field  ![GF2p15p17-inlined](assets/formula/GF2p15p17-inlined-dark.svg#gh-dark-mode-only). A Python for converting the point ![G](assets/formula/GG-inlined-light.svg#gh-light-mode-only)![G](assets/formula/GG-inlined-dark.svg#gh-dark-mode-only) is as follows.
 
 ```python
 def to_field_repr(val, bits=15, count=17):
