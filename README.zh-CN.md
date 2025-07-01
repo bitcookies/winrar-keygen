@@ -327,9 +327,21 @@ winrar-keygen.exe "utf8:Github" "license" | Out-File -Encoding UTF8NoBOM rarreg.
 
 感谢 [@hoochanlon](https://github.com/hoochanlon) 提供的一些方法。可以使用 [win-rar-extractor](https://github.com/lvtx/WinRAR-Extractor) 获取简体中文商业版的下载连接；也可以根据商业版的地址规律，获取相应版本的简体中文安装包：
 
-简体中文**商业版**（以 `6.24` 和`7.01` 以及 `7.10` 和 `7.11` 版本为例）：
+简体中文**「商业版」**下载地址：
 
 ```
+# 7.12
+https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20250627/rrlb/winrar-x64-712sc.exe
+https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20250627/wrr/winrar-x64-712sc.exe
+
+# 7.11 （注意该版本的日期格式变更为了 YYYYDDMM）
+https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20253103/rrlb/winrar-x64-711sc.exe
+https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20253103/wrr/winrar-x64-711sc.exe
+
+# 7.10 （注意该版本的日期格式变更为了 YYYYDDMM）
+https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20251003/rrlb/winrar-x64-710sc.exe
+https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20251003/wrr/winrar-x64-710sc.exe
+
 # 6.24
 https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20231013/wrr/winrar-x32-624sc.exe
 https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20231013/wrr/winrar-x64-624sc.exe
@@ -338,19 +350,14 @@ https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20231013/wrr/winrar-x64-6
 https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20240528/wrr/winrar-x32-701sc.exe
 https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20240528/wrr/winrar-x64-701sc.exe
 
-# 注意：自 7.10 版之后，日期格式调整为 YYYYDDMM
-# 7.10
-https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20251003/rrlb/winrar-x64-710sc.exe
-https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20251003/wrr/winrar-x64-710sc.exe
-
-# 7.11
-https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20253103/rrlb/winrar-x64-711sc.exe
-https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20253103/wrr/winrar-x64-711sc.exe
-```
-
-简体中文**广告版**（以 `6.24` 版本为例），不要下载此类版本：
 
 ```
+
+简体中文**「广告版」**（以 `6.24` 版本为例），不要下载此类版本：
+
+```
+# 其链接特点是「不包含」日期信息
+
 win-rar 渠道：
 https://www.win-rar.com/fileadmin/winrar-versions/winrar/winrar-x32-624sc.exe
 https://www.win-rar.com/fileadmin/winrar-versions/winrar/winrar-x64-624sc.exe
