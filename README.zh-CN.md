@@ -330,6 +330,10 @@ winrar-keygen.exe "utf8:Github" "license" | Out-File -Encoding UTF8NoBOM rarreg.
 简体中文**「商业版」**下载地址：
 
 ```
+# 7.13
+https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20250804/rrlb/winrar-x64-713sc.exe
+https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20250804/wrr/winrar-x64-713sc.exe
+
 # 7.12
 https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20250627/rrlb/winrar-x64-712sc.exe
 https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20250627/wrr/winrar-x64-712sc.exe
