@@ -327,7 +327,7 @@ winrar-keygen.exe "utf8:Github" "license" | Out-File -Encoding UTF8NoBOM rarreg.
 
 感谢 [@hoochanlon](https://github.com/hoochanlon) 提供的一些方法。可以使用 [win-rar-extractor](https://github.com/lvtx/WinRAR-Extractor) 获取简体中文商业版的下载连接；也可以根据商业版的地址规律，获取相应版本的简体中文安装包：
 
-简体中文**「商业版」**下载地址：
+简体中文 **「商业版」** 下载地址：
 
 ```
 # 7.13
@@ -350,14 +350,9 @@ https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20251003/wrr/winrar-x64-7
 https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20231013/wrr/winrar-x32-624sc.exe
 https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20231013/wrr/winrar-x64-624sc.exe
 
-# 7.01
-https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20240528/wrr/winrar-x32-701sc.exe
-https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20240528/wrr/winrar-x64-701sc.exe
-
-
 ```
 
-简体中文**「广告版」**（以 `6.24` 版本为例），不要下载此类版本：
+简体中文 **「广告版」** （以 `6.24` 版本为例），不要下载此类版本：
 
 ```
 # 其链接特点是「不包含」日期信息
