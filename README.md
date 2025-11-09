@@ -281,13 +281,13 @@ For example, generating a license with UTF8NoBOM encoding.
 > `utf8:` is to ensure constant character representation in WinRAR across languages.
 
 ```shell
-winrar-keygen.exe "utf8:简体中文" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
+./winrar-keygen.exe "utf8:简体中文" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
 
-winrar-keygen.exe "utf8:Français" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
+./winrar-keygen.exe "utf8:Français" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
 
-winrar-keygen.exe "utf8:日本語" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
+./winrar-keygen.exe "utf8:日本語" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
 
-winrar-keygen.exe "utf8:한국어" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
+./winrar-keygen.exe "utf8:한국어" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
 ```
 
 </details>
@@ -301,7 +301,7 @@ Why is my `rarreg.key` invalid?
 `TEXT1` and `TEXT2` are required to fulfill [corresponding coding requirements](#31-Encoding).
 
 ```console
-winrar-keygen.exe <TEXT1> <TEXT2>
+./winrar-keygen.exe <TEXT1> <TEXT2>
 ```
 
 You can refer to: [Generation of "rarreg.key"](https://github.com/bitcookies/winrar-keygen/blob/master/README.HOW_DOES_IT_WORK.md#7-generation-of-rarregkey)
@@ -311,7 +311,7 @@ You can refer to: [Generation of "rarreg.key"](https://github.com/bitcookies/win
 If you use the following command:
 
 ```shell
-winrar-keygen.exe "Github" "Single PC usage license" > rarreg.key
+./winrar-keygen.exe "Github" "Single PC usage license" > rarreg.key
 ```
 
 In the newer Windows 10 / 11, PowerShell will export in **UTF16-LE** format by default, which will cause the error.
@@ -319,11 +319,11 @@ In the newer Windows 10 / 11, PowerShell will export in **UTF16-LE** format by d
 Please use the following command:
 
 ```shell
-winrar-keygen.exe "Github" "license" | Out-File -Encoding ascii rarreg.key
+./winrar-keygen.exe "Github" "license" | Out-File -Encoding ascii rarreg.key
 
-winrar-keygen.exe "Github" "license" | Out-File -Encoding ansi rarreg.key
+./winrar-keygen.exe "Github" "license" | Out-File -Encoding ansi rarreg.key
 
-winrar-keygen.exe "utf8:Github" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
+./winrar-keygen.exe "utf8:Github" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
 ```
 
 ## 8. Contributing

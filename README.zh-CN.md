@@ -276,13 +276,13 @@ dd4ab952600ba16a99236d910bfa995d5f60651ec451f462511507
 > `utf8:` 是为了保证在不同语言的 WinRAR 中做到不变的字符表示。
 
 ```shell
-winrar-keygen.exe "utf8:简体中文" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
+./winrar-keygen.exe "utf8:简体中文" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
 
-winrar-keygen.exe "utf8:Français" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
+./winrar-keygen.exe "utf8:Français" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
 
-winrar-keygen.exe "utf8:日本語" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
+./winrar-keygen.exe "utf8:日本語" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
 
-winrar-keygen.exe "utf8:한국어" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
+./winrar-keygen.exe "utf8:한국어" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
 ```
 
 </details>
@@ -296,7 +296,7 @@ winrar-keygen.exe "utf8:한국어" "license" | Out-File -Encoding UTF8NoBOM rarr
 参数 `TEXT1` 和 `TEXT2` 需要满足[对应的编码要求](#31-编码说明)：
 
 ```console
-winrar-keygen.exe <TEXT1> <TEXT2>
+./winrar-keygen.exe <TEXT1> <TEXT2>
 ```
 
 具体可参考原理文档：[授权文件"rarreg.key"的生成](https://github.com/bitcookies/winrar-keygen/blob/master/README.HOW_DOES_IT_WORK.zh-CN.md#7-%E6%8E%88%E6%9D%83%E6%96%87%E4%BB%B6rarregkey%E7%9A%84%E7%94%9F%E6%88%90)
@@ -306,7 +306,7 @@ winrar-keygen.exe <TEXT1> <TEXT2>
 如果你使用了如下命令：
 
 ```shell
-winrar-keygen.exe "Github" "Single PC usage license" > rarreg.key
+./winrar-keygen.exe "Github" "Single PC usage license" > rarreg.key
 ```
 
 在较新的 Windows 10 / 11 系统中，PowerShell 将默认以 **UTF16-LE** 格式导出，这将会导致错误。
@@ -314,11 +314,11 @@ winrar-keygen.exe "Github" "Single PC usage license" > rarreg.key
 请指定输出编码格式，例如：
 
 ```shell
-winrar-keygen.exe "Github" "license" | Out-File -Encoding ascii rarreg.key
+./winrar-keygen.exe "Github" "license" | Out-File -Encoding ascii rarreg.key
 
-winrar-keygen.exe "Github" "license" | Out-File -Encoding ansi rarreg.key
+./winrar-keygen.exe "Github" "license" | Out-File -Encoding ansi rarreg.key
 
-winrar-keygen.exe "utf8:Github" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
+./winrar-keygen.exe "utf8:Github" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
 ```
 
 ### 7.3 关于简体中文版
