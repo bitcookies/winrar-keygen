@@ -30,7 +30,7 @@ jobs:
     if: github.event.inputs.KEY_ENCODING == 'ascii'
 
     steps:
-    - uses: actions/checkout@v4.2.2
+    - uses: actions/checkout@v6.0.2
     
     - name: Generating License (ASCII)
       # Use PowerShell 5
@@ -41,7 +41,7 @@ jobs:
         bin/x64-Release/winrar-keygen.exe "${{ env.KEY_USERNAME }}" "${{ env.KEY_LICENSE_NAME }}" | Out-File -Encoding ${{ env.KEY_ENCODING }} rarreg.key
 
     - name: Uploading License
-      uses: actions/upload-artifact@v4.6.2
+      uses: actions/upload-artifact@v6.0.0
       with:
         name: rarreg_file_${{ env.KEY_ENCODING }}
         path: rarreg.key
@@ -59,7 +59,7 @@ jobs:
     if: github.event.inputs.KEY_ENCODING == 'ansi'
 
     steps:
-    - uses: actions/checkout@v4.2.2
+    - uses: actions/checkout@v6.0.2
     
     - name: Generating License (ANSI)
       # Use PowerShell 7
@@ -70,7 +70,7 @@ jobs:
         bin/x64-Release/winrar-keygen.exe "${{ env.KEY_USERNAME }}" "${{ env.KEY_LICENSE_NAME }}" | Out-File -Encoding ${{ env.KEY_ENCODING }} rarreg.key
 
     - name: Uploading License
-      uses: actions/upload-artifact@v4.6.2
+      uses: actions/upload-artifact@v6.0.0
       with:
         name: rarreg_file_${{ env.KEY_ENCODING }}
         path: rarreg.key
@@ -88,7 +88,7 @@ jobs:
     if: github.event.inputs.KEY_ENCODING == 'utf8'
 
     steps:
-    - uses: actions/checkout@v4.2.2
+    - uses: actions/checkout@v6.0.2
 
     - name: Generating License (UTF-8)
       # Use PowerShell 7
@@ -115,7 +115,7 @@ jobs:
         bin/x64-Release/winrar-keygen.exe "$user" "$license" | Out-File -Encoding utf8NoBOM rarreg.key
   
     - name: Uploading License
-      uses: actions/upload-artifact@v4.6.2
+      uses: actions/upload-artifact@v6.0.0
       with:
         name: rarreg_file_${{ env.KEY_ENCODING }}
         path: rarreg.key
