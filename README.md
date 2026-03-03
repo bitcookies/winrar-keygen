@@ -62,7 +62,7 @@ There are two types of WinRAR licenses, `rarreg.key` and `rarkey.rar`, which dif
 If you are unable to drag, you can try to put the `rarreg.key` in the following directory.
 
 ```shell
-C:\Users\yourname\AppData\Roaming\WinRAR\rarreg.key
+C:\Users\<yourname>\AppData\Roaming\WinRAR\rarreg.key
 ```
 
 You can also compress `rarreg.key` into `rarkey.rar` and double-click it to run it, and the license import will take place automatically.
@@ -276,7 +276,15 @@ Save the generated information in **ASCII encoding** as `rarreg.key`.
 
 In addition to using ASCII encoding, you can use ANSI and UTF8NoBOM to support more characters, but you will need to install [PowerShell 7.4 or later](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4).
 
-For example, generating a license with UTF8NoBOM encoding.
+| `-Encoding` | PowerShell 5.x | PowerShell 7.4+ |
+| :------------: | :------------: | :-------------: |
+|     ASCII      |       ✅        |        ✅        |
+|      ANSI      |                |        ✅        |
+|   UTF8NoBOM    |                |        ✅        |
+
+In PowerShell 5.x, you cannot output licenses in ANSI or UTF8NoBOM format. You must generate the content via commands, manually copy it, and save it as ANSI or UTF8NoBOM.
+
+In PowerShell 7.4+, you can generate licenses encoded in ANSI or UTF8NoBOM:
 
 > `utf8:` is to ensure constant character representation in WinRAR across languages.
 
