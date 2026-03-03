@@ -4,10 +4,13 @@
 #include <locale.h>
 #include <iostream>
 #include <string>
+#include <vector>
 #include <codecvt>
 #include "WinRarConfig.hpp"
 #include "WinRarKeygen.hpp"
 #include <system_error>
+
+#pragma comment(lib, "Version.lib")
 
 std::string WideToUtf8(const std::wstring& wstr) {
     if (wstr.empty()) return {};
@@ -33,6 +36,39 @@ void Help() {
     std::wcout << L"        winrar-keygen.exe \"GitHub\" \"Single PC usage license\"\n";
 }
 
+std::wstring GetExecutableVersion() {
+    wchar_t exePath[MAX_PATH] = {};
+    DWORD pathLen = GetModuleFileNameW(nullptr, exePath, MAX_PATH);
+    if (pathLen == 0) {
+        return L"unknown";
+    }
+
+    DWORD handle = 0;
+    DWORD versionSize = GetFileVersionInfoSizeW(exePath, &handle);
+    if (versionSize == 0) {
+        return L"unknown";
+    }
+
+    std::vector<BYTE> versionData(versionSize);
+    if (!GetFileVersionInfoW(exePath, 0, versionSize, versionData.data())) {
+        return L"unknown";
+    }
+
+    VS_FIXEDFILEINFO* fixedInfo = nullptr;
+    UINT len = 0;
+    if (!VerQueryValueW(versionData.data(), L"\\",
+                        reinterpret_cast<LPVOID*>(&fixedInfo),
+                        &len) ||
+        fixedInfo == nullptr) {
+        return L"unknown";
+    }
+
+    return std::to_wstring(HIWORD(fixedInfo->dwFileVersionMS)) + L"." +
+           std::to_wstring(LOWORD(fixedInfo->dwFileVersionMS)) + L"." +
+           std::to_wstring(HIWORD(fixedInfo->dwFileVersionLS)) + L"." +
+           std::to_wstring(LOWORD(fixedInfo->dwFileVersionLS));
+}
+
 void PrintRegisterInfo(const WinRarKeygen<WinRarConfig>::RegisterInfo& Info) {
     std::wstring user = Utf8ToWide(Info.UserName);
     std::wstring license = Utf8ToWide(Info.LicenseType);
@@ -49,14 +85,49 @@ void PrintRegisterInfo(const WinRarKeygen<WinRarConfig>::RegisterInfo& Info) {
     }
 }
 
-int wmain(int argc, wchar_t* argv[]) {
-    SetConsoleOutputCP(CP_UTF8); // powershell code page set to 65001
-    if (_setmode(_fileno(stdout), _O_U8TEXT) == -1) {
-        std::wcerr << L"Failed to set console to UTF-8 output mode.\n";
+bool IsConsoleHandle(HANDLE handle) {
+    if (handle == nullptr || handle == INVALID_HANDLE_VALUE) {
+        return false;
     }
-    setlocale(LC_ALL, "");
+    DWORD mode = 0;
+    return GetConsoleMode(handle, &mode) != 0;
+}
 
-    if (argc == 3) {
+void ConfigureConsoleOutput() {
+    HANDLE stdoutHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+    HANDLE stderrHandle = GetStdHandle(STD_ERROR_HANDLE);
+
+    int mode;
+
+    // console use UTF-16, file use UTF-8
+    if (IsConsoleHandle(stdoutHandle)) {
+        if ((mode = _setmode(_fileno(stdout), _O_WTEXT)) == -1)
+            std::wcerr << L"Failed to set stdout _O_WTEXT\n";
+    }
+    else {
+        // stdout is redirected to a file, use UTF-8
+        if ((mode = _setmode(_fileno(stdout), _O_U8TEXT)) == -1)
+            std::wcerr << L"Failed to set stdout _O_U8TEXT\n";
+    }
+
+    if (IsConsoleHandle(stderrHandle)) {
+        if ((mode = _setmode(_fileno(stderr), _O_WTEXT)) == -1)
+            std::wcerr << L"Failed to set stderr _O_WTEXT\n";
+    }
+    else {
+        if ((mode = _setmode(_fileno(stderr), _O_U8TEXT)) == -1)
+            std::wcerr << L"Failed to set stderr _O_U8TEXT\n";
+    }
+}
+
+int wmain(int argc, wchar_t* argv[]) {
+    ConfigureConsoleOutput();
+
+    if (argc == 2 &&
+        (_wcsicmp(argv[1], L"ver") == 0 || _wcsicmp(argv[1], L"--version") == 0 || _wcsicmp(argv[1], L"-v") == 0)) {
+        std::wcout << GetExecutableVersion() << L"\n";
+    }
+    else if (argc == 3) {
         try {
             std::string user = WideToUtf8(argv[1]);
             std::string license = WideToUtf8(argv[2]);
@@ -66,7 +137,7 @@ int wmain(int argc, wchar_t* argv[]) {
             );
         }
         catch (std::exception& e) {
-            std::wcerr << L"Error: " << e.what() << L"\n";
+            std::wcerr << L"Error: " << Utf8ToWide(e.what()) << L"\n";
             return -1;
         }
     }
