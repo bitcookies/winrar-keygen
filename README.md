@@ -21,7 +21,7 @@ WinRAR is a trialware file archiver utility for Windows, developed by Eugene Ros
 
 It can create and view archives in RAR or ZIP file formats and unpack numerous archive file formats. 
 
-WinRAR is not a free software. If you want to use it, you should pay to [__RARLAB__](https://www.rarlab.com/) and then you will get a license file named `rarreg.key`. 
+WinRAR is not a free software. If you want to use it, you should pay to [**RARLAB**](https://www.rarlab.com/) and then you will get a license file named `rarreg.key`. 
 
 This repository will tell you how WinRAR license file `"rarreg.key"` is generated. 
 
@@ -59,10 +59,10 @@ There are two types of WinRAR licenses, `rarreg.key` and `rarkey.rar`, which dif
 | <img width="100px" src="assets/file-icon.svg"> | <img width="100px" src="assets/winrar-icon.svg"> |
 |     Drag to import or place in a location      |       Double-click to run automatic import       |
 
-If you are unable to drag, you can try to put the `rarreg.key` in the following directory.
+You can try to put the `rarreg.key` in the following directory.
 
 ```shell
-C:\Users\<yourname>\AppData\Roaming\WinRAR\rarreg.key
+%APPDATA%\WinRAR\rarreg.key
 ```
 
 You can also compress `rarreg.key` into `rarkey.rar` and double-click it to run it, and the license import will take place automatically.
@@ -111,8 +111,6 @@ After running successfully, open the corresponding task and select **rarreg_file
 ![Download](assets/file-download-dark.png#gh-dark-mode-only)
 
 Extract rarreg_file.zip to get `rarreg.key` and drag to import into WinRAR. You can also compress `rarreg.key` into `rarkey.rar`, then double-click it to run it, and the license import will be done automatically.
-
-If you get an invalid key, please check [the specific solution](#7-invalid-key).
 
 </details>
 
@@ -187,8 +185,6 @@ After running successfully, open the corresponding task and select **rarreg_file
 
 Extract `rarreg_file.zip` to get `rarreg.7z`, unzip it with the password to get `rarreg.key`, then drag and drop to import into WinRAR. You can also compress `rarreg.key` into `rarkey.rar`, then double-click it to run it, and the license import will be done automatically.
 
-If you get an invalid key, please check [the specific solution](#7-invalid-key).
-
 </details>
 
 ## 6. Build in Visual Studio
@@ -220,7 +216,7 @@ If you don't want to compile it yourself, you can also go to the [release](https
    $ vcpkg install gmp:x64-windows
    ```
 
-3. Your `vcpkg` has been integrated into your __Visual Studio__, which means you have run successfully.
+3. Your `vcpkg` has been integrated into your **Visual Studio**, which means you have run successfully.
 
    ```shell
    $ vcpkg integrate install
@@ -229,11 +225,11 @@ If you don't want to compile it yourself, you can also go to the [release](https
 
 ### 6.2 Build
 
-1. Open this project in __Visual Studio__.
+1. Open this project in **Visual Studio**.
 
-2. Select `Release` configuration.
+2. Select **Release** configuration.
 
-3. Select __Build > Build Solution__.
+3. Select **Build > Build Solution**.
 
 You will see executable files in `bin/` directory. 
 
@@ -241,15 +237,36 @@ You will see executable files in `bin/` directory.
 
 Execute the following code in the terminal and configure two parameters to generate `rarreg.key`.
 
-Here is an example of ASCII encoding for `Github` and `Single PC usage license`:
-
 ```shell
 Usage:
-        winrar-keygen.exe <Username> <License Name>
+  winrar-keygen.exe <Username> <LicenseName> [options]
+  winrar-keygen.exe -v | --version
+  winrar-keygen.exe -h | --help
 
-Example:
+Options:
+  -e, --encoding <enc>   utf8 (default), ascii, ansi
+  -o, --output <file>    Output file (default: rarreg.key)
+  -a, --activate         Write to %%APPDATA%%\WinRAR\rarreg.key
+  -t, --text             Print to console only, don't write file
+  -v, --version          Show version
+  -h, --help             Show this help
+```
 
-        winrar-keygen.exe "Github" "Single PC usage license"
+#### Options
+
+| Flag                   | Description                              |
+| :--------------------- | :--------------------------------------- |
+| `-e, --encoding <enc>` | `ascii` (default), `ansi`, `utf8`        |
+| `-o, --output <file>`  | Output file path (default: `rarreg.key`) |
+| `-a, --activate`       | Write to `%%APPDATA%%\WinRAR\rarreg.key` |
+| `-t, --text`           | Print to console only, don't write file  |
+| `-v, --version`        | Show version                             |
+| `-h, --help`           | Show help                                |
+
+Here is an example of ASCII encoding for `Github` and `Single PC usage license`.
+
+```shell
+./winrar-keygen.exe "Github" "Single PC usage license" -t -e ascii
 ```
 
 ![Terminal](assets/terminal.png)
@@ -270,69 +287,50 @@ dd4ab952600ba16a99236d910bfa995d5f60651ec451f462511507
 5eede7ed46566b10bf033daa6384062b259194b1acbd0378116064
 ```
 
-Save the generated information in **ASCII encoding** as `rarreg.key`.
+### 6.4 More examples
 
-### 6.4 More character support
+Generate a UTF-8 encoded license and activate WinRAR directly.
 
-In addition to using ASCII encoding, you can use ANSI and UTF8NoBOM to support more characters, but you will need to install [PowerShell 7.4 or later](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4).
-
-| `-Encoding` | PowerShell 5.x | PowerShell 7.4+ |
-| :------------: | :------------: | :-------------: |
-|     ASCII      |       ✅        |        ✅        |
-|      ANSI      |                |        ✅        |
-|   UTF8NoBOM    |                |        ✅        |
-
-In PowerShell 5.x, you cannot output licenses in ANSI or UTF8NoBOM format. You must generate the content via commands, manually copy it, and save it as ANSI or UTF8NoBOM.
-
-In PowerShell 7.4+, you can generate licenses encoded in ANSI or UTF8NoBOM:
-
-> `utf8:` is to ensure constant character representation in WinRAR across languages.
+> The UTF-8 encoded license will automatically determine whether to add the `utf8:` prefix based on the characters.
 
 ```shell
-./winrar-keygen.exe "utf8:简体中文" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
+./winrar-keygen.exe "Github" "Single PC usage license" -a
+```
 
-./winrar-keygen.exe "utf8:Français" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
+Generate an ANSI-encoded license and generate a license file.
 
-./winrar-keygen.exe "utf8:日本語" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
+> ANSI encoding is region-dependent on Windows. While characters in the current region may display correctly, garbled characters may still occur.
 
-./winrar-keygen.exe "utf8:한국어" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
+```shell
+./winrar-keygen.exe "Github" "Single PC usage license" -e ansi
+```
+
+Generate an ASCII-encoded license and output it only to the console.
+
+```shell
+./winrar-keygen.exe "Github" "Single PC usage license" -t -e asci
 ```
 
 </details>
 
-## 7. Invalid key
+## 7. Common Errors
 
-Why is my `rarreg.key` invalid?
+### 7.1 Keygen Errors
 
-### 7.1 Character encoding
+Starting with version `ver4`, Keygen has added some common error messages. Please make corrections based on the output.
 
-`TEXT1` and `TEXT2` are required to fulfill [corresponding coding requirements](#31-Encoding).
-
-```console
-./winrar-keygen.exe <TEXT1> <TEXT2>
-```
-
-You can refer to: [Generation of "rarreg.key"](https://github.com/bitcookies/winrar-keygen/blob/master/README.HOW_DOES_IT_WORK.md#7-generation-of-rarregkey)
-
-### 7.2 Text encoding
-
-If you use the following command:
+ Use `-h` or `--help` to view the help information:
 
 ```shell
-./winrar-keygen.exe "Github" "Single PC usage license" > rarreg.key
+./winrar-keygen.exe -h
 ```
 
-In the newer Windows 10 / 11, PowerShell will export in **UTF16-LE** format by default, which will cause the error.
+### 7.2 Github Actions Errors
 
-Please use the following command:
+If you encounter an error while using `ascii` encoding, it is because you are using non-ASCII characters.
 
-```shell
-./winrar-keygen.exe "Github" "license" | Out-File -Encoding ascii rarreg.key
+If you encounter an error while using `ansi` encoding, it is because the character encoding is not supported by the current Windows system. The system platform for GitHub Actions is `windows-2022-english` (ANSI code page 1252), and any non-ASCII characters will cause the process to fail.
 
-./winrar-keygen.exe "Github" "license" | Out-File -Encoding ansi rarreg.key
-
-./winrar-keygen.exe "utf8:Github" "license" | Out-File -Encoding UTF8NoBOM rarreg.key
-```
 
 ## 8. Contributing
 
@@ -340,13 +338,11 @@ Please use the following command:
 
 If you encounter some problems, you can report on the [Issues](https://github.com/bitcookies/winrar-keygen/issues) page. There will be many enthusiastic developers or Github users to help you.
 
-This project welcomes contributions and suggestions. You can make suggestions in [Issues](https://github.com/bitcookies/winrar-keygen/issues), or submit a pull request 😄
+This project welcomes contributions and suggestions. You can make suggestions in [Issues](https://github.com/bitcookies/winrar-keygen/issues), or submit a pull request.
 
 ### 8.2 Thanks
 
-Thank you very much to some enthusiastic developers for helping answer some questions in [Issues](https://github.com/bitcookies/winrar-keygen/issues).
-
-🏆 Special Thanks [@Sonic-The-Hedgehog-LNK1123](https://github.com/Sonic-The-Hedgehog-LNK1123)
+Thank you to every contributor to this project. Thank you very much to some enthusiastic developers for helping answer some questions in [Issues](https://github.com/bitcookies/winrar-keygen/issues).
 
 ## 9. License
 
