@@ -94,7 +94,11 @@ private:
     static BigInteger GenerateRandomInteger() {
         uint16_t RawRandomInteger[15];
 
-        srand(static_cast<unsigned int>(time(nullptr)));
+        static bool seeded = false;
+        if (!seeded) {
+            srand(static_cast<unsigned int>(time(nullptr)));
+            seeded = true;
+        }
         for (size_t i = 0; i < 15; ++i) {
             RawRandomInteger[i] = static_cast<uint16_t>(rand());
         }
@@ -226,7 +230,7 @@ public:
         CalculateChecksum(RegInfo);
 
         RegInfo.HexData = HelperStringFormat(
-            "%zd%zd%zd%zd%s%s%s%s%010lu",
+            "%zu%zu%zu%zu%s%s%s%s%010lu",
             RegInfo.Items[0].length(),
             RegInfo.Items[1].length(),
             RegInfo.Items[2].length(),

@@ -54,7 +54,10 @@ public:
         }
 
         Point operator-() const noexcept {
-            return Point(_X, _X + _Y);
+            Point Result(_Curve);
+            Result._X = _X;
+            Result._Y = _X + _Y;
+            return Result;
         }
 
         Point& operator=(const Point& Other) {
@@ -139,30 +142,34 @@ public:
             if (&_Curve == &Other._Curve || _Curve == Other._Curve) {
                 if (IsAtInfinity()) {
                     return Other;
-                } else {
-                    if (this == &Other || _X == Other._X) {
+                } else if (Other.IsAtInfinity()) {
+                    return *this;
+                } else if (_X == Other._X) {
+                    if (this == &Other || _Y == Other._Y) {
                         return ValueOfDouble();
                     } else {
-                        Point Result(_Curve);
-
-                        // m = (Y0 + Y1) / (X0 + X1)
-                        auto m = (_Y + Other._Y) / (_X + Other._X);
-
-                        // NewX = m ^ 2 + m + X0 + X1 + a
-                        Result._X = m.SquareValue();
-                        Result._X += m;
-                        Result._X += _X;
-                        Result._X += Other._X;
-                        Result._X += _Curve._A;
-
-                        // NewY = m * (X0 + NewX) + NewX + Y0
-                        Result._Y = _X + Result._X;
-                        Result._Y *= m;
-                        Result._Y += Result._X;
-                        Result._Y += _Y;
-
-                        return Result;
+                        return Point(_Curve);
                     }
+                } else {
+                    Point Result(_Curve);
+
+                    // m = (Y0 + Y1) / (X0 + X1)
+                    auto m = (_Y + Other._Y) / (_X + Other._X);
+
+                    // NewX = m ^ 2 + m + X0 + X1 + a
+                    Result._X = m.SquareValue();
+                    Result._X += m;
+                    Result._X += _X;
+                    Result._X += Other._X;
+                    Result._X += _Curve._A;
+
+                    // NewY = m * (X0 + NewX) + NewX + Y0
+                    Result._Y = _X + Result._X;
+                    Result._Y *= m;
+                    Result._Y += Result._X;
+                    Result._Y += _Y;
+
+                    return Result;
                 }
             } else {
                 throw std::invalid_argument("Not on the same curve.");
@@ -174,30 +181,33 @@ public:
                 if (IsAtInfinity()) {
                     _X = Other._X;
                     _Y = Other._Y;
-                } else {
-                    if (this == &Other || _X == Other._X) {
+                } else if (Other.IsAtInfinity()) {
+                    // *this unchanged
+                } else if (_X == Other._X) {
+                    if (this == &Other || _Y == Other._Y) {
                         Double();
                     } else {
-                        Point Result(_Curve);
-
-                        // m = (Y0 + Y1) / (X0 + X1)
-                        auto m = (_Y + Other._Y) / (_X + Other._X);
-
-                        // NewX = m ^ 2 + m + X0 + X1 + a
-                        __FieldType NewX = m.SquareValue();
-                        NewX += m;
-                        NewX += _X;
-                        NewX += Other._X;
-                        NewX += _Curve._A;
-
-                        // NewY = m * (X0 + NewX) + NewX + Y0
-                        _X += NewX;
-                        _X *= m;
-                        _X += NewX;
-                        _Y += _X;
-
-                        _X = NewX;
+                        _X = __FieldType();
+                        _Y = __FieldType();
                     }
+                } else {
+                    // m = (Y0 + Y1) / (X0 + X1)
+                    auto m = (_Y + Other._Y) / (_X + Other._X);
+
+                    // NewX = m ^ 2 + m + X0 + X1 + a
+                    __FieldType NewX = m.SquareValue();
+                    NewX += m;
+                    NewX += _X;
+                    NewX += Other._X;
+                    NewX += _Curve._A;
+
+                    // NewY = m * (X0 + NewX) + NewX + Y0
+                    _X += NewX;
+                    _X *= m;
+                    _X += NewX;
+                    _Y += _X;
+
+                    _X = NewX;
                 }
                 return *this;
             } else {
@@ -229,7 +239,7 @@ public:
             return Result;
         }
 
-        Point operator*=(const BigInteger N) noexcept {
+        Point& operator*=(const BigInteger N) noexcept {
             Point Result(_Curve);
             size_t bit_length = N.BitLength();
 
@@ -240,6 +250,7 @@ public:
             }
 
             *this = Result;
+            return *this;
         }
 
         // SEC 1: Elliptic Curve Cryptography

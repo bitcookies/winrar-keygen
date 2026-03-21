@@ -60,6 +60,10 @@ public:
         mpz_swap(_Value, Other._Value);
     }
 
+    ~BigInteger() noexcept {
+        mpz_clear(_Value);
+    }
+
     BigInteger& operator=(const BigInteger& Other) noexcept {
         if (this != &Other) {
             mpz_set(_Value, Other._Value);
@@ -70,7 +74,6 @@ public:
     BigInteger& operator=(BigInteger&& Other) noexcept {
         if (this != &Other) {
             mpz_swap(_Value, Other._Value);
-            mpz_clear(Other._Value);
         }
         return *this;
     }
@@ -90,7 +93,7 @@ public:
     }
 
     BigInteger& operator=(const char* lpszValue) noexcept {
-        mpz_init_set_str(_Value, lpszValue, 0);
+        mpz_set_str(_Value, lpszValue, 0);
         return *this;
     }
 
@@ -265,7 +268,7 @@ public:
         return *this;
     }
 
-    BigInteger& Load(bool IsNegative, const std::vector<uint8_t> Buffer, bool UseLittleEndian) noexcept {
+    BigInteger& Load(bool IsNegative, const std::vector<uint8_t>& Buffer, bool UseLittleEndian) noexcept {
         mpz_import(_Value, Buffer.size(), UseLittleEndian ? -1 : 1, sizeof(uint8_t), 0, 0, Buffer.data());
         if (IsNegative)
             mpz_neg(_Value, _Value);
