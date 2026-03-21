@@ -20,100 +20,23 @@ on:
         required: true
 
 jobs:
-  keygen-ascii:
-    name: Generating ASCII License
+  keygen:
+    name: Generating License (${{ github.event.inputs.KEY_ENCODING }})
     runs-on: windows-2022
     env:
       KEY_ENCODING: ${{ github.event.inputs.KEY_ENCODING }}
       KEY_USERNAME: ${{ github.event.inputs.KEY_USERNAME }}
       KEY_LICENSE_NAME: ${{ github.event.inputs.KEY_LICENSE_NAME }}
-    if: github.event.inputs.KEY_ENCODING == 'ascii'
 
     steps:
     - uses: actions/checkout@v6.0.2
     
-    - name: Generating License (ASCII)
-      # Use PowerShell 5
-      shell: powershell
-      run: |
-        $OutputEncoding = [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
-        $PSVersionTable.PSVersion
-        bin/x64-Release/winrar-keygen.exe "${{ env.KEY_USERNAME }}" "${{ env.KEY_LICENSE_NAME }}" | Out-File -Encoding ${{ env.KEY_ENCODING }} rarreg.key
-
-    - name: Uploading License
-      uses: actions/upload-artifact@v6.0.0
-      with:
-        name: rarreg_file_${{ env.KEY_ENCODING }}
-        path: rarreg.key
-        if-no-files-found: error
-        retention-days: 90
-
-
-  keygen-ansi:
-    name: Generating ANSI License
-    runs-on: windows-2022
-    env:
-      KEY_ENCODING: ${{ github.event.inputs.KEY_ENCODING }}
-      KEY_USERNAME: ${{ github.event.inputs.KEY_USERNAME }}
-      KEY_LICENSE_NAME: ${{ github.event.inputs.KEY_LICENSE_NAME }}
-    if: github.event.inputs.KEY_ENCODING == 'ansi'
-
-    steps:
-    - uses: actions/checkout@v6.0.2
-    
-    - name: Generating License (ANSI)
-      # Use PowerShell 7
+    - name: Generating License
       shell: pwsh
       run: |
-        [System.Text.Encoding]::Default
-        $OutputEncoding
-        bin/x64-Release/winrar-keygen.exe "${{ env.KEY_USERNAME }}" "${{ env.KEY_LICENSE_NAME }}" | Out-File -Encoding ${{ env.KEY_ENCODING }} rarreg.key
+        bin/x64-Release/winrar-keygen.exe "${{ env.KEY_USERNAME }}" "${{ env.KEY_LICENSE_NAME }}" -e ${{ env.KEY_ENCODING }}
+        if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
-    - name: Uploading License
-      uses: actions/upload-artifact@v6.0.0
-      with:
-        name: rarreg_file_${{ env.KEY_ENCODING }}
-        path: rarreg.key
-        if-no-files-found: error
-        retention-days: 90
-
-
-  keygen-uft8:
-    name: Generating UTF8 License
-    runs-on: windows-2022
-    env:
-      KEY_ENCODING: ${{ github.event.inputs.KEY_ENCODING }}
-      KEY_USERNAME: ${{ github.event.inputs.KEY_USERNAME }}
-      KEY_LICENSE_NAME: ${{ github.event.inputs.KEY_LICENSE_NAME }}
-    if: github.event.inputs.KEY_ENCODING == 'utf8'
-
-    steps:
-    - uses: actions/checkout@v6.0.2
-
-    - name: Generating License (UTF-8)
-      # Use PowerShell 7
-      shell: pwsh
-      run: |
-        $OutputEncoding = [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
-        $PSVersionTable.PSVersion
-        $user = "utf8:${{ env.KEY_USERNAME }}"
-        $license = "${{ env.KEY_LICENSE_NAME }}"
-
-        $allAscii = $true
-        foreach ($c in $license.ToCharArray()) {
-          if ([int][char]$c -gt 127) {
-            $allAscii = $false
-            break
-          }
-        }
-
-        if (-not $allAscii) {
-          $license = "utf8:" + $license
-        }
-
-        Write-Host "License string: $license"
-        bin/x64-Release/winrar-keygen.exe "$user" "$license" | Out-File -Encoding utf8NoBOM rarreg.key
-  
     - name: Uploading License
       uses: actions/upload-artifact@v6.0.0
       with:
