@@ -256,7 +256,7 @@ Options:
 
 | Flag                   | Description                              |
 | :--------------------- | :--------------------------------------- |
-| `-e, --encoding <enc>` | `ascii` (default), `ansi`, `utf8`        |
+| `-e, --encoding <enc>` | `ascii`, `ansi`, `utf8` (default)        |
 | `-o, --output <file>`  | Output file path (default: `rarreg.key`) |
 | `-a, --activate`       | Write to `%%APPDATA%%\WinRAR\rarreg.key` |
 | `-t, --text`           | Print to console only, don't write file  |

@@ -251,7 +251,7 @@ Options:
 
 | 参数                   | 描述                                     |
 | :--------------------- | :--------------------------------------- |
-| `-e, --encoding <enc>` | `ascii` (默认), `ansi`, `utf8`           |
+| `-e, --encoding <enc>` | `ascii`, `ansi`, `utf8` (默认)           |
 | `-o, --output <file>`  | Output file path (默认: `rarreg.key`)    |
 | `-a, --activate`       | Write to `%%APPDATA%%\WinRAR\rarreg.key` |
 | `-t, --text`           | Print to console only, don't write file  |
