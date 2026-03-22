@@ -245,7 +245,7 @@ Usage:
 Options:
   -e, --encoding <enc>   utf8 (default), ascii, ansi
   -o, --output <file>    Output file (default: rarreg.key)
-  -a, --activate         Write to %%APPDATA%%\WinRAR\rarreg.key
+  -a, --activate         Write to %APPDATA%\WinRAR\rarreg.key
   -t, --text             Print to console only, don't write file
   -v, --version          Show version
   -h, --help             Show this help
