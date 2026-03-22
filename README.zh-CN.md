@@ -250,7 +250,7 @@ Options:
 
 | 参数                   | 描述                                    |
 | :--------------------- | :-------------------------------------- |
-| `-e, --encoding <enc>` | `ascii`, `ansi`, `utf8` (默认)          |
+| `-e, --encoding <enc>` | `utf8` (默认), `ascii`, `ansi`          |
 | `-o, --output <file>`  | Output file path (默认: `rarreg.key`)   |
 | `-a, --activate`       | Write to `%APPDATA%\WinRAR\rarreg.key`  |
 | `-t, --text`           | Print to console only, don't write file |
@@ -262,8 +262,6 @@ Options:
 ```shell
 ./winrar-keygen.exe "Github" "Single PC usage license" -t -e ascii
 ```
-
-![Terminal](assets/terminal.png)
 
 现在你可以看到新生成的文件：
 

@@ -255,7 +255,7 @@ Options:
 
 | Flag                   | Description                              |
 | :--------------------- | :--------------------------------------- |
-| `-e, --encoding <enc>` | `ascii`, `ansi`, `utf8` (default)        |
+| `-e, --encoding <enc>` | `utf8` (default), `ascii`, `ansi`        |
 | `-o, --output <file>`  | Output file path (default: `rarreg.key`) |
 | `-a, --activate`       | Write to `%APPDATA%\WinRAR\rarreg.key`   |
 | `-t, --text`           | Print to console only, don't write file  |
@@ -267,8 +267,6 @@ Here is an example of ASCII encoding for `Github` and `Single PC usage license`.
 ```shell
 ./winrar-keygen.exe "Github" "Single PC usage license" -t -e ascii
 ```
-
-![Terminal](assets/terminal.png)
 
 Now you can see the newly generated file.
 
