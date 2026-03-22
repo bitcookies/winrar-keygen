@@ -124,7 +124,7 @@ void ShowHelp(const std::wstring& version) {
     std::wcout << L"Options:\n";
     std::wcout << L"  -e, --encoding <enc>   utf8 (default), ascii, ansi\n";
     std::wcout << L"  -o, --output <file>    Output file (default: rarreg.key)\n";
-    std::wcout << L"  -a, --activate         Write to %%APPDATA%%\\WinRAR\\rarreg.key\n";
+    std::wcout << L"  -a, --activate         Write to %APPDATA%\\WinRAR\\rarreg.key\n";
     std::wcout << L"  -t, --text             Print to console only, don't write file\n";
     std::wcout << L"  -v, --version          Show version\n";
     std::wcout << L"  -h, --help             Show this help\n\n";
