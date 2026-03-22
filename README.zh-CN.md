@@ -11,9 +11,8 @@
   <a href="https://github.com/bitcookies/winrar-keygen/blob/master/LICENSE"><img alt="License" src="https://img.shields.io/github/license/bitcookies/winrar-keygen.svg" /></a>
 </p>
 <p align="center">
-  <a href="README.zh-CN.md">简体中文</a> | <a href="README.md">English</a>
+  <a href="README.md">English</a> | <a href="README.zh-CN.md">简体中文</a>
 </p>
-
 
 ## 1. WinRAR是什么？
 
@@ -249,14 +248,14 @@ Options:
 
 #### 参数选项
 
-| 参数                   | 描述                                     |
-| :--------------------- | :--------------------------------------- |
-| `-e, --encoding <enc>` | `ascii`, `ansi`, `utf8` (默认)           |
-| `-o, --output <file>`  | Output file path (默认: `rarreg.key`)    |
-| `-a, --activate`       | Write to `%%APPDATA%%\WinRAR\rarreg.key` |
-| `-t, --text`           | Print to console only, don't write file  |
-| `-v, --version`        | Show version                             |
-| `-h, --help`           | Show help                                |
+| 参数                   | 描述                                    |
+| :--------------------- | :-------------------------------------- |
+| `-e, --encoding <enc>` | `ascii`, `ansi`, `utf8` (默认)          |
+| `-o, --output <file>`  | Output file path (默认: `rarreg.key`)   |
+| `-a, --activate`       | Write to `%APPDATA%\WinRAR\rarreg.key`  |
+| `-t, --text`           | Print to console only, don't write file |
+| `-v, --version`        | Show version                            |
+| `-h, --help`           | Show help                               |
 
 这里以 `Github` 和 `Single PC usage license` 参数和 ASCII 编码为例：
 
@@ -377,13 +376,11 @@ https://www.rarlab.com/rar/winrar-x64-624sc.exe
 
 ### 8.1 反馈和建议
 
-如果您遇到了一些问题，可在 [Issues](https://github.com/bitcookies/winrar-keygen/issues) 页面反馈，会有很多热心的开发者及 Github 用户帮助你。
-
-该项目欢迎贡献和建议，您可以在 [Issues](https://github.com/bitcookies/winrar-keygen/issues) 提出建议，或者进行提交拉取请求。
+如果您在使用过程中遇到问题或有任何建议，欢迎在 [Issues](https://github.com/bitcookies/winrar-keygen/issues) 页面反馈，或提交 Pull Request。我们以及社区中的开发者将乐于为您提供帮助。
 
 ### 8.2 感谢
 
-感谢本项目的每位贡献者。感谢一些热心的开发者，在 [Issues](https://github.com/bitcookies/winrar-keygen/issues) 帮助解答一些问题。
+感谢所有为本项目做出贡献的开发者，以及在 [Issues](https://github.com/bitcookies/winrar-keygen/issues) 中热心解答问题的社区成员。
 
 ## 9. 许可
 

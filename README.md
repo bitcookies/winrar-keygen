@@ -11,9 +11,8 @@
   <a href="https://github.com/bitcookies/winrar-keygen/blob/master/LICENSE"><img alt="License" src="https://img.shields.io/github/license/bitcookies/winrar-keygen.svg" /></a>
 </p>
 <p align="center">
-  <a href="README.zh-CN.md">简体中文</a> | <a href="README.md">English</a>
+   <a href="README.md">English</a> | <a href="README.zh-CN.md">简体中文</a>
 </p>
-
 
 ## 1. What is WinRAR?
 
@@ -258,7 +257,7 @@ Options:
 | :--------------------- | :--------------------------------------- |
 | `-e, --encoding <enc>` | `ascii`, `ansi`, `utf8` (default)        |
 | `-o, --output <file>`  | Output file path (default: `rarreg.key`) |
-| `-a, --activate`       | Write to `%%APPDATA%%\WinRAR\rarreg.key` |
+| `-a, --activate`       | Write to `%APPDATA%\WinRAR\rarreg.key`   |
 | `-t, --text`           | Print to console only, don't write file  |
 | `-v, --version`        | Show version                             |
 | `-h, --help`           | Show help                                |
@@ -336,13 +335,11 @@ If you encounter an error while using `ansi` encoding, it is because the charact
 
 ### 8.1 Suggestion
 
-If you encounter some problems, you can report on the [Issues](https://github.com/bitcookies/winrar-keygen/issues) page. There will be many enthusiastic developers or Github users to help you.
-
-This project welcomes contributions and suggestions. You can make suggestions in [Issues](https://github.com/bitcookies/winrar-keygen/issues), or submit a pull request.
+If you encounter any issues or have suggestions, feel free to open an issue on the [Issues](https://github.com/bitcookies/winrar-keygen/issues) page or submit a pull request. We and the community will be happy to help.
 
 ### 8.2 Thanks
 
-Thank you to every contributor to this project. Thank you very much to some enthusiastic developers for helping answer some questions in [Issues](https://github.com/bitcookies/winrar-keygen/issues).
+Thanks to all contributors to this project, and to the community members who help answer questions in the [Issues](https://github.com/bitcookies/winrar-keygen/issues).
 
 ## 9. License
 
