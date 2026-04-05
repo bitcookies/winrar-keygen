@@ -192,6 +192,7 @@ Extract `rarreg_file.zip` to get `rarreg.7z`, unzip it with the password to get 
 
 <details>
 <summary>Click to expand</summary>
+
 If you don't want to compile it yourself, you can also go to the [release](https://github.com/bitcookies/winrar-keygen/releases/) page to get `winrar-keygen.exe`.
 
 ### 6.1 Prerequisites
@@ -221,14 +222,11 @@ If you don't want to compile it yourself, you can also go to the [release](https
    ```shell
    $ vcpkg integrate install
    ```
-   
 
 ### 6.2 Build
 
 1. Open this project in **Visual Studio**.
-
 2. Select **Release** configuration.
-
 3. Select **Build > Build Solution**.
 
 You will see executable files in `bin/` directory. 
@@ -315,6 +313,9 @@ Generate an ASCII-encoded license and output it only to the console.
 
 ## 7. Use GUI
 
+<details>
+<summary>Click to expand</summary>
+
 If you are using Windows 10 or 11, you can use the GUI application, which is built using .NET 8 WPF and Fluent Design (WPF UI) and supports both `x64` and `ARM 64` architectures.
 
 You can obtain the project from the [gui](https://github.com/bitcookies/winrar-keygen/tree/gui) branch and build the GUI application yourself. For more detailed information, please refer to the [README](https://github.com/bitcookies/winrar-keygen/blob/gui/README.md) in that branch.
@@ -323,7 +324,12 @@ You can obtain the project from the [gui](https://github.com/bitcookies/winrar-k
 
 ![GUI](assets/gui-dark.png#gh-dark-mode-only)
 
+</details>
+
 ## 8. Build with CMake
+
+<details>
+<summary>Click to expand</summary>
 
 For Linux or macOS users, you can use `build.yml` on the Actions page to build automatically, or you can compile it manually.
 
@@ -360,6 +366,8 @@ cmake --build . --config Release
 
 The output is always `build/winrar-keygen`, and the version number is controlled by `APP_VERSION` in `CMakeLists.txt`.
 
+</details>
+
 ## 9. Common Errors
 
 ### 9.1 Keygen Errors
@@ -377,7 +385,6 @@ Starting with version `ver4`, Keygen has added some common error messages. Pleas
 If you encounter an error while using `ascii` encoding, it is because you are using non-ASCII characters.
 
 If you encounter an error while using `ansi` encoding, it is because the character encoding is not supported by the current Windows system. The system platform for GitHub Actions is `windows-2022-english` (ANSI code page 1252), and any non-ASCII characters will cause the process to fail.
-
 
 ## 10. Contributing
 
