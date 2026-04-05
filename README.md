@@ -35,6 +35,8 @@ There are several ways to use it.
 - [Use Github Actions](#4-Use-Github-Actions) 
 - [Use Github Actions with secrets](#5-Use-Github-Actions-with-secrets)
 - [Build in Visual Studio](#6-Build-in-Visual-Studio)
+- [Use GUI](#7-Use-GUI)
+- [Build with CMake](#8-Build-with-CMake)
 
 ### 3.1 Encoding
 
@@ -190,9 +192,6 @@ Extract `rarreg_file.zip` to get `rarreg.7z`, unzip it with the password to get 
 
 <details>
 <summary>Click to expand</summary>
-
-I recommend using the Github Actions, but you can still do your own compilation.
-
 If you don't want to compile it yourself, you can also go to the [release](https://github.com/bitcookies/winrar-keygen/releases/) page to get `winrar-keygen.exe`.
 
 ### 6.1 Prerequisites
@@ -203,7 +202,8 @@ If you don't want to compile it yourself, you can also go to the [release](https
 
    + `mpir:x86-windows-static`
    + `mpir:x64-windows-static`
-   + `mpir:gmp:x64-windows`
+   + `gmp:x64-windows`
+   + `gmp:arm64-windows-static`
 
    is installed.
 
@@ -213,6 +213,7 @@ If you don't want to compile it yourself, you can also go to the [release](https
    $ vcpkg install mpir:x86-windows-static
    $ vcpkg install mpir:x64-windows-static
    $ vcpkg install gmp:x64-windows
+   $ vcpkg install gmp:arm64-windows-static
    ```
 
 3. Your `vcpkg` has been integrated into your **Visual Studio**, which means you have run successfully.
@@ -247,6 +248,7 @@ Options:
   -o, --output <file>    Output file (default: rarreg.key)
   -a, --activate         Write to %APPDATA%\WinRAR\rarreg.key
   -t, --text             Print to console only, don't write file
+  -u, --update           Check for updates on GitHub
   -v, --version          Show version
   -h, --help             Show this help
 ```
@@ -259,6 +261,7 @@ Options:
 | `-o, --output <file>`  | Output file path (default: `rarreg.key`) |
 | `-a, --activate`       | Write to `%APPDATA%\WinRAR\rarreg.key`   |
 | `-t, --text`           | Print to console only, don't write file  |
+| `-u, --update`         | Check for updates on GitHub              |
 | `-v, --version`        | Show version                             |
 | `-h, --help`           | Show help                                |
 
@@ -310,9 +313,56 @@ Generate an ASCII-encoded license and output it only to the console.
 
 </details>
 
-## 7. Common Errors
+## 7. Use GUI
 
-### 7.1 Keygen Errors
+If you are using Windows 10 or 11, you can use the GUI application, which is built using .NET 8 WPF and Fluent Design (WPF UI) and supports both `x64` and `ARM 64` architectures.
+
+You can obtain the project from the [gui](https://github.com/bitcookies/winrar-keygen/tree/gui) branch and build the GUI application yourself. For more detailed information, please refer to the [README](https://github.com/bitcookies/winrar-keygen/blob/gui/README.md) in that branch.
+
+![GUI](assets/gui-light.png#gh-light-mode-only)
+
+![GUI](assets/gui-dark.png#gh-dark-mode-only)
+
+## 8. Build with CMake
+
+For Linux or macOS users, you can use `build.yml` on the Actions page to build automatically, or you can compile it manually.
+
+### 8.1 Linux (Ubuntu/Debian)
+
+```shell
+# Install dependencies
+sudo apt-get update
+sudo apt-get install -y build-essential cmake libgmp-dev
+
+# Compile
+mkdir build && cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release
+cmake --build . --config Release
+
+# Build artifacts
+./winrar-keygen --help
+```
+
+### 8.2 macOS (Homebrew)
+
+```shell
+# Install dependencies
+brew install cmake gmp
+
+# Compile
+mkdir build && cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release
+cmake --build . --config Release
+
+# Build artifacts
+./winrar-keygen --help
+```
+
+The output is always `build/winrar-keygen`, and the version number is controlled by `APP_VERSION` in `CMakeLists.txt`.
+
+## 9. Common Errors
+
+### 9.1 Keygen Errors
 
 Starting with version `ver4`, Keygen has added some common error messages. Please make corrections based on the output.
 
@@ -322,23 +372,23 @@ Starting with version `ver4`, Keygen has added some common error messages. Pleas
 ./winrar-keygen.exe -h
 ```
 
-### 7.2 Github Actions Errors
+### 9.2 Github Actions Errors
 
 If you encounter an error while using `ascii` encoding, it is because you are using non-ASCII characters.
 
 If you encounter an error while using `ansi` encoding, it is because the character encoding is not supported by the current Windows system. The system platform for GitHub Actions is `windows-2022-english` (ANSI code page 1252), and any non-ASCII characters will cause the process to fail.
 
 
-## 8. Contributing
+## 10. Contributing
 
-### 8.1 Suggestion
+### 10.1 Suggestion
 
 If you encounter any issues or have suggestions, feel free to open an issue on the [Issues](https://github.com/bitcookies/winrar-keygen/issues) page or submit a pull request. We and the community will be happy to help.
 
-### 8.2 Thanks
+### 10.2 Thanks
 
 Thanks to all contributors to this project, and to the community members who help answer questions in the [Issues](https://github.com/bitcookies/winrar-keygen/issues).
 
-## 9. License
+## 11. License
 
 The code is available under the [MIT license](https://github.com/bitcookies/winrar-keygen/blob/master/LICENSE)
