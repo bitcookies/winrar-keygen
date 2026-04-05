@@ -1,0 +1,60 @@
+# ============ .NET Build ============
+bin/
+obj/
+publish/
+out/
+artifacts/
+*.pdb
+*.dll
+*.exe
+*.nupkg
+*.snupkg
+
+# ============ IDE / Editor ============
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.sln.docstates
+*.rsuser
+launchSettings.json
+
+# ============ NuGet ============
+*.nupkg
+packages/
+
+# ============ Runtime / Settings ============
+winrar-keygen-settings.json
+
+# ============ Git Submodule ============
+winrar-keygen/
+
+# ============ Windows ============
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+*.lnk
+
+# ============ macOS ============
+.DS_Store
+*/.DS_Store
+.LSOverride
+.AppleDouble
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk

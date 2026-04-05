@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>WinRarKeygenGui</RootNamespace>
+    <AssemblyName>winrar-keygen-gui</AssemblyName>
+    <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
+
+    <!-- Version -->
+    <Version>4.1.0</Version>
+    <FileVersion>4.1.0.0</FileVersion>
+    <AssemblyVersion>4.1.0.0</AssemblyVersion>
+    <InformationalVersion>4.1.0.0</InformationalVersion>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+
+    <!-- Metadata -->
+    <Product>WinRAR Keygen</Product>
+    <Company>WinRAR Keygen</Company>
+    <Description>WinRAR Key Generation GUI</Description>
+    <Copyright>Copyright (c) 2021 Bitcookies</Copyright>
+    <AssemblyTitle>WinRAR Key Generation GUI</AssemblyTitle>
+
+  </PropertyGroup>
+
+  <!-- Self-contained publish: compression + native extraction + build variant constant -->
+  <PropertyGroup Condition="'$(SelfContained)' == 'true'">
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <DefineConstants>$(DefineConstants);SELF_CONTAINED</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WPF-UI" Version="3.0.5" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\icon.png" />
+    <Resource Include="Assets\icon.ico" />
+  </ItemGroup>
+
+  <Import Project="build\PatchVersionLanguage.targets" />
+
+</Project>
