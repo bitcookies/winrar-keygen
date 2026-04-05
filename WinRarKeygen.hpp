@@ -9,6 +9,12 @@
 #include <string>
 #include <utility>
 
+#ifdef _MSC_VER
+#define BSWAP32(x) _byteswap_ulong(x)
+#else
+#define BSWAP32(x) __builtin_bswap32(x)
+#endif
+
 template<typename __ConfigType>
 class WinRarKeygen {
 public:
@@ -40,7 +46,7 @@ private:
             Sha1Digest = Sha1.Evaluate();
 
             for (unsigned i = 0; i < 5; ++i) {
-                Generator[i + 1] = _byteswap_ulong(reinterpret_cast<uint32_t*>(Sha1Digest.Bytes)[i]);
+                Generator[i + 1] = BSWAP32(reinterpret_cast<uint32_t*>(Sha1Digest.Bytes)[i]);
             }
         } else {
             Generator[1] = 0xeb3eb781;
@@ -59,7 +65,7 @@ private:
             Sha1Digest = Sha1.Evaluate();
 
             RawPrivateKey[i] = static_cast<uint16_t>(
-                _byteswap_ulong(reinterpret_cast<uint32_t*>(Sha1Digest.Bytes)[0])
+                BSWAP32(reinterpret_cast<uint32_t*>(Sha1Digest.Bytes)[0])
             );
         }
 
@@ -112,7 +118,7 @@ private:
         HasherSha1Traits::DigestType Sha1Digest = Sha1.Evaluate();
 
         for (size_t i = 0; i < 5; ++i) {
-            RawHash[i] = _byteswap_ulong(reinterpret_cast<uint32_t*>(Sha1Digest.Bytes)[i]);
+            RawHash[i] = BSWAP32(reinterpret_cast<uint32_t*>(Sha1Digest.Bytes)[i]);
         }
 
         // SHA1("") with all-zeroed initial value

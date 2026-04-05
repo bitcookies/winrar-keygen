@@ -1,0 +1,129 @@
+name: Build All Platforms
+on:
+  workflow_dispatch:
+
+jobs:
+  # --- Windows builds (MSBuild + vcpkg) ---
+  windows:
+    strategy:
+      matrix:
+        include:
+          - platform: x64
+            artifact: winrar-keygen-x64
+          - platform: Win32
+            artifact: winrar-keygen-x86
+          - platform: ARM64
+            artifact: winrar-keygen-arm64
+    name: Windows ${{ matrix.platform }}
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v6.0.2
+
+      - name: Setup vcpkg
+        uses: lukka/run-vcpkg@v11
+        with:
+          vcpkgGitCommitId: 'a34c873a9717a888f58dc05268dea15592c2f0ff'
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Build
+        run: |
+          msbuild winrar-keygen.sln /p:Configuration=Release /p:Platform=${{ matrix.platform }} /p:VcpkgEnableManifest=true
+
+      - name: Prepare artifact
+        shell: pwsh
+        run: |
+          $src = "bin/${{ matrix.platform }}-Release/winrar-keygen.exe"
+          Copy-Item $src "${{ matrix.artifact }}.exe"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v6.0.0
+        with:
+          name: ${{ matrix.artifact }}
+          path: ${{ matrix.artifact }}.exe
+
+  # --- Linux x64 build (CMake) ---
+  linux-x64:
+    name: Linux x64
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6.0.2
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgmp-dev
+
+      - name: Build
+        run: |
+          mkdir build && cd build
+          cmake .. -DCMAKE_BUILD_TYPE=Release
+          cmake --build . --config Release
+
+      - name: Prepare artifact
+        run: |
+          cp build/winrar-keygen winrar-keygen-linux-x64
+          chmod +x winrar-keygen-linux-x64
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v6.0.0
+        with:
+          name: winrar-keygen-linux-x64
+          path: winrar-keygen-linux-x64
+
+  # --- Linux ARM64 build (native runner) ---
+  linux-arm64:
+    name: Linux ARM64
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v6.0.2
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgmp-dev
+
+      - name: Build
+        run: |
+          mkdir build && cd build
+          cmake .. -DCMAKE_BUILD_TYPE=Release
+          cmake --build . --config Release
+
+      - name: Prepare artifact
+        run: |
+          cp build/winrar-keygen winrar-keygen-linux-arm64
+          chmod +x winrar-keygen-linux-arm64
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v6.0.0
+        with:
+          name: winrar-keygen-linux-arm64
+          path: winrar-keygen-linux-arm64
+
+  # --- macOS ARM64 build (CMake) ---
+  macos:
+    name: macOS ARM64
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v6.0.2
+
+      - name: Install dependencies
+        run: brew install gmp
+
+      - name: Build
+        run: |
+          mkdir build && cd build
+          cmake .. -DCMAKE_BUILD_TYPE=Release
+          cmake --build . --config Release
+
+      - name: Prepare artifact
+        run: |
+          cp build/winrar-keygen winrar-keygen-macos-arm64
+          chmod +x winrar-keygen-macos-arm64
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v6.0.0
+        with:
+          name: winrar-keygen-macos-arm64
+          path: winrar-keygen-macos-arm64
