@@ -319,7 +319,7 @@ dd4ab952600ba16a99236d910bfa995d5f60651ec451f462511507
 
 点击该项目右上角的 **Fork** 按钮，fork 一份代码到你的 Github。然后找到你 fork 的仓库，进入 Actions 页面并手动执行 **Build All Platforms (build.yml)**。
 
-> Windows 的构建耗时在 20 分钟左右，建议本地构建速度更快。
+> Windows 的构建耗时在 25 分钟左右，建议本地构建速度更快。
 
 ![Build](assets/build-workflow-light.png#gh-light-mode-only)
 

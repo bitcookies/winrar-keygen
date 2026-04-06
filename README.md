@@ -319,9 +319,9 @@ Generate an ASCII-encoded license and output it only to the console.
 
 In Actions, you can build applications for six architectures: Linux x64, Linux ARM64, macOS ARM64, Windows x64, Windows Win32, and Windows ARM64.
 
-Click the **Fork** button in the upper-right corner of the project to fork the code to your GitHub. Then locate the forked repository, go to the Actions page, and run "Build All Platforms" (build.yml).
+Click the **Fork** button in the upper-right corner of the project to fork the code to your GitHub. Then locate the forked repository, go to the Actions page, and run **"Build All Platforms" (build.yml)**.
 
-> Building on Windows takes about 20 minutes; we recommend building locally for faster results.
+> Building on Windows takes about 25 minutes; we recommend building locally for faster results.
 
 ![Build](assets/build-workflow-light.png#gh-light-mode-only)
 
