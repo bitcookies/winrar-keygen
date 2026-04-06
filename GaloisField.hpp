@@ -51,7 +51,7 @@ public:
         __FieldTraits::Load(_Val, pbBuffer, cbBuffer);
     }
 
-    template<typename __Dummy = std::enable_if<BitSizeValue <= sizeof(uintptr_t) * 8>::type>
+    template<bool _Cond = (BitSizeValue <= sizeof(uintptr_t) * 8), std::enable_if_t<_Cond, int> = 0>
     GaloisField(GaloisFieldInitByDump, uintptr_t SerializedValue) {
         __FieldTraits::Load(_Val, SerializedValue);
     }
@@ -62,7 +62,7 @@ public:
         return *this;
     }
 
-    template<typename __Dummy = std::enable_if<BitSizeValue <= sizeof(uintptr_t) * 8>::type>
+    template<bool _Cond = (BitSizeValue <= sizeof(uintptr_t) * 8), std::enable_if_t<_Cond, int> = 0>
     GaloisField<__FieldTraits>& operator=(uintptr_t SerializedValue) {
         __FieldTraits::Load(_Val, SerializedValue);
         return *this;
@@ -194,7 +194,7 @@ public:
         return Result;
     }
 
-    template<typename __Dummy = std::enable_if<BitSizeValue <= sizeof(uintptr_t) * 8>::type>
+    template<bool _Cond = (BitSizeValue <= sizeof(uintptr_t) * 8), std::enable_if_t<_Cond, int> = 0>
     uintptr_t Dump() const noexcept {
         return __FieldTraits::Dump(_Val);
     }
@@ -207,7 +207,7 @@ public:
         return __FieldTraits::Dump(_Val);
     }
 
-    template<typename __Dummy = std::enable_if<BitSizeValue <= sizeof(uintptr_t) * 8>::type>
+    template<bool _Cond = (BitSizeValue <= sizeof(uintptr_t) * 8), std::enable_if_t<_Cond, int> = 0>
     GaloisField<__FieldTraits>& Load(uintptr_t SerializedValue) {
         __FieldTraits::Load(_Val, SerializedValue);
         return *this;

@@ -1,20 +1,39 @@
 name: Build All Platforms
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 on:
   workflow_dispatch:
+    inputs:
+      windows_x64:
+        description: 'Build Windows x64'
+        type: boolean
+        default: false
+      windows_x86:
+        description: 'Build Windows x86'
+        type: boolean
+        default: false
+      windows_arm64:
+        description: 'Build Windows ARM64'
+        type: boolean
+        default: false
+      linux_x64:
+        description: 'Build Linux x64'
+        type: boolean
+        default: true
+      linux_arm64:
+        description: 'Build Linux ARM64'
+        type: boolean
+        default: true
+      macos_arm64:
+        description: 'Build macOS ARM64'
+        type: boolean
+        default: true
 
 jobs:
-  # --- Windows builds (MSBuild + vcpkg) ---
-  windows:
-    strategy:
-      matrix:
-        include:
-          - platform: x64
-            artifact: winrar-keygen-x64
-          - platform: Win32
-            artifact: winrar-keygen-x86
-          - platform: ARM64
-            artifact: winrar-keygen-arm64
-    name: Windows ${{ matrix.platform }}
+  # --- Windows x64 build (MSBuild + vcpkg) ---
+  windows-x64:
+    if: ${{ inputs.windows_x64 }}
+    name: Windows x64
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v6.0.2
@@ -22,29 +41,100 @@ jobs:
       - name: Setup vcpkg
         uses: lukka/run-vcpkg@v11
         with:
-          vcpkgGitCommitId: 'a34c873a9717a888f58dc05268dea15592c2f0ff'
+          vcpkgGitCommitId: 'c3867e714dd3a51c272826eea77267876517ed99'
+
+      - name: Integrate vcpkg
+        run: vcpkg integrate install
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
 
       - name: Build
         run: |
-          msbuild winrar-keygen.sln /p:Configuration=Release /p:Platform=${{ matrix.platform }} /p:VcpkgEnableManifest=true
+          msbuild winrar-keygen.vcxproj /p:Configuration=Release /p:Platform=x64 /p:VcpkgEnableManifest=true
 
       - name: Prepare artifact
         shell: pwsh
         run: |
-          $src = "bin/${{ matrix.platform }}-Release/winrar-keygen.exe"
-          Copy-Item $src "${{ matrix.artifact }}.exe"
+          Copy-Item "bin/x64-Release/winrar-keygen.exe" "winrar-keygen-x64.exe"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v6.0.0
         with:
-          name: ${{ matrix.artifact }}
-          path: ${{ matrix.artifact }}.exe
+          name: winrar-keygen-x64
+          path: winrar-keygen-x64.exe
+
+  # --- Windows x86 build (MSBuild + vcpkg) ---
+  windows-x86:
+    if: ${{ inputs.windows_x86 }}
+    name: Windows x86
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v6.0.2
+
+      - name: Setup vcpkg
+        uses: lukka/run-vcpkg@v11
+        with:
+          vcpkgGitCommitId: 'c3867e714dd3a51c272826eea77267876517ed99'
+
+      - name: Integrate vcpkg
+        run: vcpkg integrate install
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Build
+        run: |
+          msbuild winrar-keygen.vcxproj /p:Configuration=Release /p:Platform=Win32 /p:VcpkgEnableManifest=true
+
+      - name: Prepare artifact
+        shell: pwsh
+        run: |
+          Copy-Item "bin/Win32-Release/winrar-keygen.exe" "winrar-keygen-x86.exe"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v6.0.0
+        with:
+          name: winrar-keygen-x86
+          path: winrar-keygen-x86.exe
+
+  # --- Windows ARM64 build (MSBuild + vcpkg) ---
+  windows-arm64:
+    if: ${{ inputs.windows_arm64 }}
+    name: Windows ARM64
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v6.0.2
+
+      - name: Setup vcpkg
+        uses: lukka/run-vcpkg@v11
+        with:
+          vcpkgGitCommitId: 'c3867e714dd3a51c272826eea77267876517ed99'
+
+      - name: Integrate vcpkg
+        run: vcpkg integrate install
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Build
+        run: |
+          msbuild winrar-keygen.vcxproj /p:Configuration=Release /p:Platform=ARM64 /p:VcpkgEnableManifest=true
+
+      - name: Prepare artifact
+        shell: pwsh
+        run: |
+          Copy-Item "bin/ARM64-Release/winrar-keygen.exe" "winrar-keygen-arm64.exe"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v6.0.0
+        with:
+          name: winrar-keygen-arm64
+          path: winrar-keygen-arm64.exe
 
   # --- Linux x64 build (CMake) ---
   linux-x64:
+    if: ${{ inputs.linux_x64 }}
     name: Linux x64
     runs-on: ubuntu-latest
     steps:
@@ -74,6 +164,7 @@ jobs:
 
   # --- Linux ARM64 build (native runner) ---
   linux-arm64:
+    if: ${{ inputs.linux_arm64 }}
     name: Linux ARM64
     runs-on: ubuntu-24.04-arm
     steps:
@@ -103,13 +194,14 @@ jobs:
 
   # --- macOS ARM64 build (CMake) ---
   macos:
+    if: ${{ inputs.macos_arm64 }}
     name: macOS ARM64
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v6.0.2
 
       - name: Install dependencies
-        run: brew install gmp
+        run: brew list gmp &>/dev/null || brew install gmp
 
       - name: Build
         run: |
