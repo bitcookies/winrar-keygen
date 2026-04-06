@@ -35,8 +35,9 @@ There are several ways to use it.
 - [Use Github Actions](#4-Use-Github-Actions) 
 - [Use Github Actions with secrets](#5-Use-Github-Actions-with-secrets)
 - [Build in Visual Studio](#6-Build-in-Visual-Studio)
-- [Use GUI](#7-Use-GUI)
+- [Build in Github Actions](#7-Build-in-Github-Actions)
 - [Build with CMake](#8-Build-with-CMake)
+- [Use GUI for Windows](#9-Use-GUI-for-Windows)
 
 ### 3.1 Encoding
 
@@ -75,7 +76,7 @@ You can also compress `rarreg.key` into `rarkey.rar` and double-click it to run 
 
 The new workflow can easily help you generate a license, you just need to follow these steps.
 
-> Your `Username` and `License Name` will appear in the actions log, if you don't want to give out this information, see [5. Using Github Actions with secrets](#5-Use-Github-Actions-with-secrets).
+> Your `<Username>` and `<License Name>` will appear in the Actions log, if you don't want to give out this information, see [5. Using Github Actions with secrets](#5-Use-Github-Actions-with-secrets).
 
 ### 4.1 Fork
 
@@ -193,7 +194,7 @@ Extract `rarreg_file.zip` to get `rarreg.7z`, unzip it with the password to get 
 <details>
 <summary>Click to expand</summary>
 
-If you don't want to compile it yourself, you can also go to the [release](https://github.com/bitcookies/winrar-keygen/releases/) page to get `winrar-keygen.exe`.
+If you don't want to compile it yourself, you can compile it using [Actions](#7-Build-in-Github-Actions) or visit the [Release](https://github.com/bitcookies/winrar-keygen/releases/) to download the corresponding version.
 
 ### 6.1 Prerequisites
 
@@ -311,18 +312,22 @@ Generate an ASCII-encoded license and output it only to the console.
 
 </details>
 
-## 7. Use GUI
+## 7. Build in Github Actions
 
 <details>
 <summary>Click to expand</summary>
 
-If you are using Windows 10 or 11, you can use the GUI application, which is built using .NET 8 WPF and Fluent Design (WPF UI) and supports both `x64` and `ARM 64` architectures.
+In Actions, you can build applications for six architectures: Linux x64, Linux ARM64, macOS ARM64, Windows x64, Windows Win32, and Windows ARM64.
 
-You can obtain the project from the [gui](https://github.com/bitcookies/winrar-keygen/tree/gui) branch and build the GUI application yourself. For more detailed information, please refer to the [README](https://github.com/bitcookies/winrar-keygen/blob/gui/README.md) in that branch.
+Click the **Fork** button in the upper-right corner of the project to fork the code to your GitHub. Then locate the forked repository, go to the Actions page, and run "Build All Platforms" (build.yml).
 
-![GUI](assets/gui-light.png#gh-light-mode-only)
+> Building on Windows takes about 20 minutes; we recommend building locally for faster results.
 
-![GUI](assets/gui-dark.png#gh-dark-mode-only)
+![Build](assets/build-workflow-light.png#gh-light-mode-only)
+
+![Build](assets/build-workflow-dark.png#gh-dark-mode-only)
+
+Once the workflow has run successfully, you can download it from Artifacts.
 
 </details>
 
@@ -331,7 +336,7 @@ You can obtain the project from the [gui](https://github.com/bitcookies/winrar-k
 <details>
 <summary>Click to expand</summary>
 
-For Linux or macOS users, you can use `build.yml` on the Actions page to build automatically, or you can compile it manually.
+For Linux or macOS users, you can [build in Github Actions](#7-Build-in-Github-Actions), but you can also compile it yourself.
 
 ### 8.1 Linux (Ubuntu/Debian)
 
@@ -368,9 +373,25 @@ The output is always `build/winrar-keygen`, and the version number is controlled
 
 </details>
 
-## 9. Common Errors
+## 9. Use GUI for Windows
 
-### 9.1 Keygen Errors
+<details>
+<summary>Click to expand</summary>
+
+If you are using Windows 10 or 11, you can use the GUI application, which is built using .NET 8 WPF and Fluent Design (WPF UI) and supports both `x64` and `ARM 64` architectures.
+
+You can obtain the project from the [gui](https://github.com/bitcookies/winrar-keygen/tree/gui) branch and build the GUI application yourself. For more detailed information, please refer to the [README](https://github.com/bitcookies/winrar-keygen/blob/gui/README.md) in that branch.
+
+![GUI](assets/gui-light.png#gh-light-mode-only)
+
+![GUI](assets/gui-dark.png#gh-dark-mode-only)
+
+</details>
+
+
+## 10. Common Errors
+
+### 10.1 Keygen Errors
 
 Starting with version `ver4`, Keygen has added some common error messages. Please make corrections based on the output.
 
@@ -380,22 +401,22 @@ Starting with version `ver4`, Keygen has added some common error messages. Pleas
 ./winrar-keygen.exe -h
 ```
 
-### 9.2 Github Actions Errors
+### 10.2 Github Actions Errors
 
 If you encounter an error while using `ascii` encoding, it is because you are using non-ASCII characters.
 
 If you encounter an error while using `ansi` encoding, it is because the character encoding is not supported by the current Windows system. The system platform for GitHub Actions is `windows-2022-english` (ANSI code page 1252), and any non-ASCII characters will cause the process to fail.
 
-## 10. Contributing
+## 11. Contributing
 
-### 10.1 Suggestion
+### 11.1 Suggestion
 
 If you encounter any issues or have suggestions, feel free to open an issue on the [Issues](https://github.com/bitcookies/winrar-keygen/issues) page or submit a pull request. We and the community will be happy to help.
 
-### 10.2 Thanks
+### 11.2 Thanks
 
 Thanks to all contributors to this project, and to the community members who help answer questions in the [Issues](https://github.com/bitcookies/winrar-keygen/issues).
 
-## 11. License
+## 12. License
 
 The code is available under the [MIT license](https://github.com/bitcookies/winrar-keygen/blob/master/LICENSE)
