@@ -395,7 +395,7 @@ For more detailed information, please refer to the [README](https://github.com/b
 
 ### 10.1 Keygen Errors
 
-Starting with version `ver4`, Keygen has added some common error messages. Please make corrections based on the output.
+Starting with `ver4`, Keygen has added some common error messages. Please make corrections based on the output.
 
  Use `-h` or `--help` to view the help information:
 
