@@ -378,7 +378,9 @@ cmake --build . --config Release
 
 如果你正在使用 Windows 10 / 11，你可以使用 GUI 程序，它基于 .NET 8 WPF 和 Fluent Design (WPF UI) 构建，提供 `x64` 和 `ARM 64` 两种架构支持。
 
-你可以在 [gui](https://github.com/bitcookies/winrar-keygen/tree/gui) 分支中获取项目，并自行构建 GUI 程序。更详细的信息请查看分支 [README](https://github.com/bitcookies/winrar-keygen/blob/gui/README.zh-CN.md)。
+你可以在 [gui](https://github.com/bitcookies/winrar-keygen/tree/gui) 分支中获取项目，并自行构建 GUI 程序，也可以到 [Release](https://github.com/bitcookies/winrar-keygen/releases/) 页面获取对应版本的构建程序。
+
+更详细的信息请查看分支 [README](https://github.com/bitcookies/winrar-keygen/blob/gui/README.zh-CN.md)。
 
 ![GUI](assets/gui-light.png#gh-light-mode-only)
 

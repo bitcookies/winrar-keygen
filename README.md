@@ -32,12 +32,12 @@ See [here](README.HOW_DOES_IT_WORK.md).
 
 There are several ways to use it.
 
-- [Use Github Actions](#4-Use-Github-Actions) 
-- [Use Github Actions with secrets](#5-Use-Github-Actions-with-secrets)
-- [Build in Visual Studio](#6-Build-in-Visual-Studio)
-- [Build in Github Actions](#7-Build-in-Github-Actions)
-- [Build with CMake](#8-Build-with-CMake)
-- [Use GUI for Windows](#9-Use-GUI-for-Windows)
++ [Use Github Actions](#4-Use-Github-Actions) 
++ [Use Github Actions with secrets](#5-Use-Github-Actions-with-secrets)
++ [Build in Visual Studio](#6-Build-in-Visual-Studio)
++ [Build in Github Actions](#7-Build-in-Github-Actions)
++ [Build with CMake](#8-Build-with-CMake)
++ [Use GUI for Windows](#9-Use-GUI-for-Windows)
 
 ### 3.1 Encoding
 
@@ -380,7 +380,9 @@ The output is always `build/winrar-keygen`, and the version number is controlled
 
 If you are using Windows 10 or 11, you can use the GUI application, which is built using .NET 8 WPF and Fluent Design (WPF UI) and supports both `x64` and `ARM 64` architectures.
 
-You can obtain the project from the [gui](https://github.com/bitcookies/winrar-keygen/tree/gui) branch and build the GUI application yourself. For more detailed information, please refer to the [README](https://github.com/bitcookies/winrar-keygen/blob/gui/README.md) in that branch.
+You can check out the project from the [gui](https://github.com/bitcookies/winrar-keygen/tree/gui) branch and build the GUI application yourself, or visit the [Release](https://github.com/bitcookies/winrar-keygen/releases/) page to download the pre-built version.
+
+For more detailed information, please refer to the [README](https://github.com/bitcookies/winrar-keygen/blob/gui/README.md) in that branch.
 
 ![GUI](assets/gui-light.png#gh-light-mode-only)
 
