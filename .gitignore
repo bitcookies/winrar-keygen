@@ -1,7 +1,9 @@
 # Development
-.pdb
 .vs/
 obj/
+bin/ARM64-Release/
+bin/Win32-Release/
+*.pdb
 
 # Windows image file caches
 Thumbs.db
