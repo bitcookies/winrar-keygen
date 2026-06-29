@@ -6,7 +6,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
-using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
 using WinRarKeygenGui.Services;
 using WinRarKeygenGui.ViewModels;
@@ -25,25 +24,41 @@ public partial class MainWindow : FluentWindow
         Loaded += OnLoaded;
         Closing += OnClosing;
         LocationChanged += OnLocationChanged;
+        PreviewKeyDown += OnPreviewKeyDown;
+        PreviewKeyUp += OnPreviewKeyUp;
 
         if (DataContext is MainViewModel vm)
             vm.RequestShowResult += () => Dispatcher.Invoke(FlipToResult);
+    }
+
+    private static bool IsPlainAltKey(KeyEventArgs e)
+    {
+        return e.Key is Key.LeftAlt or Key.RightAlt ||
+               e.SystemKey is Key.LeftAlt or Key.RightAlt;
+    }
+
+    private void OnPreviewKeyDown(object sender, KeyEventArgs e)
+    {
+        if (IsPlainAltKey(e))
+            e.Handled = true;
+    }
+
+    private void OnPreviewKeyUp(object sender, KeyEventArgs e)
+    {
+        if (IsPlainAltKey(e))
+            e.Handled = true;
+    }
+
+    private void SettingsComboBox_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+    {
+        e.Handled = true;
     }
 
     private void OnLoaded(object sender, RoutedEventArgs e)
     {
         if (DataContext is MainViewModel vm)
         {
-            var targetTheme = vm.Settings.IsDarkTheme
-                ? ApplicationTheme.Dark
-                : ApplicationTheme.Light;
-
-            ApplicationThemeManager.Apply(targetTheme);
-            App.UpdateCustomBrushes(vm.Settings.IsDarkTheme);
-
-            ThemeIcon.Symbol = vm.Settings.IsDarkTheme
-                ? SymbolRegular.WeatherSunny24
-                : SymbolRegular.WeatherMoon24;
+            vm.ApplySelectedTheme();
 
             // Set initial encoding pill position (no animation)
             SetEncodingPillPosition(vm.SelectedEncoding);
@@ -96,30 +111,7 @@ public partial class MainWindow : FluentWindow
     private void OnClosing(object? sender, CancelEventArgs e)
     {
         if (DataContext is MainViewModel vm)
-        {
-            var isDark = ApplicationThemeManager.GetAppTheme() == ApplicationTheme.Dark;
-            vm.SaveSettings(isDark);
-        }
-    }
-
-    private void ThemeToggle_Click(object sender, RoutedEventArgs e)
-    {
-        var currentTheme = ApplicationThemeManager.GetAppTheme();
-        var newTheme = currentTheme == ApplicationTheme.Dark
-            ? ApplicationTheme.Light
-            : ApplicationTheme.Dark;
-
-        ApplicationThemeManager.Apply(newTheme);
-
-        bool isDark = newTheme == ApplicationTheme.Dark;
-        App.UpdateCustomBrushes(isDark);
-
-        ThemeIcon.Symbol = isDark
-            ? SymbolRegular.WeatherSunny24
-            : SymbolRegular.WeatherMoon24;
-
-        if (DataContext is MainViewModel vm)
-            vm.SaveSettings(isDark);
+            vm.SaveSettings(vm.ResolveInitialIsDarkTheme());
     }
 
     private void VersionLink_MouseEnter(object sender, MouseEventArgs e)

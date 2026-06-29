@@ -1,6 +1,8 @@
 using System;
+using System.Globalization;
 using System.IO;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace WinRarKeygenGui.Services;
 
@@ -26,8 +28,13 @@ public class AppSettings
     public bool AutoFillLicenseName { get; set; } = true;
     public bool BackupExistingKey { get; set; } = true;
     public bool IsDarkTheme { get; set; } = false;
+    public string ThemeMode { get; set; } = "System";
+    public string LanguageMode { get; set; } = "System";
     public bool RememberSettings { get; set; } = true;
     public bool CheckForUpdates { get; set; } = true;
+
+    [JsonIgnore]
+    public bool LoadedFromFile { get; set; }
 
     public static AppSettings Load()
     {
@@ -37,16 +44,22 @@ public class AppSettings
             {
                 var json = File.ReadAllText(SettingsPath);
                 var loaded = JsonSerializer.Deserialize<AppSettings>(json) ?? new AppSettings();
+                loaded.LoadedFromFile = true;
 
                 if (!loaded.RememberSettings)
                 {
-                    // Return defaults but preserve RememberSettings and IsDarkTheme
+                    // Return defaults but preserve RememberSettings. Theme and language resolve from Windows.
                     var defaults = new AppSettings();
                     defaults.RememberSettings = false;
-                    defaults.IsDarkTheme = loaded.IsDarkTheme;
+                    defaults.LoadedFromFile = true;
                     return defaults;
                 }
 
+                using var document = JsonDocument.Parse(json);
+                loaded.ThemeMode = NormalizeThemeMode(loaded.ThemeMode);
+                if (!document.RootElement.TryGetProperty(nameof(ThemeMode), out _))
+                    loaded.ThemeMode = loaded.IsDarkTheme ? "Dark" : "Light";
+                loaded.LanguageMode = NormalizeLanguageMode(loaded.LanguageMode);
                 return loaded;
             }
         }
@@ -54,7 +67,7 @@ public class AppSettings
         {
             // Ignore corrupted settings
         }
-        return new AppSettings();
+        return new AppSettings { LoadedFromFile = false };
     }
 
     public void Save()
@@ -78,10 +91,54 @@ public class AppSettings
             if (File.Exists(SettingsPath))
             {
                 var json = File.ReadAllText(SettingsPath);
-                return JsonSerializer.Deserialize<AppSettings>(json) ?? new AppSettings();
+                var loaded = JsonSerializer.Deserialize<AppSettings>(json) ?? new AppSettings();
+                loaded.LoadedFromFile = true;
+                using var document = JsonDocument.Parse(json);
+                loaded.ThemeMode = NormalizeThemeMode(loaded.ThemeMode);
+                if (!document.RootElement.TryGetProperty(nameof(ThemeMode), out _))
+                    loaded.ThemeMode = loaded.IsDarkTheme ? "Dark" : "Light";
+                loaded.LanguageMode = NormalizeLanguageMode(loaded.LanguageMode);
+                return loaded;
             }
         }
         catch { }
-        return new AppSettings();
+        return new AppSettings { LoadedFromFile = false };
+    }
+
+    public static string ResolveSystemLanguageMode()
+    {
+        var culture = CultureInfo.CurrentUICulture;
+        var name = culture.Name;
+        var parentName = culture.Parent?.Name ?? "";
+
+        if (name.Equals("zh-CN", StringComparison.OrdinalIgnoreCase) ||
+            name.Equals("zh-SG", StringComparison.OrdinalIgnoreCase) ||
+            name.StartsWith("zh-Hans", StringComparison.OrdinalIgnoreCase) ||
+            parentName.Equals("zh-Hans", StringComparison.OrdinalIgnoreCase))
+        {
+            return "zh-CN";
+        }
+
+        return "en-US";
+    }
+
+    public static string NormalizeThemeMode(string? value)
+    {
+        return value switch
+        {
+            "Light" => "Light",
+            "Dark" => "Dark",
+            _ => "System"
+        };
+    }
+
+    public static string NormalizeLanguageMode(string? value)
+    {
+        return value switch
+        {
+            "en-US" => "en-US",
+            "zh-CN" => "zh-CN",
+            _ => "System"
+        };
     }
 }

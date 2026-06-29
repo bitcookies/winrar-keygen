@@ -9,13 +9,15 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         ExtendsContentIntoTitleBar="True"
-        WindowBackdropType="Mica">
+        WindowBackdropType="Mica"
+        FocusVisualStyle="{x:Null}">
 
     <Window.DataContext>
         <vm:MainViewModel />
     </Window.DataContext>
 
-    <Grid>
+    <Grid Focusable="False"
+          FocusVisualStyle="{x:Null}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -41,7 +43,9 @@
         </StackPanel>
 
         <!-- Flip Container (fixed height, content swaps inside) -->
-        <Grid x:Name="FlipContainer" Grid.Row="2" ClipToBounds="True">
+        <Grid x:Name="FlipContainer" Grid.Row="2" ClipToBounds="True"
+              Focusable="False"
+              FocusVisualStyle="{x:Null}">
 
             <!-- ==================== FRONT PANEL ==================== -->
             <Border x:Name="FrontPanel" RenderTransformOrigin="0.5,0.5">
@@ -49,11 +53,13 @@
                     <ScaleTransform x:Name="FrontScale" ScaleX="1" />
                 </Border.RenderTransform>
                 <ScrollViewer VerticalScrollBarVisibility="Auto"
-                              HorizontalScrollBarVisibility="Disabled">
+                              HorizontalScrollBarVisibility="Disabled"
+                              Focusable="False"
+                              FocusVisualStyle="{x:Null}">
                     <StackPanel Margin="24,0,24,16">
 
                         <!-- Username -->
-                        <TextBlock Text="Username"
+                        <TextBlock Text="{Binding Text.Username}"
                                    FontSize="12" FontWeight="Medium"
                                    Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
                                    Margin="0,0,0,4" />
@@ -83,7 +89,7 @@
                         </Popup>
 
                         <!-- License Name -->
-                        <TextBlock Text="License Name"
+                        <TextBlock Text="{Binding Text.LicenseName}"
                                    FontSize="12" FontWeight="Medium"
                                    Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
                                    Margin="0,0,0,4" />
@@ -125,7 +131,7 @@
                                         <ColumnDefinition Width="60" />
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" Text="Encoding"
+                                    <TextBlock Grid.Column="0" Text="{Binding Text.Encoding}"
                                                FontSize="12" FontWeight="Medium"
                                                VerticalAlignment="Center"
                                                Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}" />
@@ -184,7 +190,7 @@
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" Text="Output"
+                                    <TextBlock Grid.Column="0" Text="{Binding Text.Output}"
                                                FontSize="12" FontWeight="Medium"
                                                VerticalAlignment="Center"
                                                Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}" />
@@ -192,7 +198,7 @@
                                         <TextBox Text="{Binding OutputFilePath, UpdateSourceTrigger=PropertyChanged}"
                                                  Style="{StaticResource SmallTextBoxStyle}" />
                                     </Border>
-                                    <Button Grid.Column="2" Content="Browse"
+                                    <Button Grid.Column="2" Content="{Binding Text.Browse}"
                                             Command="{Binding BrowseOutputFileCommand}"
                                             Style="{StaticResource SmallBtnStyle}" />
                                 </Grid>
@@ -206,10 +212,10 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                                        <TextBlock Text="Activate WinRAR" FontSize="12" FontWeight="Medium" />
+                                        <TextBlock Text="{Binding Text.ActivateWinRar}" FontSize="12" FontWeight="Medium" />
                                         <TextBlock FontSize="10"
                                                    Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}">
-                                            <Run Text="Write to " /><Run x:Name="WinRarPathLink"
+                                            <Run Text="{Binding Text.WriteTo}" /><Run x:Name="WinRarPathLink"
                                                 Text="%APPDATA%\WinRAR\"
                                                 Cursor="Hand"
                                                 MouseEnter="WinRarPath_MouseEnter"
@@ -229,7 +235,7 @@
                         <!-- Generate Button -->
                         <Button Command="{Binding GenerateCommand}"
                                 Style="{StaticResource GenerateButtonStyle}" Margin="0,6,0,0">
-                            <TextBlock Text="Generate Key" FontSize="13" FontWeight="SemiBold" />
+                            <TextBlock Text="{Binding Text.GenerateKey}" FontSize="13" FontWeight="SemiBold" />
                         </Button>
 
                         <!-- Footer -->
@@ -243,12 +249,8 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Grid.Column="0" Orientation="Horizontal">
                                     <Button Style="{StaticResource FooterBtnStyle}"
-                                            Click="Settings_Click" ToolTip="Settings" Margin="0,0,4,0">
+                                            Click="Settings_Click" ToolTip="{Binding Text.Settings}" Margin="0,0,4,0">
                                         <ui:SymbolIcon Symbol="Settings24" FontSize="14" />
-                                    </Button>
-                                    <Button x:Name="ThemeToggleButton" Click="ThemeToggle_Click"
-                                            Style="{StaticResource FooterBtnStyle}" ToolTip="Switch theme">
-                                        <ui:SymbolIcon x:Name="ThemeIcon" Symbol="WeatherMoon24" FontSize="14" />
                                     </Button>
                                 </StackPanel>
                                 <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
@@ -263,7 +265,7 @@
                                                    MouseEnter="VersionLink_MouseEnter"
                                                    MouseLeave="VersionLink_MouseLeave"
                                                    MouseLeftButtonUp="VersionLink_Click"
-                                                   ToolTip="Check for updates" />
+                                                   ToolTip="{Binding Text.CheckForUpdatesTooltip}" />
                                         <Ellipse Width="6" Height="6" Fill="#E53935"
                                                  HorizontalAlignment="Right" VerticalAlignment="Top"
                                                  Margin="0,-4,-6,0" IsHitTestVisible="False"
@@ -291,16 +293,22 @@
                             Padding="0,10,0,0">
                         <StackPanel Orientation="Horizontal">
                             <Button Style="{StaticResource FooterBtnStyle}"
-                                    Click="BackToMain_Click" ToolTip="Back" Margin="0,0,8,0">
+                                    Click="BackToMain_Click" ToolTip="{Binding Text.Back}" Margin="0,0,8,0">
                                 <ui:SymbolIcon Symbol="ArrowLeft24" FontSize="14" />
                             </Button>
-                            <TextBlock Text="Settings"
+                            <TextBlock Text="{Binding Text.Settings}"
                                        FontSize="13" FontWeight="SemiBold"
                                        VerticalAlignment="Center" />
                         </StackPanel>
                     </Border>
 
                     <!-- Settings content -->
+                    <ScrollViewer x:Name="SettingsScrollViewer"
+                                  VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Disabled"
+                                  Focusable="False"
+                                  FocusVisualStyle="{x:Null}"
+                                  Style="{StaticResource OverlayScrollViewerStyle}">
                     <StackPanel VerticalAlignment="Top">
 
                         <!-- 1. Remember Settings -->
@@ -312,8 +320,8 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                                    <TextBlock Text="Remember Settings" FontSize="13" FontWeight="Medium" />
-                                    <TextBlock Text="Persist preferences between sessions" FontSize="11"
+                                    <TextBlock Text="{Binding Text.RememberSettings}" FontSize="13" FontWeight="Medium" />
+                                    <TextBlock Text="{Binding Text.RememberSettingsDescription}" FontSize="11"
                                                Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}" Margin="0,3,0,0" />
                                 </StackPanel>
                                 <ToggleButton Grid.Column="1" IsChecked="{Binding RememberSettings}"
@@ -321,7 +329,65 @@
                             </Grid>
                         </Border>
 
-                        <!-- 2. Auto-fill License Name -->
+                        <!-- 2. Appearance -->
+                        <Border Background="{DynamicResource SettingsCardBg}"
+                                CornerRadius="8" Padding="14" Margin="0,0,0,8"
+                                IsEnabled="{Binding RememberSettings}">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding RememberSettings}" Value="False">
+                                            <Setter Property="Opacity" Value="0.4" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Text.Appearance}" FontSize="13" FontWeight="Medium" Margin="0,0,0,8" />
+                                <Grid Margin="0,0,0,8">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="{Binding Text.Theme}"
+                                               FontSize="11"
+                                               Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                                               VerticalAlignment="Center" />
+                                     <ComboBox Grid.Column="1"
+                                              Width="{StaticResource SettingsComboBoxRowWidth}"
+                                              MinWidth="{StaticResource SettingsComboBoxRowWidth}"
+                                              MaxWidth="{StaticResource SettingsComboBoxRowWidth}"
+                                              ItemsSource="{Binding ThemeOptions}"
+                                              SelectedValue="{Binding SelectedThemeMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                              SelectedValuePath="Value"
+                                              DisplayMemberPath="DisplayName"
+                                              PreviewMouseWheel="SettingsComboBox_PreviewMouseWheel"
+                                              Style="{StaticResource SettingsComboBoxStyle}" />
+                                </Grid>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="{Binding Text.Language}"
+                                               FontSize="11"
+                                               Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                                               VerticalAlignment="Center" />
+                                     <ComboBox Grid.Column="1"
+                                              Width="{StaticResource SettingsComboBoxRowWidth}"
+                                              MinWidth="{StaticResource SettingsComboBoxRowWidth}"
+                                              MaxWidth="{StaticResource SettingsComboBoxRowWidth}"
+                                              ItemsSource="{Binding LanguageOptions}"
+                                              SelectedValue="{Binding SelectedLanguageMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                              SelectedValuePath="Value"
+                                              DisplayMemberPath="DisplayName"
+                                              PreviewMouseWheel="SettingsComboBox_PreviewMouseWheel"
+                                              Style="{StaticResource SettingsComboBoxStyle}" />
+                                </Grid>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- 3. Auto-fill License Name -->
                         <Border Background="{DynamicResource SettingsCardBg}"
                                 CornerRadius="8" Padding="14" Margin="0,0,0,8"
                                 IsEnabled="{Binding RememberSettings}">
@@ -340,8 +406,8 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                                    <TextBlock Text="Autofill License Name" FontSize="13" FontWeight="Medium" />
-                                    <TextBlock Text="Defaults to Single PC usage license" FontSize="11"
+                                    <TextBlock Text="{Binding Text.AutofillLicenseName}" FontSize="13" FontWeight="Medium" />
+                                    <TextBlock Text="{Binding Text.AutofillLicenseNameDescription}" FontSize="11"
                                                Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}" Margin="0,3,0,0" />
                                 </StackPanel>
                                 <ToggleButton Grid.Column="1" IsChecked="{Binding AutoFillLicenseName}"
@@ -349,7 +415,7 @@
                             </Grid>
                         </Border>
 
-                        <!-- 3. Backup existing key -->
+                        <!-- 4. Backup existing key -->
                         <Border Background="{DynamicResource SettingsCardBg}"
                                 CornerRadius="8" Padding="14" Margin="0,0,0,8"
                                 IsEnabled="{Binding RememberSettings}">
@@ -368,8 +434,8 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                                    <TextBlock Text="Back Up Existing Key" FontSize="13" FontWeight="Medium" />
-                                    <TextBlock Text="Back up rarreg.key before overwriting" FontSize="11"
+                                    <TextBlock Text="{Binding Text.BackUpExistingKey}" FontSize="13" FontWeight="Medium" />
+                                    <TextBlock Text="{Binding Text.BackUpExistingKeyDescription}" FontSize="11"
                                                Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}" Margin="0,3,0,0" />
                                 </StackPanel>
                                 <ToggleButton Grid.Column="1" IsChecked="{Binding BackupExistingKey}"
@@ -377,7 +443,7 @@
                             </Grid>
                         </Border>
 
-                        <!-- 4. Check for Updates -->
+                        <!-- 5. Check for Updates -->
                         <Border Background="{DynamicResource SettingsCardBg}"
                                 CornerRadius="8" Padding="14" Margin="0,0,0,8"
                                 IsEnabled="{Binding RememberSettings}">
@@ -396,8 +462,8 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                                    <TextBlock Text="Check for Updates" FontSize="13" FontWeight="Medium" />
-                                    <TextBlock Text="Automatically check GitHub for new releases" FontSize="11"
+                                    <TextBlock Text="{Binding Text.CheckForUpdates}" FontSize="13" FontWeight="Medium" />
+                                    <TextBlock Text="{Binding Text.CheckForUpdatesDescription}" FontSize="11"
                                                Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}" Margin="0,3,0,0" />
                                 </StackPanel>
                                 <ToggleButton Grid.Column="1" IsChecked="{Binding CheckForUpdates}"
@@ -406,6 +472,7 @@
                         </Border>
 
                     </StackPanel>
+                    </ScrollViewer>
                 </DockPanel>
             </Border>
 
@@ -423,10 +490,10 @@
                             Padding="0,10,0,0">
                         <StackPanel Orientation="Horizontal">
                             <Button Style="{StaticResource FooterBtnStyle}"
-                                    Click="ResultBackToMain_Click" ToolTip="Back" Margin="0,0,8,0">
+                                    Click="ResultBackToMain_Click" ToolTip="{Binding Text.Back}" Margin="0,0,8,0">
                                 <ui:SymbolIcon Symbol="ArrowLeft24" FontSize="14" />
                             </Button>
-                            <TextBlock Text="Generated Key"
+                            <TextBlock Text="{Binding Text.GeneratedKey}"
                                        FontSize="13" FontWeight="SemiBold"
                                        VerticalAlignment="Center" />
                         </StackPanel>
@@ -441,7 +508,7 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="Generated"
+                            <TextBlock Text="{Binding Text.Generated}"
                                        FontSize="12" FontWeight="Medium"
                                        Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
                                        VerticalAlignment="Center" />
@@ -449,18 +516,7 @@
                                     Style="{StaticResource CopyBtnStyle}">
                                 <StackPanel Orientation="Horizontal">
                                     <ui:SymbolIcon Symbol="Copy24" FontSize="12" Margin="0,0,4,0" />
-                                    <TextBlock>
-                                        <TextBlock.Style>
-                                            <Style TargetType="TextBlock">
-                                                <Setter Property="Text" Value="Copy" />
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding CopySuccess}" Value="True">
-                                                        <Setter Property="Text" Value="Copied" />
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </TextBlock.Style>
-                                    </TextBlock>
+                                    <TextBlock Text="{Binding CopyButtonText}" />
                                 </StackPanel>
                             </Button>
                         </Grid>
@@ -487,7 +543,7 @@
                                        TextWrapping="Wrap" LineHeight="17">
                                 <Run Text="{Binding StatusMessage, Mode=OneWay}" />
                                 <LineBreak />
-                                <Run Text="Key written to " />
+                                <Run Text="{Binding Text.KeyWrittenTo}" />
                                 <Run x:Name="StatusPathLink"
                                      Text="{Binding StatusFilePath, Mode=OneWay}"
                                      Cursor="Hand"

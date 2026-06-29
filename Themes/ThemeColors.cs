@@ -18,6 +18,7 @@ public record ThemeColorSet(
     Color InputBottomBorderBrush,
     Color SurfaceBrush,
     Color SurfaceHoverBrush,
+    Color ComboBoxPopupBrush,
     Color AccentBrush,
     Color AccentHoverBrush,
     Color OutputBoxBg,
@@ -40,6 +41,7 @@ public record ThemeColorSet(
         yield return (nameof(InputBottomBorderBrush), InputBottomBorderBrush);
         yield return (nameof(SurfaceBrush), SurfaceBrush);
         yield return (nameof(SurfaceHoverBrush), SurfaceHoverBrush);
+        yield return (nameof(ComboBoxPopupBrush), ComboBoxPopupBrush);
         yield return (nameof(AccentBrush), AccentBrush);
         yield return (nameof(AccentHoverBrush), AccentHoverBrush);
         yield return (nameof(OutputBoxBg), OutputBoxBg);
@@ -63,6 +65,7 @@ public static class ThemePresets
         InputBottomBorderBrush:Color.FromArgb(0x1A, 0x00, 0x00, 0x00),  // rgba(0,0,0,0.1)
         SurfaceBrush:          Color.FromArgb(0xA6, 0xFF, 0xFF, 0xFF),  // rgba(255,255,255,0.65)
         SurfaceHoverBrush:     Color.FromArgb(0xD9, 0xFF, 0xFF, 0xFF),  // rgba(255,255,255,0.85)
+        ComboBoxPopupBrush:    Colors.White,
         AccentBrush:           Color.FromRgb(0xC8, 0x66, 0x1E),        // #C8661E
         AccentHoverBrush:      Color.FromRgb(0xB5, 0x5B, 0x18),        // #B55B18
         OutputBoxBg:           Color.FromArgb(0xB3, 0xF9, 0xF9, 0xF9), // rgba(249,249,249,0.7)
@@ -83,6 +86,7 @@ public static class ThemePresets
         InputBottomBorderBrush:Color.FromArgb(0x14, 0xFF, 0xFF, 0xFF),
         SurfaceBrush:          Color.FromArgb(0xCC, 0x2A, 0x2A, 0x2A),  // rgba(42,42,42,0.8)
         SurfaceHoverBrush:     Color.FromArgb(0xCC, 0x3C, 0x3C, 0x3C),  // rgba(60,60,60,0.8)
+        ComboBoxPopupBrush:    Color.FromRgb(0x2A, 0x2A, 0x2A),
         AccentBrush:           Color.FromRgb(0xE7, 0x7C, 0x35),        // #E77C35
         AccentHoverBrush:      Color.FromRgb(0xF0, 0x8A, 0x42),        // slightly brighter
         OutputBoxBg:           Color.FromArgb(0x33, 0x00, 0x00, 0x00),  // rgba(0,0,0,0.2)

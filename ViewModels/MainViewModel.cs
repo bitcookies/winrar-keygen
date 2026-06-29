@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using Wpf.Ui.Appearance;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using WinRarKeygenGui.Core;
@@ -16,6 +17,13 @@ namespace WinRarKeygenGui.ViewModels;
 public partial class MainViewModel : ObservableObject
 {
     private readonly AppSettings _settings;
+    private readonly OptionItem[] _themeOptions;
+    private readonly OptionItem[] _languageOptions;
+    private string _activeLanguageMode = "en-US";
+    private string _statusKind = "";
+    private string _statusEncodingName = "";
+    private string _statusErrorMessage = "";
+    private bool _isShowingLatestVersionMessage;
 
     [ObservableProperty]
     [NotifyCanExecuteChangedFor(nameof(GenerateCommand))]
@@ -62,6 +70,15 @@ public partial class MainViewModel : ObservableObject
     private bool _rememberSettings = true;
 
     [ObservableProperty]
+    private string _selectedThemeMode = "System";
+
+    [ObservableProperty]
+    private string _selectedLanguageMode = "System";
+
+    [ObservableProperty]
+    private AppText _text = AppText.English;
+
+    [ObservableProperty]
     private bool _checkForUpdates = true;
 
     [ObservableProperty]
@@ -98,6 +115,12 @@ public partial class MainViewModel : ObservableObject
 
     public static string ArchLabel { get; } = BuildArchLabel();
 
+    public string CopyButtonText => CopySuccess ? Text.Copied : Text.Copy;
+
+    public IReadOnlyList<OptionItem> ThemeOptions => _themeOptions;
+
+    public IReadOnlyList<OptionItem> LanguageOptions => _languageOptions;
+
     private static string BuildArchLabel()
     {
         var arch = RuntimeInformation.ProcessArchitecture switch
@@ -116,6 +139,19 @@ public partial class MainViewModel : ObservableObject
 
     public MainViewModel()
     {
+        _themeOptions =
+        [
+            new("System", Text.WindowsDefault),
+            new("Light", Text.Light),
+            new("Dark", Text.Dark)
+        ];
+        _languageOptions =
+        [
+            new("System", Text.WindowsDefault),
+            new("en-US", "English"),
+            new("zh-CN", "简体中文")
+        ];
+
         _settings = AppSettings.Load();
 
         // Restore persisted state
@@ -126,11 +162,14 @@ public partial class MainViewModel : ObservableObject
         _autoFillLicenseName = _settings.AutoFillLicenseName;
         _backupExistingKey = _settings.BackupExistingKey;
         _rememberSettings = _settings.RememberSettings;
+        _selectedThemeMode = _rememberSettings ? AppSettings.NormalizeThemeMode(_settings.ThemeMode) : "System";
+        _selectedLanguageMode = _rememberSettings ? AppSettings.NormalizeLanguageMode(_settings.LanguageMode) : "System";
         _checkForUpdates = _settings.CheckForUpdates;
         // Restore license name based on autofill setting
         _licenseName = _autoFillLicenseName
             ? (_settings.LicenseName.Length > 0 ? _settings.LicenseName : "Single PC usage license")
             : _settings.LicenseName;
+        ApplyLanguageSelection();
     }
 
     /// <summary>Exposes the loaded settings so the view can read persisted values.</summary>
@@ -139,6 +178,9 @@ public partial class MainViewModel : ObservableObject
     /// <summary>Persists current state to the settings file.</summary>
     public void SaveSettings(bool? isDark = null)
     {
+        if (!RememberSettings)
+            return;
+
         _settings.Username = Username;
         _settings.LicenseName = LicenseName;
         _settings.SelectedEncoding = SelectedEncoding;
@@ -147,10 +189,79 @@ public partial class MainViewModel : ObservableObject
         _settings.AutoFillLicenseName = AutoFillLicenseName;
         _settings.BackupExistingKey = BackupExistingKey;
         _settings.RememberSettings = RememberSettings;
+        _settings.ThemeMode = AppSettings.NormalizeThemeMode(SelectedThemeMode);
+        _settings.LanguageMode = AppSettings.NormalizeLanguageMode(SelectedLanguageMode);
         _settings.CheckForUpdates = CheckForUpdates;
         if (isDark.HasValue)
             _settings.IsDarkTheme = isDark.Value;
         _settings.Save();
+    }
+
+    public bool ResolveInitialIsDarkTheme()
+    {
+        var themeMode = RememberSettings ? SelectedThemeMode : "System";
+        return ResolveIsDarkTheme(themeMode);
+    }
+
+    public void ApplySelectedTheme()
+    {
+        ApplyThemeMode(RememberSettings ? SelectedThemeMode : "System");
+    }
+
+    private static bool ResolveIsDarkTheme(string themeMode)
+    {
+        return themeMode switch
+        {
+            "Light" => false,
+            "Dark" => true,
+            _ => ApplicationThemeManager.GetSystemTheme() == SystemTheme.Dark
+        };
+    }
+
+    private static void ApplyThemeMode(string themeMode)
+    {
+        var isDark = ResolveIsDarkTheme(themeMode);
+        ApplicationThemeManager.Apply(isDark ? ApplicationTheme.Dark : ApplicationTheme.Light);
+        App.UpdateCustomBrushes(isDark);
+    }
+
+    private void ApplyLanguageSelection()
+    {
+        var mode = RememberSettings ? AppSettings.NormalizeLanguageMode(SelectedLanguageMode) : "System";
+        _activeLanguageMode = mode == "System" ? AppSettings.ResolveSystemLanguageMode() : mode;
+        Text = AppText.FromLanguageMode(_activeLanguageMode);
+        RefreshOptionDisplayNames();
+        OnPropertyChanged(nameof(CopyButtonText));
+        UpdateEncodingWarnings();
+        RefreshStatusMessage();
+        RefreshVersionDisplayText();
+    }
+
+    private void RefreshOptionDisplayNames()
+    {
+        _themeOptions[0].DisplayName = Text.WindowsDefault;
+        _themeOptions[1].DisplayName = Text.Light;
+        _themeOptions[2].DisplayName = Text.Dark;
+        _languageOptions[0].DisplayName = Text.WindowsDefault;
+    }
+
+    private void RefreshStatusMessage()
+    {
+        StatusMessage = _statusKind switch
+        {
+            "Saved" => $"{Text.Saved} ({_statusEncodingName})",
+            "Activated" => Text.Activated,
+            "Error" => $"{Text.ErrorPrefix}: {TranslateKnownException(_statusErrorMessage)}",
+            _ => StatusMessage
+        };
+    }
+
+    private void RefreshVersionDisplayText()
+    {
+        if (IsCheckingUpdate)
+            VersionDisplayText = Text.CheckingForUpdates;
+        else if (_isShowingLatestVersionMessage)
+            VersionDisplayText = Text.LatestVersion;
     }
 
     partial void OnAutoFillLicenseNameChanged(bool value)
@@ -176,16 +287,20 @@ public partial class MainViewModel : ObservableObject
             AutoFillLicenseName = true;
             BackupExistingKey = true;
             CheckForUpdates = true;
+            SelectedThemeMode = AppSettings.NormalizeThemeMode("System");
+            SelectedLanguageMode = AppSettings.NormalizeLanguageMode("System");
             _suppressSave = false;
 
-            // Only persist the RememberSettings flag
             _settings.RememberSettings = false;
             _settings.Save();
+            ApplySelectedTheme();
+            ApplyLanguageSelection();
         }
         else
         {
             // Restore previously saved settings from disk
             var saved = AppSettings.Reload();
+            saved.RememberSettings = true;
             _suppressSave = true;
             Username = saved.Username;
             LicenseName = saved.LicenseName.Length > 0 ? saved.LicenseName : "Single PC usage license";
@@ -194,10 +309,42 @@ public partial class MainViewModel : ObservableObject
             ActivateWinRar = saved.ActivateWinRar;
             AutoFillLicenseName = saved.AutoFillLicenseName;
             BackupExistingKey = saved.BackupExistingKey;
+            SelectedThemeMode = AppSettings.NormalizeThemeMode(saved.ThemeMode);
+            SelectedLanguageMode = AppSettings.NormalizeLanguageMode(saved.LanguageMode);
             CheckForUpdates = saved.CheckForUpdates;
             _suppressSave = false;
+            ApplySelectedTheme();
+            ApplyLanguageSelection();
             SaveSettings();
         }
+    }
+
+    partial void OnSelectedThemeModeChanged(string value)
+    {
+        var normalized = AppSettings.NormalizeThemeMode(value);
+        if (value != normalized)
+        {
+            SelectedThemeMode = normalized;
+            return;
+        }
+
+        if (_suppressSave) return;
+        ApplySelectedTheme();
+        SaveSettings(ResolveIsDarkTheme(normalized));
+    }
+
+    partial void OnSelectedLanguageModeChanged(string value)
+    {
+        var normalized = AppSettings.NormalizeLanguageMode(value);
+        if (value != normalized)
+        {
+            SelectedLanguageMode = normalized;
+            return;
+        }
+
+        if (_suppressSave) return;
+        ApplyLanguageSelection();
+        SaveSettings();
     }
 
     partial void OnCheckForUpdatesChanged(bool value)
@@ -224,6 +371,11 @@ public partial class MainViewModel : ObservableObject
         if (!_suppressSave) SaveSettings();
     }
 
+    partial void OnCopySuccessChanged(bool value)
+    {
+        OnPropertyChanged(nameof(CopyButtonText));
+    }
+
     partial void OnUsernameChanged(string value) => UpdateEncodingWarnings();
     partial void OnLicenseNameChanged(string value) => UpdateEncodingWarnings();
 
@@ -234,15 +386,13 @@ public partial class MainViewModel : ObservableObject
     {
         if (SelectedEncoding == 1) // ASCII
         {
-            const string asciiWarning = "Contains non-ASCII characters. Name may appear garbled in the license.";
-            UsernameWarning = HasNonAscii(Username) ? asciiWarning : "";
-            LicenseNameWarning = HasNonAscii(LicenseName) ? asciiWarning : "";
+            UsernameWarning = HasNonAscii(Username) ? Text.AsciiWarning : "";
+            LicenseNameWarning = HasNonAscii(LicenseName) ? Text.AsciiWarning : "";
         }
         else if (SelectedEncoding == 2) // ANSI
         {
-            const string ansiWarning = "Contains non-ASCII characters. ANSI encoding is locale-dependent and may produce garbled text on other systems.";
-            UsernameWarning = HasNonAscii(Username) ? ansiWarning : "";
-            LicenseNameWarning = HasNonAscii(LicenseName) ? ansiWarning : "";
+            UsernameWarning = HasNonAscii(Username) ? Text.AnsiWarning : "";
+            LicenseNameWarning = HasNonAscii(LicenseName) ? Text.AnsiWarning : "";
         }
         else
         {
@@ -292,6 +442,9 @@ public partial class MainViewModel : ObservableObject
         IsGenerating = true;
         StatusMessage = "";
         StatusFilePath = "";
+        _statusKind = "";
+        _statusEncodingName = "";
+        _statusErrorMessage = "";
         HasOutput = false;
 
         try
@@ -331,7 +484,9 @@ public partial class MainViewModel : ObservableObject
                     filePath = Path.Combine(AppEnvironment.DefaultOutputDirectory, filePath);
 
                 await File.WriteAllBytesAsync(filePath, fileBytes);
-                StatusMessage = $"Saved ({encName})";
+                _statusKind = "Saved";
+                _statusEncodingName = encName;
+                RefreshStatusMessage();
                 StatusFilePath = filePath;
             }
             else
@@ -351,7 +506,8 @@ public partial class MainViewModel : ObservableObject
                 }
 
                 await File.WriteAllBytesAsync(activatePath, fileBytes);
-                StatusMessage = "Activated";
+                _statusKind = "Activated";
+                RefreshStatusMessage();
                 StatusFilePath = activatePath;
             }
 
@@ -363,7 +519,9 @@ public partial class MainViewModel : ObservableObject
         }
         catch (Exception ex)
         {
-            StatusMessage = $"Error: {ex.Message}";
+            _statusKind = "Error";
+            _statusErrorMessage = ex.Message;
+            RefreshStatusMessage();
             HasOutput = false;
         }
         finally
@@ -411,24 +569,29 @@ public partial class MainViewModel : ObservableObject
     {
         if (IsCheckingUpdate) return;
         IsCheckingUpdate = true;
-        VersionDisplayText = "Checking for updates";
+        _isShowingLatestVersionMessage = false;
+        VersionDisplayText = Text.CheckingForUpdates;
         try
         {
             var (hasUpdate, _) = await UpdateChecker.CheckForUpdateAsync(CurrentVersion);
             HasUpdate = hasUpdate;
             if (!hasUpdate)
             {
-                VersionDisplayText = "You have the latest version";
+                _isShowingLatestVersionMessage = true;
+                VersionDisplayText = Text.LatestVersion;
                 await Task.Delay(2500);
+                _isShowingLatestVersionMessage = false;
                 VersionDisplayText = CurrentVersion;
             }
             else
             {
+                _isShowingLatestVersionMessage = false;
                 VersionDisplayText = CurrentVersion;
             }
         }
         catch
         {
+            _isShowingLatestVersionMessage = false;
             VersionDisplayText = CurrentVersion;
         }
         finally
@@ -444,7 +607,7 @@ public partial class MainViewModel : ObservableObject
         {
             FileName = "rarreg.key",
             DefaultExt = ".key",
-            Filter = "Key files (*.key)|*.key|All files (*.*)|*.*",
+            Filter = Text.SaveDialogFilter,
             InitialDirectory = AppEnvironment.DefaultOutputDirectory
         };
 
@@ -454,4 +617,13 @@ public partial class MainViewModel : ObservableObject
         }
     }
 
+    private string TranslateKnownException(string message)
+    {
+        return message switch
+        {
+            "Username contains non-ASCII characters. Use UTF-8 encoding." => Text.UsernameNonAsciiError,
+            "License name contains non-ASCII characters. Use UTF-8 encoding." => Text.LicenseNameNonAsciiError,
+            _ => message
+        };
+    }
 }

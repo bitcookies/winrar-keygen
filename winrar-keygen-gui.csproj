@@ -11,10 +11,10 @@
     <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
 
     <!-- Version -->
-    <Version>4.1.0</Version>
-    <FileVersion>4.1.0.0</FileVersion>
-    <AssemblyVersion>4.1.0.0</AssemblyVersion>
-    <InformationalVersion>4.1.0.0</InformationalVersion>
+    <Version>4.2.0</Version>
+    <FileVersion>4.2.0.0</FileVersion>
+    <AssemblyVersion>4.2.0.0</AssemblyVersion>
+    <InformationalVersion>4.2.0.0</InformationalVersion>
     <NeutralLanguage>en-US</NeutralLanguage>
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
 

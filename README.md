@@ -64,14 +64,16 @@ When enabled, the generated key is written directly to `%APPDATA%\WinRAR\rarreg.
 
 | Setting | Description |
 | ------- | ----------- |
-| **Remember Settings** | Persist all preferences between sessions. When disabled, settings reset to defaults on next launch. |
+| **Remember Settings** | Persist preferences between sessions. When disabled, startup uses Windows theme and Windows UI language, and other preferences reset to defaults. |
+| **Theme** | Choose `Windows default`, `Light`, or `Dark` from the settings page. |
+| **Language** | Choose `Windows default`, `English`, or `简体中文` from the settings page. |
 | **Autofill License Name** | Pre-fills "Single PC usage license" as the default license name. |
 | **Back Up Existing Key** | Creates a timestamped backup of `rarreg.key` before overwriting. |
 | **Check for Updates** | Automatically checks GitHub for new releases on startup. A red dot appears on the version number when an update is available. |
 
 ### Other
 
-- **Light / Dark theme** -- follows system theme on startup; toggle manually via the moon/sun button.
+- **Windows default** -- follows the current Windows theme and Windows UI language. Simplified Chinese Windows UI uses Simplified Chinese; other languages use English.
 - **Version check** -- click the version number to manually check for updates or open the releases page.
 
 ## 4. Build from Source
