@@ -34,12 +34,12 @@ jobs:
   windows-x64:
     if: ${{ inputs.windows_x64 }}
     name: Windows x64
-    runs-on: windows-latest
+    runs-on: windows-2022
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v7.0.0
 
       - name: Setup vcpkg
-        uses: lukka/run-vcpkg@v11
+        uses: lukka/run-vcpkg@v11.6
         with:
           vcpkgGitCommitId: 'c3867e714dd3a51c272826eea77267876517ed99'
 
@@ -47,7 +47,9 @@ jobs:
         run: vcpkg integrate install
 
       - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v2
+        uses: microsoft/setup-msbuild@v3
+        with:
+          vs-version: '[17.0,18.0)'
 
       - name: Build
         run: |
@@ -59,7 +61,7 @@ jobs:
           Copy-Item "bin/x64-Release/winrar-keygen.exe" "winrar-keygen-x64.exe"
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v6.0.0
+        uses: actions/upload-artifact@v7.0.1
         with:
           name: winrar-keygen-x64
           path: winrar-keygen-x64.exe
@@ -68,12 +70,12 @@ jobs:
   windows-x86:
     if: ${{ inputs.windows_x86 }}
     name: Windows x86
-    runs-on: windows-latest
+    runs-on: windows-2022
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v7.0.0
 
       - name: Setup vcpkg
-        uses: lukka/run-vcpkg@v11
+        uses: lukka/run-vcpkg@v11.6
         with:
           vcpkgGitCommitId: 'c3867e714dd3a51c272826eea77267876517ed99'
 
@@ -81,7 +83,9 @@ jobs:
         run: vcpkg integrate install
 
       - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v2
+        uses: microsoft/setup-msbuild@v3
+        with:
+          vs-version: '[17.0,18.0)'
 
       - name: Build
         run: |
@@ -93,7 +97,7 @@ jobs:
           Copy-Item "bin/Win32-Release/winrar-keygen.exe" "winrar-keygen-x86.exe"
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v6.0.0
+        uses: actions/upload-artifact@v7.0.1
         with:
           name: winrar-keygen-x86
           path: winrar-keygen-x86.exe
@@ -102,12 +106,12 @@ jobs:
   windows-arm64:
     if: ${{ inputs.windows_arm64 }}
     name: Windows ARM64
-    runs-on: windows-latest
+    runs-on: windows-2022
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v7.0.0
 
       - name: Setup vcpkg
-        uses: lukka/run-vcpkg@v11
+        uses: lukka/run-vcpkg@v11.6
         with:
           vcpkgGitCommitId: 'c3867e714dd3a51c272826eea77267876517ed99'
 
@@ -115,7 +119,9 @@ jobs:
         run: vcpkg integrate install
 
       - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v2
+        uses: microsoft/setup-msbuild@v3
+        with:
+          vs-version: '[17.0,18.0)'
 
       - name: Build
         run: |
@@ -127,7 +133,7 @@ jobs:
           Copy-Item "bin/ARM64-Release/winrar-keygen.exe" "winrar-keygen-arm64.exe"
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v6.0.0
+        uses: actions/upload-artifact@v7.0.1
         with:
           name: winrar-keygen-arm64
           path: winrar-keygen-arm64.exe
@@ -138,7 +144,7 @@ jobs:
     name: Linux x64
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v7.0.0
 
       - name: Install dependencies
         run: |
@@ -157,7 +163,7 @@ jobs:
           chmod +x winrar-keygen-linux-x64
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v6.0.0
+        uses: actions/upload-artifact@v7.0.1
         with:
           name: winrar-keygen-linux-x64
           path: winrar-keygen-linux-x64
@@ -168,7 +174,7 @@ jobs:
     name: Linux ARM64
     runs-on: ubuntu-24.04-arm
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v7.0.0
 
       - name: Install dependencies
         run: |
@@ -187,7 +193,7 @@ jobs:
           chmod +x winrar-keygen-linux-arm64
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v6.0.0
+        uses: actions/upload-artifact@v7.0.1
         with:
           name: winrar-keygen-linux-arm64
           path: winrar-keygen-linux-arm64
@@ -198,7 +204,7 @@ jobs:
     name: macOS ARM64
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v7.0.0
 
       - name: Install dependencies
         run: brew list gmp &>/dev/null || brew install gmp
@@ -215,7 +221,7 @@ jobs:
           chmod +x winrar-keygen-macos-arm64
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v6.0.0
+        uses: actions/upload-artifact@v7.0.1
         with:
           name: winrar-keygen-macos-arm64
           path: winrar-keygen-macos-arm64

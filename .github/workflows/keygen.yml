@@ -29,7 +29,7 @@ jobs:
       KEY_LICENSE_NAME: ${{ github.event.inputs.KEY_LICENSE_NAME }}
 
     steps:
-    - uses: actions/checkout@v6.0.2
+    - uses: actions/checkout@v7.0.0
     
     - name: Generating License
       shell: pwsh
@@ -38,7 +38,7 @@ jobs:
         if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
     - name: Uploading License
-      uses: actions/upload-artifact@v6.0.0
+      uses: actions/upload-artifact@v7.0.1
       with:
         name: rarreg_file_${{ env.KEY_ENCODING }}
         path: rarreg.key
