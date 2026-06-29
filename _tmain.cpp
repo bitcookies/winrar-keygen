@@ -21,12 +21,11 @@
 #include <stdexcept>
 
 #ifdef _WIN32
-#pragma comment(lib, "Version.lib")
 #pragma comment(lib, "winhttp.lib")
 #endif
 
 #ifndef APP_VERSION
-#define APP_VERSION "4.1.0.0"
+#define APP_VERSION "4.2.0"
 #endif
 
 #ifdef _WIN32
@@ -237,7 +236,7 @@ void ShowHelp(const std::string& version) {
     std::cout << "  winrar-keygen -v | --version\n";
     std::cout << "  winrar-keygen -h | --help\n\n";
     std::cout << "Options:\n";
-    std::cout << "  -e, --encoding <enc>   utf8 (default), ascii\n";
+    std::cout << "  -e, --encoding <enc>   utf8 (default), ascii, ansi\n";
     std::cout << "  -o, --output <file>    Output file (default: rarreg.key)\n";
 #ifdef __APPLE__
     std::cout << "  -a, --activate         Write to ~/Library/Application Support/com.rarlab.WinRAR/rarreg.key\n";
@@ -256,44 +255,9 @@ void ShowHelp(const std::string& version) {
 }
 #endif
 
-#ifdef _WIN32
-std::wstring GetExecutableVersion() {
-    wchar_t exePath[MAX_PATH] = {};
-    DWORD pathLen = GetModuleFileNameW(nullptr, exePath, MAX_PATH);
-    if (pathLen == 0) {
-        return L"unknown";
-    }
-
-    DWORD handle = 0;
-    DWORD versionSize = GetFileVersionInfoSizeW(exePath, &handle);
-    if (versionSize == 0) {
-        return L"unknown";
-    }
-
-    std::vector<BYTE> versionData(versionSize);
-    if (!GetFileVersionInfoW(exePath, 0, versionSize, versionData.data())) {
-        return L"unknown";
-    }
-
-    VS_FIXEDFILEINFO* fixedInfo = nullptr;
-    UINT len = 0;
-    if (!VerQueryValueW(versionData.data(), L"\\",
-                        reinterpret_cast<LPVOID*>(&fixedInfo),
-                        &len) ||
-        fixedInfo == nullptr) {
-        return L"unknown";
-    }
-
-    return std::to_wstring(HIWORD(fixedInfo->dwFileVersionMS)) + L"." +
-           std::to_wstring(LOWORD(fixedInfo->dwFileVersionMS)) + L"." +
-           std::to_wstring(HIWORD(fixedInfo->dwFileVersionLS)) + L"." +
-           std::to_wstring(LOWORD(fixedInfo->dwFileVersionLS));
-}
-#else
 std::string GetAppVersion() {
     return APP_VERSION;
 }
-#endif
 
 #ifdef _WIN32
 void PrintRegisterInfo(const WinRarKeygen<WinRarConfig>::RegisterInfo& Info,
@@ -577,7 +541,7 @@ int wmain(int argc, wchar_t* argv[]) {
         return -1;
     }
 
-    std::wstring version = GetExecutableVersion();
+    std::wstring version = Utf8ToWide(GetAppVersion());
     std::string versionUtf8 = WideToUtf8(version);
 
     if (opts.showVersion) {
@@ -801,8 +765,7 @@ int main(int argc, char* argv[]) {
                 return -1;
             }
 
-            const char* encName = (opts.encoding == Encoding::UTF8) ? "UTF-8" :
-                                  (opts.encoding == Encoding::ANSI) ? "ANSI" : "ASCII";
+            const char* encName = (opts.encoding == Encoding::ASCII) ? "ASCII" : "UTF-8";
 
             std::cout << "\n";
             PrintRegisterInfo(Info, displayUser, displayLicense);
