@@ -296,7 +296,7 @@ public:
         CalculateChecksum(RegInfo);
 
         RegInfo.HexData = HelperStringFormat(
-            "%zu%zu%zu%zu%s%s%s%s%010lu",
+            "%zu%zu%zu%zu%s%s%s%s%010u",
             RegInfo.Items[0].length(),
             RegInfo.Items[1].length(),
             RegInfo.Items[2].length(),
@@ -305,7 +305,7 @@ public:
             RegInfo.Items[1].c_str(),
             RegInfo.Items[2].c_str(),
             RegInfo.Items[3].c_str(),
-            RegInfo.Checksum
+            static_cast<unsigned>(RegInfo.Checksum)
         );
 
         // The length has been limited to 60 (issues #6)
