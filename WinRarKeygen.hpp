@@ -5,9 +5,20 @@
 #include "HasherCrc32Traits.hpp"
 #include <stdlib.h>
 #include <stdio.h>
-#include <time.h>
+#include <cstring>
+#include <cstdint>
+#include <stdexcept>
 #include <string>
 #include <utility>
+
+#if defined(_WIN32)
+#include <windows.h>
+#include <bcrypt.h>
+#pragma comment(lib, "bcrypt.lib")
+#elif defined(__linux__)
+#include <sys/random.h>
+#include <errno.h>
+#endif
 
 #ifdef _MSC_VER
 #define BSWAP32(x) _byteswap_ulong(x)
@@ -35,6 +46,14 @@ private:
         BigInteger s;
     };
 
+    // Read four big-endian bytes as a uint32_t without violating strict aliasing
+    // or alignment requirements (the digest buffer is not guaranteed aligned).
+    static uint32_t LoadBigEndianU32(const void* lpBytes) noexcept {
+        uint32_t Raw;
+        std::memcpy(&Raw, lpBytes, sizeof(Raw));
+        return BSWAP32(Raw);
+    }
+
     static BigInteger GeneratePrivateKey(const void* lpSeed, size_t cbSeed) {
         uint32_t Generator[6];
         uint16_t RawPrivateKey[15] = {};
@@ -46,7 +65,7 @@ private:
             Sha1Digest = Sha1.Evaluate();
 
             for (unsigned i = 0; i < 5; ++i) {
-                Generator[i + 1] = BSWAP32(reinterpret_cast<uint32_t*>(Sha1Digest.Bytes)[i]);
+                Generator[i + 1] = LoadBigEndianU32(Sha1Digest.Bytes + i * 4);
             }
         } else {
             Generator[1] = 0xeb3eb781;
@@ -65,7 +84,7 @@ private:
             Sha1Digest = Sha1.Evaluate();
 
             RawPrivateKey[i] = static_cast<uint16_t>(
-                BSWAP32(reinterpret_cast<uint32_t*>(Sha1Digest.Bytes)[0])
+                LoadBigEndianU32(Sha1Digest.Bytes)
             );
         }
 
@@ -97,19 +116,68 @@ private:
         return PublicKeyCompressedSM2Format;
     }
 
+    // Fill the buffer with cryptographically secure random bytes from the
+    // operating system CSPRNG. The per-signature nonce `k` MUST be unpredictable,
+    // otherwise the private key can be recovered from the signatures.
+    static void FillSecureRandom(void* lpBuffer, size_t cbBuffer) {
+        if (cbBuffer == 0) {
+            return;
+        }
+#if defined(_WIN32)
+        if (BCryptGenRandom(nullptr, static_cast<PUCHAR>(lpBuffer),
+                            static_cast<ULONG>(cbBuffer),
+                            BCRYPT_USE_SYSTEM_PREFERRED_RNG) != 0) {
+            throw std::runtime_error("Failed to acquire cryptographically secure random bytes.");
+        }
+#elif defined(__APPLE__)
+        arc4random_buf(lpBuffer, cbBuffer);
+#else
+        uint8_t* p = static_cast<uint8_t*>(lpBuffer);
+        size_t remaining = cbBuffer;
+#if defined(__linux__)
+        while (remaining > 0) {
+            ssize_t n = getrandom(p, remaining, 0);
+            if (n < 0) {
+                if (errno == EINTR) {
+                    continue;
+                }
+                if (errno == ENOSYS) {
+                    break;      // getrandom() unavailable, fall back to /dev/urandom
+                }
+                throw std::runtime_error("Failed to acquire cryptographically secure random bytes.");
+            }
+            p += n;
+            remaining -= static_cast<size_t>(n);
+        }
+        if (remaining == 0) {
+            return;
+        }
+#endif
+        FILE* fp = fopen("/dev/urandom", "rb");
+        if (!fp) {
+            throw std::runtime_error("Failed to open /dev/urandom.");
+        }
+        size_t got = fread(p, 1, remaining, fp);
+        fclose(fp);
+        if (got != remaining) {
+            throw std::runtime_error("Failed to read cryptographically secure random bytes.");
+        }
+#endif
+    }
+
     static BigInteger GenerateRandomInteger() {
-        uint16_t RawRandomInteger[15];
+        // A 256-bit candidate reduced modulo `Order` yields a nonce that is
+        // uniformly distributed in [1, Order - 1], matching the SM2 requirement.
+        uint8_t RawRandomInteger[32] = {};
+        BigInteger Random;
 
-        static bool seeded = false;
-        if (!seeded) {
-            srand(static_cast<unsigned int>(time(nullptr)));
-            seeded = true;
-        }
-        for (size_t i = 0; i < 15; ++i) {
-            RawRandomInteger[i] = static_cast<uint16_t>(rand());
-        }
+        do {
+            FillSecureRandom(RawRandomInteger, sizeof(RawRandomInteger));
+            Random.Load(false, RawRandomInteger, sizeof(RawRandomInteger), true);
+            Random %= __ConfigType::Order;
+        } while (Random.IsZero());
 
-        return BigInteger(false, RawRandomInteger, sizeof(RawRandomInteger), true);
+        return Random;
     }
 
     static BigInteger GenerateHashInteger(const void* lpMessage, size_t cbMessage) {
@@ -118,7 +186,7 @@ private:
         HasherSha1Traits::DigestType Sha1Digest = Sha1.Evaluate();
 
         for (size_t i = 0; i < 5; ++i) {
-            RawHash[i] = BSWAP32(reinterpret_cast<uint32_t*>(Sha1Digest.Bytes)[i]);
+            RawHash[i] = LoadBigEndianU32(Sha1Digest.Bytes + i * 4);
         }
 
         // SHA1("") with all-zeroed initial value
@@ -236,7 +304,7 @@ public:
         CalculateChecksum(RegInfo);
 
         RegInfo.HexData = HelperStringFormat(
-            "%zu%zu%zu%zu%s%s%s%s%010lu",
+            "%zu%zu%zu%zu%s%s%s%s%010u",
             RegInfo.Items[0].length(),
             RegInfo.Items[1].length(),
             RegInfo.Items[2].length(),
@@ -245,7 +313,7 @@ public:
             RegInfo.Items[1].c_str(),
             RegInfo.Items[2].c_str(),
             RegInfo.Items[3].c_str(),
-            RegInfo.Checksum
+            static_cast<unsigned>(RegInfo.Checksum)
         );
 
         // The length has been limited to 60 (issues #6)
