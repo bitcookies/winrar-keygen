@@ -46,6 +46,14 @@ private:
         BigInteger s;
     };
 
+    // Read four big-endian bytes as a uint32_t without violating strict aliasing
+    // or alignment requirements (the digest buffer is not guaranteed aligned).
+    static uint32_t LoadBigEndianU32(const void* lpBytes) noexcept {
+        uint32_t Raw;
+        std::memcpy(&Raw, lpBytes, sizeof(Raw));
+        return BSWAP32(Raw);
+    }
+
     static BigInteger GeneratePrivateKey(const void* lpSeed, size_t cbSeed) {
         uint32_t Generator[6];
         uint16_t RawPrivateKey[15] = {};
@@ -57,7 +65,7 @@ private:
             Sha1Digest = Sha1.Evaluate();
 
             for (unsigned i = 0; i < 5; ++i) {
-                Generator[i + 1] = BSWAP32(reinterpret_cast<uint32_t*>(Sha1Digest.Bytes)[i]);
+                Generator[i + 1] = LoadBigEndianU32(Sha1Digest.Bytes + i * 4);
             }
         } else {
             Generator[1] = 0xeb3eb781;
@@ -76,7 +84,7 @@ private:
             Sha1Digest = Sha1.Evaluate();
 
             RawPrivateKey[i] = static_cast<uint16_t>(
-                BSWAP32(reinterpret_cast<uint32_t*>(Sha1Digest.Bytes)[0])
+                LoadBigEndianU32(Sha1Digest.Bytes)
             );
         }
 
@@ -178,7 +186,7 @@ private:
         HasherSha1Traits::DigestType Sha1Digest = Sha1.Evaluate();
 
         for (size_t i = 0; i < 5; ++i) {
-            RawHash[i] = BSWAP32(reinterpret_cast<uint32_t*>(Sha1Digest.Bytes)[i]);
+            RawHash[i] = LoadBigEndianU32(Sha1Digest.Bytes + i * 4);
         }
 
         // SHA1("") with all-zeroed initial value
